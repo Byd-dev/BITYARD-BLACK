@@ -24,6 +24,7 @@ import android.widget.EditText;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.entity.OMineEntity;
 import com.ltqh.qh.view.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -45,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     //当前正在展示的Fragment
-    private BaseFragment showFragment;
+    private OBaseFragment showFragment;
 
     private ProgressDialog mProgressDialog;
 
@@ -181,7 +182,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 展示Fragment
      */
-    protected void showFragment(int resid, BaseFragment fragment, String key, Object object) {
+    protected void showFragment(int resid, OBaseFragment fragment, String key, Object object) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         //隐藏正在暂时的Fragment
@@ -193,7 +194,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Fragment mFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
         if (mFragment != null) {
             fragmentTransaction.show(mFragment);
-            showFragment = (BaseFragment) mFragment;
+            showFragment = (OBaseFragment) mFragment;
         } else {
 
             fragmentTransaction.add(resid, fragment, fragment.getClass().getName());

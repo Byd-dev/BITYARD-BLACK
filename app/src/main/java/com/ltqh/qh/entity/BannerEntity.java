@@ -1,5 +1,7 @@
 package com.ltqh.qh.entity;
 
+import com.stx.xhb.xbanner.entity.SimpleBannerInfo;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -44,7 +46,7 @@ public class BannerEntity implements Serializable {
         this.data = data;
     }
 
-    public static class DataBean implements Serializable {
+    public static class DataBean extends SimpleBannerInfo implements Serializable {
 
 
         private int slide_id;
@@ -122,6 +124,11 @@ public class BannerEntity implements Serializable {
 
         public void setContent(String content) {
             this.content = content;
+        }
+
+        @Override
+        public Object getXBannerUrl() {
+            return image;
         }
     }
 }

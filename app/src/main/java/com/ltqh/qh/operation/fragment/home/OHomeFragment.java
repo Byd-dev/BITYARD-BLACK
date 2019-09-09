@@ -202,10 +202,7 @@ public class OHomeFragment extends OBaseFragment implements View.OnClickListener
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-
-
             updateNews();
-
             getQuote();
 
 
@@ -594,7 +591,7 @@ public class OHomeFragment extends OBaseFragment implements View.OnClickListener
                 if (mNewsIndex >= newSdata.size()) mNewsIndex = 0;
                 if (ListUtil.isNotEmpty(newSdata)) {
                     String title = newSdata.get(mNewsIndex).getTitle();
-                    if (mTextSwitcherNews!=null){
+                    if (mTextSwitcherNews != null) {
 
                         mTextSwitcherNews.setText(title);
                     }
@@ -639,7 +636,7 @@ public class OHomeFragment extends OBaseFragment implements View.OnClickListener
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
 
                     ImageView imageView = view.findViewById(R.id.img_banner);
-                    Log.d("print", "loadBanner: 643:  "+data.get(position).getXBannerUrl());
+                    Log.d("print", "loadBanner: 643:  " + data.get(position).getXBannerUrl());
                     Glide.with(getActivity()).load(data.get(position).getXBannerUrl()).asBitmap().into(imageView);
                 }
             });
@@ -969,7 +966,7 @@ public class OHomeFragment extends OBaseFragment implements View.OnClickListener
 
 
         double eagle = QuoteProxy.getInstance().getEagle();
-       // double div = OUtil.div(Double.parseDouble(today_eagle), 10, 1);
+        // double div = OUtil.div(Double.parseDouble(today_eagle), 10, 1);
 
         double add = OUtil.add(eagle, Double.parseDouble(today_eagle));
         numberRunningTextView.setContent(OUtil.doublePoint(add) + "");

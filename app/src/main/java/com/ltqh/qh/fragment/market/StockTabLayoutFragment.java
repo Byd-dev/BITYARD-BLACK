@@ -23,6 +23,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.GoldlistEntity;
 import com.ltqh.qh.entity.StockEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.view.EnhanceTabLayout;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -33,7 +34,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class StockTabLayoutFragment extends BaseFragment implements View.OnClickListener {
+public class StockTabLayoutFragment extends OBaseFragment implements View.OnClickListener {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefreshLayout)
@@ -75,6 +76,12 @@ public class StockTabLayoutFragment extends BaseFragment implements View.OnClick
     protected int setLayoutResourceID() {
         return R.layout.fragment_stock_layout;
     }
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
+
     @Override
     protected void initView(View view) {
 

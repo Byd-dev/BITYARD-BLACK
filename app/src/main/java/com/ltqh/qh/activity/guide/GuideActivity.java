@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.ltqh.qh.R;
+import com.ltqh.qh.activity.MainActivity;
 import com.ltqh.qh.operation.activity.SecondActivity;
 import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.base.OConstant;
@@ -36,7 +37,7 @@ public class GuideActivity extends OBaseActivity implements View.OnClickListener
 
     @BindView(R.id.btn_sure)
     Button btn_sure;
-    private List<String> contractsList, getContractsList, getalllist;
+    private List<String> contractsList, getalllist;
     private List<String> foreignList, getForeignList;
     private List<String> stockindexList, getStockindexList;
     private List<String> domesList, getDomesList;
@@ -64,7 +65,8 @@ public class GuideActivity extends OBaseActivity implements View.OnClickListener
 
         String string = SPUtils.getString(OUserConfig.O_FIRST_OPEN);
         if (!string.equals("")) {
-            SecondActivity.enter(GuideActivity.this, SecondActivity.TAB_TYPE.TAB_HOME);
+            //SecondActivity.enter(GuideActivity.this, SecondActivity.TAB_TYPE.TAB_HOME);
+            MainActivity.enter(GuideActivity.this,MainActivity.TAB_TYPE.TAB_HOME);
             GuideActivity.this.finish();
         } else {
 

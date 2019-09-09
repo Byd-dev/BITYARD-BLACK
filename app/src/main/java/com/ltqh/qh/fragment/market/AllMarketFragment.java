@@ -14,10 +14,11 @@ import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.fragment.forum.ChatFragment;
 import com.ltqh.qh.fragment.forum.GubaListFragment;
+import com.ltqh.qh.operation.base.OBaseFragment;
 
 import butterknife.BindView;
 
-public class AllMarketFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class AllMarketFragment extends OBaseFragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
@@ -35,6 +36,11 @@ public class AllMarketFragment extends BaseFragment implements RadioGroup.OnChec
 
     @BindView(R.id.layout_send)
     LinearLayout layout_send;
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {

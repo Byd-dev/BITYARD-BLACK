@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.ltqh.qh.R;
 import com.ltqh.qh.entity.AlertsEntity;
+import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.view.XCRoundRectImageView;
 
 import java.util.ArrayList;
@@ -18,14 +19,14 @@ import java.util.List;
 
 public class AlertsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private List<AlertsEntity.NewsListBean> datas;
+    private List<OHotEntity.NewsListBean> datas;
 
     public AlertsAdapter(Context context) {
         this.context = context;
         datas = new ArrayList<>();
     }
 
-    public void setDatas(List<AlertsEntity.NewsListBean> datas) {
+    public void setDatas(List<OHotEntity.NewsListBean> datas) {
         this.datas = datas;
         this.notifyDataSetChanged();
     }
@@ -85,7 +86,7 @@ public class AlertsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public  interface OnItemClick{
-        void onSuccessListener(AlertsEntity.NewsListBean newsListBean);
+        void onSuccessListener(OHotEntity.NewsListBean newsListBean);
 
     }
 }

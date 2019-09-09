@@ -3,16 +3,13 @@ package com.ltqh.qh.operation.fragment.info;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.MyPagerAdapter;
-import com.ltqh.qh.operation.activity.OIntentActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
-import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.view.InfoEnhanceTabLayout;
 
 import butterknife.BindView;

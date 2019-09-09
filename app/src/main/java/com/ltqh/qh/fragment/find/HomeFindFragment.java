@@ -63,6 +63,8 @@ import com.ltqh.qh.entity.StockEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
+import com.ltqh.qh.operation.activity.ONewsDetailActivity;
+import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
@@ -284,8 +286,8 @@ public class HomeFindFragment extends BaseFragment implements View.OnClickListen
 
         alertsAdapter.setOnItemClick(new AlertsAdapter.OnItemClick() {
             @Override
-            public void onSuccessListener(AlertsEntity.NewsListBean newsListBean) {
-                NewsDetailActivity.enter(getActivity(), "ALERTS", newsListBean);
+            public void onSuccessListener(OHotEntity.NewsListBean newsListBean) {
+                ONewsDetailActivity.enter(getActivity(), "ALERTS", newsListBean);
             }
         });
 
@@ -1176,7 +1178,7 @@ public class HomeFindFragment extends BaseFragment implements View.OnClickListen
 
 
     private void getNewsData() {
-        OkGo.<String>get(Constant.URL_ALERTS)
+        OkGo.<String>get(Constant.URL_NEWS_HOT)
                 .tag(this)
                 .params(Constant.PARAM_TYPE, "0")
                 .cacheKey(Constant.URL_ALERTS)
@@ -1191,10 +1193,10 @@ public class HomeFindFragment extends BaseFragment implements View.OnClickListen
                     @Override
                     public void onSuccess(Response<String> response) {
                         dismissProgressDialog();
-                        if (!TextUtils.isEmpty(response.body())) {
-                            AlertsEntity alertsEntity = new Gson().fromJson(response.body(), AlertsEntity.class);
-                            List<AlertsEntity.NewsListBean> newsList = alertsEntity.getNewsList().subList(0, 3);
+                        if (!response.body().startsWith("{")) {
+                            OHotEntity oHotEntity = new Gson().fromJson(response.body(), OHotEntity.class);
 
+                            List<OHotEntity.NewsListBean> newsList = oHotEntity.getNewsList().subList(0, 3);
                             alertsAdapter.setDatas(newsList);
                         }
                     }

@@ -27,6 +27,9 @@ import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.AlertsEntity;
 import com.ltqh.qh.entity.EastMoneyEntity;
+import com.ltqh.qh.operation.activity.ONewsDetailActivity;
+import com.ltqh.qh.operation.base.OConstant;
+import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.utils.ListUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
@@ -116,8 +119,9 @@ public class AlertsFragment extends BaseFragment {
 
         alertsAdapter.setOnItemClick(new AlertsAdapter.OnItemClick() {
             @Override
-            public void onSuccessListener(AlertsEntity.NewsListBean newsListBean) {
-                NewsDetailActivity.enter(getActivity(), "ALERTS", newsListBean);
+            public void onSuccessListener(OHotEntity.NewsListBean newsListBean) {
+                ONewsDetailActivity.enter(getActivity(), "ALERTS", newsListBean);
+
             }
         });
 
@@ -177,7 +181,7 @@ public class AlertsFragment extends BaseFragment {
     @Override
     protected void initData() {
 
-        OkGo.<String>get(Constant.URL_ALERTS)
+        OkGo.<String>get(Constant.URL_NEWS_HOT)
                 .tag(this)
                 .params(Constant.PARAM_TYPE, "0")
                 .cacheKey(Constant.URL_ALERTS)
@@ -195,8 +199,10 @@ public class AlertsFragment extends BaseFragment {
                         swipeRefreshLayout.setRefreshing(false);
                         Log.d("print", "onSuccess:201: " + response);
                         if (!TextUtils.isEmpty(response.body())) {
-                            AlertsEntity alertsEntity = new Gson().fromJson(response.body(), AlertsEntity.class);
-                            alertsAdapter.setDatas(alertsEntity.getNewsList());
+                            OHotEntity oHotEntity = new Gson().fromJson(response.body(), OHotEntity.class);
+
+                            List<OHotEntity.NewsListBean> newsList = oHotEntity.getNewsList();
+                            alertsAdapter.setDatas(newsList);
                         }
                     }
 

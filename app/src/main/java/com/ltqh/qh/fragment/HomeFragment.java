@@ -22,7 +22,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
@@ -35,7 +34,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
-import com.ltqh.qh.activity.MainActivity;
 import com.ltqh.qh.activity.NewsDetailActivity;
 import com.ltqh.qh.activity.PersonActivity;
 import com.ltqh.qh.activity.UserActivity;
@@ -48,7 +46,6 @@ import com.ltqh.qh.adapter.HomeMenuAdapter;
 import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.adapter.StockHomeAdapter;
 import com.ltqh.qh.adapter.StockTabAdapter;
-import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.AlertsEntity;
@@ -60,9 +57,14 @@ import com.ltqh.qh.entity.GuliaoEntity;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.StockEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
-import com.ltqh.qh.fragment.find.RecommendFragment;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
+import com.ltqh.qh.operation.activity.ONewsDetailActivity;
+import com.ltqh.qh.operation.base.OBaseFragment;
+import com.ltqh.qh.operation.base.OConstant;
+import com.ltqh.qh.operation.config.OUserConfig;
+import com.ltqh.qh.operation.entity.OHotEntity;
+import com.ltqh.qh.operation.entity.OHoursEntity;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
@@ -72,8 +74,7 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
-import com.zhouwei.mzbanner.MZBannerView;
-import com.zhouwei.mzbanner.holder.MZHolderCreator;
+import com.stx.xhb.xbanner.XBanner;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
 
 import org.greenrobot.eventbus.EventBus;
@@ -87,7 +88,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends OBaseFragment implements View.OnClickListener {
 
     private final static int PERIOD = 5 * 1000; // 5s
 
@@ -118,7 +119,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     TextView text_time;
 
     @BindView(R.id.banner)
-    MZBannerView banner;
+    XBanner banner;
 
     @BindView(R.id.img_head)
     CircleImageView img_head;
@@ -149,10 +150,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+
+
+        if (banner != null) {
+            banner.startAutoPlay();
+        }
+
         LoginEntity loginEntity = SPUtils.getData(UserConfig.LOGIN_USER, LoginEntity.class);
         UserInfoEntity userInfoEntity = SPUtils.getData(UserConfig.USER, UserInfoEntity.class);
 
         if (userInfoEntity != null) {
+            if (userInfoEntity.getData() == null) {
+                return;
+            }
 
             // getUserInfo();
             Glide.with(getActivity())
@@ -210,7 +220,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private String Titles[] = new String[]{"直播", "策略"};
-    private  int[] banners=new int[]{R.mipmap.home_banner2,R.mipmap.home_banner1,R.mipmap.home_banner3};
+    private int[] banners = new int[]{R.mipmap.home_banner2, R.mipmap.home_banner1, R.mipmap.home_banner3};
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {
@@ -267,8 +282,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
         alertsAdapter.setOnItemClick(new AlertsAdapter.OnItemClick() {
             @Override
-            public void onSuccessListener(AlertsEntity.NewsListBean newsListBean) {
-                NewsDetailActivity.enter(getActivity(), "ALERTS", newsListBean);
+            public void onSuccessListener(OHotEntity.NewsListBean newsListBean) {
+                ONewsDetailActivity.enter(getActivity(), "ALERTS", newsListBean);
+
             }
         });
 
@@ -280,7 +296,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 textView.setMaxLines(1);
                 textView.setEllipsize(TextUtils.TruncateAt.END);
                 textView.setLineSpacing(1.1f, 1.1f);
-                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_maincolor));
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_secondcolor));
                 textView.setTextSize(15);
                 //   textView.setSingleLine();
                 return textView;
@@ -320,7 +336,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
         view.findViewById(R.id.layout_weather).setOnClickListener(this);
         view.findViewById(R.id.layout_question).setOnClickListener(this);
-        view.findViewById(R.id.img_ketang).setOnClickListener(this);
 
       /*  homeChatAdapter.setOnItemClick(new HomeChatAdapter.OnItemClick() {
             @Override
@@ -383,7 +398,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-          //  getHomeGold();
+            //  getHomeGold();
 
             //getHomeStock(0, getSort());
             updateNews();
@@ -447,12 +462,29 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void upBanner(List<BannerEntity.DataBean> data) {
-        banner.setPages(data, new MZHolderCreator() {
+        Log.d("print", "upBanner:461:   "+data);
+        if (data == null) {
+            return;
+        }
+
+        if (banner != null) {
+            banner.setBannerData(R.layout.item_livebanner_layout, data);
+            banner.loadImage(new XBanner.XBannerAdapter() {
+                @Override
+                public void loadBanner(XBanner banner, Object model, View view, int position) {
+                    XCRoundRectImageView imageView = view.findViewById(R.id.img_banner);
+                    Log.d("print", "loadBanner: 643:  " + data.get(position).getXBannerUrl());
+                    Glide.with(getActivity()).load(data.get(position).getXBannerUrl()).asBitmap().into(imageView);
+                }
+            });
+        }
+
+       /* banner.setPages(data, new MZHolderCreator() {
             @Override
             public MZViewHolder createViewHolder() {
                 return new BannerViewHolder();
             }
-        });
+        });*/
 
     }
 
@@ -547,7 +579,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                             CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.body(), CodeMsgEntity.class);
 
-                            if (codeMsgEntity.getCode()==1){
+                            if (codeMsgEntity.getCode() == 1) {
 
                                 StockEntity stockEntity = new Gson().fromJson(response.body(), StockEntity.class);
                                 List<StockEntity.DataBean> data = stockEntity.getData();
@@ -595,7 +627,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                             CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.body(), CodeMsgEntity.class);
                             if (codeMsgEntity.getCode() == 0) {
                                 GuliaoEntity guliaoEntity = new Gson().fromJson(response.body(), GuliaoEntity.class);
-                              //  Log.d("print", "onSuccess: " + guliaoEntity);
+                                //  Log.d("print", "onSuccess: " + guliaoEntity);
                                 homeChatAdapter.setDatas(guliaoEntity.getData().getData());
 
                             }
@@ -752,10 +784,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.text_ketang:
-            case R.id.img_ketang:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
 
-                break;
 
             case R.id.text_quanzi:
                 IntentActivity.enter(getActivity(), Constant.FEEDBACK);
@@ -794,7 +823,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             case R.id.home_img3:
             case R.id.home_img4:
 
-                IntentActivity.enter(getActivity(),Constant.INFO);
+                IntentActivity.enter(getActivity(), Constant.INFO);
 
                 break;
 
@@ -805,15 +834,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.layout_question:
-                IntentActivity.enter(getActivity(),Constant.QUESTION);
+                IntentActivity.enter(getActivity(), Constant.QUESTION);
 
                 break;
 
 
-
         }
     }
-
 
 
     public static class BannerStayViewHolder implements MZViewHolder<Integer> {
@@ -863,7 +890,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         public void onBind(final Context context, int position, final BannerEntity.DataBean data) {
 
 
-
             // 数据绑定
             Glide.with(context)
                     .load(data.getImage())
@@ -901,6 +927,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (banner != null) {
+            banner.stopAutoPlay();
+        }
         EventBus.getDefault().unregister(this);
 
         cancelTimer();
@@ -927,11 +956,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void getNews() {
-        OkGo.<String>get(Constant.URL_HOUR)
+
+        OkGo.<String>get(Constant.URL_NEWS_HOURS)
                 .tag(this)
-                .params(Constant.PARAM_LASTTIME, dateToStamp())
-                .params(Constant.PARAM_PAGESIZE, 50)
-                .cacheKey(Constant.URL_JINTOUWANG)
+                .params(Constant.PARAM_MAXID, 0)
                 .cacheMode(CacheMode.DEFAULT)
                 .execute(new StringCallback() {
                     @Override
@@ -942,12 +970,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())) {
+                            if (!TextUtils.isEmpty(response.body())) {
+                                Log.d("print", "onSuccess:971:    "+response.body());
+                                OHoursEntity oHoursEntity = new Gson().fromJson(response.body(), OHoursEntity.class);
+                                newSdata = oHoursEntity.getNewsList();
 
-                            EastMoneyEntity eastMoneyEntity = new Gson().fromJson(response.body(), EastMoneyEntity.class);
-                            newSdata = eastMoneyEntity.getData();
-                            mTextSwitcherNews.setText(newSdata.get(0).substring(23, newSdata.get(0).length() - 29));
-                        }
+                                mTextSwitcherNews.setText(newSdata.get(0).substring(23, newSdata.get(0).length() - 29));
+
+                            }
                     }
 
                     @Override
@@ -1144,7 +1174,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 
     private void getNewsData() {
-        OkGo.<String>get(Constant.URL_ALERTS)
+        OkGo.<String>get(Constant.URL_NEWS_HOT)
                 .tag(this)
                 .params(Constant.PARAM_TYPE, "0")
                 .cacheKey(Constant.URL_ALERTS)
@@ -1158,11 +1188,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+                        Log.d("print", "onSuccess:1188:    "+response.body());
+
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
-                            AlertsEntity alertsEntity = new Gson().fromJson(response.body(), AlertsEntity.class);
-                            List<AlertsEntity.NewsListBean> newsList = alertsEntity.getNewsList().subList(0, 3);
+                            OHotEntity oHotEntity = new Gson().fromJson(response.body(), OHotEntity.class);
 
+                            List<OHotEntity.NewsListBean> newsList = oHotEntity.getNewsList().subList(0, 3);
+                            Log.d("print", "onSuccess:1198:  "+newsList);
                             alertsAdapter.setDatas(newsList);
                         }
                     }
@@ -1234,4 +1267,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     }
                 });
     }
+
+
 }

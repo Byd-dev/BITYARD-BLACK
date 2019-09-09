@@ -22,6 +22,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.StockEntity;
 import com.ltqh.qh.entity.StockForeignEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -31,7 +32,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class StockForeignFragment extends BaseFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class StockForeignFragment extends OBaseFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefreshLayout)
@@ -50,6 +51,11 @@ public class StockForeignFragment extends BaseFragment implements View.OnClickLi
     private String SORT = Constant.STAY_CHANGEPERCENT;
 
     private StockforeignslideAdapter stockForeignTabAdapter;
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {

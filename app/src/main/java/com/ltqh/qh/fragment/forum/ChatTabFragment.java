@@ -43,6 +43,7 @@ import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.EastMoneyEntity;
 import com.ltqh.qh.entity.GuliaoEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
@@ -61,7 +62,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ChatTabFragment extends BaseFragment implements View.OnClickListener {
+public class ChatTabFragment extends OBaseFragment implements View.OnClickListener {
     private final static int PERIOD = 5 * 1000; // 5s
 
     @BindView(R.id.layout_view)
@@ -98,6 +99,11 @@ public class ChatTabFragment extends BaseFragment implements View.OnClickListene
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_chattab;
+    }
+
+    @Override
+    protected void onLazyLoad() {
+
     }
 
     @Override

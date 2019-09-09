@@ -30,7 +30,10 @@ import com.ltqh.qh.fragment.market.AllMarketTabFragment;
 import com.ltqh.qh.fragment.news.InfoFragment;
 import com.ltqh.qh.fragment.news.InfoTabFragment;
 import com.ltqh.qh.fragment.shop.BookFragment;
+import com.ltqh.qh.operation.base.OBaseActivity;
+import com.ltqh.qh.operation.fragment.info.OInfoFragment;
 import com.ltqh.qh.utils.SPUtils;
+import com.ltqh.qh.view.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -89,6 +92,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initView(View view) {
+        StatusBarUtil.setRootViewFitsSystemWindows(this, false);
 
         EventBus.getDefault().register(this);
         radioGroup.setOnCheckedChangeListener(this);
@@ -140,17 +144,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new ForumDrawerFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new HomeFragment(), null, null);
                 //setStatusBar(getResources().getColor(R.color.white));
 
                 break;
             case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new InfoTabFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new AllMarketFragment(), null, null);
+
                 //setStatusBar(getResources().getColor(R.color.maincolor));
                 break;
 
             case R.id.radio_2:
-                showFragment(R.id.layout_fragment_containter, new AllMarketFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new InfoFragment(), null, null);
+
                 //setStatusBar(getResources().getColor(R.color.maincolor));
 
                 break;

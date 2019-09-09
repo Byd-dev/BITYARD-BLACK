@@ -4,7 +4,8 @@ public interface Constant {
 
     public static String NEWS_HOIST = "https://minsuart.com.cn/api/news";
 
-    public static String PANDANEWS_HOST = "https://xm.pandaqh.com/api/news";
+    //public static String PANDANEWS_HOST = "https://xm.pandaqh.com/api/news";
+    public static String PANDANEWS_HOST = "https://zy.tigerqh.com";
 
     public static String JUHE_HOST="http://apis.juhe.cn/goodbook";
 
@@ -281,4 +282,10 @@ public interface Constant {
 
     public static final String KEY_SP_FILENAME = "ltqh";
 
+
+    //7*24小时
+    String URL_NEWS_HOURS = PANDANEWS_HOST + API + NEWS + "/expressList.htm";
+    public static String PARAM_MAXID = "maxId";
+    //快讯
+    public static String URL_NEWS_HOT = PANDANEWS_HOST + API + NEWS + "/newsList.htm";
 }

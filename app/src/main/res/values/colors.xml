@@ -5,7 +5,7 @@
     <color name="colorAccent">#5576F7</color>
     <color name="bar_color">#8A5DED</color>
 
-    <color name="maincolor">#5D81D8</color>
+    <color name="maincolor">#4E51ED</color>
     <color name="tranmaincolor">#AEBCF3</color>
 
     <color name="deepmaincolor">#6320DE</color>
@@ -24,7 +24,7 @@
 
     <color name="home_line">#E0E0E0</color>
     <color name="text_maincolor">#2E3546</color>
-    <color name="text_secondcolor">#FF999999</color>
+    <color name="text_secondcolor">#4B4B4B</color>
 
     <color name="text_notice">#243C54</color>
 

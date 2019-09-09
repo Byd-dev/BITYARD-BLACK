@@ -34,6 +34,7 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.MyMenuEntity;
 import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.AppUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
@@ -51,7 +52,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MyFragment extends BaseFragment implements View.OnClickListener {
+public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
     @BindView(R.id.tv_nickname)
     TextView text_login;
@@ -98,29 +99,33 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
          /*   text_login.setBackground(getResources().getDrawable(R.drawable.gradient_maincolor));
             text_login.setTextColor(getResources().getColor(R.color.white));*/
 
-            String user_nickname = userInfoEntity.getData().getUser_nickname();
-            Glide.with(getActivity())
-                    .load(Constant.USER_AVATER_URL + userInfoEntity.getData().getAvatar())
-                    .asBitmap()
-                    .error(R.mipmap.user_icon)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
-                    .into(img_head);
+            if (userInfoEntity.getData()!=null){
+                String user_nickname = userInfoEntity.getData().getUser_nickname();
+                Glide.with(getActivity())
+                        .load(Constant.USER_AVATER_URL + userInfoEntity.getData().getAvatar())
+                        .asBitmap()
+                        .error(R.mipmap.user_icon)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .centerCrop()
+                        .into(img_head);
 
-            if (user_nickname.equals("")) {
-                text_login.setText("用户");
-                text_sign.setText("开开心心每一天~");
+                if (user_nickname.equals("")) {
+                    text_login.setText("用户");
+                    text_sign.setText("开开心心每一天~");
              /*   text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));*/
 
 
-            } else {
-                text_login.setText(userInfoEntity.getData().getUser_nickname());
-                text_sign.setText(userInfoEntity.getData().getSignature());
+                } else {
+                    text_login.setText(userInfoEntity.getData().getUser_nickname());
+                    text_sign.setText(userInfoEntity.getData().getSignature());
              /*   text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));
 */
+                }
             }
+
+
 
         } else {
 
@@ -167,6 +172,11 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             }
         }
         text_hc.setText("清除缓存(" + AppUtil.getAppClearSize(getContext()) + ")");
+
+    }
+
+    @Override
+    protected void onLazyLoad() {
 
     }
 

@@ -458,7 +458,8 @@ public class SplashActivity extends Activity {
                                 } else {
                                     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                                             WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, BuildConfig.WEB_URL, null);
+                                    //SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, BuildConfig.WEB_URL, null);
+                                    GuideActivity.enter(SplashActivity.this);
                                     SplashActivity.this.finish();
 
                                 }

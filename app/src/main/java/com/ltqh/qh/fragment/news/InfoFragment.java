@@ -1,170 +1,148 @@
 package com.ltqh.qh.fragment.news;
 
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.view.LayoutInflater;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.ltqh.qh.R;
-import com.ltqh.qh.base.BaseFragment;
+import com.ltqh.qh.adapter.MyPagerAdapter;
+import com.ltqh.qh.operation.base.OBaseFragment;
+import com.ltqh.qh.operation.fragment.info.OFinancialCalendarFragment;
+import com.ltqh.qh.operation.fragment.info.OHotFragment;
+import com.ltqh.qh.operation.fragment.info.OLiveFragment;
+import com.ltqh.qh.operation.fragment.info.OReportFragment;
+import com.ltqh.qh.view.InfoEnhanceTabLayout;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import butterknife.BindView;
 
-import butterknife.ButterKnife;
-
-public class InfoFragment extends BaseFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
-
-
+public class InfoFragment extends OBaseFragment implements View.OnClickListener {
     private final static int PERIOD = 5 * 1000; // 5s
 
+    @BindView(R.id.layout_view)
+    LinearLayout layout_view;
 
+    @BindView(R.id.home_tab)
+    InfoEnhanceTabLayout home_tab;
 
+    @BindView(R.id.viewpager)
+    ViewPager viewPager;
 
-    private RadioGroup radioGroup;
-    private RadioButton rb0;
-    private RadioButton rb1;
-    private RadioButton rb2;
-    private RadioButton rb3;
+    private String Titles[] = new String[]{"7×24", "每日热点", "日历", "公告"};
 
-
-
-
-
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-
-
-    }
-
-
-
-
-    protected void initView(View view) {
-
-        radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
-        rb0 = (RadioButton) view.findViewById(R.id.radio_0);
-        rb1 = (RadioButton) view.findViewById(R.id.radio_1);
-        rb2 = (RadioButton) view.findViewById(R.id.radio_2);
-        rb3 = (RadioButton) view.findViewById(R.id.radio_3);
-        radioGroup.setOnCheckedChangeListener(this);
-        radioGroup.check(0);
-        rb0.setChecked(true);
-        rb1.setChecked(false);
-        rb2.setChecked(false);
-        view.findViewById(R.id.img_back).setOnClickListener(this);
-
-    }
 
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_info;
     }
 
-
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        startScheduleJob(mHandler, PERIOD, PERIOD);
-
+    public void onResume() {
+        super.onResume();
 
     }
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
+    private void initTabView() {
+        home_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
 
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        for (int i = 0; i < Titles.length; i++) {
+            home_tab.addTab(Titles[i]);
         }
-    };
 
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(home_tab.getTabLayout()));
+        home_tab.setupWithViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(3);
+        initViewPager(viewPager);
+        dismissProgressDialog();
 
-
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.img_back:
-
-                getActivity().finish();
-                break;
-
-
-        }
     }
 
+    @Override
+    protected void onLazyLoad() {
 
 
-
-    public String dateToStamp() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date(System.currentTimeMillis());
-        String format = simpleDateFormat.format(date);
-        return format;
     }
 
 
     @Override
-    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        switch (i) {
-            case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new LiveFragment(), null, null);
-                rb0.setTextSize(20);
-                rb1.setTextSize(17);
-                rb2.setTextSize(17);
-                rb3.setTextSize(17);
+    protected void initView(View view) {
+        showProgressDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initTabView();
 
-                break;
-
-            case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new FinancialCalendarFragment(), null, null);
-                rb0.setTextSize(17);
-                rb1.setTextSize(20);
-                rb2.setTextSize(17);
-                rb3.setTextSize(17);
-
-                break;
-            case R.id.radio_2:
-                showFragment(R.id.layout_fragment_containter, new AlertsFragment(), null, null);
-                rb0.setTextSize(17);
-                rb1.setTextSize(17);
-                rb2.setTextSize(20);
-                rb3.setTextSize(17);
-
-                break;
-            case R.id.radio_3:
-                showFragment(R.id.layout_fragment_containter, new DubiFragment(), null, null);
-                rb0.setTextSize(17);
-                rb1.setTextSize(17);
-                rb2.setTextSize(17);
-                rb3.setTextSize(20);
-                break;
+            }
+        }, 100);
 
 
-        }
+        view.findViewById(R.id.layout_one).setOnClickListener(this);
+        view.findViewById(R.id.layout_two).setOnClickListener(this);
+        view.findViewById(R.id.layout_three).setOnClickListener(this);
+
+
     }
+
+
+    private void initViewPager(ViewPager viewPager) {
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
+        myPagerAdapter.addFragment(new OLiveFragment());
+        myPagerAdapter.addFragment(new OHotFragment());
+        myPagerAdapter.addFragment(new OFinancialCalendarFragment());
+        myPagerAdapter.addFragment(new OReportFragment());
+
+        viewPager.setAdapter(myPagerAdapter);
+    }
+
 
     @Override
     protected void intPresenter() {
 
     }
 
+
     @Override
     protected void initData() {
 
+        //getNews();
+
     }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.layout_one:
+            case R.id.layout_two:
+            case R.id.layout_three:
+                Toast.makeText(getActivity(), "敬请期待!", Toast.LENGTH_SHORT).show();
+               // OIntentActivity.enter(getActivity(), OConstant.O_CONVERSION);
+                break;
+        }
+    }
+
+
 }

@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="100dp"
+    android:background="@color/o_bar_white"
     android:orientation="vertical">
 
-   <!-- <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginRight="@dimen/margin"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="@dimen/cardelevation"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_margin="@dimen/margin_5"
-        android:background="@drawable/new_order_bg_white"
         android:layout_weight="1">
 
 
@@ -40,7 +30,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="标题"
-                android:textColor="@color/text_maincolor"
+                android:textColor="@color/o_text_3433"
                 android:textSize="16sp" />
 
 
@@ -63,7 +53,7 @@
         <com.ltqh.qh.view.XCRoundRectImageView
             android:id="@+id/img_bg"
             android:layout_width="116dp"
-            android:layout_height="86dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -72,14 +62,14 @@
             android:src="@mipmap/ic_launcher" />
 
     </LinearLayout>
-    <!--</android.support.v7.widget.CardView>-->
     <View
+        android:id="@+id/view_line"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:visibility="visible"
         android:layout_marginLeft="@dimen/margin_15"
         android:layout_marginRight="@dimen/margin_15"
-        android:background="@color/home_line" />
+        android:background="@color/o_line" />
 
 
 </LinearLayout>
