@@ -29,33 +29,25 @@ import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.operation.activity.OMarketActivity;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.activity.OWebActivity;
-import com.ltqh.qh.operation.adapter.OAreaSelectAdapter;
-import com.ltqh.qh.operation.adapter.OAreaSelectChildAdapter;
 import com.ltqh.qh.operation.adapter.OBankListSelectAdapter;
-import com.ltqh.qh.operation.adapter.OBankSelectAdapter;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
-import com.ltqh.qh.operation.entity.OAddressEntity;
-import com.ltqh.qh.operation.entity.OBankEntity;
 import com.ltqh.qh.operation.entity.OBankListEntity;
 import com.ltqh.qh.operation.entity.OBaseMineEntity;
 import com.ltqh.qh.operation.entity.OCodeMsgEntity;
 import com.ltqh.qh.operation.entity.OEventData;
-import com.ltqh.qh.operation.entity.OPositionEntity;
 import com.ltqh.qh.operation.entity.OwithdrawEntity;
 import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.operation.utils.OUtil;
-import com.ltqh.qh.utils.AES;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.pro.switchlibrary.AES;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import butterknife.BindView;

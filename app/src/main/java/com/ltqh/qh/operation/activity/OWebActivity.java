@@ -26,7 +26,6 @@ import android.widget.TextView;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseActivity;
-import com.ltqh.qh.config.HttpKeys;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.operation.config.OUserConfig;

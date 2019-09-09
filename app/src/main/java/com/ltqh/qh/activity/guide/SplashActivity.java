@@ -8,63 +8,42 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.BuildConfig;
 import com.ltqh.qh.R;
-import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.JsonEntity;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OApiEntity;
 import com.ltqh.qh.operation.entity.OPositionEntity;
 import com.ltqh.qh.operation.quotebase.QuoteProxy;
-import com.ltqh.qh.utils.AES;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.pro.switchlibrary.AES;
+import com.pro.switchlibrary.AppConfig;
+import com.pro.switchlibrary.DeviceUtil;
+import com.pro.switchlibrary.SwitchMainEnter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SplashActivity extends Activity {
 
-    private static final String TAG = "SplashActivity";
-
-    private static final int SPLASH_DELAY = 1000;
-
-    private static final int GO_NEXT = 10001;
-
     private static String KEY = "42980fcm2d3409d!";
     private static String HEX_KEY = "1111111122222222";
-    public static String CHECKVERSION_URL1 = "http://blog.sina.com.cn/s/blog_166dde1070102y0m5.html";
-    public static String CHECKVERSION_URL2 = "https://blog.csdn.net/nikiazhang/article/details/82828263";
-
-    // public static String BASE_CHECKVERSION = "https://www.fengk76.com";
-
-    public static String[] CHECKVERSION_LIST = new String[]{"https://api.wzwqh.com", "https://api.zjschjy.com"};
-    // public static String[] CHECKVERSION_LIST = new String[]{"http://10.28.74.182:8080", "https://api.zjschjy.com"};
-
-
     public static String RGEX = "@@(.*?)@@";
+    private static String QUDAO = BuildConfig.QUDAO;
+    private String ipAddress;
+    private String macAddress;
 
-    private int url1Count = 0;
-    private int url2Count = 0;
-    // private static String QUDAO = BuildConfig.QUDAO;
-    // XHQH-OFFICAL
-    private static String QUDAO = "ltqhtest";
-
-    private boolean isPause;
-    private List<String> urlList1;
-    private List<String> urlList2;
-    private HashMap map;
-
-    private List<String> contractsList, getContractsList, getalllist;
+    private List<String> contractsList, getalllist;
     private List<String> foreignList, getForeignList;
     private List<String> stockindexList, getStockindexList;
     private List<String> domesList, getDomesList;
@@ -73,17 +52,13 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        SwitchMainEnter.getInstance().initOCR(this, BuildConfig.AK, BuildConfig.SK);
 
         // 测试 SDK 是否正常工作的代码
 
-        map = new HashMap<>();
-        map.put(Constant.PARAM_NAME, QUDAO);
         getApi();
         getisLogin();
-        //测试
-       /* GuideActivity.enter(SplashActivity.this);
-        SplashActivity.this.finish();*/
-         startActivity();
+        startActivity();
 
 
     }
@@ -244,39 +219,219 @@ public class SplashActivity extends Activity {
         return list;
     }
 
-    int count = 0;
+
+    int CHECKVERSION_INDEX = 0;//市场手动输入开关地址下标
+    int BLOG_INDEX = 0; //市场手动输入的博客地址下标
+
+    int CACHE_CHECKVERSION_INDEX = 0;
 
     //Aaron 修改直接跳到主页
     private void startActivity() {
-        //1.首先判断当前的是否有缓存 ,第一次是去备用的
-        JsonEntity data = SPUtils.getData(OUserConfig.CHECKVERSION, JsonEntity.class);
-        Log.d("print", "startActivity:259:   " + data);
-        if (data != null) {
-            if (data.getDPool() != null) {
+        ipAddress = DeviceUtil.getIPAddress(this);
+        macAddress = DeviceUtil.getMACAddress(this);
+
+        JsonEntity data = com.pro.switchlibrary.SPUtils.getData(AppConfig.CHECKVERSION, JsonEntity.class);
+        if (BuildConfig.CHECKVERSION_URL_LIST.length > 0) {
+            if (data != null) {
                 List<String> dPool = data.getDPool();
-                if (count < dPool.size()) {
-                    getCacheCheckVersion(data);
+                if (dPool.size() != 0) {
+                    getCacheCheckVersion(data, CACHE_CHECKVERSION_INDEX);
+                } else {
+                    getCheckVersion(BuildConfig.CHECKVERSION_URL_LIST[CHECKVERSION_INDEX]);
                 }
             } else {
-                if (data.getDBlog() != null) {
-                    getBlog(data.getDBlog().get(0));
-                    getBlog2(data.getDBlog().get(1));
-                } else {
-                    getCheckVersion(CHECKVERSION_LIST[0]);
-                }
+                getCheckVersion(BuildConfig.CHECKVERSION_URL_LIST[CHECKVERSION_INDEX]);
             }
-
         } else {
-            getCheckVersion(CHECKVERSION_LIST[0]);
+            getBlog(BuildConfig.BLOG_URL_LIST[BLOG_INDEX]);
         }
+
+
     }
 
-
-    private void getCacheCheckVersion(JsonEntity data) {
-        Log.d("print", "getCacheCheckVersion:270:    " + count);
-        OkGo.<String>post(data.getDPool().get(count) + "/checkVersion")
+    private void getCheckVersion(String url) {
+        OkGo.<String>post(url + "/checkVersion")
                 .tag("url1")
                 .params("name", QUDAO)
+                .params("ip", ipAddress)
+                .params("mac", macAddress)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                    }
+
+                    @Override
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            try {
+                                String decrypt = AES.Decrypt(response.body().getBytes(), KEY);
+                                Log.d("print", "onSuccess:解密后数据1: " + decrypt);
+                                JsonEntity jsonEntity = new Gson().fromJson(decrypt, JsonEntity.class);
+                                Log.d("print", "onSuccess:131 1: " + jsonEntity);
+
+                                com.pro.switchlibrary.SPUtils.putData(AppConfig.CHECKVERSION, jsonEntity);
+
+
+                                if (jsonEntity.getStatus().equals("true") || jsonEntity.getStatus().equals("1")) {
+                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, jsonEntity.getUrl(), null);
+                                    SplashActivity.this.finish();
+
+                                } else {
+                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, BuildConfig.WEB_URL, null);
+                                    SplashActivity.this.finish();
+
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(com.lzy.okgo.model.Response<String> response) {
+                        super.onError(response);
+                        CHECKVERSION_INDEX++;
+                        if (CHECKVERSION_INDEX < BuildConfig.CHECKVERSION_URL_LIST.length) {
+                            Log.d("print", "onError: 156: " + CHECKVERSION_INDEX);
+                            getCheckVersion(BuildConfig.CHECKVERSION_URL_LIST[CHECKVERSION_INDEX]);
+                        } else {
+                            Log.d("print", "onError: 159: " + CHECKVERSION_INDEX);
+                            getBlog(BuildConfig.BLOG_URL_LIST[BLOG_INDEX]);
+                        }
+
+                    }
+                });
+
+    }
+
+    int GET_BLOG_INDEX = 0;//直接接口获取的博客下标
+
+    private void getBlog(String blogUrl) {
+        OkGo.<String>get(blogUrl)
+                .tag(this)
+                .cacheKey("version")
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+
+                            Document document = Jsoup.parse(response.body());
+                            String subUtilSimple = getSubUtilSimple(document.toString(), RGEX);
+
+                            String s1;
+                            try {
+                                s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
+                                List<String> urlList = getUrlList(s1);
+
+                                if (urlList.size() > 0) {
+                                    getBlogCheckVersion(urlList, GET_BLOG_INDEX);
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(com.lzy.okgo.model.Response<String> response) {
+                        super.onError(response);
+                        BLOG_INDEX++;
+                        if (BLOG_INDEX < BuildConfig.BLOG_URL_LIST.length) {
+                            Log.d("print", "onError: 212:" + BLOG_INDEX);
+                            getBlog(BuildConfig.BLOG_URL_LIST[BLOG_INDEX]);
+                        } else {
+                            Log.d("print", "onError: 215:" + BLOG_INDEX);
+
+                            Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
+                            SplashActivity.this.finish();
+                        }
+
+                    }
+                });
+    }
+
+    private void getBlogCheckVersion(final List<String> urlList, int index) {
+        OkGo.<String>post(urlList.get(index) + "/checkVersion")
+                .tag("url1")
+                .params("name", QUDAO)
+                .params("ip", ipAddress)
+                .params("mac", macAddress)
+                .execute(new StringCallback() {
+
+
+                    @Override
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            Log.d("print", "onSuccess:256 " + response.body());
+                            try {
+                                String decrypt = AES.Decrypt(response.body().getBytes(), KEY);
+                                Log.d("print", "onSuccess:解密后数据2: " + decrypt);
+                                JsonEntity jsonEntity = new Gson().fromJson(decrypt, JsonEntity.class);
+                                Log.d("print", "onSuccess:131 2: " + jsonEntity);
+                                OkGo.getInstance().cancelAll();
+
+                                if (jsonEntity.getStatus().equals("true") || jsonEntity.getStatus().equals("1")) {
+                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, jsonEntity.getUrl(), null);
+                                    SplashActivity.this.finish();
+
+                                } else {
+                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, BuildConfig.WEB_URL, null);
+                                    SplashActivity.this.finish();
+
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(com.lzy.okgo.model.Response<String> response) {
+                        super.onError(response);
+                        GET_BLOG_INDEX++;
+                        if (GET_BLOG_INDEX < urlList.size()) {
+                            getBlogCheckVersion(urlList, GET_BLOG_INDEX);
+                        } else {
+                            com.pro.switchlibrary.SPUtils.remove(AppConfig.CHECKVERSION);
+                            Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
+                            SplashActivity.this.finish();
+                        }
+
+
+                    }
+                });
+
+    }
+
+    int CACHE_BLOG_INDEX = 0;//缓存的博客地址下标
+
+    private void getCacheCheckVersion(final JsonEntity data, int index) {
+        OkGo.<String>post(data.getDPool().get(index) + "/checkVersion")
+                .tag("url1")
+                .params("name", QUDAO)
+                .params("ip", ipAddress)
+                .params("mac", macAddress)
                 .execute(new StringCallback() {
                     @Override
                     public void onStart(Request<String, ? extends Request> request) {
@@ -294,26 +449,18 @@ public class SplashActivity extends Activity {
                                 Log.d("print", "onSuccess:缓存解密后数据1: " + decrypt);
                                 JsonEntity jsonEntity = new Gson().fromJson(decrypt, JsonEntity.class);
                                 Log.d("print", "onSuccess:缓存1: " + jsonEntity);
-                                SPUtils.putData(OUserConfig.CHECKVERSION, jsonEntity);
-
-
                                 if (jsonEntity.getStatus().equals("true") || jsonEntity.getStatus().equals("1")) {
                                     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                                             WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-
-                                    GuideActivity.enter(SplashActivity.this);
-
+                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, jsonEntity.getUrl(), null);
                                     SplashActivity.this.finish();
-                                    OkGo.getInstance().cancelAll();
 
                                 } else {
                                     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                                             WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                                    //   MainActivity.enter(SplashActivity.this, MainActivity.TAB_TYPE.TAB_HOME);
-                                    GuideActivity.enter(SplashActivity.this);
-
+                                    SwitchMainEnter.getInstance().goToWeb(SplashActivity.this, BuildConfig.WEB_URL, null);
                                     SplashActivity.this.finish();
-                                    OkGo.getInstance().cancelAll();
+
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -324,135 +471,22 @@ public class SplashActivity extends Activity {
                     @Override
                     public void onError(com.lzy.okgo.model.Response<String> response) {
                         super.onError(response);
-                        if (count >= data.getDPool().size() - 1) {
-                            count = 0;
-                            SPUtils.remove(OUserConfig.CHECKVERSION);
-                            getBlog(data.getDBlog().get(0));
-                            getBlog2(data.getDBlog().get(1));
-
-                        }
-                        count++;
-                        getCacheCheckVersion(data);
-
-                    }
-                });
-
-    }
-
-    private void getCheckVersion(String url) {
-        OkGo.<String>post(url + "/checkVersion")
-                .tag("url1")
-                .params("name", QUDAO)
-                .execute(new StringCallback() {
-                    @Override
-                    public void onStart(Request<String, ? extends Request> request) {
-                        super.onStart(request);
-                    }
-
-                    @Override
-                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-
-
-                        if (!TextUtils.isEmpty(response.body())) {
-                            try {
-                                String decrypt = AES.Decrypt(response.body().getBytes(), KEY);
-                                JsonEntity jsonEntity = new Gson().fromJson(decrypt, JsonEntity.class);
-                                SPUtils.putData(OUserConfig.CHECKVERSION, jsonEntity);
-
-                                if (jsonEntity.getStatus().equals("true") || jsonEntity.getStatus().equals("1")) {
-                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                                    GuideActivity.enter(SplashActivity.this);
-
-
-                                    SplashActivity.this.finish();
-                                    OkGo.getInstance().cancelAll();
-
-                                } else {
-                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                                    // MainActivity.enter(SplashActivity.this, MainActivity.TAB_TYPE.TAB_HOME);
-                                    GuideActivity.enter(SplashActivity.this);
-
-                                    SplashActivity.this.finish();
-                                    OkGo.getInstance().cancelAll();
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                        CACHE_CHECKVERSION_INDEX++;
+                        if (CACHE_CHECKVERSION_INDEX < data.getDPool().size()) {
+                            getCacheCheckVersion(data, CACHE_CHECKVERSION_INDEX);
+                        } else {
+                            if (data.getDBlog() != null) {
+                                getCacheBlog(data.getDBlog(), CACHE_BLOG_INDEX);
                             }
                         }
                     }
-
-                    @Override
-                    public void onError(com.lzy.okgo.model.Response<String> response) {
-                        super.onError(response);
-                        //2.备用的第一条无效 用第二条
-                        getCheckVersion2(CHECKVERSION_LIST[1]);
-
-
-                    }
                 });
 
     }
 
-    private void getCheckVersion2(String url) {
-        OkGo.<String>post(url + "/checkVersion")
-                .tag("url1")
-                .params("name", QUDAO)
-                .execute(new StringCallback() {
 
-
-                    @Override
-                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-
-                        if (!TextUtils.isEmpty(response.body())) {
-                            Log.d("print", "onSuccess:411  " + response.body());
-                            try {
-                                String decrypt = AES.Decrypt(response.body().getBytes(), KEY);
-                                Log.d("print", "onSuccess:解密后数据2: " + decrypt);
-                                JsonEntity jsonEntity = new Gson().fromJson(decrypt, JsonEntity.class);
-                                SPUtils.putData(OUserConfig.CHECKVERSION, jsonEntity);
-
-                                if (jsonEntity.getStatus().equals("true") || jsonEntity.getStatus().equals("1")) {
-                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                                    GuideActivity.enter(SplashActivity.this);
-
-                                    SplashActivity.this.finish();
-                                    OkGo.getInstance().cancelAll();
-
-                                } else {
-                                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                                            WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                                    // MainActivity.enter(SplashActivity.this, MainActivity.TAB_TYPE.TAB_HOME);
-                                    GuideActivity.enter(SplashActivity.this);
-
-                                    SplashActivity.this.finish();
-                                    OkGo.getInstance().cancelAll();
-
-                                }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onError(com.lzy.okgo.model.Response<String> response) {
-                        super.onError(response);
-                        Toast.makeText(SplashActivity.this, "当前网络不好,再尝试", Toast.LENGTH_SHORT).show();
-                        SplashActivity.this.finish();
-
-
-                    }
-                });
-
-    }
-
-    private void getBlog(String blogUrl) {
-        OkGo.<String>get(blogUrl)
+    private void getCacheBlog(final List<String> dblog, int index) {
+        OkGo.<String>get(dblog.get(index))
                 .tag(this)
                 .cacheKey("version")
                 .execute(new StringCallback() {
@@ -464,20 +498,15 @@ public class SplashActivity extends Activity {
                             Document document = Jsoup.parse(response.body());
                             String subUtilSimple = getSubUtilSimple(document.toString(), RGEX);
 
-                            String s1 = null;
+                            String s1;
                             try {
                                 s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
-                                urlList1 = getUrlList(s1);
+                                List<String> urlList = getUrlList(s1);
 
-                                if (urlList1.size() > 0) {
-                                    Log.d("print", "onSuccess:169: " + urlList1);
-                                    for (int i = 0; i < urlList1.size(); i++) {
-                                        getCheckVersion2(urlList1.get(i));
-
-                                    }
-
-
+                                if (urlList.size() > 0) {
+                                    getBlogCheckVersion(urlList, GET_BLOG_INDEX);
                                 }
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -491,57 +520,16 @@ public class SplashActivity extends Activity {
                     @Override
                     public void onError(com.lzy.okgo.model.Response<String> response) {
                         super.onError(response);
-                        Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
-                        SplashActivity.this.finish();
-
-                    }
-                });
-    }
-
-    private void getBlog2(String blogUrl) {
-        OkGo.<String>get(blogUrl)
-                .tag(this)
-                .cacheKey("version")
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-
-                        if (!TextUtils.isEmpty(response.body())) {
-
-                            Document document = Jsoup.parse(response.body());
-                            String subUtilSimple = getSubUtilSimple(document.toString(), RGEX);
-
-                            String s1 = null;
-                            try {
-                                s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
-                                urlList1 = getUrlList(s1);
-
-                                if (urlList1.size() > 0) {
-                                    Log.d("print", "onSuccess:169: " + urlList1);
-                                    for (int i = 0; i < urlList1.size(); i++) {
-                                        getCheckVersion2(urlList1.get(i));
-
-                                    }
-
-
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-
+                        CACHE_BLOG_INDEX++;
+                        if (CACHE_BLOG_INDEX < dblog.size()) {
+                            Log.d("print", "onError: 384:" + CACHE_BLOG_INDEX);
+                            getCacheBlog(dblog, CACHE_BLOG_INDEX);
+                        } else {
+                            Log.d("print", "onError: 387:" + BLOG_INDEX);
+                            com.pro.switchlibrary.SPUtils.remove(AppConfig.CHECKVERSION);
+                            Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
+                            SplashActivity.this.finish();
                         }
-
-
-                    }
-
-                    @Override
-                    public void onError(com.lzy.okgo.model.Response<String> response) {
-                        super.onError(response);
-
-                        Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
-
-                        SplashActivity.this.finish();
 
                     }
                 });

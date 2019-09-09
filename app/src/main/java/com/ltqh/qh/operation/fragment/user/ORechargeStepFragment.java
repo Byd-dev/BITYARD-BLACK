@@ -26,12 +26,12 @@ import com.ltqh.qh.operation.entity.ORechargeEntity;
 import com.ltqh.qh.operation.entity.OwithdrawEntity;
 import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.operation.utils.OUtil;
-import com.ltqh.qh.utils.AES;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.pro.switchlibrary.AES;
 
 import butterknife.BindView;
 

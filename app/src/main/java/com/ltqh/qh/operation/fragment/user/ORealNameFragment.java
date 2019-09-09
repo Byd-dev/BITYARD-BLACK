@@ -1,11 +1,7 @@
 package com.ltqh.qh.operation.fragment.user;
 
 import android.graphics.Paint;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +12,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseFragment;
-import com.ltqh.qh.base.Constant;
-import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.activity.OWebActivity;
-import com.ltqh.qh.operation.activity.SecondActivity;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OBaseMineEntity;
@@ -28,29 +21,16 @@ import com.ltqh.qh.operation.entity.OCodeMsgEntity;
 import com.ltqh.qh.operation.entity.OEventData;
 import com.ltqh.qh.operation.entity.OMineEntity;
 import com.ltqh.qh.operation.quotebase.QuoteProxy;
-import com.ltqh.qh.utils.AES;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.pro.switchlibrary.AES;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 import butterknife.BindView;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 
 public class ORealNameFragment extends BaseFragment implements View.OnClickListener {
 

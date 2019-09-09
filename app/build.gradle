@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.operation.qh"
+        applicationId "com.majiabao.qh"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -19,18 +19,16 @@ android {
 
         ]
 
-        ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', "x86", 'x86_64'
-            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
-        }
-        packagingOptions {
-            exclude 'META-INF/LICENSE.txt'
-            exclude 'META-INF/NOTICE.txt'
-        }
-        lintOptions {
-            abortOnError false
-        }
+
+        buildConfigField  "String", "AK", '"AtGlf0AeZaZGVWH9iwFKboyp"'//百度AI AK
+        buildConfigField  "String", "SK", '"Fiq4CgzCxeKzal8VKAxj7DgbzAXoKVkH"'//百度AI SK
+        buildConfigField  "String", "WEB_URL", '"https://testing.xztz88.com/"'//马甲包地址
+        buildConfigField  "String[]", "CHECKVERSION_URL_LIST", 'new String[]{"https://api.wzwqh.com", "https://api.zjschjy.com"}'//开关地址
+        buildConfigField  "String[]", "BLOG_URL_LIST", 'new String[]{"http://blog.sina.com.cn/s/blog_166dde1070102y0m5.html", "https://blog.csdn.net/nikiazhang/article/details/82828263"}'//博客地址
+        buildConfigField  "String", "STAY_UM_KEY", '"5becd904f1f556f0f9000133"'//友盟统计的 KEY
+
+
+
 
         productFlavors {
             qh360 {
@@ -54,6 +52,19 @@ android {
             xiaoshichang {
                 buildConfigField "String", "QUDAO", '"ltqh"'
             }
+        }
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', "x86", 'x86_64'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        packagingOptions {
+            exclude 'META-INF/LICENSE.txt'
+            exclude 'META-INF/NOTICE.txt'
+        }
+        lintOptions {
+            abortOnError false
         }
     }
     buildTypes {
@@ -114,17 +125,18 @@ dependencies {
     implementation 'com.facebook.rebound:rebound:0.3.8'
     // LeanCloud 基础包
     implementation 'cn.leancloud.android:avoscloud-sdk:4.7.10'
-
     implementation 'com.tencent:mmkv:1.0.19'
-    implementation files('libs/commons-codec-1.11.jar')
+
     //二维码
     implementation 'com.google.zxing:core:3.3.0'
     //皮肤包
-    implementation 'skin.support:skin-support:3.1.1'                   // skin-support 基础控件支持
+    implementation 'skin.support:skin-support:3.1.1'
+    // skin-support 基础控件支持
     implementation 'skin.support:skin-support-design:3.1.1'
     // skin-support-design material design 控件支持[可选]
     implementation 'skin.support:skin-support-cardview:3.1.1'
     // skin-support-cardview CardView 控件支持[可选]
     implementation 'skin.support:skin-support-constraint-layout:3.1.1'
     // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
+    implementation project(':switchlibrary-master')
 }

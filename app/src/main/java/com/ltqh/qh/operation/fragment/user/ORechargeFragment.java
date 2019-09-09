@@ -73,7 +73,7 @@ public class ORechargeFragment extends BaseFragment implements View.OnClickListe
 
                 /*String url = data.getUrl();
                 String payUrl = OConstant.PANDANEWS_HOST + url;
-                OWebActivity.openUrlNotitle(getActivity(), payUrl, data.getName());*/
+                MainWebActivity.openUrlNotitle(getActivity(), payUrl, data.getName());*/
 
                 OUserActivity.enter(getActivity(), OConstant.O_RECHARGE_STEP, data);
             }
