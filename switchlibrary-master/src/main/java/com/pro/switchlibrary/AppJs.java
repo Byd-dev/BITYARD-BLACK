@@ -26,7 +26,6 @@ public class AppJs {
 
     private Activity activity;
     private WebView webView;
-    private String result;
 
     public AppJs(Activity activity, WebView webView) {
         this.activity = activity;

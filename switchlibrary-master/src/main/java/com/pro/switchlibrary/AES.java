@@ -73,7 +73,6 @@ public class AES {
             return null;
         }
     }
-
     public static String md5(String string) {
         if (TextUtils.isEmpty(string)) {
             return "";

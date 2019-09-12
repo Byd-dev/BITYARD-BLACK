@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +26,6 @@ import android.widget.RelativeLayout;
 
 import com.ltqh.qh.BuildConfig;
 import com.ltqh.qh.R;
-import com.ltqh.qh.base.AppContext;
 import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.config.HttpKeys;
 import com.ltqh.qh.config.UserConfig;
@@ -239,7 +237,7 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_main_web);
         initViews();
         initData();
         processIntent(getIntent());
@@ -250,7 +248,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected int setContentLayout() {
-        return R.layout.activity_web;
+        return R.layout.activity_main_web;
     }
 
     @Override

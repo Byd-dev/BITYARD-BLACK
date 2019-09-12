@@ -40,6 +40,7 @@ import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.AlertsAdapter;
 import com.ltqh.qh.adapter.GoldlistAdapter;
+import com.ltqh.qh.adapter.HomeBannerAdapter;
 import com.ltqh.qh.adapter.HomeCalendarAdapter;
 import com.ltqh.qh.adapter.HomeChatAdapter;
 import com.ltqh.qh.adapter.HomeMenuAdapter;
@@ -118,8 +119,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     @BindView(R.id.text_time)
     TextView text_time;
 
-    @BindView(R.id.banner)
-    XBanner banner;
+
+    @BindView(R.id.recyclerview_banner)
+    RecyclerView recyclerView_banner;
+    private HomeBannerAdapter homeBannerAdapter;
+
+
+    @BindView(R.id.banner_article)
+    XBanner banner_article;
 
     @BindView(R.id.img_head)
     CircleImageView img_head;
@@ -152,8 +159,8 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         super.onResume();
 
 
-        if (banner != null) {
-            banner.startAutoPlay();
+        if (banner_article != null) {
+            banner_article.startAutoPlay();
         }
 
         LoginEntity loginEntity = SPUtils.getData(UserConfig.LOGIN_USER, LoginEntity.class);
@@ -220,10 +227,20 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     }
 
     private String Titles[] = new String[]{"直播", "策略"};
-    private int[] banners = new int[]{R.mipmap.home_banner2, R.mipmap.home_banner1, R.mipmap.home_banner3};
+    private List<Integer> banners = new ArrayList<>();
 
     @Override
     protected void onLazyLoad() {
+
+        homeBannerAdapter = new HomeBannerAdapter(getActivity());
+        recyclerView_banner.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_banner.setAdapter(homeBannerAdapter);
+
+        banners.add(R.mipmap.banner_one);
+        banners.add(R.mipmap.banner_two);
+
+
+        homeBannerAdapter.setDatas(banners);
 
     }
 
@@ -240,17 +257,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         menus.add("视频学习");
 
         List<Integer> bannerList = new ArrayList<>();
-       /* for(int i=0;i<banners.length;i++){
-            bannerList.add(banners[i]);
-        }
 
-        banner.setPages(bannerList, new MZHolderCreator() {
-            @Override
-            public MZViewHolder createViewHolder() {
-                return new BannerStayViewHolder();
-            }
-        });*/
-        //   menus.add("投资视频");
 
         text_login.setOnClickListener(this);
         goldlistAdapter = new GoldlistAdapter(getActivity());
@@ -334,8 +341,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         view.findViewById(R.id.home_img3).setOnClickListener(this);
         view.findViewById(R.id.home_img4).setOnClickListener(this);
 
-        view.findViewById(R.id.layout_weather).setOnClickListener(this);
-        view.findViewById(R.id.layout_question).setOnClickListener(this);
+
 
       /*  homeChatAdapter.setOnItemClick(new HomeChatAdapter.OnItemClick() {
             @Override
@@ -455,26 +461,31 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                         if (!TextUtils.isEmpty(response.body())) {
                             BannerEntity bannerEntity = new Gson().fromJson(response.body(), BannerEntity.class);
                             List<BannerEntity.DataBean> data = bannerEntity.getData();
-                            upBanner(data);
+                            upArticleBanner(data);
                         }
                     }
                 });
     }
 
-    private void upBanner(List<BannerEntity.DataBean> data) {
-        Log.d("print", "upBanner:461:   "+data);
+
+    private void upArticleBanner(List<BannerEntity.DataBean> data) {
+        Log.d("print", "upBanner:461:   " + data);
         if (data == null) {
             return;
         }
 
-        if (banner != null) {
-            banner.setBannerData(R.layout.item_livebanner_layout, data);
-            banner.loadImage(new XBanner.XBannerAdapter() {
+        if (banner_article != null) {
+            banner_article.setBannerData(R.layout.item_articlebanner_layout, data);
+            banner_article.loadImage(new XBanner.XBannerAdapter() {
                 @Override
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
                     XCRoundRectImageView imageView = view.findViewById(R.id.img_banner);
                     Log.d("print", "loadBanner: 643:  " + data.get(position).getXBannerUrl());
                     Glide.with(getActivity()).load(data.get(position).getXBannerUrl()).asBitmap().into(imageView);
+                    TextView textView = view.findViewById(R.id.text_title);
+                    textView.setText(data.get(position).getTitle());
+                    TextView text_content = view.findViewById(R.id.text_content);
+                    text_content.setText(data.get(position).getContent());
                 }
             });
         }
@@ -487,8 +498,6 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         });*/
 
     }
-
-
 
     /*private void getGold() {
         OkGo.<String>get(Constant.URL_HOME_GOLD_URL)
@@ -827,17 +836,6 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                 break;
 
-            case R.id.layout_weather:
-                IntentActivity.enter(getActivity(), Constant.VIDEO);
-
-
-                break;
-
-            case R.id.layout_question:
-                IntentActivity.enter(getActivity(), Constant.QUESTION);
-
-                break;
-
 
         }
     }
@@ -927,8 +925,8 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (banner != null) {
-            banner.stopAutoPlay();
+        if (banner_article != null) {
+            banner_article.stopAutoPlay();
         }
         EventBus.getDefault().unregister(this);
 
@@ -970,14 +968,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                            if (!TextUtils.isEmpty(response.body())) {
-                                Log.d("print", "onSuccess:971:    "+response.body());
-                                OHoursEntity oHoursEntity = new Gson().fromJson(response.body(), OHoursEntity.class);
-                                newSdata = oHoursEntity.getNewsList();
+                        if (!TextUtils.isEmpty(response.body())) {
+                            Log.d("print", "onSuccess:971:    " + response.body());
+                            OHoursEntity oHoursEntity = new Gson().fromJson(response.body(), OHoursEntity.class);
+                            newSdata = oHoursEntity.getNewsList();
 
-                                mTextSwitcherNews.setText(newSdata.get(0).substring(23, newSdata.get(0).length() - 29));
+                            mTextSwitcherNews.setText(newSdata.get(0).substring(23, newSdata.get(0).length() - 29));
 
-                            }
+                        }
                     }
 
                     @Override
@@ -1188,14 +1186,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                        Log.d("print", "onSuccess:1188:    "+response.body());
+                        Log.d("print", "onSuccess:1188:    " + response.body());
 
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
                             OHotEntity oHotEntity = new Gson().fromJson(response.body(), OHotEntity.class);
 
                             List<OHotEntity.NewsListBean> newsList = oHotEntity.getNewsList().subList(0, 3);
-                            Log.d("print", "onSuccess:1198:  "+newsList);
+                            Log.d("print", "onSuccess:1198:  " + newsList);
                             alertsAdapter.setDatas(newsList);
                         }
                     }

@@ -14,7 +14,6 @@ import com.baidu.ocr.sdk.model.AccessToken;
 
 public class SwitchMainEnter {
 
-
     private static SwitchMainEnter instance;
 
     public static SwitchMainEnter getInstance() {
@@ -26,7 +25,7 @@ public class SwitchMainEnter {
         return instance;
     }
 
-    public void initOCR(Context context,String AK,String SK){
+    public void initOCR(Context context, String AK, String SK) {
         SPUtils.init(context);
         OCR.getInstance(context).initAccessTokenWithAkSk(new OnResultListener<AccessToken>() {
             @Override
@@ -37,18 +36,14 @@ public class SwitchMainEnter {
             @Override
             public void onError(OCRError ocrError) {
             }
-        },context,AK,SK);
-
-
-
-
+        }, context, AK, SK);
 
 
     }
 
 
     public void goToWeb(final Activity context, final String H5url, String title) {
-        if (DeviceUtil.isPerformance(context).equals("C")){
+        if (DeviceUtil.isPerformance(context).equals("C")) {
             new AlertDialog.Builder(context)
                     .setMessage("当前手机版本过低,请使用浏览器打开")
                     .setPositiveButton("打开", new DialogInterface.OnClickListener() {
@@ -59,20 +54,21 @@ public class SwitchMainEnter {
                             context.startActivity(intent);
                         }
                     }).setNegativeButton("关闭", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            context.finish();
-                        }
-                    }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    context.finish();
+                }
+            }).setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
                 }
             }).show();
-        }else {
+        } else {
             MainWebActivity.openUrlNotitle(context, H5url, title);
             context.finish();
         }
     }
+
 
 
 

@@ -54,6 +54,17 @@ public class MainWebActivity extends BaseActivity {
     private static final int REQUEST_CODE_CAMERA = 102;
     private static final int REQUEST_CODE_BANKCARD = 111;
 
+    private static MainWebActivity instance;
+
+    public static MainWebActivity getInstance() {
+
+
+        if (instance == null) {
+            instance = new MainWebActivity();
+        }
+        return instance;
+    }
+
     public static class UrlBuilder {
         private String url;
         private Map<String, Object> params;
@@ -113,7 +124,8 @@ public class MainWebActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-      //  initPermission();
+
+        //  initPermission();
 
     }
 
@@ -151,19 +163,20 @@ public class MainWebActivity extends BaseActivity {
                 );
             }
         } else {
-           // gotoHomeActivity();
+            // gotoHomeActivity();
         }
     }
 
 
-
     @Override
     protected int setContentLayout() {
-        return R.layout.main_activity_web;
+        return R.layout.activity_main_web;
     }
 
     private static void openWeb(Context context, Intent intent) {
+
         context.startActivity(intent);
+
     }
 
 
@@ -203,14 +216,13 @@ public class MainWebActivity extends BaseActivity {
         mWebView.addJavascriptInterface(new AppJs(this, mWebView), "AppJs");
 
 
-
-
         mWebView.setWebViewClient(new WebViewClient() {
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                //super.onReceivedSslError(view, handler, error);
                 handler.proceed();
+                super.onReceivedSslError(view, handler, error);
+                Log.d("print", "onReceivedSslError:229:   ");
             }
 
             @Override
@@ -336,7 +348,7 @@ public class MainWebActivity extends BaseActivity {
 
     private static boolean isProgress = true;
 
-    public static void openUrlWithTitle(Context context, String H5url) {
+    public void openUrlWithTitle(Context context, String H5url) {
 
         isProgress = false;
         if (context != null) {
@@ -377,7 +389,7 @@ public class MainWebActivity extends BaseActivity {
     protected void initView(View view) {
 
         //当FitsSystemWindows设置 true 时，会在屏幕最上方预留出状态栏高度的 padding
-        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
+        StatusBarUtil.setRootViewFitsSystemWindows(this, true);
         //设置状态栏透明
         StatusBarUtil.setTranslucentStatus(this);
         //一般的手机的状态栏文字和图标都是白色的, 可如果你的应用也是纯白色的, 或导致状态栏文字看不清
@@ -385,7 +397,7 @@ public class MainWebActivity extends BaseActivity {
         if (!StatusBarUtil.setStatusBarDarkTheme(this, true)) {
             //如果不支持设置深色风格 为了兼容总不能让状态栏白白的看不清, 于是设置一个状态栏颜色为半透明,
             //这样半透明+白=灰, 状态栏的文字能看得清
-            StatusBarUtil.setStatusBarColor(this,0x55000000);
+            StatusBarUtil.setStatusBarColor(this, 0x000000);
         }
 
 
@@ -442,6 +454,8 @@ public class MainWebActivity extends BaseActivity {
     }
 
 
+
+
     // 调起支付宝并跳转到指定页面
     private void startAlipayActivity(String url) {
         Log.d("print", "startAlipayActivity:支付宝页面626: " + url);
@@ -462,6 +476,11 @@ public class MainWebActivity extends BaseActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initWebViewSetting() {
         WebSettings settings = mWebView.getSettings();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setDomStorageEnabled(true);
         settings.setAppCachePath(getCacheDir().getPath());

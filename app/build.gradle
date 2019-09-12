@@ -126,7 +126,6 @@ dependencies {
     // LeanCloud 基础包
     implementation 'cn.leancloud.android:avoscloud-sdk:4.7.10'
     implementation 'com.tencent:mmkv:1.0.19'
-
     //二维码
     implementation 'com.google.zxing:core:3.3.0'
     //皮肤包
