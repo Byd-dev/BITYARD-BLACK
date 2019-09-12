@@ -65,8 +65,7 @@ public class GuideActivity extends OBaseActivity implements View.OnClickListener
 
         String string = SPUtils.getString(OUserConfig.O_FIRST_OPEN);
         if (!string.equals("")) {
-            //SecondActivity.enter(GuideActivity.this, SecondActivity.TAB_TYPE.TAB_HOME);
-            MainActivity.enter(GuideActivity.this,MainActivity.TAB_TYPE.TAB_HOME);
+            SecondActivity.enter(GuideActivity.this, SecondActivity.TAB_TYPE.TAB_HOME);
             GuideActivity.this.finish();
         } else {
 

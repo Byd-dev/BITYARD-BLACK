@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
                 break;
             case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new AllMarketFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new FindFragment(), null, null);
 
                 //setStatusBar(getResources().getColor(R.color.maincolor));
                 break;

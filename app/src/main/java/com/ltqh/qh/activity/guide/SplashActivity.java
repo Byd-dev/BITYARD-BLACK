@@ -59,8 +59,8 @@ public class SplashActivity extends Activity implements OnResultBack {
             SwitchMainEnter.getInstance().goToWeb(activity, jsonEntity.getUrl(), null);
             activity.finish();
         } else if (result == false) {
-            //SwitchMainEnter.getInstance().goToWeb(activity, BuildConfig.WEB_URL, null);
-           // GuideActivity.enter(activity);
+            //SwitchMainEnter.getInstance().goToWeb(activity, BuildConfig.WEB_URL, null);  //H5马甲包
+            //GuideActivity.enter(activity);
             MainActivity.enter(activity,0);
             activity.finish();
         }

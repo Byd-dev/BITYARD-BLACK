@@ -85,7 +85,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.fragment_my;
+        return R.layout.fragment_my_bg;
     }
 
     @Override

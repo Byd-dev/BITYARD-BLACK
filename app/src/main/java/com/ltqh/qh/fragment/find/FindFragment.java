@@ -17,11 +17,12 @@ import com.ltqh.qh.fragment.forum.ForumGadioFragment;
 import com.ltqh.qh.fragment.news.AlertsFragment;
 import com.ltqh.qh.fragment.news.FinancialCalendarFragment;
 import com.ltqh.qh.fragment.news.LiandeFragment;
+import com.ltqh.qh.operation.base.OBaseFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FindFragment extends BaseFragment implements View.OnClickListener {
+public class FindFragment extends OBaseFragment implements View.OnClickListener {
 
 
     @Override
@@ -35,11 +36,7 @@ public class FindFragment extends BaseFragment implements View.OnClickListener {
     protected void initView(View view) {
 
 
-        view.findViewById(R.id.layout_chuji).setOnClickListener(this);
-        view.findViewById(R.id.layout_zhongji).setOnClickListener(this);
-        view.findViewById(R.id.layout_gaoji).setOnClickListener(this);
-        view.findViewById(R.id.img_study).setOnClickListener(this);
-        view.findViewById(R.id.img_video).setOnClickListener(this);
+
 
     }
 
@@ -56,6 +53,11 @@ public class FindFragment extends BaseFragment implements View.OnClickListener {
 
     }
 
+    @Override
+    protected void onLazyLoad() {
+
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -65,30 +67,7 @@ public class FindFragment extends BaseFragment implements View.OnClickListener {
                 getActivity().finish();
                 break;
 
-            case R.id.layout_chuji:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
 
-
-                break;
-
-            case R.id.layout_zhongji:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
-
-                break;
-            case R.id.layout_gaoji:
-                IntentActivity.enter(getActivity(),Constant.FEEDBACK);
-
-                break;
-
-            case R.id.img_study:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
-
-                break;
-
-            case R.id.img_video:
-                IntentActivity.enter(getActivity(),Constant.VIDEO);
-
-                break;
 
 
 
@@ -96,12 +75,7 @@ public class FindFragment extends BaseFragment implements View.OnClickListener {
     }
 
 
-    public String dateToStamp() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date(System.currentTimeMillis());
-        String format = simpleDateFormat.format(date);
-        return format;
-    }
+
 
 
     @Override

@@ -1586,7 +1586,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/viewheight"
                             android:background="@color/background_maincolor"
-                            android:visibility="visible" />
+                            android:visibility="gone" />
                         <!--圈子动态-->
 
                         <LinearLayout
