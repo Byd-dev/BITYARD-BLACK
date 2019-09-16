@@ -18,6 +18,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.AlertsDetailEntity;
 import com.ltqh.qh.entity.AlertsEntity;
 import com.ltqh.qh.operation.adapter.OReportAdapter;
+import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.utils.SPUtils;
@@ -56,7 +57,7 @@ public class OHotDetailFragment extends BaseFragment {
     }
 
     private void initData(String id) {
-        OkGo.<String>get(Constant.URL_ALERTSDETAILS).tag(this)
+        OkGo.<String>get(OConstant.URL_NEWS_HOT_DETAIL).tag(this)
                 .params(Constant.PARAM_ID, id)
                 .cacheKey(Constant.URL_ALERTS)
                 .cacheMode(CacheMode.DEFAULT)

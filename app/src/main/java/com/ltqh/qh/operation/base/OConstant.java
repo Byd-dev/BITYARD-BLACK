@@ -70,6 +70,8 @@ public interface OConstant {
     public static String URL_BANNER = PANDANEWS_HOST + API + "/index.htm";
     //快讯
     public static String URL_NEWS_HOT = PANDANEWS_HOST + API + NEWS + "/newsList.htm";
+    //快讯详情
+    public static String URL_NEWS_HOT_DETAIL = PANDANEWS_HOST + API + NEWS + "/newsDetail.htm";
     //财经日历
     public static String URL_FINANCE_CALENDAR = PANDANEWS_HOST + API + NEWS + "/calendar.htm";
     //公告
