@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:text="登录"
             android:textSize="@dimen/title_size"
-            android:textStyle="bold"
             android:textColor="@color/text_maincolor"
             android:layout_centerInParent="true"
             />

@@ -170,9 +170,8 @@
             android:background="@drawable/gradient_maincolor"
             android:padding="10dp"
             android:text="提交"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 

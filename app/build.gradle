@@ -138,6 +138,6 @@ dependencies {
     implementation 'skin.support:skin-support-constraint-layout:3.1.1'
     // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
 
-     implementation 'com.github.DARTTTTT:MAIN:1.0'
+     implementation 'com.github.DARTTTTT:MAIN:1.0.1'
 
 }
