@@ -2,17 +2,14 @@ package com.ltqh.qh.fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Paint;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +23,6 @@ import com.ltqh.qh.activity.PersonActivity;
 import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.MyAdapter;
-import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
@@ -34,7 +30,9 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.MyMenuEntity;
 import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
+import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
+import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.utils.AppUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
@@ -186,6 +184,9 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         view.findViewById(R.id.layout_change).setOnClickListener(this);
         view.findViewById(R.id.layout_person).setOnClickListener(this);
         view.findViewById(R.id.img_signature).setOnClickListener(this);
+
+        view.findViewById(R.id.img_service).setOnClickListener(this);
+        view.findViewById(R.id.img_message).setOnClickListener(this);
 
         //layout_logout.setOnClickListener(this);
         view.findViewById(R.id.tv_nickname).setOnClickListener(this);
@@ -365,6 +366,19 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                     UserActivity.enter(getActivity(), Constant.LOGIN);
 
                 }
+                break;
+
+            case R.id.img_service:
+                if (isLogin()) {
+                    WebActivity.openZhiChiService(getActivity());
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
+                break;
+
+            case R.id.img_message:
+                OUserActivity.enter(getActivity(), OConstant.O_MESSAGE);
+
                 break;
 
 

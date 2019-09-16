@@ -10,6 +10,8 @@ import android.widget.RadioGroup;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
+import com.ltqh.qh.activity.UserActivity;
+import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.fragment.forum.ForumFragment;
@@ -34,6 +36,8 @@ public class FindFragment extends OBaseFragment implements View.OnClickListener 
 
 
     protected void initView(View view) {
+
+        view.findViewById(R.id.img_service).setOnClickListener(this);
 
 
 
@@ -65,6 +69,14 @@ public class FindFragment extends OBaseFragment implements View.OnClickListener 
             case R.id.img_back:
 
                 getActivity().finish();
+                break;
+
+            case R.id.img_service:
+                if (isLogin()) {
+                    WebActivity.openZhiChiService(getActivity());
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
                 break;
 
 

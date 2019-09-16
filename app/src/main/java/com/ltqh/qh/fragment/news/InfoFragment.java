@@ -8,7 +8,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ltqh.qh.R;
+import com.ltqh.qh.activity.UserActivity;
+import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.MyPagerAdapter;
+import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.fragment.info.OFinancialCalendarFragment;
 import com.ltqh.qh.operation.fragment.info.OHotFragment;
@@ -97,6 +100,7 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
         view.findViewById(R.id.layout_one).setOnClickListener(this);
         view.findViewById(R.id.layout_two).setOnClickListener(this);
         view.findViewById(R.id.layout_three).setOnClickListener(this);
+        view.findViewById(R.id.img_service).setOnClickListener(this);
 
 
     }
@@ -141,6 +145,17 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
                 Toast.makeText(getActivity(), "敬请期待!", Toast.LENGTH_SHORT).show();
                // OIntentActivity.enter(getActivity(), OConstant.O_CONVERSION);
                 break;
+
+            case R.id.img_service:
+
+                if (isLogin()) {
+                    WebActivity.openZhiChiService(getActivity());
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
+                break;
+
+
         }
     }
 
