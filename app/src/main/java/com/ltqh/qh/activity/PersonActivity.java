@@ -41,6 +41,7 @@ import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.ImgEntity;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.TipEntity;
+import com.ltqh.qh.entity.TipPersonEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.utils.AppUtil;
 import com.ltqh.qh.utils.FileUtil;
@@ -679,7 +680,8 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
                     public void onSuccess(Response<String> response) {
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
-                            TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
+                            Log.d("print", "onSuccess:682:   "+response.body());
+                            TipPersonEntity tipEntity = new Gson().fromJson(response.body(), TipPersonEntity.class);
                             Toast.makeText(PersonActivity.this, tipEntity.getMsg(), Toast.LENGTH_SHORT).show();
                             if (tipEntity.getCode() == 1) {
                                  EventBus.getDefault().postSticky(Constant.ONRESUME_PERSON);

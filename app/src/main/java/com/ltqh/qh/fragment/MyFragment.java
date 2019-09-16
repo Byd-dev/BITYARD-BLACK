@@ -63,15 +63,9 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
     @BindView(R.id.text_hc)
     TextView text_hc;
 
-    @BindView(R.id.layout_logout)
-    RelativeLayout layout_logout;
+   /* @BindView(R.id.layout_logout)
+    RelativeLayout layout_logout;*/
 
-
-    @BindView(R.id.text_title)
-    TextView text_title;
-
-    @BindView(R.id.text_sign)
-    TextView text_sign;
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
@@ -95,11 +89,11 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         UserInfoEntity userInfoEntity = SPUtils.getData(UserConfig.USER, UserInfoEntity.class);
 
         if (userInfoEntity != null) {
-            layout_logout.setVisibility(View.VISIBLE);
+            // layout_logout.setVisibility(View.VISIBLE);
          /*   text_login.setBackground(getResources().getDrawable(R.drawable.gradient_maincolor));
             text_login.setTextColor(getResources().getColor(R.color.white));*/
 
-            if (userInfoEntity.getData()!=null){
+            if (userInfoEntity.getData() != null) {
                 String user_nickname = userInfoEntity.getData().getUser_nickname();
                 Glide.with(getActivity())
                         .load(Constant.USER_AVATER_URL + userInfoEntity.getData().getAvatar())
@@ -111,20 +105,19 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 if (user_nickname.equals("")) {
                     text_login.setText("用户");
-                    text_sign.setText("开开心心每一天~");
+                    //text_sign.setText("开开心心每一天~");
              /*   text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));*/
 
 
                 } else {
                     text_login.setText(userInfoEntity.getData().getUser_nickname());
-                    text_sign.setText(userInfoEntity.getData().getSignature());
+                    //  text_sign.setText(userInfoEntity.getData().getSignature());
              /*   text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));
 */
                 }
             }
-
 
 
         } else {
@@ -133,15 +126,15 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
             text_login.setTextColor(getResources().getColor(R.color.white));*/
 
             text_login.setText("登录/注册");
-            text_sign.setText("~~");
+            //text_sign.setText("~~");
             img_head.setImageDrawable(getResources().getDrawable(R.mipmap.user_icon));
 
-            layout_logout.setVisibility(View.GONE);
+            //layout_logout.setVisibility(View.GONE);
             if (loginEntity != null) {
                /* text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));
 */
-                layout_logout.setVisibility(View.VISIBLE);
+                //layout_logout.setVisibility(View.VISIBLE);
 
                 String user_nickname = loginEntity.getData().getUser().getUser_nickname();
 
@@ -157,11 +150,11 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                 if (user_nickname.equals("")) {
 
                     text_login.setText("用户");
-                    text_sign.setText("开开心心每一天~");
+                    //text_sign.setText("开开心心每一天~");
 
                 } else {
                     text_login.setText(loginEntity.getData().getUser().getUser_nickname());
-                    text_sign.setText(loginEntity.getData().getUser().getSignature());
+                    //text_sign.setText(loginEntity.getData().getUser().getSignature());
 
                 }
 
@@ -193,10 +186,8 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         view.findViewById(R.id.layout_change).setOnClickListener(this);
         view.findViewById(R.id.layout_person).setOnClickListener(this);
         view.findViewById(R.id.img_signature).setOnClickListener(this);
-        view.findViewById(R.id.img_setting).setOnClickListener(this);
-        view.findViewById(R.id.text_signature).setOnClickListener(this);
 
-        layout_logout.setOnClickListener(this);
+        //layout_logout.setOnClickListener(this);
         view.findViewById(R.id.tv_nickname).setOnClickListener(this);
 
         /*text_title.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
@@ -226,7 +217,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                     case "我的消息":
                         if (isLogin()) {
                             UserActivity.enter(getActivity(), Constant.USER_MYMEAAAGE);
-
                         } else {
                             UserActivity.enter(getActivity(), Constant.LOGIN);
                         }
@@ -376,22 +366,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 }
                 break;
-            case R.id.text_signature:
-                if (isLogin()) {
-                    UserActivity.enter(getActivity(), Constant.SIGNATURE);
-                } else {
-                    UserActivity.enter(getActivity(), Constant.LOGIN);
-
-                }
-                break;
-            case R.id.img_setting:
-                if (isLogin()) {
-                    PersonActivity.enter(getActivity());
-                } else {
-                    UserActivity.enter(getActivity(), Constant.LOGIN);
-                }
-
-                break;
 
 
         }
@@ -446,12 +420,11 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                                 String user_nickname = userInfoEntity.getData().getUser_nickname();
                                 String mobile = userInfoEntity.getData().getMobile();
 
-
                                 String signature = userInfoEntity.getData().getSignature();
                                 if (signature.equals("")) {
-                                    text_sign.setText("开开心心每一天~");
+                                    //text_sign.setText("开开心心每一天~");
                                 } else {
-                                    text_sign.setText(signature);
+                                    //text_sign.setText(signature);
                                 }
 
                                 SPUtils.putData(UserConfig.USER, userInfoEntity);
@@ -462,8 +435,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                                 UserActivity.enter(getActivity(), Constant.LOGIN);
                                 getActivity().finish();
                             }
-
-
                         }
                     }
                 });
@@ -495,10 +466,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(Response<String> response) {
                         dismissProgressDialog();
-
-
                         if (!TextUtils.isEmpty(response.body()) && !response.body().equals("{")) {
-
                             TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
                             Toast.makeText(getActivity(), tipEntity.getMsg(), Toast.LENGTH_SHORT).show();
 
@@ -509,7 +477,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                                 EventBus.getDefault().postSticky(Constant.ONRESUME_LOGIN);
                                 onResume();
                             }
-
                         }
                     }
 
@@ -518,8 +485,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                         super.onError(response);
                         dismissProgressDialog();
                         Toast.makeText(getActivity(), "当前网络不好，请检查网络", Toast.LENGTH_SHORT).show();
-
-
                     }
                 });
     }

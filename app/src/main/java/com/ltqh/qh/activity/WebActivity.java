@@ -34,6 +34,7 @@ import com.ltqh.qh.utils.AppJs;
 import com.ltqh.qh.utils.PhoneInfoUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.WebFileUploader;
+import com.ltqh.qh.view.StatusBarUtil;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -49,8 +50,7 @@ public class WebActivity extends BaseActivity {
 
     private View stay_line;
 
-    @BindView(R.id.img_back)
-    ImageView img_back;
+    private ImageView img_back;
 
     public static class UrlBuilder {
         private String url;
@@ -237,7 +237,7 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_web);
+        setContentView(R.layout.activity_web);
         initViews();
         initData();
         processIntent(getIntent());

@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:use_type="use_padding_top">
+        app:use_type="use_padding_top"
+
+        >
 
 
         <RelativeLayout
@@ -106,6 +108,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerview_banner"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_15"
                     android:layout_height="100dp" />
 
 
