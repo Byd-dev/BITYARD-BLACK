@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="15dp"
-            android:src="@mipmap/super_back_black" />
+            android:src="@mipmap/o_superback_deep" />
 
         <TextView
             android:layout_width="match_parent"
@@ -313,8 +313,8 @@
                 android:padding="10dp"
                 android:text="退出"
                 android:textColor="@color/maincolor"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                />
 
             <TextView
                 android:id="@+id/tv_version"

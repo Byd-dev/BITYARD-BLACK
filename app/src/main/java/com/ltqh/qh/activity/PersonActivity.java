@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -367,13 +368,17 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
         PopupWindow popupWindow = new PopupWindow(view, width, height);
 
         //PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
+        WindowManager.LayoutParams params = getWindow().getAttributes();
+        params.alpha = 0.6f;
+        getWindow().setAttributes(params);
         view.findViewById(R.id.text_camera).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 popupWindow.dismiss();
                 checkStoragePermission();
+                backgroundAlpha(1f);
+
 
             }
         });
@@ -385,6 +390,8 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
                 popupWindow.dismiss();
                 checkReadPermission();
+                backgroundAlpha(1f);
+
             }
         });
 
@@ -392,6 +399,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
+                backgroundAlpha(1f);
 
 
             }
@@ -402,7 +410,13 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
         popupWindow.showAtLocation(layout_view, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
     }
+    public void backgroundAlpha(float bgalpha) {
+        WindowManager.LayoutParams lp =getWindow().getAttributes();
+        lp.alpha = bgalpha;
+        getWindow().setAttributes(lp);
 
+
+    }
     // 从本地相册选取图片作为头像
     private void choseHeadImageFromGallery() {
         // 设置文件类型    （在华为手机中不能获取图片，要替换代码）

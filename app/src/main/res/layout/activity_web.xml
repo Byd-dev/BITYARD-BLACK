@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:padding="15dp"
-                android:src="@mipmap/super_back_black" />
+                android:src="@mipmap/o_superback_deep" />
 
             <TextView
                 android:id="@+id/text_title"

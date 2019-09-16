@@ -20,6 +20,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -55,6 +56,14 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         btn_login.setOnClickListener(this);
         text_hide.setOnClickListener(this);
         text_forget.setOnClickListener(this);
+
+
+        String string = SPUtils.getString(UserConfig.USER_ACCOUNT);
+
+        if (string!=null){
+            edit_number.setText(string);
+        }
+
 
         view.findViewById(R.id.img_back).setOnClickListener(this);
 
@@ -155,6 +164,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
                                 SPUtils.putData(UserConfig.LOGIN_USER, loginEntity);
                                 EventBus.getDefault().post(Constant.PUBLISH_PERSON);
+                                SPUtils.putString(UserConfig.USER_ACCOUNT, loginEntity.getData().getUser().getMobile());
 
                                 getActivity().finish();
 

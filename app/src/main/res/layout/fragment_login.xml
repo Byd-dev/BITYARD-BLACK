@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:src="@mipmap/super_back_black" />
+            android:src="@mipmap/o_superback_deep" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -156,9 +156,9 @@
             android:background="@drawable/gradient_maincolor"
             android:padding="10dp"
             android:text="登录"
+            android:textSize="15sp"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            />
     </LinearLayout>
 
     <TextView

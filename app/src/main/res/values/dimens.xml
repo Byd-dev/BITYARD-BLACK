@@ -9,7 +9,7 @@
     <dimen name="margin_15">15dp</dimen>
     <dimen name="switch_20">20dp</dimen>
     <dimen name="my_bar_height">130dp</dimen>
-    <dimen name="btn_height">50dp</dimen>
+    <dimen name="btn_height">40dp</dimen>
     <dimen name="margin_5">5dp</dimen>
     <dimen name="radio_textsize">17sp</dimen>
     <dimen name="main_title_size">20sp</dimen>

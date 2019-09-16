@@ -61,6 +61,7 @@ import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
 import com.ltqh.qh.operation.activity.ONewsDetailActivity;
+import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
@@ -340,6 +341,8 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         view.findViewById(R.id.home_img2).setOnClickListener(this);
         view.findViewById(R.id.home_img3).setOnClickListener(this);
         view.findViewById(R.id.home_img4).setOnClickListener(this);
+
+        view.findViewById(R.id.img_message).setOnClickListener(this);
 
 
 
@@ -833,6 +836,12 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
             case R.id.home_img4:
 
                 IntentActivity.enter(getActivity(), Constant.INFO);
+
+                break;
+
+            case R.id.img_message:
+                OUserActivity.enter(getActivity(), OConstant.O_MESSAGE);
+
 
                 break;
 

@@ -14,6 +14,7 @@ public class UserConfig {
     public static final String TYPE5 = "type5"; //安全认证信息
     public static final String TYPE6 = "type6"; //安全认证信息
 
+    public static final String USER_ACCOUNT = "account"; //安全认证信息
 
 
 
