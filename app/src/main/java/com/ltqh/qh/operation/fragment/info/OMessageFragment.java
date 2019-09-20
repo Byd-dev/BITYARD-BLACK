@@ -151,6 +151,12 @@ public class OMessageFragment extends BaseFragment {
 
                             Log.d("print", "onSuccess:146:  "+response.body());
                             OMessageEntity oMessageEntity = new Gson().fromJson(response.body(), OMessageEntity.class);
+
+                            String resultMsg = oMessageEntity.getResultMsg();
+
+                            if (resultMsg.equals("")){
+                                return;
+                            }
                             //保存上一次的
                            // SPUtils.putData(OUserConfig.CACHE_LIVE, oHoursEntity);
                             List<OMessageEntity.DataBean> data = oMessageEntity.getData();

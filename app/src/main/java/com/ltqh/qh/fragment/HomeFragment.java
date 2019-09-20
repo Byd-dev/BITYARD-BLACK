@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
@@ -70,6 +71,7 @@ import com.ltqh.qh.operation.entity.OHoursEntity;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
+import com.ltqh.qh.view.StatusBarUtil;
 import com.ltqh.qh.view.XCRoundRectImageView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
@@ -103,7 +105,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     private int id;
 
     @BindView(R.id.layout_view)
-    RelativeLayout layout_view;
+    LinearLayout layout_view;
 
     @BindView(R.id.recyclerview_stock)
     RecyclerView recyclerView_stock;
@@ -247,6 +249,8 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
     @Override
     protected void initView(View view) {
+
+
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);
         view.requestFocus();

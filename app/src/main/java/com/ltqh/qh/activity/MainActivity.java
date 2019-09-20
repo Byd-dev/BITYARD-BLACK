@@ -2,6 +2,8 @@ package com.ltqh.qh.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -44,7 +46,7 @@ import butterknife.BindView;
 import static com.ltqh.qh.activity.MainActivity.TAB_TYPE.TAB_HALL;
 import static com.ltqh.qh.activity.MainActivity.TAB_TYPE.TAB_INFORMATION;
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedChangeListener {
 
 
     @BindView(R.id.img_publish)
@@ -66,6 +68,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         public static final int TAB_MY = 3;
 
     }
+
+
 
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
@@ -93,6 +97,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void initView(View view) {
         StatusBarUtil.setRootViewFitsSystemWindows(this, false);
+
 
         EventBus.getDefault().register(this);
         radioGroup.setOnCheckedChangeListener(this);
@@ -145,31 +150,26 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         switch (checkedId) {
             case R.id.radio_0:
                 showFragment(R.id.layout_fragment_containter, new HomeFragment(), null, null);
-                //setStatusBar(getResources().getColor(R.color.white));
 
                 break;
             case R.id.radio_1:
                 showFragment(R.id.layout_fragment_containter, new FindFragment(), null, null);
 
-                //setStatusBar(getResources().getColor(R.color.maincolor));
                 break;
 
             case R.id.radio_2:
                 showFragment(R.id.layout_fragment_containter, new InfoFragment(), null, null);
 
-                //setStatusBar(getResources().getColor(R.color.maincolor));
 
                 break;
 
             case R.id.radio_3:
                 showFragment(R.id.layout_fragment_containter, new ChatTabFragment(), null, null);
 
-                // setStatusBar(getResources().getColor(R.color.white));
 
                 break;
             case R.id.radio_4:
                 showFragment(R.id.layout_fragment_containter, new MyFragment(), null, null);
-                //setStatusBar(getResources().getColor(R.color.maincolor));
                 break;
         }
     }
