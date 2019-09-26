@@ -1,12 +1,9 @@
 package com.ltqh.qh.base;
-
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.multidex.MultiDex;
-
-import com.avos.avoscloud.AVOSCloud;
 import com.ltqh.qh.config.AppConfig;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
@@ -20,16 +17,13 @@ import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
 import com.tencent.mmkv.MMKV;
 import com.umeng.commonsdk.UMConfigure;
-
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
-
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
-
 import cn.jpush.android.api.JPushInterface;
 import okhttp3.OkHttpClient;
 import skin.support.SkinCompatManager;
@@ -70,6 +64,8 @@ public class AppContext extends Application {
         JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);
         SPUtils.init(this);
+        MultiDex.install(this);
+
         //mmkv
         MMKV.initialize(this);
 

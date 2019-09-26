@@ -1,4 +1,5 @@
 package com.ltqh.qh.activity.guide;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -6,7 +7,6 @@ import android.view.WindowManager;
 
 import com.ltqh.qh.BuildConfig;
 import com.ltqh.qh.R;
-import com.ltqh.qh.activity.MainActivity;
 import com.pro.switchlibrary.DoGet;
 import com.pro.switchlibrary.OnResultBack;
 import com.pro.switchlibrary.SwitchMainEnter;
@@ -35,7 +35,7 @@ public class SplashActivity extends Activity implements OnResultBack {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
-        SwitchMainEnter.getInstance().initOCR(this, BuildConfig.AK, BuildConfig.SK);
+       SwitchMainEnter.getInstance().initOCR(this, BuildConfig.AK, BuildConfig.SK);
 
         SplashActivity splashActivity = new SplashActivity(new DoGet(), SplashActivity.this);
 
@@ -60,8 +60,8 @@ public class SplashActivity extends Activity implements OnResultBack {
             activity.finish();
         } else if (result == false) {
             //SwitchMainEnter.getInstance().goToWeb(activity, BuildConfig.WEB_URL, null);  //H5马甲包
-            //GuideActivity.enter(activity);
-            MainActivity.enter(activity,0);
+            GuideActivity.enter(activity);
+            //MainActivity.enter(activity,0);
             activity.finish();
         }
     }

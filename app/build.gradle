@@ -15,8 +15,8 @@ android {
                 JPUSH_PKGNAME     : applicationId,
                 JPUSH_APPKEY      : "4be5e5bc3b117bb5d3aa86f3", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL     : "developer-default", //暂时填写默认值即可.
-                UMENG_APPKEY_VALUE: "5cece4cb0cafb2a5a8000cf4"//友盟统计
-
+                UMENG_APPKEY_VALUE: "5cece4cb0cafb2a5a8000cf4",//友盟统计
+                BAIDU_AK:"OzMhhfVErZU0GSo9M2ynK9LfV6x92and"
         ]
 
 
@@ -79,7 +79,11 @@ android {
             res.srcDirs = ['src/main/res', 'src/main/res-night']
         }
     }
-
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
@@ -92,7 +96,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.google.code.gson:gson:2.8.0'
@@ -138,6 +142,8 @@ dependencies {
     implementation 'skin.support:skin-support-constraint-layout:3.1.1'
     // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
 
-     implementation 'com.github.DARTTTTT:MAIN:1.0.1'
+     implementation 'com.github.DARTTTTT:MAIN:1.0.7'
+    implementation files('libs/miit_mdid_1.0.9.aar')
+
 
 }
