@@ -7,13 +7,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="55dp"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/layout_bar"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:background="@color/o_bar_white"
             android:orientation="horizontal" />
 
