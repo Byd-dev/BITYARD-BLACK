@@ -2,7 +2,6 @@ package com.ltqh.qh.operation.fragment.user;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -18,13 +17,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ltqh.qh.R;
-import com.ltqh.qh.activity.guide.SplashActivity;
 import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
-import com.ltqh.qh.entity.TipEntity;
-import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.activity.SecondActivity;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.entity.OCodeMsgEntity;
@@ -37,18 +33,12 @@ import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
 import butterknife.BindView;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 
 public class OForgetFragment extends BaseFragment implements View.OnClickListener {
 

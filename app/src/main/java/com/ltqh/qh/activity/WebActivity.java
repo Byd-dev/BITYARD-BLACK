@@ -34,13 +34,10 @@ import com.ltqh.qh.utils.AppJs;
 import com.ltqh.qh.utils.PhoneInfoUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.WebFileUploader;
-import com.ltqh.qh.view.StatusBarUtil;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-
-import butterknife.BindView;
 
 public class WebActivity extends BaseActivity {
 
@@ -248,7 +245,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected int setContentLayout() {
-        return R.layout.activity_main_web;
+        return R.layout.o_activity_main_web;
     }
 
     @Override
