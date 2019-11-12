@@ -246,6 +246,12 @@
     <string name="tab_three">发现</string>
     <string name="tab_four">发现</string>
     <string name="tab_five">我的</string>
+    <string name="text_class">课堂</string>
+    <string name="text_guide">指引</string>
+    <string name="text_back">反馈</string>
+    <string name="text_report">签到</string>
+    <string name="text_log_in">登录</string>
+    <string name="text_user">用户</string>
 
 
 </resources>

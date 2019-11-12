@@ -20,7 +20,7 @@
     <string name="text_register_xieyi">《用户注册协议》</string>
     <string name="o_text_home_bottom">交易由纽约商业、商品交易所及香港交易所等实盘对接。本产品属于高风险、高收益投资品种；投资者应具有较高的风险识别能力、资金实力与风险承受能力。</string>
 
-    <string name="str_main">首页</string>
+    <string name="str_main">Home</string>
     <string name="str_market">行情</string>
     <string name="str_trade">交易</string>
     <string name="str_info">资讯</string>
@@ -241,11 +241,17 @@
     <string name="o_lottery_two">话费充值卡,请联系在线客服,提供所需要充值的电话号码</string>
     <string name="o_lottery_three">获得的抽奖机会若不使用,活动结束视为放弃抽奖资格</string>
     <string name="o_lottery_four">本活动最终解释权归平台所有,活动期间,一旦发现客户有不正当套利行为,平台有权取消活动资格</string>
-    <string name="tab_one">home</string>
-    <string name="tab_two">info</string>
-    <string name="tab_three">find</string>
-    <string name="tab_four">find</string>
-    <string name="tab_five">my</string>
+    <string name="tab_one">Home</string>
+    <string name="tab_two">Info</string>
+    <string name="tab_three">Discover</string>
+    <string name="tab_four">Discover</string>
+    <string name="tab_five">Me</string>
+    <string name="text_class">Classroom</string>
+    <string name="text_guide">Guide</string>
+    <string name="text_back">Feedback</string>
+    <string name="text_report">Check In</string>
+    <string name="text_log_in">Log In</string>
+    <string name="text_user">User</string>
 
 
 </resources>

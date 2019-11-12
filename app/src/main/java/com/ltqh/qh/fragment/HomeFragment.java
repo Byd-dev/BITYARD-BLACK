@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,10 +49,8 @@ import com.ltqh.qh.adapter.StockHomeAdapter;
 import com.ltqh.qh.adapter.StockTabAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
-import com.ltqh.qh.entity.AlertsEntity;
 import com.ltqh.qh.entity.BannerEntity;
 import com.ltqh.qh.entity.CodeMsgEntity;
-import com.ltqh.qh.entity.EastMoneyEntity;
 import com.ltqh.qh.entity.GoldlistEntity;
 import com.ltqh.qh.entity.GuliaoEntity;
 import com.ltqh.qh.entity.LoginEntity;
@@ -65,13 +62,11 @@ import com.ltqh.qh.operation.activity.ONewsDetailActivity;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
-import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.operation.entity.OHoursEntity;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
-import com.ltqh.qh.view.StatusBarUtil;
 import com.ltqh.qh.view.XCRoundRectImageView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
@@ -184,13 +179,13 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                     .into(img_head);
             String user_nickname = userInfoEntity.getData().getUser_nickname();
             if (user_nickname.equals("")) {
-                text_login.setText("用户");
+                text_login.setText(getResources().getString(R.string.text_user));
             } else {
                 text_login.setText(userInfoEntity.getData().getUser_nickname());
             }
 
         } else {
-            text_login.setText("登录");
+            text_login.setText(getResources().getString(R.string.text_log_in));
             img_head.setImageDrawable(getResources().getDrawable(R.mipmap.user_icon));
 
             if (loginEntity != null) {
