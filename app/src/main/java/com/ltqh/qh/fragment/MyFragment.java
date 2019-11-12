@@ -1,8 +1,10 @@
 package com.ltqh.qh.fragment;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,10 +21,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
+import com.ltqh.qh.activity.MainActivity;
 import com.ltqh.qh.activity.PersonActivity;
 import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.MyAdapter;
+import com.ltqh.qh.base.AppContext;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
@@ -30,6 +34,8 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.MyMenuEntity;
 import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
+import com.ltqh.qh.language.LanguageType;
+import com.ltqh.qh.language.LanguageUtil;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
@@ -74,6 +80,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
     private MyAdapter myAdapter;
     private List<MyMenuEntity> data;
+    private String language;
 
     @Override
     protected int setLayoutResourceID() {
@@ -188,6 +195,9 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         view.findViewById(R.id.img_service).setOnClickListener(this);
         view.findViewById(R.id.img_message).setOnClickListener(this);
 
+        view.findViewById(R.id.layout_language).setOnClickListener(this);
+        view.findViewById(R.id.layout_language2).setOnClickListener(this);
+
         //layout_logout.setOnClickListener(this);
         view.findViewById(R.id.tv_nickname).setOnClickListener(this);
 
@@ -293,6 +303,9 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
     }
 
+    int language_type = 0;
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -381,8 +394,33 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 break;
 
+            case R.id.layout_language:
+                language = LanguageType.ENGLISH.getLanguage();
+
+                changeLanguage(language);
+
+                break;
+            case R.id.layout_language2:
+                language = LanguageType.CHINESE.getLanguage();
+                changeLanguage(language);
+
+
+                break;
+
 
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private void changeLanguage(String language) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            LanguageUtil.changeAppLanguage(AppContext.getAppContext(), language);
+        }
+        SPUtils.putString(Constant.LANGUAGE, language);
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     private void clearCache() {

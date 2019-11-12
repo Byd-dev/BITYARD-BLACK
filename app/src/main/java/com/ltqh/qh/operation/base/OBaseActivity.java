@@ -24,13 +24,18 @@ import android.widget.EditText;
 
 import com.ltqh.qh.base.AppToastMgr;
 import com.ltqh.qh.base.BaseFragment;
+import com.ltqh.qh.base.Constant;
+import com.ltqh.qh.base.MyContextWrapper;
 import com.ltqh.qh.base.ProgressDialog;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.language.LanguageUtil;
 import com.ltqh.qh.operation.entity.OMineEntity;
+import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,6 +56,14 @@ public abstract class OBaseActivity extends AppCompatActivity {
     private LazyLoadBaseFragment showFragment2;
 
     private ProgressDialog mProgressDialog;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        //获取我们存储的语言环境 比如 "en","zh",等等
+        String language = SPUtils.getString(Constant.LANGUAGE);
+        //attach 对应语言环境下的context
+        super.attachBaseContext(LanguageUtil.attachBaseContext(newBase, language));
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

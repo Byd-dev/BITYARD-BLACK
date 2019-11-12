@@ -2,38 +2,21 @@ package com.ltqh.qh.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.ltqh.qh.R;
-import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.fragment.HomeFragment;
-import com.ltqh.qh.fragment.HomeInfoFragment;
-import com.ltqh.qh.fragment.HomeInfoSelectFragment;
-import com.ltqh.qh.fragment.HomeTabFragment;
 import com.ltqh.qh.fragment.MyFragment;
 import com.ltqh.qh.fragment.find.FindFragment;
-import com.ltqh.qh.fragment.find.QuestionFragment;
-import com.ltqh.qh.fragment.forum.ChatFragment;
 import com.ltqh.qh.fragment.forum.ChatTabFragment;
-import com.ltqh.qh.fragment.forum.ForumDrawerFragment;
-import com.ltqh.qh.fragment.forum.ForumFragment;
-import com.ltqh.qh.fragment.forum.ForumTabFragment;
-import com.ltqh.qh.fragment.market.AllMarketFragment;
-import com.ltqh.qh.fragment.market.AllMarketTabFragment;
 import com.ltqh.qh.fragment.news.InfoFragment;
-import com.ltqh.qh.fragment.news.InfoTabFragment;
-import com.ltqh.qh.fragment.shop.BookFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
-import com.ltqh.qh.operation.fragment.info.OInfoFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.StatusBarUtil;
 

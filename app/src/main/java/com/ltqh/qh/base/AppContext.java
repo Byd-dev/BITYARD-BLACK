@@ -3,8 +3,10 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Build;
 import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.multidex.MultiDex;
 import com.ltqh.qh.config.AppConfig;
+import com.ltqh.qh.language.LanguageUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
@@ -48,6 +50,7 @@ public class AppContext extends Application {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void onCreate() {
         super.onCreate();
@@ -84,6 +87,12 @@ public class AppContext extends Application {
             builder.detectFileUriExposure();
         }
         StrictMode.setVmPolicy(builder.build());
+
+
+        String language = SPUtils.getString(Constant.LANGUAGE);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            LanguageUtil.changeAppLanguage(AppContext.getAppContext(), language);
+        }
 
     }
 

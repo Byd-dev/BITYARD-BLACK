@@ -278,6 +278,8 @@ public interface Constant {
     public static int FEEDBACK = 41;
     public static int QUESTION=42;
 
+    public static String LANGUAGE="language";
+
 
 
     public static final String KEY_SP_FILENAME = "ltqh";
