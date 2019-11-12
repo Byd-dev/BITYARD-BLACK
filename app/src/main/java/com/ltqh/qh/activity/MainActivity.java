@@ -70,7 +70,6 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
     }
 
 
-
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
 

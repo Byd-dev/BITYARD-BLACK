@@ -17,10 +17,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.ltqh.qh.BuildConfig;
 import com.ltqh.qh.R;
+import com.ltqh.qh.activity.MainActivity;
+import com.ltqh.qh.operation.activity.SecondActivity;
 import com.pro.switchlibrary.DoGet;
 import com.pro.switchlibrary.JumpPermissionManagement;
 import com.pro.switchlibrary.OnResultBack;
@@ -87,11 +91,14 @@ public class SplashActivity extends Activity implements OnResultBack {
 
     @Override
     public void onResult(boolean result, com.pro.switchlibrary.JsonEntity jsonEntity) {
+        Log.d("print", "onResult: "+result);
         if (result == true) {
             SwitchMainEnter.getInstance().goToWeb(activity, jsonEntity.getUrl(), null);
             activity.finish();
         } else if (result == false) {
-            SwitchMainEnter.getInstance().goToWeb(activity, BuildConfig.WEB_URL, null);
+           // GuideActivity.enter(activity);
+            MainActivity.enter(activity, MainActivity.TAB_TYPE.TAB_HOME);
+
             activity.finish();
         }
     }

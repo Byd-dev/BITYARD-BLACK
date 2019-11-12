@@ -39,7 +39,7 @@
             android:drawableTop="@drawable/tab_home"
             android:gravity="center"
             android:maxLines="1"
-            android:text="首页"
+            android:text="@string/tab_one"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
             android:textStyle="bold" />
@@ -54,7 +54,7 @@
             android:drawableTop="@drawable/tab_info"
             android:gravity="center"
             android:maxLines="1"
-            android:text="资讯"
+            android:text="@string/tab_two"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
             android:textStyle="bold" />
@@ -68,7 +68,7 @@
             android:drawableTop="@drawable/tab_four"
             android:gravity="center"
             android:maxLines="1"
-            android:text="发现"
+            android:text="@string/tab_three"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
             android:textStyle="bold"
@@ -99,7 +99,7 @@
             android:maxLines="1"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
-            android:text="发现"
+            android:text="@string/tab_four"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -118,7 +118,7 @@
 
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
-            android:text="我的"
+            android:text="@string/tab_five"
             android:textStyle="bold"
             android:visibility="visible" />
 

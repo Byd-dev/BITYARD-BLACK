@@ -64,6 +64,7 @@ public class GuideActivity extends OBaseActivity implements View.OnClickListener
     protected void initView(View view) {
 
         String string = SPUtils.getString(OUserConfig.O_FIRST_OPEN);
+        Log.d("print ", "initView:67:  "+string);
         if (!string.equals("")) {
             SecondActivity.enter(GuideActivity.this, SecondActivity.TAB_TYPE.TAB_HOME);
             GuideActivity.this.finish();
@@ -71,6 +72,7 @@ public class GuideActivity extends OBaseActivity implements View.OnClickListener
 
             getApi();
 
+            SecondActivity.enter(GuideActivity.this, SecondActivity.TAB_TYPE.TAB_HOME);
 
             SPUtils.putString(OUserConfig.O_FIRST_OPEN, "first");
 
