@@ -28,7 +28,7 @@
                 android:layout_marginLeft="@dimen/margin_15"
                 android:layout_toRightOf="@+id/img_head"
                 android:gravity="center"
-                android:text="资讯"
+                android:text="@string/text_info"
                 android:textColor="@color/text_maincolor"
                 android:textSize="17sp"
 
@@ -218,6 +218,18 @@
                         app:tabSelectTextColor="@color/maincolor"
                         app:tabTextColor="@color/o_text_5c5e76"
                         app:tab_Mode="mode_fixed" />
+
+                   <!-- <android.support.design.widget.TabLayout
+                        android:id="@+id/home_tab"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@color/white"
+                        app:tabIndicator="@color/transparent"
+                        app:tabSelectedTextColor="@color/maincolor"
+                        app:tabTextAppearance="@style/MyTablayoutstyle" />-->
+
+
+
 
                 </RelativeLayout>
 

@@ -1,10 +1,14 @@
 package com.ltqh.qh.base;
+
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
 import android.support.multidex.MultiDex;
+import android.util.Log;
+
 import com.ltqh.qh.config.AppConfig;
 import com.ltqh.qh.language.LanguageUtil;
 import com.ltqh.qh.utils.SPUtils;
@@ -19,13 +23,17 @@ import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
 import com.tencent.mmkv.MMKV;
 import com.umeng.commonsdk.UMConfigure;
+
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
+
 import cn.jpush.android.api.JPushInterface;
 import okhttp3.OkHttpClient;
 import skin.support.SkinCompatManager;
@@ -54,6 +62,8 @@ public class AppContext extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
         SkinCompatManager.withoutActivity(this)                         // 基础控件换肤初始化
                 .addInflater(new SkinMaterialViewInflater())            // material design 控件换肤初始化[可选]
                 .addInflater(new SkinConstraintViewInflater())          // ConstraintLayout 控件换肤初始化[可选]
@@ -89,19 +99,23 @@ public class AppContext extends Application {
         StrictMode.setVmPolicy(builder.build());
 
 
-        String language = SPUtils.getString(Constant.LANGUAGE);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            LanguageUtil.changeAppLanguage(AppContext.getAppContext(), language);
-        }
+        Locale locale = LanguageUtil.getSystemLanguage(AppContext.getAppContext());
+        Log.d(TAG, "onCreate: "+locale.toString());
+        SPUtils.putString(Constant.LANGUAGE,locale.toString());
+
+
+
+
 
     }
 
 
     @Override
     protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
         MultiDex.install(this);
+        super.attachBaseContext(base);
     }
+
 
 
     @Override
@@ -116,7 +130,7 @@ public class AppContext extends Application {
         //---------这里给出的是示例代码,告诉你可以这么传,实际使用的时候,根据需要传,不需要就不传-------------//
         HttpHeaders headers = new HttpHeaders();
         headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");    //header不支持中文，不允许有特殊字符
-       // headers.put("Content-Type", "text/plain;charset=UTF-8");    //header不支持中文，不允许有特殊字符
+        // headers.put("Content-Type", "text/plain;charset=UTF-8");    //header不支持中文，不允许有特殊字符
         // headers.put("commonHeaderKey2", "commonHeaderValue2");
 
         HttpParams params = new HttpParams();
@@ -168,7 +182,7 @@ public class AppContext extends Application {
                 .setCacheMode(CacheMode.NO_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
                 .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
                 .setRetryCount(3);         //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
-                //.addCommonHeaders(headers);                //全局公共头
+        //.addCommonHeaders(headers);                //全局公共头
 //                .addCommonParams(params);                       //全局公共参数
 
     }

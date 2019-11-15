@@ -2,9 +2,8 @@ package com.ltqh.qh.language;
 
 public enum  LanguageType {
 
-    CHINESE("ch"),
-    ENGLISH("en"),
-    THAILAND("th");
+    CHINESE("zh_CN"),
+    ENGLISH("en_US");
 
     private String language;
 

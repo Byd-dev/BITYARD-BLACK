@@ -171,4 +171,10 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    public static void reStart(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 }

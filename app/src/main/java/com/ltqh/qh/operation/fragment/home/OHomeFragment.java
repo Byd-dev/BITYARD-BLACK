@@ -636,7 +636,6 @@ public class OHomeFragment extends OBaseFragment implements View.OnClickListener
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
 
                     ImageView imageView = view.findViewById(R.id.img_banner);
-                    Log.d("print", "loadBanner: 643:  " + data.get(position).getXBannerUrl());
                     Glide.with(getActivity()).load(data.get(position).getXBannerUrl()).asBitmap().into(imageView);
                 }
             });

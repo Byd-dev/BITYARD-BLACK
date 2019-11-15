@@ -44,15 +44,26 @@ public class LanguageUtil {
             locale = Locale.SIMPLIFIED_CHINESE;
         } else if (language.equals(LanguageType.ENGLISH.getLanguage())) {
             locale = Locale.ENGLISH;
-        } else if (language.equals(LanguageType.THAILAND.getLanguage())) {
-            locale = Locale.forLanguageTag(language);
         }
         Log.d(TAG, "getLocaleByLanguage: " + locale.getDisplayName());
         return locale;
     }
 
+
+    public static Locale getSystemLanguage(Context context) {
+        Locale locale;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            locale = context.getResources().getConfiguration().getLocales().get(0);
+        } else {
+            locale = context.getResources().getConfiguration().locale;
+        }
+
+        return locale;
+
+    }
+
+
     public static Context attachBaseContext(Context context, String language) {
-        Log.d(TAG, "attachBaseContext: " + Build.VERSION.SDK_INT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return updateResources(context, language);
         } else {
@@ -64,7 +75,6 @@ public class LanguageUtil {
     private static Context updateResources(Context context, String language) {
         Resources resources = context.getResources();
         Locale locale = LanguageUtil.getLocaleByLanguage(language);
-
         Configuration configuration = resources.getConfiguration();
         configuration.setLocale(locale);
         configuration.setLocales(new LocaleList(locale));

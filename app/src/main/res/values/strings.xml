@@ -252,6 +252,18 @@
     <string name="text_report">签到</string>
     <string name="text_log_in">登录</string>
     <string name="text_user">用户</string>
+    <string name="text_title_one">学习文章</string>
+    <string name="text_title_two">其他文章推荐</string>
+    <string name="text_short">7×24</string>
+    <string name="text_hot">每日热点</string>
+    <string name="text_calendar">日历</string>
+    <string name="text_board">公告</string>
+    <string name="text_info">资讯</string>
+    <string name="language_cn">中文</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="language_auto">自动</string>
+    <string name="language_traditional">繁體</string>
 
+    <string name="language_select">当前选择的语言: %s</string>
 
 </resources>

@@ -342,7 +342,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="5dp"
-                            android:text="学习文章"
+                            android:text="@string/text_title_one"
                             android:textColor="@color/text_maincolor"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -1488,7 +1488,7 @@
                                         android:layout_centerVertical="true"
                                         android:layout_marginLeft="@dimen/margin_15"
                                         android:layout_toRightOf="@+id/stay_line2"
-                                        android:text="其他文章推荐"
+                                        android:text="@string/text_title_two"
                                         android:textColor="@color/text_maincolor"
                                         android:textSize="15sp"
                                         android:textStyle="bold" />

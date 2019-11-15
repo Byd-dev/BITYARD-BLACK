@@ -252,6 +252,18 @@
     <string name="text_report">Check In</string>
     <string name="text_log_in">Log In</string>
     <string name="text_user">User</string>
+    <string name="text_title_one">LearningArticles</string>
+    <string name="text_title_two">ArticlesRecommend</string>
+    <string name="text_short">7×24</string>
+    <string name="text_hot">Hot</string>
+    <string name="text_calendar">Calendar</string>
+    <string name="text_board">Board</string>
+    <string name="text_info">Info</string>
 
+    <string name="language_cn">中文</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="language_auto">auto</string>
+    <string name="language_traditional">繁體</string>
 
+    <string name="language_select">Currently selected language:  %s</string>
 </resources>

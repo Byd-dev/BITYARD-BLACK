@@ -1,7 +1,6 @@
 package com.ltqh.qh.fragment;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -396,14 +395,13 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
             case R.id.layout_language:
                 language = LanguageType.ENGLISH.getLanguage();
-
                 changeLanguage(language);
+
 
                 break;
             case R.id.layout_language2:
                 language = LanguageType.CHINESE.getLanguage();
                 changeLanguage(language);
-
 
                 break;
 
@@ -417,10 +415,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
             LanguageUtil.changeAppLanguage(AppContext.getAppContext(), language);
         }
         SPUtils.putString(Constant.LANGUAGE, language);
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        getActivity().finish();
+        MainActivity.reStart(getContext());
     }
 
     private void clearCache() {
