@@ -143,7 +143,7 @@ public class OFinancialCalendarFragment extends OBaseFragment {
         nWeekCalendar.setOnWeekCalendarPageChangeListener(new OnWeekCalendarPageChangeListener() {
             @Override
             public void onWeekCalendarPageSelected(DateTime dateTime) {
-                Log.d("print", "onWeekCalendarPageSelected: " + dateTime);
+               // Log.d("print", "onWeekCalendarPageSelected: " + dateTime);
                 // text_month.setText(dateTime.toString().substring(5, 7) );
 
             }

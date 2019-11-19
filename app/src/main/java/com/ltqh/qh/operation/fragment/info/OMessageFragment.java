@@ -149,7 +149,6 @@ public class OMessageFragment extends BaseFragment {
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
 
-                            Log.d("print", "onSuccess:146:  "+response.body());
                             OMessageEntity oMessageEntity = new Gson().fromJson(response.body(), OMessageEntity.class);
 
                             String resultMsg = oMessageEntity.getResultMsg();

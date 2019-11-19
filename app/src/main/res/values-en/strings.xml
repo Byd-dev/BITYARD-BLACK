@@ -260,10 +260,18 @@
     <string name="text_board">Board</string>
     <string name="text_info">Info</string>
 
-    <string name="language_cn">中文</string>
-    <string name="language_en">ENGLISH</string>
+    <string name="language_cn">Chinese</string>
+    <string name="language_en">English</string>
     <string name="language_auto">auto</string>
     <string name="language_traditional">繁體</string>
 
     <string name="language_select">Currently selected language:  %s</string>
+    <string name="text_test">Test</string>
+    <string name="text_hotrecommend">HotRecommend</string>
+    <string name="text_score">Score</string>
+    <string name="text_my_class">MyClass</string>
+    <string name="text_message">MyMessage</string>
+    <string name="text_setting">Settings</string>
+    <string name="text_change">ChangePass</string>
+    <string name="text_cache">ClearCache</string>
 </resources>

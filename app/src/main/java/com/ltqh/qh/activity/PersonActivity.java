@@ -191,6 +191,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
     private void getUserInfo() {
         String token = loginEntity.getData().getToken();
+        Log.d("print", "getUserInfo:194:用户:  "+token);
         OkGo.<String>get(Constant.USER_INFO_URL)
                 .tag(this)
                 .headers(Constant.PARAM_XX_TOKEN, token)
@@ -400,8 +401,6 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
             public void onClick(View view) {
                 popupWindow.dismiss();
                 backgroundAlpha(1f);
-
-
             }
         });
         popupWindow.setAnimationStyle(R.style.pop_anim);
@@ -410,13 +409,15 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
         popupWindow.showAtLocation(layout_view, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
     }
+
     public void backgroundAlpha(float bgalpha) {
-        WindowManager.LayoutParams lp =getWindow().getAttributes();
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.alpha = bgalpha;
         getWindow().setAttributes(lp);
 
 
     }
+
     // 从本地相册选取图片作为头像
     private void choseHeadImageFromGallery() {
         // 设置文件类型    （在华为手机中不能获取图片，要替换代码）
@@ -449,7 +450,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-              //  pictureUri = FileProvider.getUriForFile(PersonActivity.this, getPackageName() + ".fileProvider", pictureFile);
+                //  pictureUri = FileProvider.getUriForFile(PersonActivity.this, getPackageName() + ".fileProvider", pictureFile);
                 ContentValues contentValues = new ContentValues(1);
                 contentValues.put(MediaStore.Images.Media.DATA, pictureFile.getAbsolutePath());
                 pictureUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
@@ -545,7 +546,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
                 Log.d("print", "onActivityResult:530: " + intent.getData());
                 try {
                     Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(mUriPath));
-                    Log.d("print", "onActivityResult:534: "+bitmap);
+                    Log.d("print", "onActivityResult:534: " + bitmap);
                     setImageToHeadView(intent, bitmap);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -694,11 +695,11 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
                     public void onSuccess(Response<String> response) {
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
-                            Log.d("print", "onSuccess:682:   "+response.body());
+                            Log.d("print", "onSuccess:682:   " + response.body());
                             TipPersonEntity tipEntity = new Gson().fromJson(response.body(), TipPersonEntity.class);
                             Toast.makeText(PersonActivity.this, tipEntity.getMsg(), Toast.LENGTH_SHORT).show();
                             if (tipEntity.getCode() == 1) {
-                                 EventBus.getDefault().postSticky(Constant.ONRESUME_PERSON);
+                                EventBus.getDefault().postSticky(Constant.ONRESUME_PERSON);
 
                                 //  getUserInfo();
                             }
@@ -722,14 +723,12 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
             int resultCAMERA = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
             if (result == PackageManager.PERMISSION_DENIED || resultCAMERA == PackageManager.PERMISSION_DENIED) {
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        ,Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE};
+                        , Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE};
                 ActivityCompat.requestPermissions(this, permissions, PERMISSION_READ_AND_CAMERA);
             } else {
                 choseHeadImageFromCameraCapture();
             }
         }
-
-
 
 
     }
@@ -813,9 +812,9 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
                 // headImage.setImageBitmap(b);
                 img_user.setImageBitmap(b);
                 long millis = System.currentTimeMillis();
-            //    Log.d("print", "setImageToHeadView:783: "+Environment.getExternalStorageState()+millis+CROP_IMAGE_FILE_NAME+bitmap);
+                //    Log.d("print", "setImageToHeadView:783: "+Environment.getExternalStorageState()+millis+CROP_IMAGE_FILE_NAME+bitmap);
                 File file = FileUtil.saveFile(mExtStorDir, millis + CROP_IMAGE_FILE_NAME, bitmap);
-              //  Log.d("print", "setImageToHeadView: 785:/storage/emulated/0/1555310163598bala_crop.jpg"+file);
+                //  Log.d("print", "setImageToHeadView: 785:/storage/emulated/0/1555310163598bala_crop.jpg"+file);
                 if (file != null) {
                     //传递新的头像信息给我的界面
                  /*   Intent ii = new Intent();

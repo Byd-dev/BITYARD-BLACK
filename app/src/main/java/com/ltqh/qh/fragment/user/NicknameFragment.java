@@ -17,6 +17,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.TipEntity;
+import com.ltqh.qh.entity.UserTipEntity;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -103,14 +104,13 @@ public class NicknameFragment extends BaseFragment implements View.OnClickListen
                     public void onSuccess(Response<String> response) {
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
-                            TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
+                            UserTipEntity tipEntity = new Gson().fromJson(response.body(), UserTipEntity.class);
                             Toast.makeText(getActivity(), tipEntity.getMsg(), Toast.LENGTH_SHORT).show();
                             if (tipEntity.getCode() == 1) {
                                 getActivity().finish();
                                 EventBus.getDefault().post(Constant.ONRESUME_PERSON);
                                 EventBus.getDefault().post(Constant.PUBLISH_PERSON);
                             }
-
                         }
                     }
 

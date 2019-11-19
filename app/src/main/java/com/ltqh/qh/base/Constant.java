@@ -9,7 +9,8 @@ public interface Constant {
 
     public static String JUHE_HOST="http://apis.juhe.cn/goodbook";
 
-    String BASE_URL = "https://data.fk7h.com";
+   // String BASE_URL = "https://data.fk7h.com";
+  String BASE_URL = "https://d.wanjinig.cn";
 
     //金投网的资讯列表
     public static String URL_JINTOUWANG = NEWS_HOIST + "/getJinTouEvents";
@@ -70,6 +71,8 @@ public interface Constant {
 
     //登录
     String LOGIN_URL = BASE_URL + API + USER + PUBLIC + "/login";
+    //第三方注册登录
+
     //退出
     String LOGIN_OUT_URL = BASE_URL + API + USER + PUBLIC + "/logout";
     //忘记密码
@@ -174,7 +177,7 @@ public interface Constant {
 
 
     public static String PARAM_DEVICE_TYPE = "device_type";
-    public static String PARAM_DEVICE_NAME = "iphone";
+    public static String PARAM_DEVICE_NAME = "android";
     public static String PARAM_CONTENT_TYPE = "Content-Type";
     public static String PARAM_APPLICATION = "application/x-www-form-urlencoded";
 
@@ -193,6 +196,7 @@ public interface Constant {
 
     public static String PARAM_XX_TOKEN = "XX-Token";
     public static String PARAM_XX_DEVICE_TYPE = "XX-Device-Type";
+  public static String PARAM_XX_LANGUAGE = "xx-Language";
 
     public static String PARAM_VERIFICATION_CODE = "verification_code";
     public static String PARAM_SIGNNAME = "signname";
@@ -204,6 +208,11 @@ public interface Constant {
     public static String PARAM_TEMPLATE_ID = "template_id";
     public static String PARAM_OUT_ID = "OutId";
     public static String PARAM_APP = "app";
+    public static String PARAM_APP_TYPE = "app_type";
+    public static String STAY_DEVICE = "android";
+    public static String PARAM_APPLY_NAME = "apply_name";
+  public static String PARAM_IS_VALIDATE = "is_validate";
+
     public static String PARAM_PAGE = "page";
     public static String PARAM_NUM = "num";
     public static String PARAM_BUYPRICE = "buyPrice";

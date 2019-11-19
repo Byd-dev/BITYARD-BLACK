@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.base.BaseFragment;
@@ -60,7 +62,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
         String string = SPUtils.getString(UserConfig.USER_ACCOUNT);
 
-        if (string!=null){
+        if (string != null) {
             edit_number.setText(string);
         }
 
@@ -107,7 +109,30 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                postLogin(edit_number.getText().toString(), edit_password.getText().toString());
+                 //postLogin(edit_number.getText().toString(), edit_password.getText().toString());
+
+                new NetManger().getInstance().login(edit_number.getText().toString(), edit_password.getText().toString(), new OnNetResult() {
+                    @Override
+                    public void onNetResult(String state, Object response) {
+                        if (state.equals(NetManger.BUSY)) {
+                            showProgressDialog();
+                        } else if (state.equals(NetManger.SUCCESS)) {
+                            dismissProgressDialog();
+                            LoginEntity loginEntity = new Gson().fromJson(response.toString(), LoginEntity.class);
+                            SPUtils.putData(UserConfig.LOGIN_USER, loginEntity);
+                            EventBus.getDefault().post(Constant.PUBLISH_PERSON);
+                            Log.d("print", "onNetResult:用户token: "+loginEntity.getData().getToken());
+                            SPUtils.putString(UserConfig.USER_ACCOUNT, loginEntity.getData().getUser().getMobile());
+                            getActivity().finish();
+
+                        }else if (state.equals(NetManger.FAILURE)){
+                            dismissProgressDialog();
+                            CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                            Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
                 break;
             case R.id.text_hide:
                 if (isHide == 0) {

@@ -47,7 +47,7 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
 
     private String Titles[] = new String[]{AppContext.getInstance().getResources().getString(R.string.text_short), AppContext.getInstance().getResources().getString(R.string.text_hot), AppContext.getInstance().getResources().getString(R.string.text_calendar), AppContext.getInstance().getResources().getString(R.string.text_board)};
 
-    private List<String> titleList=new ArrayList<>();
+    private List<String> titleList = new ArrayList<>();
 
 
     @Override
@@ -69,13 +69,13 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
 
 
         String language = SPUtils.getString(Constant.LANGUAGE);
-        Log.d("print", "initTabView:72:  "+language);
-        if (language.equals("en_US")){
-                titleList.add("7×24");
-                titleList.add("Hot");
-                titleList.add("Calendar");
-                titleList.add("Board");
-        }else if (language.equals("zh_CN")){
+        Log.d("print", "initTabView:72:  " + language);
+        if (language.equals("en_US")) {
+            titleList.add("7×24");
+            titleList.add("Hot");
+            titleList.add("Calendar");
+            titleList.add("Board");
+        } else if (language.equals("zh_CN")) {
             titleList.add("7×24");
             titleList.add("每日热点");
             titleList.add("日历");
@@ -175,10 +175,10 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
 
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-        myPagerAdapter.addFragment(new OLiveFragment(),AppContext.getInstance().getResources().getString(R.string.text_short));
+        myPagerAdapter.addFragment(new OLiveFragment(), AppContext.getInstance().getResources().getString(R.string.text_short));
         myPagerAdapter.addFragment(new OHotFragment(), AppContext.getInstance().getResources().getString(R.string.text_hot));
-        myPagerAdapter.addFragment(new OFinancialCalendarFragment(),AppContext.getInstance().getResources().getString(R.string.text_calendar));
-        myPagerAdapter.addFragment(new OReportFragment(),AppContext.getInstance().getResources().getString(R.string.text_board));
+        myPagerAdapter.addFragment(new OFinancialCalendarFragment(), AppContext.getInstance().getResources().getString(R.string.text_calendar));
+        myPagerAdapter.addFragment(new OReportFragment(), AppContext.getInstance().getResources().getString(R.string.text_board));
 
         viewPager.setAdapter(myPagerAdapter);
     }

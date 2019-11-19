@@ -471,7 +471,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
 
     private void upArticleBanner(List<BannerEntity.DataBean> data) {
-        Log.d("print", "upBanner:461:   " + data);
+      //  Log.d("print", "upBanner:461:   " + data);
         if (data == null) {
             return;
         }
@@ -976,7 +976,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (!TextUtils.isEmpty(response.body())) {
-                            Log.d("print", "onSuccess:971:    " + response.body());
+                           // Log.d("print", "onSuccess:971:    " + response.body());
                             OHoursEntity oHoursEntity = new Gson().fromJson(response.body(), OHoursEntity.class);
                             newSdata = oHoursEntity.getNewsList();
 
@@ -1193,14 +1193,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                        Log.d("print", "onSuccess:1188:    " + response.body());
+                       // Log.d("print", "onSuccess:1188:    " + response.body());
 
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
                             OHotEntity oHotEntity = new Gson().fromJson(response.body(), OHotEntity.class);
 
                             List<OHotEntity.NewsListBean> newsList = oHotEntity.getNewsList().subList(0, 3);
-                            Log.d("print", "onSuccess:1198:  " + newsList);
+                           // Log.d("print", "onSuccess:1198:  " + newsList);
                             alertsAdapter.setDatas(newsList);
                         }
                     }

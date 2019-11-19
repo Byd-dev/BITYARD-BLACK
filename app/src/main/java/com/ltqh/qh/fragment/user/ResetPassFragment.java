@@ -17,6 +17,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.TipEntity;
+import com.ltqh.qh.entity.UserTipEntity;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;

@@ -78,7 +78,6 @@ public class SwitchMainEnter implements DeviceUtil.AppIdsUpdater {
 
             @Override
             public void onError(OCRError ocrError) {
-                Log.d("print", "onError:71:  "+ocrError);
                 SPUtils.putString(AppConfig.KEY_SUPPORT_DISCERN,"false");
 
             }

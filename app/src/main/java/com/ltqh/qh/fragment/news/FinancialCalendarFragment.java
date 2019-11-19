@@ -92,7 +92,7 @@ public class FinancialCalendarFragment extends BaseFragment {
             public void onClickWeekCalendar(DateTime dateTime) {
 
                 thatDate = dateTime.toString();
-                Log.d("print", "onWeekCalendarPageSelected: 91:"+thatDate);
+             //   Log.d("print", "onWeekCalendarPageSelected: 91:"+thatDate);
 
                 initData(dateTime.toString(), REFRESHTYPE, 10);
                 isNowDate = false;
@@ -103,7 +103,7 @@ public class FinancialCalendarFragment extends BaseFragment {
         nWeekCalendar.setOnWeekCalendarPageChangeListener(new OnWeekCalendarPageChangeListener() {
             @Override
             public void onWeekCalendarPageSelected(DateTime dateTime) {
-                Log.d("print", "onWeekCalendarPageSelected: "+dateTime);
+                //Log.d("print", "onWeekCalendarPageSelected: "+dateTime);
                 text_month.setText(dateTime.toString().substring(5, 7) );
 
             }

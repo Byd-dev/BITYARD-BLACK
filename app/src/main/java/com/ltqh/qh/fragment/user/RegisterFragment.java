@@ -16,18 +16,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
+import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.TipEntity;
+import com.ltqh.qh.entity.UserTipEntity;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.SmsTimeUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
@@ -78,7 +84,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length()==11){
+                if (s.length() == 11) {
                     edit_code.requestFocus();
                 }
             }
@@ -88,8 +94,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
             }
         });
-
-
 
 
     }
@@ -127,7 +131,41 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                 String number = edit_number.getText().toString();
                 String password = edit_password.getText().toString();
                 String code = edit_code.getText().toString();
-                postRegister(number, password, code);
+                //postRegister(number, password, code);
+
+                new NetManger().register(number, password, "888888", new OnNetResult() {
+                    @Override
+                    public void onNetResult(String state, Object response) {
+                        if (state.equals(NetManger.BUSY)) {
+                            showProgressDialog();
+                        } else if (state.equals(NetManger.SUCCESS)) {
+                            dismissProgressDialog();
+                            new NetManger().login(number, password, new OnNetResult() {
+                                @Override
+                                public void onNetResult(String state, Object response) {
+                                    if (state.equals(NetManger.BUSY)) {
+                                        showProgressDialog();
+                                    } else if (state.equals(NetManger.SUCCESS)) {
+                                        dismissProgressDialog();
+                                        LoginEntity loginEntity = new Gson().fromJson(response.toString(), LoginEntity.class);
+                                        SPUtils.putData(UserConfig.LOGIN_USER, loginEntity);
+                                        EventBus.getDefault().post(Constant.PUBLISH_PERSON);
+                                        SPUtils.putString(UserConfig.USER_ACCOUNT, loginEntity.getData().getUser().getMobile());
+                                        getActivity().finish();
+                                    } else if (state.equals(NetManger.FAILURE)) {
+                                        dismissProgressDialog();
+                                        CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                                        Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                        } else if (state.equals(NetManger.FAILURE)) {
+                            dismissProgressDialog();
+
+                        }
+                    }
+                });
 
                 break;
 
@@ -168,7 +206,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                     public void onSuccess(Response<String> response) {
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
-                            TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
+                            UserTipEntity tipEntity = new Gson().fromJson(response.body(), UserTipEntity.class);
                             Toast.makeText(getActivity(), tipEntity.getMsg(), Toast.LENGTH_SHORT).show();
                             if (tipEntity.getCode() == 1) {
                                 postLogin(num, pass);

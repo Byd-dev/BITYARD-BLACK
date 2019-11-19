@@ -1,10 +1,9 @@
-package com.ltqh.qh.operation.fragment.info;
+package com.ltqh.qh.fragment.news;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -25,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class OLiveFragment extends OBaseFragment {
+public class NewLiveFragment extends OBaseFragment {
 
 
     private RecyclerView recyclerView;
@@ -55,20 +54,9 @@ public class OLiveFragment extends OBaseFragment {
 
     @Override
     protected void onLazyLoad() {
-        String uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
 
-        OkGo.<String>get(uri)
-                .headers("X-CMC_PRO_API_KEY","78be76f5-4a85-4885-9787-a3858b63c1d4")
-                .params("start","1")
-                .params("limit","10")
-                .params("convert","USD")
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(Response<String> response) {
 
-                        Log.d("print", "onSuccess:73:   "+response.body());
-                    }
-                });
+
 
 
 

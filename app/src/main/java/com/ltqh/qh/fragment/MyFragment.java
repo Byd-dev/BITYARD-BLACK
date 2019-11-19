@@ -129,7 +129,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
            /* text_login.setBackground(getResources().getDrawable(R.drawable.gradient_maincolor));
             text_login.setTextColor(getResources().getColor(R.color.white));*/
 
-            text_login.setText("登录/注册");
+            text_login.setText(getResources().getText(R.string.text_log_in));
             //text_sign.setText("~~");
             img_head.setImageDrawable(getResources().getDrawable(R.mipmap.user_icon));
 
@@ -153,7 +153,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 if (user_nickname.equals("")) {
 
-                    text_login.setText("用户");
+                    text_login.setText(getResources().getText(R.string.text_user));
                     //text_sign.setText("开开心心每一天~");
 
                 } else {
@@ -168,7 +168,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
             }
         }
-        text_hc.setText("清除缓存(" + AppUtil.getAppClearSize(getContext()) + ")");
+        text_hc.setText(getResources().getText(R.string.text_cache)+"(" +AppUtil.getAppClearSize(getContext()) + ")");
 
     }
 
@@ -181,7 +181,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
     protected void initView(View view) {
 
         EventBus.getDefault().register(this);
-        text_hc.setText("清除缓存(" + AppUtil.getAppClearSize(getContext()) + ")");
+        text_hc.setText(getResources().getText(R.string.text_cache)+"(" + AppUtil.getAppClearSize(getContext()) + ")");
         layout_delete.setOnClickListener(this);
 
         view.findViewById(R.id.layout_service).setOnClickListener(this);

@@ -260,10 +260,18 @@
     <string name="text_board">公告</string>
     <string name="text_info">资讯</string>
     <string name="language_cn">中文</string>
-    <string name="language_en">ENGLISH</string>
+    <string name="language_en">英文</string>
     <string name="language_auto">自动</string>
     <string name="language_traditional">繁體</string>
 
     <string name="language_select">当前选择的语言: %s</string>
+    <string name="text_test">知识测评</string>
+    <string name="text_hotrecommend">热门推荐</string>
+    <string name="text_score">积分商城</string>
+    <string name="text_my_class">我的课堂</string>
+    <string name="text_message">我的消息</string>
+    <string name="text_setting">设置</string>
+    <string name="text_change">修改密码</string>
+    <string name="text_cache">清除缓存</string>
 
 </resources>

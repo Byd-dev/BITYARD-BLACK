@@ -72,7 +72,6 @@ public class OHotDetailFragment extends BaseFragment {
 
                         swipeRefreshLayout.setRefreshing(false);
                         if (!TextUtils.isEmpty(response.body())) {
-                            Log.d("print", "onSuccess:71: " + response.body());
                             AlertsDetailEntity alertsDetailEntity = new Gson().fromJson(response.body(), AlertsDetailEntity.class);
                             AlertsDetailEntity.NewsBean news = alertsDetailEntity.getNews();
                             if (news != null) {

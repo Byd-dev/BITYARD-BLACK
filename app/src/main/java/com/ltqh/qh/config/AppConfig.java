@@ -1,11 +1,15 @@
 package com.ltqh.qh.config;
 
+import com.ltqh.qh.BuildConfig;
+
 public class AppConfig {
 
 
 
     /*账户头像保存名称*/
     public static final String NAME_OF_USERHEADPIC ="/userheadpic.jpg";
+
+
 
 
 

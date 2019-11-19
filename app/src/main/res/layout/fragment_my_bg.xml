@@ -36,7 +36,7 @@
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_toRightOf="@+id/img_head"
                 android:gravity="center"
-                android:text="登录/注册"
+                android:text="@string/text_log_in"
                 android:textColor="@color/text_maincolor"
                 android:textSize="17sp"
                 android:visibility="visible" />
@@ -354,7 +354,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="我的消息"
+                                android:text="@string/text_message"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -392,7 +392,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="设置"
+                                android:text="@string/text_setting"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -428,7 +428,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="意见反馈"
+                                android:text="@string/text_back"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -465,7 +465,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="修改密码"
+                                android:text="@string/text_change"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -506,7 +506,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="清除缓存"
+                                android:text="@string/text_cache"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -553,7 +553,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="切换英文"
+                                android:text="@string/language_en"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -598,7 +598,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:text="切换中文"
+                                android:text="@string/language_cn"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
