@@ -23,7 +23,7 @@
             android:checked="true"
             android:gravity="center"
             android:maxLines="1"
-            android:text="基础知识"
+            android:text="@string/text_base_knowledge"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:checked="false"
             android:gravity="center"
             android:maxLines="1"
-            android:text="品种简介"
+            android:text="@string/text_type_indruction"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="13sp"
 
@@ -53,7 +53,7 @@
             android:checked="true"
             android:gravity="center"
             android:maxLines="1"
-            android:text="投资技巧"
+            android:text="@string/text_skill"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="13sp"
             android:textStyle="bold" />

@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="资讯详情"
+                android:text="@string/text_info_detail"
                 android:textColor="@color/o_text_3433"
                 android:textSize="@dimen/o_title_size" />
         </RelativeLayout>

@@ -209,7 +209,7 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
             case R.id.layout_one:
             case R.id.layout_two:
             case R.id.layout_three:
-                Toast.makeText(getActivity(), "敬请期待!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getResources().getString(R.string.text_coming), Toast.LENGTH_SHORT).show();
                 // OIntentActivity.enter(getActivity(), OConstant.O_CONVERSION);
                 break;
 

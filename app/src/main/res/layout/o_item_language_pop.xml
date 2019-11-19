@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_shape_background"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="@string/text_language"
+                android:textColor="@color/o_text_3433"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/text_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/margin_15"
+                android:paddingTop="@dimen/margin_5"
+                android:paddingRight="@dimen/margin_15"
+                android:paddingBottom="@dimen/margin_5"
+                android:text="@string/text_goback"
+                android:textColor="@color/o_text_3433"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_chinese"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_15"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/language_cn"
+                android:textSize="15sp"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:textColor="@color/text_maincolor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_english"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:layout_marginBottom="@dimen/margin_15"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/language_en"
+                android:textSize="15sp"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:textColor="@color/text_maincolor" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="@dimen/margin_15"
+            android:background="@drawable/o_bg_maincolor"
+            android:padding="10dp"
+            android:text="提交验证"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="gone"
+
+            />
+    </LinearLayout>
+    <!-- </android.support.v7.widget.CardView>-->
+</RelativeLayout>

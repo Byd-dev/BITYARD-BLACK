@@ -34,7 +34,7 @@
                 android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:drawablePadding="10dp"
-                android:hint="请输入旧密码"
+                android:hint="@string/text_input_oldpass"
                 android:textColorHint="@color/text_secondcolor"
                 android:inputType="textPassword"
                 android:padding="8dp"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:padding="15dp"
-                android:text="显示"
+                android:text="@string/text_show"
                 android:textColor="@color/maincolor"
                 android:textSize="13sp"
                 android:visibility="visible" />
@@ -83,7 +83,7 @@
                 android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:drawablePadding="10dp"
-                android:hint="请输入密码"
+                android:hint="@string/text_input_pass"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColorHint="@color/text_secondcolor"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:padding="15dp"
-                android:text="显示"
+                android:text="@string/text_show"
                 android:textColor="@color/maincolor"
                 android:textSize="13sp"
                 android:visibility="visible" />
@@ -132,7 +132,7 @@
                 android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:drawablePadding="10dp"
-                android:hint="请确认密码"
+                android:hint="@string/text_input_pass"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColorHint="@color/text_secondcolor"
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:padding="15dp"
-                android:text="显示"
+                android:text="@string/text_show"
                 android:textColor="@color/maincolor"
                 android:textSize="13sp"
                 android:visibility="visible" />
@@ -169,7 +169,7 @@
             android:layout_marginBottom="@dimen/margin_15"
             android:background="@drawable/gradient_maincolor"
             android:padding="10dp"
-            android:text="提交"
+            android:text="@string/text_submit"
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>

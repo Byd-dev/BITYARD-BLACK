@@ -23,7 +23,7 @@
                 android:layout_height="50dp"
                 android:background="@null"
                 android:drawablePadding="10dp"
-                android:hint="请输入昵称"
+                android:hint="@string/text_input_nick"
                 android:padding="8dp"
                 android:textColorHint="@color/text_secondcolor"
                 android:maxLength="6"
@@ -61,7 +61,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/gradient_maincolor"
             android:padding="10dp"
-            android:text="提交"
+            android:text="@string/text_submit"
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>

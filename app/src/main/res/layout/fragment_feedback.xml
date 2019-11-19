@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawablePadding="10dp"
-            android:hint="请输入反馈内容"
+            android:hint="@string/text_feedback_input"
             android:maxLength="500"
             android:padding="8dp"
             android:textColor="@color/text_maincolor"
@@ -126,7 +126,7 @@
         android:layout_marginBottom="@dimen/margin_15"
         android:background="@drawable/new_order_bg_grey"
         android:padding="10dp"
-        android:text="提交"
+        android:text="@string/text_submit"
         android:textColor="@color/text_secondcolor"
         android:textSize="15sp"
 

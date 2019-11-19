@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="个人中心"
+            android:text="@string/text_person"
             android:textColor="@color/text_maincolor"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -56,10 +56,11 @@
                 android:paddingBottom="5dp">
 
                 <TextView
+                    android:id="@+id/text_nickname2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="昵称"
+                    android:text="@string/text_nickname"
                     android:textColor="@color/text_maincolor"
                     android:textSize="16sp" />
 
@@ -108,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="头像"
+                    android:text="@string/text_head"
                     android:textColor="@color/text_maincolor"
                     android:textSize="16sp" />
 
@@ -144,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="账号"
+                    android:text="@string/text_account"
                     android:textColor="@color/text_maincolor"
                     android:textSize="16sp" />
 
@@ -189,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="个性签名"
+                    android:text="@string/text_sign"
                     android:textColor="@color/text_maincolor"
                     android:textSize="16sp" />
 
@@ -216,7 +217,53 @@
                     android:layout_centerVertical="true"
                     android:src="@mipmap/arrow" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/layout_language"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bg_shape_background"
+                android:baselineAligned="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/text_language"
+                    android:textColor="@color/text_maincolor"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/text_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="--"
+                    android:textColor="@color/text_secondcolor"
+                    android:textSize="16sp" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/arrow" />
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/layout_change"
                 android:layout_width="match_parent"
@@ -238,7 +285,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="修改密码"
+                    android:text="@string/text_change"
                     android:textColor="@color/text_maincolor"
                     android:textSize="16sp" />
 
@@ -272,7 +319,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="清除缓存"
+                    android:text="@string/text_cache"
                     android:textColor="@color/text_maincolor"
                     android:textSize="16sp" />
 
@@ -311,7 +358,7 @@
                 android:layout_marginRight="15dp"
                 android:background="@drawable/bg_kuang_mainclor"
                 android:padding="10dp"
-                android:text="退出"
+                android:text="@string/text_logout"
                 android:textColor="@color/maincolor"
                 android:textSize="15sp"
                 />

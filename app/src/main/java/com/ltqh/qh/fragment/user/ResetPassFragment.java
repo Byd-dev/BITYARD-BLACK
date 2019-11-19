@@ -96,11 +96,11 @@ public class ResetPassFragment extends BaseFragment implements View.OnClickListe
                 if (isHide == 0) {
                     edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     isHide = 1;
-                    text_hide.setText("隐藏");
+                    text_hide.setText(getResources().getString(R.string.text_hide));
                 } else if (isHide == 1) {
                     edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isHide = 0;
-                    text_hide.setText("显示");
+                    text_hide.setText(getResources().getString(R.string.text_show));
 
                 }
                 break;
@@ -109,11 +109,11 @@ public class ResetPassFragment extends BaseFragment implements View.OnClickListe
                 if (isHideOld == 0) {
                     edit_password_old.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     isHideOld = 1;
-                    text_hide_old.setText("隐藏");
+                    text_hide_old.setText(getResources().getString(R.string.text_hide));
                 } else if (isHideOld == 1) {
                     edit_password_old.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isHideOld = 0;
-                    text_hide_old.setText("显示");
+                    text_hide_old.setText(getResources().getString(R.string.text_show));
 
                 }
                 break;
@@ -122,11 +122,11 @@ public class ResetPassFragment extends BaseFragment implements View.OnClickListe
                 if (isHideConfirm == 0) {
                     edit_password_confirm.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     isHideConfirm = 1;
-                    text_hide_confirm.setText("隐藏");
+                    text_hide_confirm.setText(getResources().getString(R.string.text_hide));
                 } else if (isHideConfirm == 1) {
                     edit_password_confirm.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isHideConfirm = 0;
-                    text_hide_confirm.setText("显示");
+                    text_hide_confirm.setText(getResources().getString(R.string.text_show));
 
                 }
                 break;
@@ -166,7 +166,6 @@ public class ResetPassFragment extends BaseFragment implements View.OnClickListe
                                 getActivity().finish();
                                 EventBus.getDefault().post(Constant.ONRESUME_PERSON);
                             }
-
                         }
                     }
 

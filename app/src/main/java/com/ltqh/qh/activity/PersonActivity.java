@@ -21,8 +21,10 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -35,6 +37,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 import com.ltqh.qh.BuildConfig;
 import com.ltqh.qh.R;
+import com.ltqh.qh.base.AppContext;
 import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
@@ -44,6 +47,9 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.entity.TipPersonEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
+import com.ltqh.qh.language.LanguageType;
+import com.ltqh.qh.language.LanguageUtil;
+import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.utils.AppUtil;
 import com.ltqh.qh.utils.FileUtil;
 import com.ltqh.qh.utils.SPUtils;
@@ -63,7 +69,7 @@ import java.io.FileNotFoundException;
 
 import butterknife.BindView;
 
-public class PersonActivity extends BaseActivity implements View.OnClickListener {
+public class PersonActivity extends OBaseActivity implements View.OnClickListener {
 
     /* 头像文件 */
     private static final String IMAGE_FILE_NAME = "temp_head_image.jpg";
@@ -106,6 +112,9 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
     @BindView(R.id.layout_sign)
     RelativeLayout layout_sign;
+
+    @BindView(R.id.text_language)
+    TextView text_language;
 
     @BindView(R.id.layout_nickname)
     RelativeLayout layout_nickname;
@@ -153,6 +162,8 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
         layout_delete.setOnClickListener(this);
         text_hc.setText(AppUtil.getAppClearSize(this));
 
+        this.findViewById(R.id.layout_language).setOnClickListener(this);
+
         this.findViewById(R.id.rl_head).setOnClickListener(this);
 
       /*  PersonalCenterFragment personalCenterFragment = new PersonalCenterFragment();
@@ -162,6 +173,11 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initData() {
+        String language = SPUtils.getString(Constant.LANGUAGE);
+
+        text_language.setText(language);
+
+
         getUserInfo();
     }
 
@@ -355,8 +371,84 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
 
 
                 break;
+
+            case R.id.layout_language:
+                showItemPopWindow();
+                break;
         }
     }
+    private PopupWindow popupWindow;
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void showItemPopWindow() {
+
+
+        View view = LayoutInflater.from(this).inflate(R.layout.o_item_language_pop, null);
+
+
+        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setContentView(view);
+
+
+        LinearLayout layout_chinese=view.findViewById(R.id.layout_chinese);
+
+        layout_chinese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             String   language = LanguageType.CHINESE.getLanguage();
+                popupWindow.dismiss();
+                backgroundAlpha(1f);
+                changeLanguage(language);
+
+            }
+        });
+
+        LinearLayout layout_english=view.findViewById(R.id.layout_english);
+        layout_english.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String   language = LanguageType.ENGLISH.getLanguage();
+                changeLanguage(language);
+                popupWindow.dismiss();
+                backgroundAlpha(1f);
+            }
+        });
+        WindowManager.LayoutParams params =getWindow().getAttributes();
+        params.alpha = 0.6f;
+        getWindow().setAttributes(params);
+
+        TextView text_back = view.findViewById(R.id.text_back);
+        text_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                backgroundAlpha(1f);
+            }
+        });
+        //关键
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1f);
+            }
+        });
+
+
+
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setFocusable(true);
+        popupWindow.showAtLocation(layout_view, Gravity.CENTER, 0, 0);
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private void changeLanguage(String language) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            LanguageUtil.changeAppLanguage(AppContext.getAppContext(), language);
+        }
+        SPUtils.putString(Constant.LANGUAGE, language);
+        MainActivity.reStart(this);
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void showPopWindow() {

@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="20dp"
-        android:text="创建新账号"
+        android:text="@string/text_create_account"
         android:textColor="#939393"
         android:textSize="15sp" />
 </LinearLayout>

@@ -17,6 +17,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -27,7 +28,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 
-public class PublishActivity extends BaseActivity implements View.OnClickListener {
+public class PublishActivity extends OBaseActivity implements View.OnClickListener {
 
     @BindView(R.id.text_count)
     TextView text_count;

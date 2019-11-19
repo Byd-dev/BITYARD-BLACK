@@ -2,6 +2,7 @@ package com.ltqh.qh.Api;
 
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ltqh.qh.BuildConfig;
@@ -17,11 +18,11 @@ public class NetManger {
 
     public static NetManger instance;
 
-    public static  String BUSY="busy";
-    public static  String SUCCESS="success";
-    public static  String FAILURE="failure";
+    public static String BUSY = "busy";
+    public static String SUCCESS = "success";
+    public static String FAILURE = "failure";
 
-    private String BASE_URL="https://d.wanjinig.cn";
+    private String BASE_URL = "https://d.wanjinig.cn";
 
 
     public static NetManger getInstance() {
@@ -32,22 +33,22 @@ public class NetManger {
         return instance;
     }
 
+    /*登录*/
+    public void login(final String username, final String password, OnNetResult onNetResult) {
 
-    public void login(final String username, final String password,OnNetResult onNetResult) {
 
-
-        OkGo.<String>post(BASE_URL+"/user/communal/login")
+        OkGo.<String>post(BASE_URL + "/user/communal/login")
                 .tag(this)
                 .params(Constant.PARAM_USERNAME, username)
                 .params(Constant.PARAM_PASSWORD, password)
-                .params(Constant.PARAM_DEVICE_TYPE,Constant.STAY_DEVICE)
-                .params(Constant.PARAM_APP,"1")
-                .params(Constant.PARAM_APPLY_NAME,BuildConfig.APPLICATION_ID)
+                .params(Constant.PARAM_DEVICE_TYPE, Constant.STAY_DEVICE)
+                .params(Constant.PARAM_APP, "1")
+                .params(Constant.PARAM_APPLY_NAME, BuildConfig.APPLICATION_ID)
                 .execute(new StringCallback() {
                     @Override
                     public void onStart(Request<String, ? extends Request> request) {
                         super.onStart(request);
-                        onNetResult.onNetResult(BUSY,null);
+                        onNetResult.onNetResult(BUSY, null);
 
                     }
 
@@ -60,11 +61,11 @@ public class NetManger {
 
                             if (codeMsgEntity.getCode() == 1) {
 
-                                onNetResult.onNetResult(SUCCESS,response.body());
+                                onNetResult.onNetResult(SUCCESS, response.body());
 
 
                             } else {
-                                onNetResult.onNetResult(FAILURE,response.body());
+                                onNetResult.onNetResult(FAILURE, response.body());
 
                             }
 
@@ -74,7 +75,7 @@ public class NetManger {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        onNetResult.onNetResult(FAILURE,response.body());
+                        onNetResult.onNetResult(FAILURE, response.body());
 
 
                     }
@@ -82,16 +83,55 @@ public class NetManger {
     }
 
 
-
-    public void register(final String num, final String pass, String code,OnNetResult onNetResult) {
-        OkGo.<String>post(BASE_URL+"/user/communal/register")
-                .headers(Constant.PARAM_XX_LANGUAGE,"zh-CN")
+    /*注册*/
+    public void register(final String num, final String pass, String code, OnNetResult onNetResult) {
+        OkGo.<String>post(BASE_URL + "/user/communal/register")
+                .headers(Constant.PARAM_XX_LANGUAGE, "zh-CN")
                 .params(Constant.PARAM_USERNAME, num)
                 .params(Constant.PARAM_PASSWORD, pass)
                 .params(Constant.PARAM_VERIFICATION_CODE, code)
-                .params(Constant.PARAM_APP,"1")
+                .params(Constant.PARAM_APP, "1")
                 .params(Constant.PARAM_APPLY_NAME, BuildConfig.APPLICATION_ID)
-                .params(Constant.PARAM_IS_VALIDATE,"1")
+                .params(Constant.PARAM_IS_VALIDATE, "1")
+                .tag(this)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())) {
+                            TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
+                            if (tipEntity.getCode() == 1) {
+                                onNetResult.onNetResult(SUCCESS, response.body());
+                            } else {
+                                onNetResult.onNetResult(FAILURE, response.body());
+
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+
+
+                    }
+                });
+    }
+
+    /*忘记密码找回密码*/
+    public void reset(final String num, final String pass, String code,OnNetResult onNetResult) {
+        OkGo.<String>post(BASE_URL+"/user/communal/passwordReset")
+                .params(Constant.PARAM_USERNAME, num)
+                .params(Constant.PARAM_PASSWORD, pass)
+                .params(Constant.PARAM_VERIFICATION_CODE, code)
+                .params(Constant.PARAM_APP, BuildConfig.APPLICATION_ID)
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override
@@ -106,8 +146,6 @@ public class NetManger {
                             TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
                             if (tipEntity.getCode() == 1) {
                                 onNetResult.onNetResult(SUCCESS,response.body());
-                            }else {
-                                onNetResult.onNetResult(FAILURE,response.body());
 
                             }
 
@@ -119,14 +157,9 @@ public class NetManger {
                         super.onError(response);
                         onNetResult.onNetResult(FAILURE,response.body());
 
-
                     }
                 });
     }
-
-
-
-
 
 
 }

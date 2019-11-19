@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
@@ -101,7 +103,19 @@ public class ForgetFragment extends BaseFragment implements View.OnClickListener
                 String number = edit_number.getText().toString();
                 String password = edit_password.getText().toString();
                 String code = edit_code.getText().toString();
-                postReset(number, password, code);
+                //postReset(number, password, code);
+                NetManger.getInstance().reset(number, password, code, new OnNetResult() {
+                    @Override
+                    public void onNetResult(String state, Object response) {
+                        if (state.equals(NetManger.BUSY)){
+
+                        }else if (state.equals(NetManger.SUCCESS)){
+
+                        }else if (state.equals(NetManger.FAILURE)){
+
+                        }
+                    }
+                });
 
                 break;
 
@@ -109,11 +123,11 @@ public class ForgetFragment extends BaseFragment implements View.OnClickListener
                 if (isHide == 0) {
                     edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     isHide = 1;
-                    text_hide.setText("隐藏");
+                    text_hide.setText(getResources().getString(R.string.text_hide));
                 } else if (isHide == 1) {
                     edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isHide = 0;
-                    text_hide.setText("显示");
+                    text_hide.setText(getResources().getString(R.string.text_show));
 
                 }
                 break;

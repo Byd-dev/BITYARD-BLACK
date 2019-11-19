@@ -23,10 +23,11 @@ import com.ltqh.qh.fragment.user.PersonalCenterFragment;
 import com.ltqh.qh.fragment.user.RegisterFragment;
 import com.ltqh.qh.fragment.user.ResetPassFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
+import com.ltqh.qh.operation.base.OBaseActivity;
 
 import butterknife.BindView;
 
-public class UserActivity extends BaseActivity implements View.OnClickListener {
+public class UserActivity extends OBaseActivity implements View.OnClickListener {
     @BindView(R.id.text_register)
     TextView text_register;
 
@@ -89,27 +90,27 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
             addPersonUserFragment();
         } else if (type == Constant.FORGET) {
             addForgetFragment();
-            text_title.setText("找回密码");
+            text_title.setText(getResources().getString(R.string.text_find_pass));
             text_register.setVisibility(View.GONE);
         } else if (type == Constant.RESET) {
-            text_title.setText("修改密码");
+            text_title.setText(getResources().getString(R.string.text_change));
             text_register.setVisibility(View.GONE);
             addResetFragment();
 
         } else if (type == Constant.NICKNAME) {
-            text_title.setText("修改昵称");
+            text_title.setText(getResources().getString(R.string.text_change_nickname));
             text_register.setVisibility(View.GONE);
             addNicknameFragment();
         } else if (type == Constant.SIGNATURE) {
-            text_title.setText("修改签名");
+            text_title.setText(getResources().getString(R.string.text_sign));
             text_register.setVisibility(View.GONE);
             addSignFragment();
         } else if (type == Constant.FORUM_PUBLISH) {
-            text_title.setText("详情");
+            text_title.setText(getResources().getString(R.string.text_detail));
             text_register.setVisibility(View.GONE);
             addGuliaoDetailFragment(id);
         }else if (type == Constant.USER_MYMEAAAGE) {
-            text_title.setText("我的消息");
+            text_title.setText(getResources().getString(R.string.text_message));
             text_register.setVisibility(View.GONE);
             addMyMessageFragment();
         }
@@ -231,16 +232,16 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
                 if (isLogin == 0) {
                     ft.hide(loginFragment);
                     addRegisterFragment();
-                    text_register.setText("已有账号?");
+                    text_register.setText(getResources().getString(R.string.text_already_account));
                     text_register.setTextColor(getResources().getColor(R.color.maincolor));
-                    text_title.setText("注册");
+                    text_title.setText(getResources().getString(R.string.text_account_register));
                     isLogin = 1;
                 } else if (isLogin == 1) {
                     ft.hide(registerFragment);
                     addLoginFragment();
-                    text_register.setText("创建新账号");
+                    text_register.setText(getResources().getString(R.string.text_create_account));
                     text_register.setTextColor(getResources().getColor(R.color.text_maincolor));
-                    text_title.setText("登录");
+                    text_title.setText(getResources().getString(R.string.text_log_in));
 
                     isLogin = 0;
                 }

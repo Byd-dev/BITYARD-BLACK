@@ -543,7 +543,7 @@
                             android:layout_height="@dimen/my_menu_height"
                             android:layout_weight="1"
                             android:background="@drawable/bg_radius_shape_background"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/text_language"
@@ -581,7 +581,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="@color/home_line"
-                            android:visibility="visible" />
+                            android:visibility="gone" />
                         <RelativeLayout
 
                             android:id="@+id/layout_language2"
@@ -589,7 +589,7 @@
                             android:layout_height="@dimen/my_menu_height"
                             android:layout_weight="1"
                             android:background="@drawable/bg_radius_shape_background"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -625,7 +625,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
                             android:background="@color/home_line"
-                            android:visibility="visible" />
+                            android:visibility="gone" />
 
                         <RelativeLayout
                             android:id="@+id/layout_about"

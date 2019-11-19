@@ -795,6 +795,9 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
             case R.id.text_ketang:
 
+                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
+
+                break;
 
             case R.id.text_quanzi:
                 IntentActivity.enter(getActivity(), Constant.FEEDBACK);

@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_back"
             android:layout_marginLeft="@dimen/margin_15"
-            android:text="账户登录"
+            android:text="@string/text_account_login"
             android:textColor="@color/text_maincolor"
             android:textSize="26sp" />
     </RelativeLayout>
@@ -70,7 +70,7 @@
                 android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:drawablePadding="10dp"
-                android:hint="请输入手机号码"
+                android:hint="@string/text_account_input"
                 android:inputType="number"
                 android:maxLength="11"
                 android:padding="8dp"
@@ -111,7 +111,7 @@
                 android:layout_marginLeft="30dp"
                 android:background="@null"
                 android:drawablePadding="10dp"
-                android:hint="请输入密码"
+                android:hint="@string/text_password_input"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/text_maincolor"
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:padding="15dp"
-                android:text="显示"
+                android:text="@string/text_show"
                 android:textColor="@color/maincolor"
                 android:textSize="13sp"
                 android:visibility="visible" />
@@ -155,7 +155,7 @@
             android:layout_marginBottom="@dimen/margin_15"
             android:background="@drawable/gradient_maincolor"
             android:padding="10dp"
-            android:text="登录"
+            android:text="@string/text_log_in"
             android:textSize="15sp"
             android:textColor="@color/white"
             />
@@ -167,8 +167,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_login"
         android:layout_marginLeft="20dp"
-        android:paddingLeft="10dp"
-        android:text="忘记密码？"
+        android:paddingLeft="@dimen/margin_15"
+        android:text="@string/text_forget"
         android:textColor="@color/maincolor"
         android:textSize="13sp" />
 

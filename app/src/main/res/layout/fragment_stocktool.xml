@@ -18,7 +18,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/margin_15"
             android:layout_weight="1"
 
             >
@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="买入价格:"
+                    android:text="@string/text_price"
                     android:textSize="16sp"
                     android:textColor="@color/text_maincolor" />
 
@@ -42,7 +42,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:background="@null"
-                    android:hint="股票买入价格"
+                    android:hint="@string/text_input_price"
                     android:gravity="center"
                     android:maxLength="11"
                     android:textColor="@color/text_maincolor"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="买入数量:"
+                android:text="@string/text_amount"
                 android:textSize="16sp"
                 android:textColor="@color/text_maincolor"
 
@@ -89,7 +89,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
-                android:hint="股票买入数量"
+                android:hint="@string/text_input_amount"
                 android:maxLength="11"
                 android:gravity="center"
                 android:textColorHint="@color/text_secondcolor"
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="卖出价格:"
+                android:text="@string/text_sell_price"
                 android:textSize="16sp"
                 android:textColor="@color/text_maincolor" />
             <EditText
@@ -136,7 +136,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
-                android:hint="股票卖出价格"
+                android:hint="@string/text_sell_input_price"
                 android:maxLength="11"
                 android:gravity="center"
                 android:textColorHint="@color/text_secondcolor"
@@ -173,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="卖出数量:"
+                android:text="@string/text_sell_amount"
                 android:textSize="16sp"
                 android:textColor="@color/text_maincolor" />
             <EditText
@@ -182,7 +182,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
-                android:hint="股票卖出数量"
+                android:hint="@string/text_amount_sell_input"
                 android:maxLength="11"
                 android:gravity="center"
                 android:textColorHint="@color/text_secondcolor"
@@ -218,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="佣金比率:"
+                    android:text="@string/text_commission"
                     android:textSize="16sp"
                     android:textColor="@color/text_maincolor"/>
                 <EditText
@@ -228,7 +228,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:background="@null"
-                    android:hint="券商佣金比率"
+                    android:hint="@string/text_commission_input"
                     android:maxLength="11"
                     android:gravity="center"
                     android:textColorHint="@color/text_secondcolor"
@@ -272,7 +272,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="印花税率:"
+                    android:text="@string/text_print"
                     android:textSize="16sp"
                     android:textColor="@color/text_maincolor"/>
                 <EditText
@@ -281,7 +281,7 @@
                     android:layout_weight="1"
                     android:layout_height="50dp"
                     android:background="@null"
-                    android:hint="印花税税率"
+                    android:hint="@string/text_print_input"
                     android:gravity="center"
                     android:textColorHint="@color/text_secondcolor"
                     android:textColor="@color/text_maincolor"
@@ -327,7 +327,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="结算费率:"
+                    android:text="@string/text_settlement"
                     android:textSize="16sp"
                     android:textColor="@color/text_maincolor" />
                 <EditText
@@ -337,7 +337,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
                     android:background="@null"
-                    android:hint="结算费汇率"
+                    android:hint="@string/text_settlement_input"
                     android:maxLength="11"
                     android:gravity="center"
                     android:textColorHint="@color/text_secondcolor"
@@ -391,7 +391,7 @@
                 android:layout_height="45dp"
                 android:background="@drawable/new_order_bg_mainclor"
                 android:padding="10dp"
-                android:text="计算投资损益"
+                android:text="@string/text_calculate"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
@@ -420,7 +420,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
-                android:hint="投资损益结果"
+                android:hint="@string/text_calculate_result"
                 android:textColorHint="@color/text_maincolor"
                 android:textColor="@color/white"
                 android:textSize="16sp" />

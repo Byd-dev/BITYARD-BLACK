@@ -43,12 +43,13 @@ import com.ltqh.qh.fragment.user.PersonalCenterFragment;
 import com.ltqh.qh.fragment.user.RegisterFragment;
 import com.ltqh.qh.fragment.user.ResetPassFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
+import com.ltqh.qh.operation.base.OBaseActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 
-public class IntentActivity extends BaseActivity implements View.OnClickListener {
+public class IntentActivity extends OBaseActivity implements View.OnClickListener {
 
 
     @BindView(R.id.img_back)
@@ -131,7 +132,7 @@ public class IntentActivity extends BaseActivity implements View.OnClickListener
 
         if (type == Constant.STRATEGY) {
             addStrategyFragment();
-            text_title.setText("策略");
+            text_title.setText(getResources().getString(R.string.text_strategy));
         } else if (type == Constant.STOCKMARKET) {
             addStockFragment();
             layout_bar.setVisibility(View.GONE);
@@ -139,28 +140,28 @@ public class IntentActivity extends BaseActivity implements View.OnClickListener
 
         } else if (type == Constant.TOOL) {
             addToolFragment();
-            text_title.setText("换算");
+            text_title.setText(getResources().getString(R.string.text_conversion));
         } else if (type == Constant.LEARN) {
             addLearnFragment();
-            text_title.setText("基础知识");
+            text_title.setText(getResources().getString(R.string.text_base_knowledge));
         } else if (type == Constant.INTRODUCE) {
             addIntroduceFragment();
-            text_title.setText("品种简介");
+            text_title.setText(getResources().getString(R.string.text_type_indruction));
 
         } else if (type == Constant.SKILL) {
             addSkillFragment();
-            text_title.setText("投资技巧");
+            text_title.setText(getResources().getString(R.string.text_skill));
 
         } else if (type == Constant.STOCKTOOL) {
             addStockToolFragment();
-            text_title.setText("投资损益");
+            text_title.setText(getResources().getString(R.string.text_gain_losses));
         } else if (type == Constant.LEARNCLASS) {
             addLearnClassFragment();
-            text_title.setText("投资课堂");
+            text_title.setText(getResources().getString(R.string.text_class));
 
         } else if (type == Constant.SKILLALL) {
             addSkillAllFragment();
-            text_title.setText("工具换算");
+            text_title.setText(getResources().getString(R.string.text_conversion));
         } else if (type == Constant.FORUM) {
             addForumFragment();
             layout_bar.setVisibility(View.GONE);
@@ -201,10 +202,10 @@ public class IntentActivity extends BaseActivity implements View.OnClickListener
             stay_line.setVisibility(View.GONE);
             addBlockFragment();
         } else if (type == Constant.TYPE) {
-            text_title.setText("全部分类");
+            text_title.setText(getResources().getString(R.string.text_alltype));
             addTypeFragment();
         } else if (type == Constant.FEEDBACK) {
-            text_title.setText("意见反馈");
+            text_title.setText(getResources().getString(R.string.text_back));
             addFeedbackFragment();
         }else if (type == Constant.QUESTION) {
             //text_title.setText("趣味答题");

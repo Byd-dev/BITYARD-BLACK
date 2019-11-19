@@ -99,9 +99,15 @@ public class AppContext extends Application {
         StrictMode.setVmPolicy(builder.build());
 
 
-        Locale locale = LanguageUtil.getSystemLanguage(AppContext.getAppContext());
-        Log.d(TAG, "onCreate: "+locale.toString());
-        SPUtils.putString(Constant.LANGUAGE,locale.toString());
+        String language = SPUtils.getString(Constant.LANGUAGE);
+
+        if (language.equals("")){
+            Locale locale = LanguageUtil.getSystemLanguage(AppContext.getAppContext());
+            Log.d(TAG, "onCreate: "+locale.toString());
+            SPUtils.putString(Constant.LANGUAGE,locale.toString());
+        }
+
+
 
 
 

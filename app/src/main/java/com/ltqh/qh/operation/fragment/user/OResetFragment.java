@@ -129,11 +129,11 @@ public class OResetFragment extends BaseFragment implements View.OnClickListener
                 if (isHide == 0) {
                     edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     isHide = 1;
-                    text_hide.setText("隐藏");
+                    text_hide.setText(getResources().getString(R.string.text_hide));
                 } else if (isHide == 1) {
                     edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isHide = 0;
-                    text_hide.setText("显示");
+                    text_hide.setText(getResources().getString(R.string.text_show));
 
                 }
                 break;
