@@ -68,8 +68,7 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
     @BindView(R.id.layout_view)
     LinearLayout layout_view;
 
-    @BindView(R.id.ts_news)
-    TextSwitcher mTextSwitcherNews;
+
     private List<String> newSdata;
     private int mNewsIndex;
 
@@ -136,10 +135,10 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
             }
         });
 
-        startScheduleJob(mHandler, PERIOD, PERIOD);
+        //startScheduleJob(mHandler, PERIOD, PERIOD);
 
 
-        mTextSwitcherNews.setFactory(new ViewSwitcher.ViewFactory() {
+       /* mTextSwitcherNews.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
                 TextView textView = new TextView(getContext());
@@ -151,7 +150,7 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
                 //   textView.setSingleLine();
                 return textView;
             }
-        });
+        });*/
 
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -264,59 +263,16 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
 
 
         view.findViewById(R.id.img_add).setOnClickListener(this);
-        view.findViewById(R.id.layout_ketang).setOnClickListener(this);
-        view.findViewById(R.id.layout_shipin).setOnClickListener(this);
-        view.findViewById(R.id.layout_feedback).setOnClickListener(this);
+        view.findViewById(R.id.text_video).setOnClickListener(this);
+        view.findViewById(R.id.text_school).setOnClickListener(this);
 
 
     }
 
 
-    private void updateNews() {
-        if (newSdata != null) {
-            mNewsIndex++;
-            if (newSdata.size() > 0) {
-                if (mNewsIndex >= newSdata.size()) mNewsIndex = 0;
-                if (ListUtil.isNotEmpty(newSdata)) {
-                    mTextSwitcherNews.setText(newSdata.get(mNewsIndex).substring(23, newSdata.get(mNewsIndex).length() - 29));
-                }
-            }
-        }
-    }
-
-    private void getNews() {
-        OkGo.<String>get(Constant.URL_HOUR)
-                .tag(this)
-                .params(Constant.PARAM_LASTTIME, dateToStamp())
-                .params(Constant.PARAM_PAGESIZE, 50)
-                .cacheKey(Constant.URL_JINTOUWANG)
-                .cacheMode(CacheMode.DEFAULT)
-                .execute(new StringCallback() {
-                    @Override
-                    public void onStart(Request<String, ? extends Request> request) {
-                        super.onStart(request);
-
-                    }
-
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())) {
-
-                            EastMoneyEntity eastMoneyEntity = new Gson().fromJson(response.body(), EastMoneyEntity.class);
-                            newSdata = eastMoneyEntity.getData();
-                            mTextSwitcherNews.setText(newSdata.get(0).substring(23, newSdata.get(0).length() - 29));
-                        }
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                        // showToast("获取失败,请检查网络");
-                    }
-                });
 
 
-    }
+
 
     public String dateToStamp() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -557,19 +513,16 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
                 showPopWindow(v);
                 break;
 
-            case R.id.layout_ketang:
+            case R.id.text_school:
                 IntentActivity.enter(getActivity(),Constant.LEARNCLASS);
 
                 break;
-            case R.id.layout_shipin:
+            case R.id.text_video:
                 IntentActivity.enter(getActivity(),Constant.VIDEO);
 
                 break;
 
-            case R.id.layout_feedback:
-                IntentActivity.enter(getActivity(),Constant.FEEDBACK);
 
-                break;
         }
     }
 

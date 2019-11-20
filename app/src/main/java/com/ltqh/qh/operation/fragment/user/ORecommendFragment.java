@@ -130,7 +130,7 @@ public class ORecommendFragment extends OBaseFragment implements View.OnClickLis
             return;
         }
         qrcode_bitmap = QRCodeUtil.createQRCodeBitmap(content, 125, 125, "UTF-8",
-                "H", "1", Color.BLACK, Color.WHITE, BitmapFactory.decodeResource(getResources(), R.mipmap.lxjf_logo), 0.2F, null);
+                "H", "1", Color.BLACK, Color.WHITE, BitmapFactory.decodeResource(getResources(), R.mipmap.universex_logo), 0.2F, null);
         img_code.setImageBitmap(qrcode_bitmap);
     }
 

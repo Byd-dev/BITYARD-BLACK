@@ -22,9 +22,8 @@
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="详情"
+            android:text="@string/text_detail"
             android:textSize="@dimen/title_size"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_centerInParent="true"
             />
@@ -196,7 +195,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="阅读(0)"
+                            android:text="@string/text_read"
                             android:textColor="@color/text_secondcolor"
                             android:textSize="12sp" />
 
@@ -220,7 +219,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:text="评论"
+                android:text="@string/text_comment"
                 android:textColor="@color/text_maincolor"
                 android:textSize="13sp" />
 
@@ -262,7 +261,7 @@
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:background="@drawable/shape_bg_edit"
-            android:hint="请输入评论内容"
+            android:hint="@string/text_comment_input"
             android:textColorHint="@color/text_secondcolor"
             android:paddingLeft="5dp"
             android:textColor="@color/text_maincolor"
@@ -276,7 +275,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:layout_marginRight="10dp"
-            android:text="评论"
+            android:text="@string/text_comment"
             android:textColor="@color/text_secondcolor" />
 
 

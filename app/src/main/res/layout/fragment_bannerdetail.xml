@@ -2,34 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_maincolor"
     android:orientation="vertical">
-
-    <RelativeLayout
-        android:id="@+id/rl_head"
+    <com.ltqh.qh.view.StatusBarHeightView
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/maincolor"
-        android:layout_alignParentTop="true"
-
-        >
-
-        <ImageView
-            android:id="@+id/img_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:src="@mipmap/super_back" />
-
-        <TextView
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:use_type="use_padding_top">
+        <RelativeLayout
+            android:id="@+id/layout_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="内容"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-    </RelativeLayout>
+            android:background="@color/white"
+            android:layout_height="@dimen/bar_height">
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="15dp"
+                android:src="@mipmap/o_superback_deep" />
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_detail"
+                android:textSize="@dimen/title_size"
+                android:textColor="@color/text_maincolor"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -63,5 +66,6 @@
 
     </ScrollView>
 
+    </com.ltqh.qh.view.StatusBarHeightView>
 
 </LinearLayout>

@@ -343,6 +343,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
         view.findViewById(R.id.img_message).setOnClickListener(this);
 
+        view.findViewById(R.id.layout_question).setOnClickListener(this);
 
 
       /*  homeChatAdapter.setOnItemClick(new HomeChatAdapter.OnItemClick() {
@@ -487,6 +488,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                     textView.setText(data.get(position).getTitle());
                     TextView text_content = view.findViewById(R.id.text_content);
                     text_content.setText(data.get(position).getContent());
+                }
+            });
+
+            banner_article.setOnItemClickListener(new XBanner.OnItemClickListener() {
+                @Override
+                public void onItemClick(XBanner banner, Object model, View view, int position) {
+                    NewsDetailActivity.enter(getContext(), "BANNER", data.get(position));
+
                 }
             });
         }
@@ -826,8 +835,8 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 }
                 break;
 
-            case R.id.text_fankui:
-                IntentActivity.enter(getActivity(), Constant.FEEDBACK);
+            case R.id.layout_question:
+                Toast.makeText(getContext(),getResources().getString(R.string.text_coming),Toast.LENGTH_SHORT).show();
 
                 break;
 

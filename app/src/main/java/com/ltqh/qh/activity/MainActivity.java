@@ -135,7 +135,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
                 break;
             case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new FindFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new ChatTabFragment(), null, null);
 
                 break;
 
@@ -146,7 +146,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
                 break;
 
             case R.id.radio_3:
-                showFragment(R.id.layout_fragment_containter, new ChatTabFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new FindFragment(), null, null);
 
 
                 break;

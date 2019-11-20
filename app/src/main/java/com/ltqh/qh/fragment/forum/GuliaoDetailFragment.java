@@ -208,7 +208,7 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
                                     text_publishtime.setText(data.getPublished_time());
                                     text_content.setText(data.getPost_content());
                                     text_content.setLineSpacing(0, 1.4f);
-                                    text_comment.setText("评论" + "(" + data.getComment_count() + ")");
+                                    text_comment.setText(getResources().getString(R.string.text_comment) + "(" + data.getComment_count() + ")");
                                     int post_like = data.getPost_like();
                                     if (post_like == 1) {
                                         text_favotite.setTextColor(getResources().getColor(R.color.maincolor));
@@ -216,8 +216,8 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
                                         text_favotite.setTextColor(getResources().getColor(R.color.text_secondcolor));
                                     }
 
-                                    text_favotite.setText("赞");
-                                    text_comment_count.setText(data.getComment_count() + "评论");
+                                    text_favotite.setText(getResources().getString(R.string.text_favorite));
+                                    text_comment_count.setText(data.getComment_count() + getResources().getString(R.string.text_comment));
 
 
                                 }

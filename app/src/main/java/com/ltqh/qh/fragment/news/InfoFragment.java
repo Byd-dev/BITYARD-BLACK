@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ltqh.qh.R;
+import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.MyPagerAdapter;
@@ -164,9 +165,8 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
         }, 100);
 
 
-        view.findViewById(R.id.layout_one).setOnClickListener(this);
-        view.findViewById(R.id.layout_two).setOnClickListener(this);
-        view.findViewById(R.id.layout_three).setOnClickListener(this);
+        view.findViewById(R.id.text_video).setOnClickListener(this);
+        view.findViewById(R.id.text_school).setOnClickListener(this);
         view.findViewById(R.id.img_service).setOnClickListener(this);
 
 
@@ -206,11 +206,14 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.layout_one:
-            case R.id.layout_two:
-            case R.id.layout_three:
-                Toast.makeText(getActivity(), getResources().getString(R.string.text_coming), Toast.LENGTH_SHORT).show();
+            case R.id.text_video:
+                IntentActivity.enter(getActivity(),Constant.VIDEO);
+
+                break;
+            case R.id.text_school:
                 // OIntentActivity.enter(getActivity(), OConstant.O_CONVERSION);
+                IntentActivity.enter(getActivity(),Constant.LEARNCLASS);
+
                 break;
 
             case R.id.img_service:

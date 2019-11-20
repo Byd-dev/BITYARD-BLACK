@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseActivity;
+import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OHotEntity;
@@ -46,7 +47,7 @@ import java.io.Serializable;
 
 import butterknife.BindView;
 
-public class OUserActivity extends BaseActivity implements View.OnClickListener {
+public class OUserActivity extends OBaseActivity implements View.OnClickListener {
     private static final String TYPE = "USER_TYPE";
     private static final String DATA = "USER_DATA";
 
@@ -215,7 +216,7 @@ public class OUserActivity extends BaseActivity implements View.OnClickListener 
             addMoneyDetailFragment();
             view_line.setVisibility(View.VISIBLE);
         } else if (type == OConstant.O_MESSAGE) {
-            text_title.setText("留言板");
+            text_title.setText(getResources().getString(R.string.text_message));
             text_add.setVisibility(View.GONE);
             addMessageFragment();
         } else if (type == OConstant.O_MYFRIEND) {

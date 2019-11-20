@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.ltqh.qh.R;
-import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.entity.AlertsEntity;
 import com.ltqh.qh.entity.BannerEntity;
 import com.ltqh.qh.entity.EventEntity;
@@ -18,8 +17,9 @@ import com.ltqh.qh.fragment.news.BannerDetailFragment;
 import com.ltqh.qh.fragment.news.EventListFragment;
 import com.ltqh.qh.fragment.news.StockNewsDetailsFragment;
 import com.ltqh.qh.fragment.news.StrategyDetailsFragment;
+import com.ltqh.qh.operation.base.OBaseActivity;
 
-public class NewsDetailActivity extends BaseActivity {
+public class NewsDetailActivity extends OBaseActivity {
 
 
     public static void enter(Context context, String type, AlertsEntity.NewsListBean data) {

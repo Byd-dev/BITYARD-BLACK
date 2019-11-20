@@ -30,6 +30,7 @@ import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.config.HttpKeys;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.utils.AppJs;
 import com.ltqh.qh.utils.PhoneInfoUtil;
 import com.ltqh.qh.utils.SPUtils;
@@ -39,7 +40,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WebActivity extends BaseActivity {
+public class WebActivity extends OBaseActivity {
 
 
     private RelativeLayout layout_bar;

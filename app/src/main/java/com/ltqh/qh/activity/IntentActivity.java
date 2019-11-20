@@ -167,7 +167,7 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
             layout_bar.setVisibility(View.GONE);
             stay_line.setVisibility(View.GONE);
         } else if (type == Constant.FORUM_PUBLISH) {
-            text_title.setText("详情");
+            text_title.setText(getResources().getString(R.string.text_detail));
             layout_bar.setVisibility(View.GONE);
             stay_line.setVisibility(View.GONE);
             addGuliaoDetailFragment(id);
