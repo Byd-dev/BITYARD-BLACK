@@ -7,24 +7,26 @@
     android:orientation="vertical"
     android:scrollbars="none">
 
-    <com.ltqh.qh.view.StatusBarHeightView
+   <!-- <com.ltqh.qh.view.StatusBarHeightView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:use_type="use_padding_top">
+        app:use_type="use_padding_top">-->
 
         <RelativeLayout
 
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bar_height"
+            android:layout_height="220dp"
+            android:background="@mipmap/my_banner"
             android:orientation="horizontal">
 
             <com.ltqh.qh.view.CircleImageView
                 android:id="@+id/img_head"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/margin_15"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/user_icon"
                 android:visibility="visible" />
 
@@ -37,7 +39,7 @@
                 android:layout_toRightOf="@+id/img_head"
                 android:gravity="center"
                 android:text="@string/text_log_in"
-                android:textColor="@color/text_maincolor"
+                android:textColor="@color/white"
                 android:textSize="17sp"
                 android:visibility="visible" />
 
@@ -69,7 +71,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="@dimen/margin_15"
                     android:src="@mipmap/home_search"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
 
                 <ImageView
@@ -77,7 +79,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:visibility="gone"
                     android:src="@mipmap/home_liuyan" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/super_right_white" />
 
             </LinearLayout>
         </RelativeLayout>
@@ -92,14 +101,7 @@
                 android:orientation="vertical">
 
 
-                <com.ltqh.qh.view.XCRoundRectImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/margin_15"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/my_banner"
 
-                    />
 
 
                 <!--  <ScrollView
@@ -321,7 +323,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin_15"
                         android:visibility="gone" />
-                    <android.support.v7.widget.CardView
+                    <!--<android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
@@ -331,11 +333,11 @@
                         app:cardCornerRadius="3dp"
                         app:cardElevation="2dp"
                         app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true">
+                        app:cardUseCompatPadding="true">-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:layout_margin="@dimen/margin_15"
                         android:orientation="vertical"
                         android:visibility="visible">
 
@@ -354,6 +356,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
+                                android:drawableLeft="@mipmap/my_icon1"
                                 android:text="@string/text_message"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
@@ -369,41 +372,7 @@
 
                         </RelativeLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:background="@color/home_line"
-                            android:layout_marginLeft="@dimen/margin_15"
-                            android:layout_marginRight="@dimen/margin_15"
-                            android:visibility="visible" />
 
-                        <RelativeLayout
-                            android:id="@+id/layout_person"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/my_menu_height"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_radius_shape_background"
-                            android:visibility="visible">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/margin_15"
-                                android:drawablePadding="10dp"
-                                android:gravity="center"
-                                android:text="@string/text_setting"
-                                android:textColor="@color/text_maincolor"
-                                android:textSize="15sp" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="@dimen/margin_15"
-                                android:src="@mipmap/arrow" />
-                        </RelativeLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -429,6 +398,7 @@
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
                                 android:text="@string/text_back"
+                                android:drawableLeft="@mipmap/my_icon3"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -465,6 +435,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
+                                android:drawableLeft="@mipmap/my_icon4"
                                 android:text="@string/text_change"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
@@ -507,6 +478,7 @@
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
                                 android:text="@string/text_cache"
+                                android:drawableLeft="@mipmap/my_icon5"
                                 android:textColor="@color/text_maincolor"
                                 android:textSize="15sp" />
 
@@ -534,7 +506,48 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
+                            android:layout_marginLeft="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_15"
                             android:background="@color/home_line"
+                            android:visibility="visible" />
+
+
+
+                        <RelativeLayout
+                            android:id="@+id/layout_person"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/my_menu_height"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_radius_shape_background"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/margin_15"
+                                android:drawablePadding="10dp"
+                                android:gravity="center"
+                                android:drawableLeft="@mipmap/my_icon2"
+                                android:text="@string/text_setting"
+                                android:textColor="@color/text_maincolor"
+                                android:textSize="15sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/margin_15"
+                                android:src="@mipmap/arrow" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/home_line"
+                            android:layout_marginLeft="@dimen/margin_15"
+                            android:layout_marginRight="@dimen/margin_15"
                             android:visibility="visible" />
                         <RelativeLayout
 
@@ -671,7 +684,7 @@
 
                     </LinearLayout>
 
-                    </android.support.v7.widget.CardView>
+                  <!--  </android.support.v7.widget.CardView>-->
 
                     <View
                         android:layout_width="match_parent"
@@ -714,5 +727,5 @@
 
         </ScrollView>
 
-    </com.ltqh.qh.view.StatusBarHeightView>
+    <!--</com.ltqh.qh.view.StatusBarHeightView>-->
 </LinearLayout>

@@ -242,15 +242,15 @@
     <string name="o_lottery_three">获得的抽奖机会若不使用,活动结束视为放弃抽奖资格</string>
     <string name="o_lottery_four">本活动最终解释权归平台所有,活动期间,一旦发现客户有不正当套利行为,平台有权取消活动资格</string>
     <string name="tab_one">首页</string>
-    <string name="tab_two">资讯</string>
-    <string name="tab_three">发现</string>
+    <string name="tab_two">行情</string>
+    <string name="tab_three">币圈</string>
     <string name="tab_four">发现</string>
     <string name="tab_five">我的</string>
     <string name="text_class">课堂</string>
     <string name="text_guide">指引</string>
     <string name="text_back">反馈</string>
-    <string name="text_report">签到</string>
-    <string name="text_log_in">登录</string>
+    <string name="text_report">历史最高价</string>
+    <string name="text_log_in">立即登录</string>
     <string name="text_user">用户</string>
     <string name="text_title_one">学习文章</string>
     <string name="text_title_two">其他文章推荐</string>
@@ -326,7 +326,7 @@
     <string name="text_account_input">请输入手机号码</string>
     <string name="text_password_input">请输入密码</string>
     <string name="text_forget">忘记密码？</string>
-    <string name="text_account_register">账户注册</string>
+    <string name="text_account_register">注册</string>
     <string name="text_create_account">创建新账号</string>
     <string name="text_already_account">已有账号?</string>
     <string name="text_coming">敬请期待!</string>
@@ -337,5 +337,12 @@
     <string name="text_favorite">赞</string>
     <string name="text_read">阅读(0)</string>
     <string name="text_service">客服</string>
+    <string name="text_err">服务器出小差了</string>
+    <string name="text_attention">已关注</string>
+    <string name="text_focus">关注</string>
+    <string name="text_warning">举报</string>
+    <string name="text_edit">编辑</string>
+    <string name="text_add">立即添加</string>
+    <string name="text_cny">当前价(CNY)</string>
 
 </resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/o_market_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/o_bar_f0f1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:text="商品名称"
+                android:textColor="#82899C"
+                android:textSize="13sp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/text_cny"
+                android:textColor="#82899C"
+                android:textSize="13sp"
+
+                />
+
+            <LinearLayout
+                android:id="@+id/layout_up_down"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_up_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="涨跌幅"
+                    android:textColor="#82899C"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/img_up_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/o_market_up"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!--   <android.support.v4.widget.SwipeRefreshLayout
+               android:id="@+id/swipeRefreshLayout"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+
+
+               >-->
+
+
+        <com.ltqh.qh.view.MyScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+
+                        />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layout_addbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/o_add"
+                        android:drawablePadding="@dimen/margin"
+                        android:text="添加自选"
+                        android:textColor="@color/o_text_8289"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.ltqh.qh.view.MyScrollView>
+
+
+        <!--  </android.support.v4.widget.SwipeRefreshLayout>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/o_zanwuguanzhu_tu"
+            android:drawablePadding="@dimen/margin_15"
+            android:gravity="center"
+            android:text="暂无关注"
+            android:textSize="13sp"
+            android:textColor="@color/o_text_2d2ef"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/text_add"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_15"
+
+            >
+
+            <TextView
+                android:layout_width="102dp"
+                android:layout_height="32dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/gradient_maincolor"
+                android:gravity="center"
+                android:text="@string/text_add"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

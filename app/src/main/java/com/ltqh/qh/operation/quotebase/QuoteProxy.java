@@ -182,6 +182,16 @@ public class QuoteProxy {
     private List<String> foreignList;
     private List<String> stockindexList;
     private List<String> domesList;
+    private List<String> digitalList;
+
+    public List<String> getDigitalList() {
+        return digitalList;
+    }
+
+    public void setDigitalList(List<String> digitalList) {
+        this.digitalList = digitalList;
+    }
+
     private OPositionEntity oPositionEntity;
 
     private OBankListEntity oBankListEntity;
@@ -256,10 +266,22 @@ public class QuoteProxy {
         this.domesList = domesList;
     }
 
+
+
     private List<String> dataList;
     private List<String> foreigndataList;
     private List<String> stockindexdataList;
     private List<String> domesdataList;
+    private List<String> digitalDataList;
+
+    public List<String> getDigitalDataList() {
+        return digitalDataList;
+    }
+
+    public void setDigitalDataList(List<String> digitalDataList) {
+        this.digitalDataList = digitalDataList;
+    }
+
     private Set<String> minelist;
 
 
@@ -301,6 +323,9 @@ public class QuoteProxy {
     public void setDomesdataList(List<String> domesdataList) {
         this.domesdataList = domesdataList;
     }
+
+
+
 
     private String foreignStr;
 

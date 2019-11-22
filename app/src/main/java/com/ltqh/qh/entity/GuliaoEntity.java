@@ -192,6 +192,17 @@ public class GuliaoEntity {
             private int report_status;
             private UserBean user;
 
+            private boolean focus;
+
+
+            public boolean isFocus() {
+                return false;
+            }
+
+            public void setFocus(boolean focus) {
+                this.focus = focus;
+            }
+
             public int getId() {
                 return id;
             }

@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
+import com.ltqh.qh.utils.Util;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
@@ -82,6 +84,9 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
     @BindView(R.id.img_add)
     ImageView img_add;
 
+    @BindView(R.id.bar)
+    LinearLayout layout_bar;
+
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
     private GuLiaolistAdapter guLiaolistAdapter;
@@ -111,6 +116,13 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
 
             EventBus.getDefault().register(this);
         }
+
+
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
+
+        layout_bar.setLayoutParams(params);
 
         guLiaolistAdapter = new GuLiaolistAdapter(getActivity());
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -510,7 +522,9 @@ public class ChatTabFragment extends OBaseFragment implements View.OnClickListen
 
 
             case R.id.img_add:
-                showPopWindow(v);
+                PublishActivity.enter(getActivity());
+
+                //showPopWindow(v);
                 break;
 
             case R.id.text_school:

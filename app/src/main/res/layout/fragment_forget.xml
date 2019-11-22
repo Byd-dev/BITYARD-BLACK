@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -153,12 +152,12 @@
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/btn_height"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="@dimen/margin_15"
-            android:background="@drawable/new_order_bg_mainclor"
+            android:background="@drawable/gradient_maincolor"
             android:padding="10dp"
             android:text="@string/text_submit"
             android:textColor="@color/white"

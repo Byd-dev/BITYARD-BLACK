@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/layout_bar"
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:background="@color/maincolor"
         android:layout_height="@dimen/bar_height">
         <ImageView
             android:id="@+id/img_back"
@@ -15,14 +15,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="15dp"
-            android:src="@mipmap/o_superback_deep" />
+            android:src="@mipmap/super_back" />
         <TextView
             android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="登录"
             android:textSize="@dimen/title_size"
-            android:textColor="@color/text_maincolor"
+            android:textColor="@color/white"
             android:layout_centerInParent="true"
             />
 

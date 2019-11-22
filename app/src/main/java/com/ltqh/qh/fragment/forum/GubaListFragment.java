@@ -17,6 +17,8 @@ import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.GubaEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseActivity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -25,7 +27,7 @@ import com.lzy.okgo.request.base.Request;
 
 import butterknife.BindView;
 
-public class GubaListFragment extends BaseFragment {
+public class GubaListFragment extends OBaseFragment {
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
@@ -36,6 +38,11 @@ public class GubaListFragment extends BaseFragment {
     private GubalistAdapter gubalistAdapter;
     private LoginEntity loginEntity;
 
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {

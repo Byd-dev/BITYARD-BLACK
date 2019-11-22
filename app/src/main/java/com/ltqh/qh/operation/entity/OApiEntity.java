@@ -29,7 +29,7 @@ public class OApiEntity implements Serializable {
     private List<ForeignCommdsBean> foreignCommds;
     private List<StockIndexCommdsBean> stockIndexCommds;
     private List<DomesticCommdsBean> domesticCommds;
-    private List<?> digitalCommds;
+    private List<DigitalCommdsBean> digitalCommds;
     private List<?> metalCommds;
     private String contracts;
     private String app;
@@ -136,11 +136,11 @@ public class OApiEntity implements Serializable {
         this.domesticCommds = domesticCommds;
     }
 
-    public List<?> getDigitalCommds() {
+    public List<DigitalCommdsBean> getDigitalCommds() {
         return digitalCommds;
     }
 
-    public void setDigitalCommds(List<?> digitalCommds) {
+    public void setDigitalCommds(List<DigitalCommdsBean> digitalCommds) {
         this.digitalCommds = digitalCommds;
     }
 
@@ -2325,4 +2325,548 @@ public class OApiEntity implements Serializable {
             }
         }
     }
+
+
+
+    public static class DigitalCommdsBean implements Serializable{
+        @Override
+        public String toString() {
+            return "DomesticCommdsBean{" +
+                    "amClearingTime='" + amClearingTime + '\'' +
+                    ", amCloseTime='" + amCloseTime + '\'' +
+                    ", amOpenTime='" + amOpenTime + '\'' +
+                    ", amTradeTime='" + amTradeTime + '\'' +
+                    ", amWarningTime='" + amWarningTime + '\'' +
+                    ", classifyCode='" + classifyCode + '\'' +
+                    ", classifyName='" + classifyName + '\'' +
+                    ", code='" + code + '\'' +
+                    ", commodityId='" + commodityId + '\'' +
+                    ", contractCode='" + contractCode + '\'' +
+                    ", createTime=" + createTime +
+                    ", currency='" + currency + '\'' +
+                    ", exchange='" + exchange + '\'' +
+                    ", favor=" + favor +
+                    ", foreign=" + foreign +
+                    ", holiday='" + holiday + '\'' +
+                    ", id=" + id +
+                    ", moneyType=" + moneyType +
+                    ", name='" + name + '\'' +
+                    ", niteClearingTime='" + niteClearingTime + '\'' +
+                    ", niteCloseTime='" + niteCloseTime + '\'' +
+                    ", niteOpenTime='" + niteOpenTime + '\'' +
+                    ", niteTradeTime='" + niteTradeTime + '\'' +
+                    ", niteWarningTime='" + niteWarningTime + '\'' +
+                    ", offset=" + offset +
+                    ", order=" + order +
+                    ", pmClearingTime='" + pmClearingTime + '\'' +
+                    ", pmCloseTime='" + pmCloseTime + '\'' +
+                    ", pmOpenTime='" + pmOpenTime + '\'' +
+                    ", pmTradeTime='" + pmTradeTime + '\'' +
+                    ", pmWarningTime='" + pmWarningTime + '\'' +
+                    ", price=" + price +
+                    ", priceChange=" + priceChange +
+                    ", priceDigit=" + priceDigit +
+                    ", range=" + range +
+                    ", remark='" + remark + '\'' +
+                    ", spread=" + spread +
+                    ", valid=" + valid +
+                    '}';
+        }
+
+        /**
+         * amClearingTime : 11:30:00
+         * amCloseTime : 11:30:00
+         * amOpenTime : 09:00:00
+         * amTradeTime : 09:00:00
+         * amWarningTime : 11:30:00
+         * classifyCode : 1
+         * classifyName : 内盘商品
+         * code : RU
+         * commodityId : 10007
+         * contractCode :
+         * createTime : {"date":26,"day":1,"hours":19,"minutes":51,"month":9,"seconds":14,"time":1445860274427,"timezoneOffset":-480,"year":115}
+         * currency : CNY
+         * exchange : 上期所
+         * favor : false
+         * foreign : false
+         * holiday : 2019-05-01 09:00:00,2019-05-04 22:55:00
+         * id : 10076
+         * moneyType : 0
+         * name : 天然橡胶
+         * niteClearingTime : 22:55:00
+         * niteCloseTime : 23:00:00
+         * niteOpenTime : 21:00:00
+         * niteTradeTime : 21:00:00
+         * niteWarningTime : 22:50:00
+         * offset : 0
+         * order : 4
+         * pmClearingTime : 14:55:00
+         * pmCloseTime : 15:00:00
+         * pmOpenTime : 13:30:00
+         * pmTradeTime : 13:30:00
+         * pmWarningTime : 14:50:00
+         * price : 10
+         * priceChange : 5
+         * priceDigit : 0
+         * range : false
+         * remark :
+         * spread : 0
+         * valid : true
+         */
+
+        private String amClearingTime;
+        private String amCloseTime;
+        private String amOpenTime;
+        private String amTradeTime;
+        private String amWarningTime;
+        private String classifyCode;
+        private String classifyName;
+        private String code;
+        private String commodityId;
+        private String contractCode;
+        private CreateTimeBeanXX createTime;
+        private String currency;
+        private String exchange;
+        private boolean favor;
+        private boolean foreign;
+        private String holiday;
+        private int id;
+        private int moneyType;
+        private String name;
+        private String niteClearingTime;
+        private String niteCloseTime;
+        private String niteOpenTime;
+        private String niteTradeTime;
+        private String niteWarningTime;
+        private int offset;
+        private int order;
+        private String pmClearingTime;
+        private String pmCloseTime;
+        private String pmOpenTime;
+        private String pmTradeTime;
+        private String pmWarningTime;
+        private String price;
+        private String priceChange;
+        private int priceDigit;
+        private boolean range;
+        private String remark;
+        private double spread;
+        private boolean valid;
+
+        public String getAmClearingTime() {
+            return amClearingTime;
+        }
+
+        public void setAmClearingTime(String amClearingTime) {
+            this.amClearingTime = amClearingTime;
+        }
+
+        public String getAmCloseTime() {
+            return amCloseTime;
+        }
+
+        public void setAmCloseTime(String amCloseTime) {
+            this.amCloseTime = amCloseTime;
+        }
+
+        public String getAmOpenTime() {
+            return amOpenTime;
+        }
+
+        public void setAmOpenTime(String amOpenTime) {
+            this.amOpenTime = amOpenTime;
+        }
+
+        public String getAmTradeTime() {
+            return amTradeTime;
+        }
+
+        public void setAmTradeTime(String amTradeTime) {
+            this.amTradeTime = amTradeTime;
+        }
+
+        public String getAmWarningTime() {
+            return amWarningTime;
+        }
+
+        public void setAmWarningTime(String amWarningTime) {
+            this.amWarningTime = amWarningTime;
+        }
+
+        public String getClassifyCode() {
+            return classifyCode;
+        }
+
+        public void setClassifyCode(String classifyCode) {
+            this.classifyCode = classifyCode;
+        }
+
+        public String getClassifyName() {
+            return classifyName;
+        }
+
+        public void setClassifyName(String classifyName) {
+            this.classifyName = classifyName;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getCommodityId() {
+            return commodityId;
+        }
+
+        public void setCommodityId(String commodityId) {
+            this.commodityId = commodityId;
+        }
+
+        public String getContractCode() {
+            return contractCode;
+        }
+
+        public void setContractCode(String contractCode) {
+            this.contractCode = contractCode;
+        }
+
+        public CreateTimeBeanXX getCreateTime() {
+            return createTime;
+        }
+
+        public void setCreateTime(CreateTimeBeanXX createTime) {
+            this.createTime = createTime;
+        }
+
+        public String getCurrency() {
+            return currency;
+        }
+
+        public void setCurrency(String currency) {
+            this.currency = currency;
+        }
+
+        public String getExchange() {
+            return exchange;
+        }
+
+        public void setExchange(String exchange) {
+            this.exchange = exchange;
+        }
+
+        public boolean isFavor() {
+            return favor;
+        }
+
+        public void setFavor(boolean favor) {
+            this.favor = favor;
+        }
+
+        public boolean isForeign() {
+            return foreign;
+        }
+
+        public void setForeign(boolean foreign) {
+            this.foreign = foreign;
+        }
+
+        public String getHoliday() {
+            return holiday;
+        }
+
+        public void setHoliday(String holiday) {
+            this.holiday = holiday;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getMoneyType() {
+            return moneyType;
+        }
+
+        public void setMoneyType(int moneyType) {
+            this.moneyType = moneyType;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getNiteClearingTime() {
+            return niteClearingTime;
+        }
+
+        public void setNiteClearingTime(String niteClearingTime) {
+            this.niteClearingTime = niteClearingTime;
+        }
+
+        public String getNiteCloseTime() {
+            return niteCloseTime;
+        }
+
+        public void setNiteCloseTime(String niteCloseTime) {
+            this.niteCloseTime = niteCloseTime;
+        }
+
+        public String getNiteOpenTime() {
+            return niteOpenTime;
+        }
+
+        public void setNiteOpenTime(String niteOpenTime) {
+            this.niteOpenTime = niteOpenTime;
+        }
+
+        public String getNiteTradeTime() {
+            return niteTradeTime;
+        }
+
+        public void setNiteTradeTime(String niteTradeTime) {
+            this.niteTradeTime = niteTradeTime;
+        }
+
+        public String getNiteWarningTime() {
+            return niteWarningTime;
+        }
+
+        public void setNiteWarningTime(String niteWarningTime) {
+            this.niteWarningTime = niteWarningTime;
+        }
+
+        public int getOffset() {
+            return offset;
+        }
+
+        public void setOffset(int offset) {
+            this.offset = offset;
+        }
+
+        public int getOrder() {
+            return order;
+        }
+
+        public void setOrder(int order) {
+            this.order = order;
+        }
+
+        public String getPmClearingTime() {
+            return pmClearingTime;
+        }
+
+        public void setPmClearingTime(String pmClearingTime) {
+            this.pmClearingTime = pmClearingTime;
+        }
+
+        public String getPmCloseTime() {
+            return pmCloseTime;
+        }
+
+        public void setPmCloseTime(String pmCloseTime) {
+            this.pmCloseTime = pmCloseTime;
+        }
+
+        public String getPmOpenTime() {
+            return pmOpenTime;
+        }
+
+        public void setPmOpenTime(String pmOpenTime) {
+            this.pmOpenTime = pmOpenTime;
+        }
+
+        public String getPmTradeTime() {
+            return pmTradeTime;
+        }
+
+        public void setPmTradeTime(String pmTradeTime) {
+            this.pmTradeTime = pmTradeTime;
+        }
+
+        public String getPmWarningTime() {
+            return pmWarningTime;
+        }
+
+        public void setPmWarningTime(String pmWarningTime) {
+            this.pmWarningTime = pmWarningTime;
+        }
+
+        public String getPrice() {
+            return price;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
+        }
+
+        public String getPriceChange() {
+            return priceChange;
+        }
+
+        public void setPriceChange(String priceChange) {
+            this.priceChange = priceChange;
+        }
+
+        public int getPriceDigit() {
+            return priceDigit;
+        }
+
+        public void setPriceDigit(int priceDigit) {
+            this.priceDigit = priceDigit;
+        }
+
+        public boolean isRange() {
+            return range;
+        }
+
+        public void setRange(boolean range) {
+            this.range = range;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public double getSpread() {
+            return spread;
+        }
+
+        public void setSpread(double spread) {
+            this.spread = spread;
+        }
+
+        public boolean isValid() {
+            return valid;
+        }
+
+        public void setValid(boolean valid) {
+            this.valid = valid;
+        }
+
+        public static class CreateTimeBeanXX implements Serializable{
+            /**
+             * date : 26
+             * day : 1
+             * hours : 19
+             * minutes : 51
+             * month : 9
+             * seconds : 14
+             * time : 1445860274427
+             * timezoneOffset : -480
+             * year : 115
+             */
+
+            private int date;
+            private int day;
+            private int hours;
+            private int minutes;
+            private int month;
+            private int seconds;
+            private long time;
+            private int timezoneOffset;
+            private int year;
+
+            @Override
+            public String toString() {
+                return "CreateTimeBeanXX{" +
+                        "date=" + date +
+                        ", day=" + day +
+                        ", hours=" + hours +
+                        ", minutes=" + minutes +
+                        ", month=" + month +
+                        ", seconds=" + seconds +
+                        ", time=" + time +
+                        ", timezoneOffset=" + timezoneOffset +
+                        ", year=" + year +
+                        '}';
+            }
+
+            public int getDate() {
+                return date;
+            }
+
+            public void setDate(int date) {
+                this.date = date;
+            }
+
+            public int getDay() {
+                return day;
+            }
+
+            public void setDay(int day) {
+                this.day = day;
+            }
+
+            public int getHours() {
+                return hours;
+            }
+
+            public void setHours(int hours) {
+                this.hours = hours;
+            }
+
+            public int getMinutes() {
+                return minutes;
+            }
+
+            public void setMinutes(int minutes) {
+                this.minutes = minutes;
+            }
+
+            public int getMonth() {
+                return month;
+            }
+
+            public void setMonth(int month) {
+                this.month = month;
+            }
+
+            public int getSeconds() {
+                return seconds;
+            }
+
+            public void setSeconds(int seconds) {
+                this.seconds = seconds;
+            }
+
+            public long getTime() {
+                return time;
+            }
+
+            public void setTime(long time) {
+                this.time = time;
+            }
+
+            public int getTimezoneOffset() {
+                return timezoneOffset;
+            }
+
+            public void setTimezoneOffset(int timezoneOffset) {
+                this.timezoneOffset = timezoneOffset;
+            }
+
+            public int getYear() {
+                return year;
+            }
+
+            public void setYear(int year) {
+                this.year = year;
+            }
+        }
+    }
+
 }

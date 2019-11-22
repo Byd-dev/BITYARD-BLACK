@@ -7,14 +7,16 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.MyPagerAdapter;
-import com.ltqh.qh.base.BaseFragment;
-import com.ltqh.qh.fragment.news.AlertsFragment;
-import com.ltqh.qh.fragment.news.DubiFragment;
-import com.ltqh.qh.fragment.news.FinancialCalendarFragment;
-import com.ltqh.qh.fragment.news.LiveBannerFragment;
+import com.ltqh.qh.operation.base.OBaseFragment;
+import com.ltqh.qh.operation.fragment.market.ODigitalMarketFragment;
+import com.ltqh.qh.operation.fragment.market.OForeignMarketFragment;
+import com.ltqh.qh.operation.fragment.market.OMarketFragment;
+import com.ltqh.qh.operation.fragment.market.OStockMarketFragment;
 import com.ltqh.qh.view.EnhanceTabLayout;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +24,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 
-public class AllMarketTabFragment extends BaseFragment implements View.OnClickListener{
+public class AllMarketTabFragment extends OBaseFragment implements View.OnClickListener{
 
 
     private final static int PERIOD = 5 * 1000; // 5s
@@ -37,7 +39,8 @@ public class AllMarketTabFragment extends BaseFragment implements View.OnClickLi
 
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-
+    @BindView(R.id.bar)
+    LinearLayout layout_bar;
     private String Titles[] = new String[]{"国内", "国外"};
 
 
@@ -54,7 +57,11 @@ public class AllMarketTabFragment extends BaseFragment implements View.OnClickLi
 
 
     protected void initView(View view) {
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
 
+        layout_bar.setLayoutParams(params);
 
         home_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -90,8 +97,8 @@ public class AllMarketTabFragment extends BaseFragment implements View.OnClickLi
     }
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-        myPagerAdapter.addFragment(new StockSlideFragment());
-        myPagerAdapter.addFragment(new StockForeignFragment());
+        myPagerAdapter.addFragment(new OMarketFragment());
+        myPagerAdapter.addFragment(new ODigitalMarketFragment());
 
         viewPager.setAdapter(myPagerAdapter);
     }
@@ -103,6 +110,11 @@ public class AllMarketTabFragment extends BaseFragment implements View.OnClickLi
 
         startScheduleJob(mHandler, PERIOD, PERIOD);
 
+
+    }
+
+    @Override
+    protected void onLazyLoad() {
 
     }
 

@@ -342,7 +342,7 @@ public class OHomeFragment extends OBaseFragment implements View.OnClickListener
                         if (!TextUtils.isEmpty(response.body())) {
                             OApiEntity oApiEntity = new Gson().fromJson(response.body(), OApiEntity.class);
                             QuoteProxy.getInstance().setoApiEntity(oApiEntity);
-                            Log.d("print", "onSuccess:458:   " + oApiEntity);
+                            Log.d("print", "onSuccess:458:   " + response.body());
 
                         }
 

@@ -94,7 +94,7 @@ public class SplashActivity extends Activity implements OnResultBack {
             SwitchMainEnter.getInstance().goToWeb(activity, jsonEntity.getUrl(), null);
             activity.finish();
         } else if (result == false) {
-           // GuideActivity.enter(activity);
+            //GuideActivity.enter(activity);
             MainActivity.enter(activity, MainActivity.TAB_TYPE.TAB_HOME);
 
             activity.finish();

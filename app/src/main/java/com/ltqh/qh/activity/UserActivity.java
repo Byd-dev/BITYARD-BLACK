@@ -23,7 +23,9 @@ import com.ltqh.qh.fragment.user.PersonalCenterFragment;
 import com.ltqh.qh.fragment.user.RegisterFragment;
 import com.ltqh.qh.fragment.user.ResetPassFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
+import com.ltqh.qh.operation.activity.SecondActivity;
 import com.ltqh.qh.operation.base.OBaseActivity;
+import com.ltqh.qh.view.StatusBarUtil;
 
 import butterknife.BindView;
 
@@ -73,7 +75,13 @@ public class UserActivity extends OBaseActivity implements View.OnClickListener 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStatusBar(getResources().getColor(R.color.white));
+        //沉浸式
+       // StatusBarUtil.setRootViewFitsSystemWindows(this, false);
+        //浅色标题
+       // StatusBarUtil.setStatusBarDarkTheme(UserActivity.this, false);
+
+        setStatusBar(getResources().getColor(R.color.maincolor));
+
 
 
         type = getIntent().getIntExtra(TYPE, 0);

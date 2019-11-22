@@ -157,6 +157,7 @@ public class GuideActivity extends OBaseActivity implements View.OnClickListener
                     public void onSuccess(Response<String> response) {
 
                         if (!TextUtils.isEmpty(response.body())) {
+
                             OApiEntity oApiEntity = new Gson().fromJson(response.body(), OApiEntity.class);
 
                             QuoteProxy.getInstance().setoApiEntity(oApiEntity);

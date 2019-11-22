@@ -22,6 +22,7 @@ import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.GubaEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -30,7 +31,7 @@ import com.lzy.okgo.request.base.Request;
 
 import butterknife.BindView;
 
-public class ForumGadioFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class ForumGadioFragment extends OBaseFragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
@@ -49,6 +50,12 @@ public class ForumGadioFragment extends BaseFragment implements RadioGroup.OnChe
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
+
     @Override
     protected void initView(View view) {
 

@@ -5,10 +5,11 @@
     <color name="colorAccent">#5576F7</color>
     <color name="bar_color">#8A5DED</color>
 
-    <color name="maincolor">#4E51ED</color>
+    <color name="maincolor">#4060FE</color>
     <color name="tranmaincolor">#AEBCF3</color>
 
-    <color name="deepmaincolor">#6320DE</color>
+
+    <color name="deepmaincolor">#4060FE</color>
 
     <color name="stock_index_red">#E83A3A</color>
     <color name="stock_index_green">#279D1B</color>
@@ -18,8 +19,8 @@
     <color name="tab_color">#242424</color>
     <color name="tab_color_normal">#999999</color>
 
-    <color name="redcolor">#FF566C</color>
-    <color name="greencolor">#0FBD97</color>
+    <color name="redcolor">#D41E23</color>
+    <color name="greencolor">#0DB57F</color>
     <color name="second_color">#FF333333</color>
 
     <color name="home_line">#E0E0E0</color>
@@ -97,5 +98,6 @@
     <color name="o_text_dede">#dedede</color>
     <color name="o_text_f5fa">#ffdd00</color>
     <color name="o_text_ff6c">#ff6c00</color>
+    <color name="color_4060">#334060FE</color>
 
 </resources>

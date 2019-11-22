@@ -52,6 +52,7 @@ public class OMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private List<OApiEntity.ForeignCommdsBean> foreignCommds;
     private List<OApiEntity.DomesticCommdsBean> domesticCommds;
     private List<OApiEntity.StockIndexCommdsBean> stockIndexCommds;
+    private List<OApiEntity.DigitalCommdsBean> digitalCommdsBeans;
     private Context context;
     private String key;
     private boolean openTradeTime;
@@ -78,6 +79,12 @@ public class OMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void setForeignDatas(String key, List<OApiEntity.ForeignCommdsBean> foreignCommds) {
         this.key = key;
         this.foreignCommds = foreignCommds;
+        this.notifyDataSetChanged();
+    }
+
+    public void setDigitalDatas(String key, List<OApiEntity.DigitalCommdsBean> digitalCommdsBeans) {
+        this.key = key;
+        this.digitalCommdsBeans = digitalCommdsBeans;
         this.notifyDataSetChanged();
     }
 
@@ -159,7 +166,9 @@ public class OMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
 
+
             String s = datas.get(position);
+
             String[] split = s.split(",");
 
             String marketName = null;
@@ -169,13 +178,20 @@ public class OMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             String marketCode=null;
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
-            String change = split[1];
+            String change = null;
+            String last=null;
+            String newprice=null;
+            if (split.length>1){
+                change = split[1];
+                last = split[2];
+                newprice = split[3];
+            }else {
+                change = split[0];
+                last = split[0];
+                newprice = split[0];
+            }
 
-            String last = split[2];
 
-            lastPrice = last;
-
-            String newprice = split[3];
 
 
             Integer flag = Integer.valueOf(change);
@@ -264,6 +280,31 @@ public class OMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
 
+            } else if (key.equals(OUserConfig.P_DIGITAL)) {
+                for (OApiEntity.DigitalCommdsBean digitalCommdsBean : digitalCommdsBeans) {
+                    if (split[0].startsWith(digitalCommdsBean.getCode())) {
+                        marketName = digitalCommdsBean.getName() ;
+                        marketCode= split[0];
+                        String niteWarningTime = digitalCommdsBean.getNiteWarningTime();
+                        try {
+                            openTradeTime = ODateUtil.isOpenTradeTime(sdf.parse(sdf.format(new Date())), sdf.parse(digitalCommdsBean.getAmTradeTime()), sdf.parse(digitalCommdsBean.getAmWarningTime()));
+                            openTradeTime1 = ODateUtil.isOpenTradeTime(sdf.parse(sdf.format(new Date())), sdf.parse(digitalCommdsBean.getPmTradeTime()), sdf.parse(digitalCommdsBean.getPmWarningTime()));
+                            openTradeTime2 = ODateUtil.isOpenTradeTime(sdf.parse(sdf.format(new Date())), sdf.parse(digitalCommdsBean.getNiteTradeTime()), sdf.parse(digitalCommdsBean.getNiteWarningTime()));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        String am = niteWarningTime.substring(0, 2);
+
+                        int i = Integer.valueOf(am);
+                        if (i <= 5) {
+                            marketTime = digitalCommdsBean.getAmOpenTime().substring(0, 5) + "~次日" + niteWarningTime.substring(0, 5);
+                        } else {
+                            marketTime = digitalCommdsBean.getAmOpenTime().substring(0, 5) + "~夜间" + niteWarningTime.substring(0, 5);
+                        }
+                    }
+                }
+
             } else if (key.equals(OUserConfig.P_ALLDEX) || key.equals(OUserConfig.P_MINEDEX)) {
                 List<OApiEntity.ForeignCommdsBean> foreignCommds = oApiEntity.getForeignCommds();
                 for (OApiEntity.ForeignCommdsBean data : foreignCommds) {
@@ -316,6 +357,31 @@ public class OMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
                 List<OApiEntity.DomesticCommdsBean> domesticCommds = oApiEntity.getDomesticCommds();
                 for (OApiEntity.DomesticCommdsBean data : domesticCommds) {
+                    if (split[0].startsWith(data.getCode())) {
+                        marketName = data.getName() ;
+                        marketCode= split[0];
+                        try {
+                            openTradeTime = ODateUtil.isOpenTradeTime(sdf.parse(sdf.format(new Date())), sdf.parse(data.getAmTradeTime()), sdf.parse(data.getAmWarningTime()));
+                            openTradeTime1 = ODateUtil.isOpenTradeTime(sdf.parse(sdf.format(new Date())), sdf.parse(data.getPmTradeTime()), sdf.parse(data.getPmWarningTime()));
+                            openTradeTime2 = ODateUtil.isOpenTradeTime(sdf.parse(sdf.format(new Date())), sdf.parse(data.getNiteTradeTime()), sdf.parse(data.getNiteWarningTime()));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        String niteWarningTime = data.getNiteWarningTime();
+                        String am = niteWarningTime.substring(0, 2);
+
+                        int i = Integer.valueOf(am);
+                        if (i <= 5) {
+                            marketTime = data.getAmOpenTime().substring(0, 5) + "~次日" + niteWarningTime.substring(0, 5);
+                        } else {
+                            marketTime = data.getAmOpenTime().substring(0, 5) + "~夜间" + niteWarningTime.substring(0, 5);
+                        }
+                    }
+                }
+
+                List<OApiEntity.DigitalCommdsBean> digitalCommds = oApiEntity.getDigitalCommds();
+                for (OApiEntity.DigitalCommdsBean data : digitalCommds) {
                     if (split[0].startsWith(data.getCode())) {
                         marketName = data.getName() ;
                         marketCode= split[0];

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.ltqh.qh.R;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OApiEntity;
+import com.ltqh.qh.operation.utils.ODateUtil;
 import com.ltqh.qh.utils.SPUtils;
 
 import java.text.DecimalFormat;
@@ -45,6 +46,8 @@ public class OMarketEditAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private List<OApiEntity.ForeignCommdsBean> foreignCommds;
     private List<OApiEntity.DomesticCommdsBean> domesticCommds;
     private List<OApiEntity.StockIndexCommdsBean> stockIndexCommds;
+    private List<OApiEntity.DigitalCommdsBean> digitalCommdsBeans;
+
     private Context context;
     private String key;
     private String[] code;
@@ -93,7 +96,11 @@ public class OMarketEditAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.datas = datas;
         this.notifyDataSetChanged();
     }
-
+    public void setDigitalDatas(String key, List<OApiEntity.DigitalCommdsBean> digitalCommdsBeans) {
+        this.key = key;
+        this.digitalCommdsBeans = digitalCommdsBeans;
+        this.notifyDataSetChanged();
+    }
 
     public void setDatas(Set<String> addList) {
         this.setList = addList;
@@ -221,7 +228,26 @@ public class OMarketEditAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     }
                 }
 
-            } else if (key.equals(OUserConfig.P_ALLDEX)) {
+            }
+            else if (key.equals(OUserConfig.P_DIGITAL)) {
+                for (OApiEntity.DigitalCommdsBean digitalCommdsBean : digitalCommdsBeans) {
+                    if (split[0].startsWith(digitalCommdsBean.getCode())) {
+                        marketName = digitalCommdsBean.getName() + split[0];
+                        String niteWarningTime = digitalCommdsBean.getNiteWarningTime();
+
+                        String am = niteWarningTime.substring(0, 2);
+
+                        int i = Integer.valueOf(am);
+                        if (i <= 5) {
+                            marketTime = digitalCommdsBean.getAmOpenTime().substring(0, 5) + "~次日" + niteWarningTime.substring(0, 5);
+                        } else {
+                            marketTime = digitalCommdsBean.getAmOpenTime().substring(0, 5) + "~夜间" + niteWarningTime.substring(0, 5);
+                        }
+                    }
+                }
+
+            }
+            else if (key.equals(OUserConfig.P_ALLDEX)) {
                 List<OApiEntity.ForeignCommdsBean> foreignCommds = oApiEntity.getForeignCommds();
                 for (OApiEntity.ForeignCommdsBean data : foreignCommds) {
                     if (split[0].startsWith(data.getCode())) {
@@ -257,6 +283,22 @@ public class OMarketEditAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 }
                 List<OApiEntity.DomesticCommdsBean> domesticCommds = oApiEntity.getDomesticCommds();
                 for (OApiEntity.DomesticCommdsBean data : domesticCommds) {
+                    if (split[0].startsWith(data.getCode())) {
+                        marketName = data.getName() + split[0];
+
+                        String niteWarningTime = data.getNiteWarningTime();
+                        String am = niteWarningTime.substring(0, 2);
+
+                        int i = Integer.valueOf(am);
+                        if (i <= 5) {
+                            marketTime = data.getAmOpenTime().substring(0, 5) + "~次日" + niteWarningTime.substring(0, 5);
+                        } else {
+                            marketTime = data.getAmOpenTime().substring(0, 5) + "~夜间" + niteWarningTime.substring(0, 5);
+                        }
+                    }
+                }
+                List<OApiEntity.DigitalCommdsBean> digitalCommds = oApiEntity.getDigitalCommds();
+                for (OApiEntity.DigitalCommdsBean data : digitalCommds) {
                     if (split[0].startsWith(data.getCode())) {
                         marketName = data.getName() + split[0];
 

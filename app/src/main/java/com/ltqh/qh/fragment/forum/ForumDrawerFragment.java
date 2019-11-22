@@ -24,12 +24,13 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.fragment.HomeFragment;
 import com.ltqh.qh.fragment.find.HomeFindFragment;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
 
 import butterknife.BindView;
 
-public class ForumDrawerFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class ForumDrawerFragment extends OBaseFragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
@@ -52,6 +53,12 @@ public class ForumDrawerFragment extends BaseFragment implements RadioGroup.OnCh
     CircleImageView img_head;
     @BindView(R.id.text_login)
     TextView text_login;
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
+
     @Override
     protected void initView(View view) {
 

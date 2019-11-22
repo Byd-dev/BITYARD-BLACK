@@ -159,7 +159,6 @@ public class StockForeignFragment extends OBaseFragment implements View.OnClickL
                             swipeRefreshLayout.setRefreshing(false);
                         }
                         if (!TextUtils.isEmpty(response.body())) {
-                            Log.d("print", "onSuccess:154 " + response.body());
 
                             if (response.body() != null) {
                                 CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.body(), CodeMsgEntity.class);

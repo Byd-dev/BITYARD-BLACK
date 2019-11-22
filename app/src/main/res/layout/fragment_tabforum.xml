@@ -5,10 +5,16 @@
     android:background="@color/background_maincolor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
+    <LinearLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/maincolor"
+        android:orientation="vertical"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:background="@color/maincolor"
         android:layout_height="48dp">
 
 
@@ -18,10 +24,23 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="15dp"
-            android:text="社区"
-            android:textColor="@color/text_maincolor"
+            android:text="@string/tab_three"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
+
+            />
+
+        <ImageView
+            android:id="@+id/img_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:src="@mipmap/add"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_15"
+            android:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/layout_send"

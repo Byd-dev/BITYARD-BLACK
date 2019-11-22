@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ltqh.qh.R;
+import com.ltqh.qh.adapter.MarketAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.operation.activity.OMarketActivity;
 import com.ltqh.qh.operation.adapter.OMarketAdapter;
@@ -73,7 +74,7 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
 
     private String SORT = Constant.STAY_CHANGEPERCENT;
 
-    private OMarketAdapter oMarketAdapter;
+    private MarketAdapter oMarketAdapter;
 
     private OMarketPointAdapter oMarketPointAdapter;
 
@@ -84,7 +85,7 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
 
     @Override
     protected void onLazyLoad() {
-        oMarketAdapter = new OMarketAdapter(getActivity());
+        oMarketAdapter = new MarketAdapter(getActivity());
         linearLayoutManager = new LinearLayoutManager(getActivity());
 
 
@@ -93,11 +94,11 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
 
 
 
-        oMarketAdapter.setOnItemClick(new OMarketAdapter.OnItemClick() {
+        oMarketAdapter.setOnItemClick(new MarketAdapter.OnItemClick() {
             @Override
             public void onSuccessListener(String code) {
 
-                OMarketActivity.enter(getActivity(), OConstant.OQUETO, "1", code);
+                //OMarketActivity.enter(getActivity(), OConstant.OQUETO, "1", code);
 
 
             }

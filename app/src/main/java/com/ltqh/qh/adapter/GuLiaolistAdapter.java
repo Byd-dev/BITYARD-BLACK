@@ -21,7 +21,9 @@ import com.ltqh.qh.view.CircleImageView;
 import com.ltqh.qh.view.XCRoundRectImageView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -33,17 +35,24 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private List<GuliaoEntity.DataBeanX.DataBean> datas;
 
+    private HashMap<Integer,Boolean> map;
 
     private Context context;
 
     public GuLiaolistAdapter(Context context) {
         this.context = context;
         datas = new ArrayList<>();
+        map=new HashMap<>();
     }
 
     public void setDatas(List<GuliaoEntity.DataBeanX.DataBean> datas) {
         this.datas = datas;
         this.notifyDataSetChanged();
+    }
+
+    public void setSelect(HashMap<Integer,Boolean> map){
+        this.map=map;
+        this.notifyDataSetChanged();;
     }
 
     public void setItemDatas(List<GuliaoEntity.DataBeanX.DataBean> datas, int position) {
@@ -169,9 +178,9 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView text_title, text_content, text_username, text_comment, text_dianzan, text_readcount, text_publish_time;
+        public TextView text_title, text_content, text_username, text_comment, text_dianzan, text_readcount, text_publish_time,img_jubao;
         public CircleImageView img_head;
-        private ImageView img_jubao,img_zan,img_cai;
+        private ImageView img_zan,img_cai;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -187,6 +196,8 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             img_jubao=itemView.findViewById(R.id.img_jubao);
             img_zan=itemView.findViewById(R.id.img_zan);
             img_cai=itemView.findViewById(R.id.img_cai);
+
+
 
 
             text_dianzan.setOnClickListener(new View.OnClickListener() {
@@ -218,14 +229,29 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             img_jubao.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.d("print", "onClick:是否关注:  "+datas.get(getPosition()).isFocus());
+                  /*  if (datas.get(getPosition()).isFocus()==false){
+
+                        img_jubao.setText(context.getResources().getString(R.string.text_attention));
+                        datas.get(getPosition()).setFocus(true);
+                    }else if (datas.get(getPosition()).isFocus()==true){
+                        img_jubao.setText(context.getResources().getString(R.string.text_focus));
+                        datas.get(getPosition()).setFocus(false);
+                    }*/
+
+                    //这是举报
                     if (onJuBaoItemClick!=null){
                         onJuBaoItemClick.onSuccessListener(datas.get(getPosition()),getAdapterPosition());
                     }
                 }
+
             });
+
 
         }
     }
+
+
 
     public static class ProgressViewHoler extends RecyclerView.ViewHolder {
         public ProgressBar bar;

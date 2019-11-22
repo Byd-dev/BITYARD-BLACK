@@ -19,6 +19,8 @@ public class OUserConfig {
     public static final String P_FOREIGN = "Pforeign"; //安全认证信息
     public static final String P_STOCKINDEX = "Pstockindex"; //安全认证信息
     public static final String P_DOMESTIC = "Pdomestic"; //安全认证信息
+    public static final String P_DIGITAL = "Pdigital"; //安全认证信息
+
     public static final String P_NIGHT = "night"; //安全认证信息
     public static final String SEARCH_LIST= "searchList"; //安全认证信息
 

@@ -153,16 +153,26 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                                         SPUtils.putString(UserConfig.USER_ACCOUNT, loginEntity.getData().getUser().getMobile());
                                         getActivity().finish();
                                     } else if (state.equals(NetManger.FAILURE)) {
-                                        dismissProgressDialog();
-                                        CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
-                                        Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                                        if (response!=null){
+                                            CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                                            Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            Toast.makeText(getActivity(),getResources().getString(R.string.text_err) , Toast.LENGTH_SHORT).show();
+
+                                        }
                                     }
                                 }
                             });
 
                         } else if (state.equals(NetManger.FAILURE)) {
                             dismissProgressDialog();
+                            if (response!=null){
+                                CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                                Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getActivity(),getResources().getString(R.string.text_err) , Toast.LENGTH_SHORT).show();
 
+                            }
                         }
                     }
                 });

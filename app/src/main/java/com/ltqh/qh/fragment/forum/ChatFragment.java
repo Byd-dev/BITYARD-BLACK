@@ -46,6 +46,7 @@ import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.EastMoneyEntity;
 import com.ltqh.qh.entity.GuliaoEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.ViewUtils;
@@ -61,11 +62,12 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class ChatFragment extends BaseFragment implements View.OnClickListener {
+public class ChatFragment extends OBaseFragment implements View.OnClickListener {
     private final static int PERIOD = 5 * 1000; // 5s
 
     @BindView(R.id.layout_view)
@@ -102,6 +104,11 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_chat;
+    }
+
+    @Override
+    protected void onLazyLoad() {
+
     }
 
     @Override
@@ -415,6 +422,8 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
     }
 
 
+    private HashMap<Integer,Boolean> map=new HashMap<>();
+
     private void getGuliao(final String type, String token, int page, final int position) {
 
 
@@ -445,7 +454,9 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
                                 guliaoEntity = new Gson().fromJson(response.body(), GuliaoEntity.class);
                                 // Log.d("print", "onSuccess: " + guliaoEntity);
                                 if (type.equals(REFRESHTYPE)) {
-                                    guLiaolistAdapter.setDatas(guliaoEntity.getData().getData());
+                                    List<GuliaoEntity.DataBeanX.DataBean> data = guliaoEntity.getData().getData();
+                                    guLiaolistAdapter.setDatas(data);
+
                                 } else if (type.equals(LOADTYPE)) {
                                     guLiaolistAdapter.addDatas(guliaoEntity.getData().getData());
                                 } else if (type.equals(ITEMREFRESHTYPE)) {

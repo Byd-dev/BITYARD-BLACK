@@ -15,7 +15,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ltqh.qh.R;
@@ -38,6 +40,15 @@ public class ViewUtils {
                 group.removeView(view);
             }
         }
+    }
+
+
+    public  static void setLayoutParams(Context context,LinearLayout layout_bar){
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
+
+        layout_bar.setLayoutParams(params);
     }
 
     /**

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/o_bar_white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+
+    <!--<com.ltqh.qh.view.StatusBarHeightView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:use_type="use_padding_top">-->
+
+    <LinearLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/maincolor"
+        android:orientation="vertical"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/maincolor"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin"
+                android:padding="@dimen/margin_5"
+                android:text="@string/text_edit"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:visibility="visible" />
+
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/tab_two"
+                android:textColor="@color/white"
+                android:textSize="@dimen/title_size"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/img_night"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_20"
+                android:visibility="gone"
+                android:src="@mipmap/o_night_icon"
+                />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/o_line" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/o_market_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_report"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@color/o_bar_white"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:src="@mipmap/o_laba_icon" />
+
+                <TextSwitcher
+                    android:id="@+id/ts_news"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:inAnimation="@anim/slide_in_from_bottom"
+                    android:outAnimation="@anim/slide_out_to_top" />
+
+
+                <ImageView
+                    android:id="@+id/img_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/margin"
+                    android:padding="@dimen/margin"
+                    android:src="@mipmap/o_delete_market" />
+
+
+            </LinearLayout>
+
+
+            <com.ltqh.qh.view.SkinInfoEnhanceTabLayout
+                android:id="@+id/home_tab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:layout_gravity="center"
+                android:background="@color/o_bar_white"
+                app:tabIndicatorColor="@color/maincolor"
+                app:tabIndicatorHeight="3dp"
+                app:tabIndicatorWidth="25dp"
+                app:tabSelectTextColor="@color/maincolor"
+                app:tabTextColor="@color/o_text_5c5e76"
+                app:tab_Mode="mode_fixed" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/o_line" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+        </LinearLayout>
+    <!--</com.ltqh.qh.view.StatusBarHeightView>-->
+</LinearLayout>

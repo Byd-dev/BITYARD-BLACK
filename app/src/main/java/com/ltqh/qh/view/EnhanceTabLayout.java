@@ -65,7 +65,7 @@ public class EnhanceTabLayout extends FrameLayout {
         mIndicatorHeight = typedArray.getDimensionPixelSize(R.styleable.EnhanceTabLayout_tabIndicatorHeight, 1);
         mIndicatorWidth = typedArray.getDimensionPixelSize(R.styleable.EnhanceTabLayout_tabIndicatorWidth, 0);
         // mTabTextSize = typedArray.getDimensionPixelSize(R.styleable.EnhanceTabLayout_tabTextSize, 13);
-        mTabTextSize = 19;
+        mTabTextSize = 15;
 
 
         mTabMode = typedArray.getInt(R.styleable.EnhanceTabLayout_tab_Mode, 2);

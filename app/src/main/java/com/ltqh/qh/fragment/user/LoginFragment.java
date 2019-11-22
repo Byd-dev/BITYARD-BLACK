@@ -127,8 +127,15 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
                         }else if (state.equals(NetManger.FAILURE)){
                             dismissProgressDialog();
-                            CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
-                            Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                            if (response!=null){
+                                Log.d("print", "onNetResult:130:  "+response.toString());
+                                CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                                Toast.makeText(getActivity(), codeMsgEntity.getMsg(), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getActivity(),getResources().getString(R.string.text_err) , Toast.LENGTH_SHORT).show();
+
+                            }
+
 
                         }
                     }

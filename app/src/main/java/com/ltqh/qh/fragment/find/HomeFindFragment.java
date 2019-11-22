@@ -64,6 +64,7 @@ import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
 import com.ltqh.qh.operation.activity.ONewsDetailActivity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
@@ -88,7 +89,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeFindFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFindFragment extends OBaseFragment implements View.OnClickListener {
 
     private final static int PERIOD = 5 * 1000; // 5s
 
@@ -219,6 +220,11 @@ public class HomeFindFragment extends BaseFragment implements View.OnClickListen
 
     private String Titles[] = new String[]{"直播", "策略"};
     private int[] banners = new int[]{R.mipmap.home_banner2, R.mipmap.home_banner1, R.mipmap.home_banner3};
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {

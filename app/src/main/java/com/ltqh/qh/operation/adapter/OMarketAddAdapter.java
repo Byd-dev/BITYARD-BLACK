@@ -47,6 +47,8 @@ public class OMarketAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private List<OApiEntity.ForeignCommdsBean> foreignCommds;
     private List<OApiEntity.DomesticCommdsBean> domesticCommds;
     private List<OApiEntity.StockIndexCommdsBean> stockIndexCommds;
+    private List<OApiEntity.DigitalCommdsBean> digitalCommdsBeans;
+
     private Context context;
     private String key;
     private String[] code;
@@ -89,7 +91,11 @@ public class OMarketAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.stockIndexCommds = stockIndexCommds;
         this.notifyDataSetChanged();
     }
-
+    public void setDigitalDatas(String key, List<OApiEntity.DigitalCommdsBean> digitalCommdsBeans) {
+        this.key = key;
+        this.digitalCommdsBeans = digitalCommdsBeans;
+        this.notifyDataSetChanged();
+    }
     public void setDatas(String key, List<String> datas) {
         this.key = key;
         this.datas = datas;
@@ -216,7 +222,26 @@ public class OMarketAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     }
                 }
 
-            } else if (key.equals(OUserConfig.P_ALLDEX)) {
+            }
+            else if (key.equals(OUserConfig.P_DIGITAL)) {
+                for (OApiEntity.DigitalCommdsBean digitalCommdsBean : digitalCommdsBeans) {
+                    if (split[0].startsWith(digitalCommdsBean.getCode())) {
+                        marketName = digitalCommdsBean.getName() + split[0];
+                        String niteWarningTime = digitalCommdsBean.getNiteWarningTime();
+
+                        String am = niteWarningTime.substring(0, 2);
+
+                        int i = Integer.valueOf(am);
+                        if (i <= 5) {
+                            marketTime = digitalCommdsBean.getAmOpenTime().substring(0, 5) + "~次日" + niteWarningTime.substring(0, 5);
+                        } else {
+                            marketTime = digitalCommdsBean.getAmOpenTime().substring(0, 5) + "~夜间" + niteWarningTime.substring(0, 5);
+                        }
+                    }
+                }
+
+            }
+            else if (key.equals(OUserConfig.P_ALLDEX)) {
                 List<OApiEntity.ForeignCommdsBean> foreignCommds = oApiEntity.getForeignCommds();
                 for (OApiEntity.ForeignCommdsBean data : foreignCommds) {
                     if (split[0].startsWith(data.getCode())) {
@@ -252,6 +277,23 @@ public class OMarketAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 }
                 List<OApiEntity.DomesticCommdsBean> domesticCommds = oApiEntity.getDomesticCommds();
                 for (OApiEntity.DomesticCommdsBean data : domesticCommds) {
+                    if (split[0].startsWith(data.getCode())) {
+                        marketName = data.getName() + split[0];
+
+                        String niteWarningTime = data.getNiteWarningTime();
+                        String am = niteWarningTime.substring(0, 2);
+
+                        int i = Integer.valueOf(am);
+                        if (i <= 5) {
+                            marketTime = data.getAmOpenTime().substring(0, 5) + "~次日" + niteWarningTime.substring(0, 5);
+                        } else {
+                            marketTime = data.getAmOpenTime().substring(0, 5) + "~夜间" + niteWarningTime.substring(0, 5);
+                        }
+                    }
+                }
+
+                List<OApiEntity.DigitalCommdsBean> digitalCommds = oApiEntity.getDigitalCommds();
+                for (OApiEntity.DigitalCommdsBean data : digitalCommds) {
                     if (split[0].startsWith(data.getCode())) {
                         marketName = data.getName() + split[0];
 

@@ -2,10 +2,13 @@ package com.ltqh.qh.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.IntentConfig;
@@ -14,8 +17,9 @@ import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.fragment.HomeFragment;
 import com.ltqh.qh.fragment.MyFragment;
 import com.ltqh.qh.fragment.find.FindFragment;
-import com.ltqh.qh.fragment.forum.ChatTabFragment;
-import com.ltqh.qh.fragment.news.InfoFragment;
+import com.ltqh.qh.fragment.forum.ForumTabFragment;
+import com.ltqh.qh.fragment.market.AllMarketTabFragment;
+import com.ltqh.qh.fragment.market.BlockMarketFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.StatusBarUtil;
@@ -24,8 +28,11 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
+
 import butterknife.BindView;
 
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 import static com.ltqh.qh.activity.MainActivity.TAB_TYPE.TAB_HALL;
 import static com.ltqh.qh.activity.MainActivity.TAB_TYPE.TAB_INFORMATION;
 
@@ -81,6 +88,8 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
         StatusBarUtil.setRootViewFitsSystemWindows(this, false);
 
 
+
+
         EventBus.getDefault().register(this);
         radioGroup.setOnCheckedChangeListener(this);
         radioGroup.getChildAt(0).performClick();
@@ -100,7 +109,15 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
     @Override
     protected void initData() {
-
+        NetManger.getInstance().api(new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(SUCCESS)){
+                    List<String> getAllList= (List<String>) response;
+                    NetManger.getInstance().postQuote();
+                }
+            }
+        });
     }
 
     @Override
@@ -135,12 +152,12 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
                 break;
             case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new ChatTabFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new ForumTabFragment(), null, null);
 
                 break;
 
             case R.id.radio_2:
-                showFragment(R.id.layout_fragment_containter, new InfoFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new BlockMarketFragment(), null, null);
 
 
                 break;
@@ -152,6 +169,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
                 break;
             case R.id.radio_4:
                 showFragment(R.id.layout_fragment_containter, new MyFragment(), null, null);
+
                 break;
         }
     }

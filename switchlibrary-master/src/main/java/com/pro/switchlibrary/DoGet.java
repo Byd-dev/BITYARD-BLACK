@@ -184,6 +184,7 @@ public class DoGet {
                             getBlog(onResultBack, BLOG_URL_LIST, BLOG_INDEX, channel);
                         } else {
                             Log.d("print", "onError: 215:" + BLOG_INDEX);
+                            onResultBack.onResult(false,null);
 
                            /* Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
                             SplashActivity.this.finish();*/

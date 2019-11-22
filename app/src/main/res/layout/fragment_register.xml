@@ -10,20 +10,27 @@
     <RelativeLayout
         android:id="@+id/layout_bar"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="220dp"
+        android:background="@mipmap/my_banner"
         >
+
+
+
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:src="@mipmap/o_superback_deep" />
+            android:src="@mipmap/super_back" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_account_register"
-            android:textColor="@color/text_maincolor"
+            android:textColor="@color/white"
             android:textSize="26sp"
+            android:drawablePadding="@dimen/margin_15"
+            android:drawableTop="@mipmap/user_icon"
+            android:layout_centerInParent="true"
             android:layout_below="@+id/img_back"
             android:layout_marginLeft="@dimen/margin_15"
             />
@@ -44,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
+            android:background="@drawable/bg_shape_login_btn"
             android:layout_marginRight="15dp"
             android:layout_marginTop="30dp">
             <ImageView
@@ -59,14 +67,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
-
                 android:layout_gravity="center_vertical"
                 android:background="@null"
                 android:drawablePadding="10dp"
                 android:hint="@string/text_account_input"
                 android:inputType="numberSigned"
                 android:maxLength="11"
-                android:textColorHint="@color/text_secondcolor"
+                android:textColorHint="@color/tranmaincolor"
                 android:padding="8dp"
                 android:textColor="@color/text_maincolor"
                 android:textSize="16sp" />
@@ -83,7 +90,7 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="bottom"
                 android:background="@color/home_line"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </FrameLayout>
 
@@ -139,7 +146,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="15dp"
+            android:background="@drawable/bg_shape_login_btn"
             android:layout_marginRight="15dp">
             <ImageView
                 android:layout_width="wrap_content"
@@ -154,7 +163,7 @@
                 android:layout_height="50dp"
                 android:background="@null"
                 android:layout_marginLeft="30dp"
-                android:textColorHint="@color/text_secondcolor"
+                android:textColorHint="@color/tranmaincolor"
                 android:drawablePadding="10dp"
                 android:hint="@string/text_password_input"
                 android:inputType="textPassword"
@@ -178,7 +187,7 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="bottom"
                 android:background="@color/home_line"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </FrameLayout>
 

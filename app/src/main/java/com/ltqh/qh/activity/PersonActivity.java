@@ -146,6 +146,9 @@ public class PersonActivity extends OBaseActivity implements View.OnClickListene
     protected void initView(View view) {
         EventBus.getDefault().register(this);
 
+        setStatusBar(getResources().getColor(R.color.maincolor));
+
+
         mExtStorDir = Environment.getExternalStorageDirectory().toString();
 
 

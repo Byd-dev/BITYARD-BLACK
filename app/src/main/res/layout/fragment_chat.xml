@@ -3,6 +3,7 @@
     android:id="@+id/layout_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -138,7 +139,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_margin="50dp"
                 android:src="@mipmap/jia_icon"
-                android:visibility="visible" />
+                android:visibility="gone" />
         </RelativeLayout>
 
     </LinearLayout>

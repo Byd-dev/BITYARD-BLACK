@@ -37,6 +37,9 @@ public class AllMarketFragment extends OBaseFragment implements RadioGroup.OnChe
     @BindView(R.id.layout_send)
     LinearLayout layout_send;
 
+    @BindView(R.id.bar)
+    LinearLayout layout_bar;
+
     @Override
     protected void onLazyLoad() {
 
@@ -45,7 +48,11 @@ public class AllMarketFragment extends OBaseFragment implements RadioGroup.OnChe
     @Override
     protected void initView(View view) {
 
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
 
+        layout_bar.setLayoutParams(params);
         radioGroup.setOnCheckedChangeListener(this);
         radioGroup.check(0);
         radio_0.setChecked(true);

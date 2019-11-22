@@ -242,7 +242,7 @@
     <string name="o_lottery_three">获得的抽奖机会若不使用,活动结束视为放弃抽奖资格</string>
     <string name="o_lottery_four">本活动最终解释权归平台所有,活动期间,一旦发现客户有不正当套利行为,平台有权取消活动资格</string>
     <string name="tab_one">Home</string>
-    <string name="tab_two">Info</string>
+    <string name="tab_two">Market</string>
     <string name="tab_three">Discover</string>
     <string name="tab_four">Discover</string>
     <string name="tab_five">Me</string>
@@ -338,4 +338,11 @@
     <string name="text_favorite">favorite</string>
     <string name="text_read">read(0)</string>
     <string name="text_service">Service</string>
+    <string name="text_err">Server error</string>
+    <string name="text_attention">Focus already</string>
+    <string name="text_focus">Focus</string>
+    <string name="text_warning">Warning</string>
+    <string name="text_edit">编辑</string>
+    <string name="text_add">立即添加</string>
+    <string name="text_cny">当前价(CNY)</string>
 </resources>
