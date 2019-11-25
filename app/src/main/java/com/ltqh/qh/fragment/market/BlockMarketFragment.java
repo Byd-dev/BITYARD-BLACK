@@ -117,7 +117,7 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
             titleList.add("Mine");
             titleList.add("Main");
             titleList.add("All");
-        } else if (language.equals("zh_CN")) {
+        } else {
             titleList.add("自选");
             titleList.add("主区");
             titleList.add("全部");

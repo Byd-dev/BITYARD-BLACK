@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.base.Constant;
+import com.ltqh.qh.fragment.SearchFragment;
 import com.ltqh.qh.fragment.find.QuestionFragment;
 import com.ltqh.qh.fragment.forum.ForumFragment;
 import com.ltqh.qh.fragment.forum.GuliaoDetailFragment;
@@ -44,6 +45,7 @@ import com.ltqh.qh.fragment.user.RegisterFragment;
 import com.ltqh.qh.fragment.user.ResetPassFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
+import com.ltqh.qh.operation.fragment.home.OSearchFragment;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -95,6 +97,7 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
     private FeedbackFragment feedbackFragment;
     private QuestionFragment questionFragment;
     private FragmentTransaction ft;
+    private SearchFragment searchFragment;
 
     public static void enter(Context context, int type) {
         Intent intent = new Intent(context, IntentActivity.class);
@@ -212,9 +215,21 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
             layout_bar.setVisibility(View.GONE);
             stay_line.setVisibility(View.GONE);
             addQuestionFragment();
+        }else if (type==Constant.SEARCH){
+            layout_bar.setVisibility(View.GONE);
+            addSearchFragment();
         }
 
 
+    }
+
+    private void addSearchFragment() {
+        String name = SearchFragment.class.getSimpleName();
+        searchFragment = new SearchFragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, searchFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
     }
 
     @Override

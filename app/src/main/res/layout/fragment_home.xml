@@ -17,7 +17,7 @@
         >
 
 
-        <RelativeLayout
+        <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="@dimen/bar_height"
@@ -47,16 +47,25 @@
 
                 />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+            <RelativeLayout
+                android:id="@+id/layout_search"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:text="首页"
-                android:textColor="@color/white"
-                android:textSize="@dimen/title_size"
-                android:visibility="gone" />
+                android:background="@drawable/bg_shape_home_search"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="请输入您的搜索内容"
+                    android:textColor="@color/text_a8a8" />
+
+
+            </RelativeLayout>
 
 
             <LinearLayout
@@ -70,10 +79,9 @@
                 <ImageView
                     android:id="@+id/img_kefu"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="@dimen/margin_15"
+                    android:paddingLeft="@dimen/margin_20"
                     android:src="@mipmap/home_search"
                     android:visibility="visible" />
 
@@ -83,10 +91,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@mipmap/home_liuyan" />
+                    android:src="@mipmap/home_liuyan"
+                    android:visibility="gone" />
 
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
 
         <android.support.v4.widget.NestedScrollView
@@ -295,6 +304,32 @@
                         android:src="@mipmap/toutiao"
                         android:visibility="visible" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="热议"
+                        android:layout_gravity="center"
+                        android:textColor="@color/maincolor"
+                        android:textSize="10sp"
+                        android:paddingLeft="@dimen/margin"
+                        android:paddingRight="@dimen/margin"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:background="@drawable/bg_circle_mainclor"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/margin"
+                        />
+
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_margin="@dimen/margin"
+                        android:background="@color/maincolor"/>
+
+
+
                     <LinearLayout
                         android:id="@+id/layout_news"
                         android:layout_width="0dp"
@@ -328,7 +363,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/viewheight"
                     android:layout_marginTop="@dimen/margin_15"
-                    android:background="@color/background_maincolor"/>
+                    android:background="@color/background_maincolor" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -376,7 +411,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
+                    <!--<android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
@@ -385,30 +420,35 @@
                         app:cardCornerRadius="3dp"
                         app:cardElevation="2dp"
                         app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true">
+                        app:cardUseCompatPadding="true">-->
 
-                        <RelativeLayout
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <com.stx.xhb.xbanner.XBanner
+                            android:id="@+id/banner_article"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:visibility="visible">
+                            android:layout_height="140dp"
+                            android:layout_centerInParent="true"
+                            android:visibility="visible"
+                            app:AutoPlayTime="5000"
+                            app:pageChangeDuration="800"
+                            app:pointNormal="@mipmap/point_gray"
+                            app:pointSelect="@mipmap/point_red" />
 
 
-                            <com.stx.xhb.xbanner.XBanner
-                                android:id="@+id/banner_article"
-                                android:layout_width="match_parent"
-                                android:layout_height="140dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="visible"
-                                app:AutoPlayTime="5000"
-                                app:pageChangeDuration="800"
-                                app:pointNormal="@mipmap/point_gray"
-                                app:pointSelect="@mipmap/point_red" />
+                    </RelativeLayout>
+                    <!-- </android.support.v7.widget.CardView>-->
 
-
-                        </RelativeLayout>
-                    </android.support.v7.widget.CardView>
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/viewheight"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:background="@color/background_maincolor" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1310,7 +1350,7 @@
                             android:layout_margin="@dimen/margin_15"
                             android:orientation="vertical"
 
-                            android:visibility="gone">
+                            android:visibility="visible">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -1323,7 +1363,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
 
-                                    android:src="@mipmap/home_view1"
+                                    android:src="@mipmap/home_learn"
                                     android:visibility="visible" />
 
                                 <TextView
@@ -1332,8 +1372,8 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="5dp"
                                     android:layout_toRightOf="@+id/stay_line7"
-                                    android:text="热门行情"
-                                    android:textColor="@color/text_maincolor"
+                                    android:text="@string/text_realtime"
+                                    android:textColor="@color/maincolor"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
 
@@ -1361,7 +1401,8 @@
                                     android:gravity="center"
                                     android:text="更多"
                                     android:textColor="@color/text_c2"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
 
 
                             </RelativeLayout>
@@ -1371,20 +1412,21 @@
                                 android:layout_height="0.3dp"
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:layout_marginRight="@dimen/margin_15"
-                                android:background="@color/home_line" />
+                                android:background="@color/home_line"
+                                android:visibility="gone" />
 
 
                             <android.support.v7.widget.RecyclerView
                                 android:id="@+id/recyclerview_stock"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:visibility="visible" />
+                                android:visibility="gone" />
 
                             <android.support.v7.widget.RecyclerView
                                 android:id="@+id/recyclerview"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:visibility="gone" />
+                                android:visibility="visible" />
 
 
                         </LinearLayout>
@@ -1393,7 +1435,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/viewheight"
                             android:background="@color/background_maincolor"
-                            android:visibility="gone" />
+                            android:visibility="visible" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1571,26 +1613,15 @@
                                     android:background="@color/home_line"
                                     android:visibility="gone" />
 
-                                <android.support.v7.widget.CardView
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerview_attention"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="13dp"
-                                    android:layout_marginRight="13dp"
-                                    android:visibility="visible"
-                                    app:cardCornerRadius="3dp"
-                                    app:cardElevation="2dp"
-                                    app:cardPreventCornerOverlap="true"
-                                    app:cardUseCompatPadding="true">
-
-                                    <android.support.v7.widget.RecyclerView
-                                        android:id="@+id/recyclerview_attention"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
 
 
-                                        />
+                                    />
 
-                                </android.support.v7.widget.CardView>
                             </LinearLayout>
                         </LinearLayout>
 

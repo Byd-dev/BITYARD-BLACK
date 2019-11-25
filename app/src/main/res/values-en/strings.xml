@@ -345,4 +345,5 @@
     <string name="text_edit">编辑</string>
     <string name="text_add">立即添加</string>
     <string name="text_cny">当前价(CNY)</string>
+    <string name="text_realtime">实时行情</string>
 </resources>

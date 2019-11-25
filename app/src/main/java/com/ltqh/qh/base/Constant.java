@@ -286,6 +286,7 @@ public interface Constant {
     public static int ONRESUME_TYPE = 40;
     public static int FEEDBACK = 41;
     public static int QUESTION=42;
+  public static int SEARCH = 47;
 
     public static String LANGUAGE="language";
 

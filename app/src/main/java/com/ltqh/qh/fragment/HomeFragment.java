@@ -32,6 +32,8 @@ import android.widget.ViewSwitcher;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.activity.NewsDetailActivity;
@@ -41,15 +43,18 @@ import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.AlertsAdapter;
 import com.ltqh.qh.adapter.GoldlistAdapter;
 import com.ltqh.qh.adapter.HomeBannerAdapter;
+import com.ltqh.qh.adapter.HomeBtcAdapter;
 import com.ltqh.qh.adapter.HomeCalendarAdapter;
 import com.ltqh.qh.adapter.HomeChatAdapter;
 import com.ltqh.qh.adapter.HomeMenuAdapter;
+import com.ltqh.qh.adapter.MarketAdapter;
 import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.adapter.StockHomeAdapter;
 import com.ltqh.qh.adapter.StockTabAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.BannerEntity;
+import com.ltqh.qh.entity.BtcMarketEntity;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.GoldlistEntity;
 import com.ltqh.qh.entity.GuliaoEntity;
@@ -58,12 +63,16 @@ import com.ltqh.qh.entity.StockEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
+import com.ltqh.qh.operation.activity.OIntentActivity;
 import com.ltqh.qh.operation.activity.ONewsDetailActivity;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
+import com.ltqh.qh.operation.config.OUserConfig;
+import com.ltqh.qh.operation.entity.OApiEntity;
 import com.ltqh.qh.operation.entity.OHotEntity;
 import com.ltqh.qh.operation.entity.OHoursEntity;
+import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
@@ -86,6 +95,11 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+
+import static com.ltqh.qh.Api.NetManger.BUSY;
+import static com.ltqh.qh.Api.NetManger.FAILURE;
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
+import static com.ltqh.qh.operation.base.OConstant.PERIOD;
 
 public class HomeFragment extends OBaseFragment implements View.OnClickListener {
 
@@ -140,6 +154,10 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     private HomeCalendarAdapter homeCalendarAdapter;
     private HomeMenuAdapter homeMenuAdapter;
     private AlertsAdapter alertsAdapter;
+
+    private String isupdown = "up";
+    private HomeBtcAdapter oMarketAdapter;
+
 
     private int mNewsIndex;
 
@@ -260,13 +278,17 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
 
         text_login.setOnClickListener(this);
-        goldlistAdapter = new GoldlistAdapter(getActivity());
+       /* goldlistAdapter = new GoldlistAdapter(getActivity());
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        recyclerView.setAdapter(goldlistAdapter);
+        recyclerView.setAdapter(goldlistAdapter);*/
 
         stockAdapter = new StockHomeAdapter(getActivity());
         recyclerView_stock.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView_stock.setAdapter(stockAdapter);
+        //btc
+        oMarketAdapter = new HomeBtcAdapter(getActivity());
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        recyclerView.setAdapter(oMarketAdapter);
 
 
         homeChatAdapter = new HomeChatAdapter(getActivity());
@@ -334,6 +356,8 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         view.findViewById(R.id.text_fankui).setOnClickListener(this);
         view.findViewById(R.id.text_chat).setOnClickListener(this);
         view.findViewById(R.id.img_head).setOnClickListener(this);
+
+        view.findViewById(R.id.layout_search).setOnClickListener(this);
         text_time.setText(dateToStamp().substring(0, 10));
 
         view.findViewById(R.id.home_img1).setOnClickListener(this);
@@ -411,6 +435,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
             //getHomeStock(0, getSort());
             updateNews();
+            getQuote();
 
 
         }
@@ -431,8 +456,11 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
     @Override
     protected void initData() {
-        getHomeStock(0, Constant.STAY_PRICECHANGE);
+        // getHomeStock(0, Constant.STAY_PRICECHANGE);
         //getHomeGold();
+        getQuote();
+
+
         getBanner();
 
         //getGold();
@@ -447,6 +475,39 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
         //getCalendar(dateToStamp().toString(), 3);
     }
+
+
+    private void getQuote() {
+
+        List<String> dataList = QuoteProxy.getInstance().getDigitalDataList();
+
+        Log.d("print", "getQuote:483:  " + dataList);
+
+
+        OApiEntity oApiEntity = QuoteProxy.getInstance().getoApiEntity();
+        if (dataList != null) {
+
+            oMarketAdapter.setIsUpDown(isupdown);
+            oMarketAdapter.setDatas(OUserConfig.P_DIGITAL, dataList.subList(6, 9));
+            oMarketAdapter.setDigitalDatas(OUserConfig.P_DIGITAL, oApiEntity.getDigitalCommds());
+
+
+            Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    oMarketAdapter.notifyItem(dataList);
+
+                }
+            }, PERIOD);
+
+        } else {
+
+        }
+    }
+
 
     private void getBanner() {
         OkGo.<String>get(Constant.URL_BANNER)
@@ -472,7 +533,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
 
     private void upArticleBanner(List<BannerEntity.DataBean> data) {
-      //  Log.d("print", "upBanner:461:   " + data);
+        //  Log.d("print", "upBanner:461:   " + data);
         if (data == null) {
             return;
         }
@@ -750,12 +811,15 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 IntentActivity.enter(getActivity(), Constant.FORUM);
 
                 break;
+            case R.id.layout_search:
             case R.id.img_kefu:
-                if (isLogin()) {
+                IntentActivity.enter(getActivity(), Constant.SEARCH);
+
+               /* if (isLogin()) {
                     WebActivity.openZhiChiService(getActivity());
                 } else {
                     UserActivity.enter(getActivity(), Constant.LOGIN);
-                }
+                }*/
                 break;
             case R.id.text_message:
                 if (isLogin()) {
@@ -836,7 +900,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 break;
 
             case R.id.layout_question:
-                Toast.makeText(getContext(),getResources().getString(R.string.text_coming),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getResources().getString(R.string.text_coming), Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -988,7 +1052,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (!TextUtils.isEmpty(response.body())) {
-                           // Log.d("print", "onSuccess:971:    " + response.body());
+                            // Log.d("print", "onSuccess:971:    " + response.body());
                             OHoursEntity oHoursEntity = new Gson().fromJson(response.body(), OHoursEntity.class);
                             newSdata = oHoursEntity.getNewsList();
 
@@ -1205,14 +1269,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                       // Log.d("print", "onSuccess:1188:    " + response.body());
+                        // Log.d("print", "onSuccess:1188:    " + response.body());
 
                         dismissProgressDialog();
                         if (!TextUtils.isEmpty(response.body())) {
                             OHotEntity oHotEntity = new Gson().fromJson(response.body(), OHotEntity.class);
 
                             List<OHotEntity.NewsListBean> newsList = oHotEntity.getNewsList().subList(0, 3);
-                           // Log.d("print", "onSuccess:1198:  " + newsList);
+                            // Log.d("print", "onSuccess:1198:  " + newsList);
                             alertsAdapter.setDatas(newsList);
                         }
                     }
