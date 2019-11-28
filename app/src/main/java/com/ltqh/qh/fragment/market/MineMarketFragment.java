@@ -17,8 +17,6 @@ import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.MarketAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.operation.activity.OIntentActivity;
-import com.ltqh.qh.operation.activity.OMarketActivity;
-import com.ltqh.qh.operation.adapter.OMarketAdapter;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
