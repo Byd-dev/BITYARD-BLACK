@@ -38,6 +38,8 @@ public class OImmersiveActivity extends BaseActivity implements View.OnClickList
     private OLotteryFragment oLotteryFragment;
 
 
+
+
     @Override
     protected int setContentLayout() {
         return R.layout.o_activity_immersive;

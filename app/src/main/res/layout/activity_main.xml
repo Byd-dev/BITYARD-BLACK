@@ -68,7 +68,7 @@
             android:drawableTop="@drawable/tab_four"
             android:gravity="center"
             android:maxLines="1"
-            android:text="@string/tab_three"
+            android:text="@string/tab_four"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
             android:textStyle="bold"
@@ -94,14 +94,14 @@
             android:layout_weight="1"
             android:button="@null"
             android:checked="false"
-            android:drawableTop="@drawable/tab_shequ"
+            android:drawableTop="@drawable/tab_my"
             android:gravity="center"
             android:maxLines="1"
             android:textColor="@color/sel_switcher_txt"
             android:textSize="10sp"
-            android:text="@string/tab_four"
+            android:text="@string/tab_three"
             android:textStyle="bold"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
 
         <RadioButton
@@ -112,7 +112,7 @@
             android:button="@null"
 
             android:checked="false"
-            android:drawableTop="@drawable/tab_my"
+            android:drawableTop="@drawable/tab_shequ"
             android:gravity="center"
             android:maxLines="1"
 

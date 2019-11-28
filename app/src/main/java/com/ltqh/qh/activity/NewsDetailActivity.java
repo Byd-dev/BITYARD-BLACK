@@ -62,6 +62,10 @@ public class NewsDetailActivity extends OBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
+
+
+
+
         String type = getIntent().getStringExtra("TYPE");
         if (type.equals("ALERTS")) {
             addAlertsFragment();

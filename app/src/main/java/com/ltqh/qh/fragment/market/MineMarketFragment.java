@@ -340,13 +340,13 @@ public class MineMarketFragment extends OBaseFragment implements View.OnClickLis
                 if (flag == 0) {
                     img_up_down.setImageDrawable(getResources().getDrawable(R.mipmap.o_market_down));
                     isupdown = "down";
-                    text_up_down.setText("涨跌点");
+                    text_up_down.setText(getResources().getString(R.string.text_quote_point));
                     postQuote();
                     flag = 1;
                 } else if (flag == 1) {
                     img_up_down.setImageDrawable(getResources().getDrawable(R.mipmap.o_market_up));
                     isupdown = "up";
-                    text_up_down.setText("涨跌幅");
+                    text_up_down.setText(getResources().getString(R.string.text_quote_change));
                     postQuote();
                     flag = 0;
 

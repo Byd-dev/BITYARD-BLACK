@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/o_market_bg"
+    android:background="@color/o_bar_white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -14,15 +14,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@color/o_bar_f0f1">
+            android:layout_marginTop="@dimen/margin_15"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/margin_15"
-                android:text="商品名称"
-                android:textColor="#82899C"
+
+                android:text="@string/o_text_shangpin"
+                android:textColor="@color/text_c1c1"
                 android:textSize="13sp"
 
                 />
@@ -31,8 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/text_cny"
-                android:textColor="#82899C"
+                android:text="@string/text_price_current"
+                android:textColor="@color/text_c1c1"
                 android:textSize="13sp"
 
                 />
@@ -51,8 +53,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="涨跌幅"
-                    android:textColor="#82899C"
+                    android:text="@string/text_quote_change"
+                    android:textColor="@color/text_c1c1"
                     android:textSize="13sp" />
 
                 <ImageView
@@ -65,6 +67,8 @@
                     />
 
             </LinearLayout>
+
+
         </RelativeLayout>
 
         <!--   <android.support.v4.widget.SwipeRefreshLayout
@@ -115,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@mipmap/o_add"
                         android:drawablePadding="@dimen/margin"
-                        android:text="添加自选"
+                        android:text="@string/text_add_mine"
                         android:textColor="@color/o_text_8289"
                         android:textSize="15sp" />
 

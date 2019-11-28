@@ -21,6 +21,7 @@ import com.ltqh.qh.fragment.news.LiveFragment;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.fragment.info.OLiveFragment;
 import com.ltqh.qh.utils.SPUtils;
+import com.ltqh.qh.utils.ViewUtils;
 import com.ltqh.qh.view.EnhanceTabLayout;
 
 import java.util.ArrayList;
@@ -66,11 +67,9 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
 
         }
 
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
 
-        layout_bar.setLayoutParams(params);
+        ViewUtils.setLayoutParams(getContext(),layout_bar);
+
 
         layout_send.setOnClickListener(this);
 
@@ -111,7 +110,7 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.fragment_tabforum;
+        return R.layout.fragment_forum2;
     }
 
     @Override

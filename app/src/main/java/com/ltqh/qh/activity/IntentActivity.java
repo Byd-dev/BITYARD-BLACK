@@ -29,6 +29,8 @@ import com.ltqh.qh.fragment.market.ToolFragment;
 import com.ltqh.qh.fragment.news.AudioVideoFragment;
 import com.ltqh.qh.fragment.news.BlockFragment;
 import com.ltqh.qh.fragment.news.BtcFragment;
+import com.ltqh.qh.fragment.news.BtcNewsFragment;
+import com.ltqh.qh.fragment.news.FinancialCalendarFragment;
 import com.ltqh.qh.fragment.news.InfoFragment;
 import com.ltqh.qh.fragment.news.LearnClassFragment;
 import com.ltqh.qh.fragment.news.LiveFragment;
@@ -98,6 +100,8 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
     private QuestionFragment questionFragment;
     private FragmentTransaction ft;
     private SearchFragment searchFragment;
+    private FinancialCalendarFragment financialCalendarFragment;
+    private BtcNewsFragment btcNewsFragment;//BTC介绍
 
     public static void enter(Context context, int type) {
         Intent intent = new Intent(context, IntentActivity.class);
@@ -218,10 +222,30 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
         }else if (type==Constant.SEARCH){
             layout_bar.setVisibility(View.GONE);
             addSearchFragment();
+        }else if (type==Constant.CALENDER){
+            addCalenderFragment();
         }
 
-
     }
+
+    private void addBtcNewsFragment() {
+        String name = BtcNewsFragment.class.getSimpleName();
+        btcNewsFragment = new BtcNewsFragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, btcNewsFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+    }
+
+    private void addCalenderFragment() {
+        String name = FinancialCalendarFragment.class.getSimpleName();
+        financialCalendarFragment = new FinancialCalendarFragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, financialCalendarFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+    }
+
 
     private void addSearchFragment() {
         String name = SearchFragment.class.getSimpleName();

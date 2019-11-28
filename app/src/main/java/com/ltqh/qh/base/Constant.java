@@ -7,10 +7,10 @@ public interface Constant {
     //public static String PANDANEWS_HOST = "https://xm.pandaqh.com/api/news";
     public static String PANDANEWS_HOST = "https://zy.tigerqh.com";
 
-    public static String JUHE_HOST="http://apis.juhe.cn/goodbook";
+    public static String JUHE_HOST = "http://apis.juhe.cn/goodbook";
 
-   // String BASE_URL = "https://data.fk7h.com";
-  String BASE_URL = "https://d.wanjinig.cn";
+    // String BASE_URL = "https://data.fk7h.com";
+    String BASE_URL = "https://d.wanjinig.cn";
 
     //金投网的资讯列表
     public static String URL_JINTOUWANG = NEWS_HOIST + "/getJinTouEvents";
@@ -25,18 +25,18 @@ public interface Constant {
     //资讯详情
     public static String URL_ALERTSDETAILS = PANDANEWS_HOST + "/newsDetail.htm";
     //图书分类
-    public static String URL_BOOKTYPE=JUHE_HOST+"/catalog";
+    public static String URL_BOOKTYPE = JUHE_HOST + "/catalog";
     //图书分类内容
-    public static String URL_BOOKTYPE_CONTENT=JUHE_HOST+"/query";
+    public static String URL_BOOKTYPE_CONTENT = JUHE_HOST + "/query";
 
-    public static String DTYPE="dtype";
-    public static String CATALOG_ID="catalog_id";
+    public static String DTYPE = "dtype";
+    public static String CATALOG_ID = "catalog_id";
 
-    public static String KEY="key";
-    public static  String PN="pn";
-    public static  String RN="rn";
+    public static String KEY = "key";
+    public static String PN = "pn";
+    public static String RN = "rn";
 
-    public static String KEY_VALUE="86ffbeb799ae13786bdb50ab9672e16b";
+    public static String KEY_VALUE = "86ffbeb799ae13786bdb50ab9672e16b";
 
 
     //用户
@@ -56,11 +56,11 @@ public interface Constant {
     String BOND = "/Bond";
     String BUSSINESS = "/business";
     String FILE = "/File";
-    String INDEX="/index";
-    String UPLOAD="/upload";
-    String DUBIWANG="/Dubiwang";
-    String SINANEWS="/sina_news";
-    String QUESTION_BANK="/question_bank";
+    String INDEX = "/index";
+    String UPLOAD = "/upload";
+    String DUBIWANG = "/Dubiwang";
+    String SINANEWS = "/sina_news";
+    String QUESTION_BANK = "/question_bank";
 
     //注册
     String REGISTER_URL = BASE_URL + API + USER + PUBLIC + "/register";
@@ -82,7 +82,7 @@ public interface Constant {
     //用户信息
     String USER_INFO_URL = BASE_URL + API + USER + PROFILE + "/userInfo";
     //头像地址
-    String USER_AVATER_URL = BASE_URL + UPLOAD+"/" ;
+    String USER_AVATER_URL = BASE_URL + UPLOAD + "/";
     //上传图片
     String USER_UPLOADIMG_URL = BASE_URL + API + USER + UPLOAD + "/one";
     //股吧列表
@@ -130,17 +130,17 @@ public interface Constant {
     //举报帖子
     public static String URL_REPORT = BASE_URL + API + USER + ATTENTION + "/report";
     //音视频
-    public static String URL_AUDIOVIDEO= BASE_URL + YAPI  + FILE + "/video_list";
+    public static String URL_AUDIOVIDEO = BASE_URL + YAPI + FILE + "/video_list";
     //财经事件
-    public static String URL_FIANCE_EVENT= BASE_URL + YAPI  + INDEX + "/cjevent";
+    public static String URL_FIANCE_EVENT = BASE_URL + YAPI + INDEX + "/cjevent";
     //财经日历
-    public static String URL_FINANCE_CALENDAR= BASE_URL + YAPI  + INDEX + "/cjrl";
+    public static String URL_FINANCE_CALENDAR = BASE_URL + YAPI + INDEX + "/cjrl";
     //股票资讯
-    public static String URL_STOCKNEWS = BASE_URL + YAPI  + SINANEWS +  "/netease";
+    public static String URL_STOCKNEWS = BASE_URL + YAPI + SINANEWS + "/netease";
     //股票资讯详情
-    public static String URL_STOCKNEWS_DETAIL = BASE_URL + YAPI  + SINANEWS +  "/view";
+    public static String URL_STOCKNEWS_DETAIL = BASE_URL + YAPI + SINANEWS + "/view";
     //趣味道题
-    public static String URL_QUESTION = BASE_URL + YAPI  + QUESTION_BANK +  "/getList";
+    public static String URL_QUESTION = BASE_URL + YAPI + QUESTION_BANK + "/getList";
 
     public static String PARAM_LASTTIME = "lastTime";
     public static String PARAM_PAGESIZE = "pageSize";
@@ -170,17 +170,15 @@ public interface Constant {
     public static String PARAM_CONTENT = "content";
     public static String PARAM_PARENT_ID = "parent_id";
     public static String PARAM_SLIDE_ID = "slide_id";
-    public static String PARAM_NAME= "name";
-    public static String PARAM_YEAR= "year";
-    public static String PARAM_MONTHDAY= "monthday";
-
+    public static String PARAM_NAME = "name";
+    public static String PARAM_YEAR = "year";
+    public static String PARAM_MONTHDAY = "monthday";
 
 
     public static String PARAM_DEVICE_TYPE = "device_type";
     public static String PARAM_DEVICE_NAME = "android";
     public static String PARAM_CONTENT_TYPE = "Content-Type";
     public static String PARAM_APPLICATION = "application/x-www-form-urlencoded";
-
 
 
     public static String PARAM_APPLICATION_JSON = "application/json";
@@ -196,7 +194,7 @@ public interface Constant {
 
     public static String PARAM_XX_TOKEN = "XX-Token";
     public static String PARAM_XX_DEVICE_TYPE = "XX-Device-Type";
-  public static String PARAM_XX_LANGUAGE = "xx-Language";
+    public static String PARAM_XX_LANGUAGE = "xx-Language";
 
     public static String PARAM_VERIFICATION_CODE = "verification_code";
     public static String PARAM_SIGNNAME = "signname";
@@ -211,7 +209,7 @@ public interface Constant {
     public static String PARAM_APP_TYPE = "app_type";
     public static String STAY_DEVICE = "android";
     public static String PARAM_APPLY_NAME = "apply_name";
-  public static String PARAM_IS_VALIDATE = "is_validate";
+    public static String PARAM_IS_VALIDATE = "is_validate";
 
     public static String PARAM_PAGE = "page";
     public static String PARAM_NUM = "num";
@@ -285,11 +283,16 @@ public interface Constant {
     public static int TYPE = 38;
     public static int ONRESUME_TYPE = 40;
     public static int FEEDBACK = 41;
-    public static int QUESTION=42;
-  public static int SEARCH = 47;
+    public static int QUESTION = 42;
+    public static int SEARCH = 47;
 
-    public static String LANGUAGE="language";
+    public static int CALENDER = 48;
+    public static int BTC_NEWS = 49;
+    public static int ETH_NEWS = 50;
+    public static int EOS_NEWS = 51;
+    public static int LTC_NEWS = 52;
 
+    public static String LANGUAGE = "language";
 
 
     public static final String KEY_SP_FILENAME = "ltqh";

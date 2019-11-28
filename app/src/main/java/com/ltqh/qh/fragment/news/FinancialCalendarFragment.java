@@ -21,6 +21,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.FinanceCalendarEnitiy;
 import com.ltqh.qh.entity.FinanceEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
@@ -35,7 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class FinancialCalendarFragment extends BaseFragment {
+public class FinancialCalendarFragment extends OBaseFragment {
 
 
     private RecyclerView recyclerView;
@@ -69,6 +70,11 @@ public class FinancialCalendarFragment extends BaseFragment {
 
     }
 
+    @Override
+    protected void onLazyLoad() {
+
+    }
+
     protected void initView(View view) {
 
         initData(dateToStamp(), REFRESHTYPE, 10);
@@ -79,6 +85,8 @@ public class FinancialCalendarFragment extends BaseFragment {
         text_month = (TextView) view.findViewById(R.id.text_month);
 
         String s = dateToStamp();
+
+        Log.d("print", "initView:83:   "+s);
 
 
         text_month.setText(s.substring(5, 7));
@@ -92,7 +100,6 @@ public class FinancialCalendarFragment extends BaseFragment {
             public void onClickWeekCalendar(DateTime dateTime) {
 
                 thatDate = dateTime.toString();
-             //   Log.d("print", "onWeekCalendarPageSelected: 91:"+thatDate);
 
                 initData(dateTime.toString(), REFRESHTYPE, 10);
                 isNowDate = false;

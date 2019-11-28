@@ -236,7 +236,7 @@
     </string>
     <string name="o_step_check">快速签到领红包\n扣抵实盘手续费</string>
     <string name="o_text_hongbao">当前已打开红包抵扣</string>
-    <string name="o_text_shangpin">商品名称</string>
+    <string name="o_text_shangpin">product name</string>
     <string name="o_lottery_one">抽奖获得的现金会自动派发到账号上,只需实盘交易10手标准模式即可提款,获得的积分可用于抽奖跟抵扣实盘交易手续费</string>
     <string name="o_lottery_two">话费充值卡,请联系在线客服,提供所需要充值的电话号码</string>
     <string name="o_lottery_three">获得的抽奖机会若不使用,活动结束视为放弃抽奖资格</string>
@@ -244,7 +244,7 @@
     <string name="tab_one">Home</string>
     <string name="tab_two">Market</string>
     <string name="tab_three">Discover</string>
-    <string name="tab_four">Discover</string>
+    <string name="tab_four">Information</string>
     <string name="tab_five">Me</string>
     <string name="text_class">School</string>
     <string name="text_guide">Guide</string>
@@ -342,8 +342,69 @@
     <string name="text_attention">Focus already</string>
     <string name="text_focus">Focus</string>
     <string name="text_warning">Warning</string>
-    <string name="text_edit">编辑</string>
-    <string name="text_add">立即添加</string>
-    <string name="text_cny">当前价(CNY)</string>
-    <string name="text_realtime">实时行情</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_add">Add</string>
+    <string name="text_cny">price(CNY)</string>
+    <string name="text_realtime">Real-time quotes</string>
+    <string name="text_sign_more">See more content after login!</string>
+    <string name="text_happy">Happy Everyday~</string>
+    <string name="text_morning">News</string>
+    <string name="text_news">Let the information wake up</string>
+    <string name="text_update">Update now</string>
+    <string name="text_hot_project">Hot Projects</string>
+    <string name="text_know_more">Let you know more about Blockchain</string>
+    <string name="text_btc">Bitcoin</string>
+    <string name="text_p2p">Open source P2P2 currency</string>
+    <string name="text_btc_tag">
+Tags: decentralized digital currency bitcoin public chain finance</string>
+    <string name="text_btc_title">
+Project information</string>
+    <string name="text_btc_newcontent">The concept of Bitcoin (BitCoin) was originally proposed by Satoshi Nakamoto in 2009. According to Satoshi Nakamoto\'s ideas, the open source software designed and released and the P2P network built on it. Bitcoin is a digital currency in the form of P2P. Peer-to-peer transmission means a decentralized payment system. Unlike most currencies, Bitcoin does not rely on specific currency institutions to issue it. It is generated through a large number of calculations based on specific algorithms. The Bitcoin economy uses a distributed database composed of many nodes in the entire P2P network to confirm and record all transaction behaviors. And use the design of cryptography to ensure the security of all aspects of currency circulation. The decentralized nature of P2P and the algorithm itself can ensure that it is impossible to artificially manipulate the value of coins by making a large number of Bitcoins. Cryptography-based design allows Bitcoin to be transferred or paid only by its true owner. This also ensures the anonymity of currency ownership and circulation transactions. The biggest difference between Bitcoin and other virtual currencies is that its total number is very limited and it is extremely scarce. The currency system used to be no more than 10.5 million in 4 years, and the total number will be permanently limited to 21 million.</string>
+    <string name="text_eth">Ethereum</string>
+    <string name="text_eth_coin">
+Cryptocurrency Ethereum</string>
+    <string name="text_eth_tag">
+Tags: Decentralized Digital Currency Ethereum Public Chain Finance</string>
+    <string name="text_eth_content">Ethereum is an open source public blockchain platform with smart contract functions. Provides a decentralized virtual machine through its dedicated cryptocurrency Ethereum to handle peer-to-peer contracts. The concept of Ethereum was first proposed by programmer Vitalik Butrin between 2013 and 2014 after being inspired by Bitcoin. The concept was “the next generation of cryptocurrency and decentralized application platform”. It was crowdfunded through ICO in 2014. Began to develop.</string>
+    <string name="text_eos">Eos</string>
+    <string name="text_eos_title">Commercial distributed design blockchain operating system</string>
+    <string name="text_eos_content">EOS: EOS can be understood as Enterprise Operation System, a blockchain operating system designed for commercial distributed applications. EOS is a new blockchain architecture introduced by EOS software, which aims to achieve the performance expansion of distributed applications. Note that it is not a currency like Bitcoin and Ethereum, but a token based on the EOS software project, which is called Blockchain 3.0.</string>
+    <string name="text_ltc">
+Litecoin</string>
+    <string name="text_ltc_title">scrypt encryption algorithm</string>
+    <string name="text_ltc_content">
+Litecoin is an online currency based on "peer-to-peer" technology and an open source software project under the MIT / X11 license. It helps users make instant payments to anyone in the world [2]. Litecoin was designed and programmed by a programmer (Li Qiwei) who had worked at Google. It was launched on January 9, 2011. Litecoin is an improved digital currency inspired by Bitcoin. Litecoin\'s technical principle is the same as Bitcoin\'s. It also uses a decentralized architecture, no central authority control, new currency issuance and transaction payment transfers are based on open source encryption algorithms. These are all imitating the design principles of Bitcoin. However, Litecoin has tried to improve the shortcomings that Bitcoin has shown before, such as too slow transaction confirmation, a small total upper limit, and the emergence of a large mining pool due to the proof-of-work mechanism. Litecoin aims to improve Bitcoin, compared to Litecoin with three significant differences. First, the Litecoin network can process a block every 2.5 minutes (instead of 10 minutes), so it can provide faster transaction confirmation. Second, the Litecoin network is expected to produce 84 million Litecoins, which is four times the amount of money issued by the Bitcoin network.Third, Litecoin uses the scrypt encryption algorithm first proposed by Colin Percival in its proof-of-work algorithm, which makes it easier to mine Litecoin on ordinary computers compared to Bitcoin. Each Litecoin is divided into 100,000,000 smaller units, defined by eight decimal places.</string>
+    <string name="text_news_btc">News in the Coin Circle</string>
+    <string name="text_btc_more">
+Understand all aspects of the currency circle</string>
+    <string name="text_btc_topic">
+Currency topic</string>
+    <string name="text_btc_comment">
+Speak freely</string>
+    <string name="text_topic_content">The ICO is the first time a blockchain project issues tokens to raise general cryptocurrencies such as Bitcoin and Ethereum. ICO is analogous to the concept of IPO in the stock market. It is a broad form of fundraising for cryptocurrency or digital currency. Participants value the potential investment value of project development, and its essence is a product crowdfunding.</string>
+    <string name="text_topic_title">
+#Software industry support policy will be introduced#</string>
+    <string name="text_select">
+Optional</string>
+    <string name="text_coin">
+Currency</string>
+    <string name="text_info_btc">#BTC#</string>
+    <string name="text_info_hs">#SS#</string>
+    <string name="text_info_gg">#HK#</string>
+    <string name="text_info_mg">#US#</string>
+    <string name="text_info_qh">#Futures#</string>
+    <string name="text_info_wh">#
+Foreign exchange#</string>
+    <string name="text_disscuss">Discuss</string>
+    <string name="text_circle">Circle</string>
+    <string name="text_price_current">
+Current price(CNY)</string>
+    <string name="text_quote_change">
+Quote change</string>
+    <string name="text_quote_point">Point change</string>
+    <string name="text_currency">
+Featured currency</string>
+    <string name="text_add_mine">
+Add optional</string>
+
 </resources>

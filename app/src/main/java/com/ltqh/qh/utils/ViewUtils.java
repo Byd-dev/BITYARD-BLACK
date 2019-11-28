@@ -46,11 +46,22 @@ public class ViewUtils {
     public  static void setLayoutParams(Context context,LinearLayout layout_bar){
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         int statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
-
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, statusBarHeight );
         layout_bar.setLayoutParams(params);
     }
 
+    public  static void setRelativeLayoutParams(Context context,RelativeLayout layout_bar,float value){
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, statusBarHeight+Util.dip2px(context, value) );
+        layout_bar.setLayoutParams(params);
+    }
+    public  static void setLinearLayoutParams(Context context,RelativeLayout layout_bar,float value){
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, statusBarHeight+Util.dip2px(context, value) );
+        layout_bar.setLayoutParams(params);
+    }
     /**
      * 判断触点是否落在该View上
      */

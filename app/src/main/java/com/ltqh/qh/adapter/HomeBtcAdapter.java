@@ -406,7 +406,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             if (ODateUtil.isWeekend() == false & openTradeTime == false & openTradeTime1 == false & openTradeTime2 == false) {
                 ((MyViewHolder) holder).text_high.setText("休市");
-               // ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
+                ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
 
 
             } else {
@@ -415,22 +415,24 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     sub_str="+"+sub;
 
                     percent = "+" + numberFormat2 + "%";
-                  //  ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
+                    ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
 
                     ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.redcolor));
+                    ((MyViewHolder) holder).layout_bg.setBackground(context.getResources().getDrawable(R.mipmap.market_bg_down));
                 } else if (flag == -1) {
                     sub_str=sub+"";
 
                     percent = numberFormat2 + "%";
-                   // ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
+                    ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
 
                     ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.greencolor));
+                    ((MyViewHolder) holder).layout_bg.setBackground(context.getResources().getDrawable(R.mipmap.market_bg_up));
 
                 } else if (flag == 0) {
                     sub_str=sub+"";
 
                     percent = numberFormat2 + "%";
-                  //  ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
+                    ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
 
                     ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
 
@@ -447,7 +449,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
 
 
-            ((MyViewHolder) holder).text_last.setText(last);
+            ((MyViewHolder) holder).text_last.setText("¥ "+last);
 
 
             String string = SPUtils.getString(OUserConfig.P_NIGHT);
@@ -577,7 +579,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text_name, text_last, text_time, text_high;
-        RelativeLayout  layout_bar;
+        RelativeLayout  layout_bar,layout_bg;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -586,6 +588,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             text_high = itemView.findViewById(R.id.text_high);
             layout_bar = itemView.findViewById(R.id.layout_bar);
             text_time = itemView.findViewById(R.id.text_time);
+            layout_bg=itemView.findViewById(R.id.layout_bg);
 
         }
 

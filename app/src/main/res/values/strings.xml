@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BitShop</string>
+    <string name="app_name">CoinMex</string>
     <string name="text_btc_content"> 比特币（BitCoin）的概念最初由中本聪在2009年提出，根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的数字货币。点对点的传输意味着一个去中心化的支付系统。又称“比特金”，是一种网络虚拟货币，网民可以使用比特币购买一些虚拟物品，比如网络游戏当中的衣服、帽子、装备等，网民之间也有用来购买现实物品的情况。 </string>
     <string name="text_block">区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。 区块链（Blockchain），是比特币的一个重要概念，它本质上是一个去中心化的数据库，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</string>
     <string name="text_video">金融投资亦称“证券投资”。经济主体为获取预期收益或股权，用资金购买股票、债券等金融资产的投资活动。金融投资既是一个领域又是一种方式，是发达的市场经济与信用的产物。最早的证券投资可追溯至15世纪的欧洲。20世纪80年代以来，证券投资已成为西方发达市场经济国家最基本的投资方式。当一经济主体通过发行股票、债券等证券筹资方式用以投入实质资产的维持与扩大时，购买证券者成为金融投资者。金融资产是其持有者对其出售者的股权和债权的凭证。</string>
@@ -244,7 +244,7 @@
     <string name="tab_one">首页</string>
     <string name="tab_two">行情</string>
     <string name="tab_three">币圈</string>
-    <string name="tab_four">发现</string>
+    <string name="tab_four">资讯</string>
     <string name="tab_five">我的</string>
     <string name="text_class">课堂</string>
     <string name="text_guide">指引</string>
@@ -345,5 +345,48 @@
     <string name="text_add">立即添加</string>
     <string name="text_cny">当前价(CNY)</string>
     <string name="text_realtime">实时行情</string>
+    <string name="text_sign_more">立即登录 查看更多精彩内容</string>
+    <string name="text_happy">开开心心每一天~</string>
+    <string name="text_morning">链情早报</string>
+    <string name="text_news">一早说尽新鲜事,让资讯唤醒耳朵</string>
+    <string name="text_update">刚刚更新</string>
+    <string name="text_hot_project">热门项目</string>
+    <string name="text_know_more">让你更懂区块链</string>
+    <string name="text_btc">比特币</string>
+    <string name="text_p2p">开源的P2P2货币</string>
+    <string name="text_btc_tag">标签: 去中心化 数字货币 比特币 公有链 金融</string>
+    <string name="text_btc_title">项目信息</string>
+    <string name="text_btc_newcontent">比特币（BitCoin）的概念最初由中本聪在2009年提出，根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的数字货币。点对点的传输意味着一个去中心化的支付系统。 与大多数货币不同，比特币不依靠特定货币机构发行，它依据特定算法，通过大量的计算产生，比特币经济使用整个P2P网络中众多节点构成的分布式数据库来确认并记录所有的交易行为，并使用密码学的设计来确保货币流通各个环节安全性。P2P的去中心化特性与算法本身可以确保无法通过大量制造比特币来人为操控币值。基于密码学的设计可以使比特币只能被真实的拥有者转移或支付。这同样确保了货币所有权与流通交易的匿名性。比特币与其他虚拟货币最大的不同，是其总数量非常有限，具有极强的稀缺性。该货币系统曾在4年内只有不超过1050万个，之后的总数量将被永久限制在2100万个。</string>
+    <string name="text_eth">以太坊</string>
+    <string name="text_eth_coin">加密货币以太币</string>
+    <string name="text_eth_tag">标签: 去中心化 数字货币 以太币 公有链 金融</string>
+    <string name="text_eth_content">以太坊是一个开源的有智能合约功能的公共区块链平台。通过其专用加密货币以太币提供去中心化的虚拟机来处理点对点合约。 以太坊的概念首次在2013至2014年间由程序员维塔利克·布特林受比特币启发后提出，大意为“下一代加密货币与去中心化应用平台”，在2014年透过ICO众筹得以开始发展。</string>
+    <string name="text_eos">柚子</string>
+    <string name="text_eos_title">商用分布式设计区块链操作系统</string>
+    <string name="text_eos_content">EOS：EOS可以理解为Enterprise Operation System，即为商用分布式应用设计的一款区块链操作系统。EOS是EOS软件引入的一种新的区块链架构，旨在实现分布式应用的性能扩展。注意，它并不是像比特币和以太坊那样是货币，而是基于EOS软件项目之上发布的代币，被称为区块链3.0。</string>
+    <string name="text_ltc">莱特币</string>
+    <string name="text_ltc_title">scrypt加密算法</string>
+    <string name="text_ltc_content">莱特币是一种基于“点对点”(peer-to-peer)技术的网络货币，也是MIT/X11许可下的一个开源软件项目。它可以帮助用户即时付款给世界上任何一个人 [2] 。莱特币由一名曾任职于谷歌的程序员(李启威)设计并编程实现，2011年1月9日发布运行。莱特币是受比特币的启发而推出的改进版数字货币。莱特币的技术原理与比特币相同，也是采用去中心化的架构、无任何中心机构控制、新币发行和交易支付转让都是基于开源的加密算法等等这些都是模仿比特币的设计原理。但是，莱特币尽量改进了比特币之前已经表现出的缺点，如交易确认太慢、总量上限偏少、工作量证明机制导致大矿池的出现等等SHA256算法 [1] 。 莱特币旨在改进比特币，与其相比，莱特币具有三种显著差异。第一，莱特币网络每2.5分钟（而不是10分钟）就可以处理一个块，因此可以提供更快的交易确认。第二，莱特币网络预期产出8400万个莱特币，是比特币网络发行货币量的四倍之多。第三，莱特币在其工作量证明算法中使用了由Colin Percival首次提出的scrypt加密算法，这使得相比于比特币，在普通计算机上进行莱特币挖掘更为容易。每一个莱特币被分成100,000,000个更小的单位，通过八位小数来界定。</string>
+    <string name="text_news_btc">币圈新鲜事</string>
+    <string name="text_btc_more">了解币圈的方方面面</string>
+    <string name="text_btc_topic">币圈话题</string>
+    <string name="text_btc_comment">抒发观点畅所欲言</string>
+    <string name="text_topic_content">首次币发行是区块链项目首次发行代币以募集比特币、以太币等通用加密货币的行为。ICO可类比股票市场的IPO概念，是为加密货币或者数字货币募集资金的一种广泛形式，参与者看重的是项目发展的潜在投资价值，其本质是一种产品众筹。</string>
+    <string name="text_topic_title">#软件产业支持政策将出台#</string>
+    <string name="text_select">自选</string>
+    <string name="text_coin">币种</string>
+    <string name="text_info_btc">#BTC#</string>
+    <string name="text_info_hs">#沪深#</string>
+    <string name="text_info_gg">#港股#</string>
+    <string name="text_info_mg">#美股#</string>
+    <string name="text_info_qh">#期货#</string>
+    <string name="text_info_wh">#外汇#</string>
+    <string name="text_disscuss">讨论</string>
+    <string name="text_circle">币圈</string>
+    <string name="text_price_current">当前价(CNY)</string>
+    <string name="text_quote_change">涨跌幅</string>
+    <string name="text_quote_point">涨跌点</string>
+    <string name="text_currency">精选币种</string>
+    <string name="text_add_mine">添加自选</string>
 
 </resources>

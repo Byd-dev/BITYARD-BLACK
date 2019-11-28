@@ -76,6 +76,9 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
     @BindView(R.id.img_head)
     CircleImageView img_head;
 
+    @BindView(R.id.text_sign)
+    TextView text_sign;
+
 
     private MyAdapter myAdapter;
     private List<MyMenuEntity> data;
@@ -109,14 +112,14 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 if (user_nickname.equals("")) {
                     text_login.setText("用户");
-                    //text_sign.setText("开开心心每一天~");
+                    text_sign.setText(getResources().getString(R.string.text_happy));
              /*   text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));*/
 
 
                 } else {
                     text_login.setText(userInfoEntity.getData().getUser_nickname());
-                    //  text_sign.setText(userInfoEntity.getData().getSignature());
+                    text_sign.setText(userInfoEntity.getData().getSignature());
              /*   text_login.setBackground(getResources().getDrawable(R.drawable.shape_bg_white));
                 text_login.setTextColor(getResources().getColor(R.color.text_maincolor));
 */
@@ -130,7 +133,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
             text_login.setTextColor(getResources().getColor(R.color.white));*/
 
             text_login.setText(getResources().getText(R.string.text_log_in));
-            //text_sign.setText("~~");
+            text_sign.setText(getResources().getString(R.string.text_sign_more));
             img_head.setImageDrawable(getResources().getDrawable(R.mipmap.user_icon));
 
             //layout_logout.setVisibility(View.GONE);
@@ -154,11 +157,11 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                 if (user_nickname.equals("")) {
 
                     text_login.setText(getResources().getText(R.string.text_user));
-                    //text_sign.setText("开开心心每一天~");
+                    text_sign.setText(getResources().getString(R.string.text_happy));
 
                 } else {
                     text_login.setText(loginEntity.getData().getUser().getUser_nickname());
-                    //text_sign.setText(loginEntity.getData().getUser().getSignature());
+                    text_sign.setText(loginEntity.getData().getUser().getSignature());
 
                 }
 
@@ -168,7 +171,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
             }
         }
-        text_hc.setText(getResources().getText(R.string.text_cache)+"(" +AppUtil.getAppClearSize(getContext()) + ")");
+        text_hc.setText(getResources().getText(R.string.text_cache) + "(" + AppUtil.getAppClearSize(getContext()) + ")");
 
     }
 
@@ -181,7 +184,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
     protected void initView(View view) {
 
         EventBus.getDefault().register(this);
-        text_hc.setText(getResources().getText(R.string.text_cache)+"(" + AppUtil.getAppClearSize(getContext()) + ")");
+        text_hc.setText(getResources().getText(R.string.text_cache) + "(" + AppUtil.getAppClearSize(getContext()) + ")");
         layout_delete.setOnClickListener(this);
 
         view.findViewById(R.id.layout_service).setOnClickListener(this);
@@ -196,6 +199,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
         view.findViewById(R.id.layout_language).setOnClickListener(this);
         view.findViewById(R.id.layout_language2).setOnClickListener(this);
+        view.findViewById(R.id.text_edit).setOnClickListener(this);
 
         //layout_logout.setOnClickListener(this);
         view.findViewById(R.id.tv_nickname).setOnClickListener(this);
@@ -336,8 +340,10 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.tv_nickname:
+            case R.id.text_edit:
+
                 if (isLogin()) {
-                    //   PersonActivity.enter(getActivity());
+                    PersonActivity.enter(getActivity());
                 } else {
                     UserActivity.enter(getActivity(), Constant.LOGIN);
                 }

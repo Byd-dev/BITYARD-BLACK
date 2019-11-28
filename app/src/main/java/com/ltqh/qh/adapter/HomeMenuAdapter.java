@@ -110,7 +110,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     break;
 
                 case 3:
-                    ((MyViewHolder) holder).text_menu.setBackground(context.getResources().getDrawable(R.mipmap.bg3));
+                    ((MyViewHolder) holder).text_menu.setBackground(context.getResources().getDrawable(R.mipmap.bg4));
                    // ((MyViewHolder) holder).text_menu.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
 
                     break;

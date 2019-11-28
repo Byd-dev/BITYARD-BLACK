@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.NewsDetailActivity;
@@ -24,11 +26,14 @@ import com.ltqh.qh.entity.StocknewsEntity;
 import com.ltqh.qh.fragment.HomeFragment;
 import com.ltqh.qh.fragment.market.StockForeignFragment;
 import com.ltqh.qh.fragment.market.StockTabLayoutFragment;
+import com.ltqh.qh.operation.base.OBaseFragment;
+import com.ltqh.qh.view.XCRoundRectImageView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.stx.xhb.xbanner.XBanner;
 import com.zhouwei.mzbanner.MZBannerView;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
@@ -39,7 +44,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class StockNewsFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener {
+public class StockNewsFragment extends OBaseFragment implements RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.banner)
     MZBannerView banner;
 
@@ -78,6 +83,9 @@ public class StockNewsFragment extends BaseFragment implements RadioGroup.OnChec
 
     private String type = "5";
 
+
+    @BindView(R.id.banner_article)
+    XBanner banner_article;
     @Override
     protected void intPresenter() {
 
@@ -87,12 +95,86 @@ public class StockNewsFragment extends BaseFragment implements RadioGroup.OnChec
     public void onResume() {
         super.onResume();
         banner.start();
+        if (banner_article != null) {
+            banner_article.startAutoPlay();
+        }
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (banner_article != null) {
+            banner_article.stopAutoPlay();
+        }
     }
 
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_stocknews;
+    }
+
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
+    private void getBanner2() {
+        OkGo.<String>get(Constant.URL_BANNER)
+                .tag(this)
+                .params(Constant.PARAM_SLIDE_ID, 1)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())) {
+                            BannerEntity bannerEntity = new Gson().fromJson(response.body(), BannerEntity.class);
+                            List<BannerEntity.DataBean> data = bannerEntity.getData();
+                            upArticleBanner(data);
+                        }
+                    }
+                });
+    }
+    private void upArticleBanner(List<BannerEntity.DataBean> data) {
+        //  Log.d("print", "upBanner:461:   " + data);
+        if (data == null) {
+            return;
+        }
+
+        if (banner_article != null) {
+            banner_article.setBannerData(R.layout.item_info_banner_layout, data);
+            banner_article.loadImage(new XBanner.XBannerAdapter() {
+                @Override
+                public void loadBanner(XBanner banner, Object model, View view, int position) {
+                    XCRoundRectImageView imageView = view.findViewById(R.id.img_banner);
+                    Glide.with(getActivity()).load(data.get(position).getXBannerUrl()).asBitmap().into(imageView);
+                    TextView textView = view.findViewById(R.id.text_title);
+                    textView.setText(data.get(position).getTitle());
+                    TextView text_content = view.findViewById(R.id.text_content);
+                    text_content.setText(data.get(position).getContent());
+                }
+            });
+
+            banner_article.setOnItemClickListener(new XBanner.OnItemClickListener() {
+                @Override
+                public void onItemClick(XBanner banner, Object model, View view, int position) {
+                    NewsDetailActivity.enter(getContext(), "BANNER", data.get(position));
+
+                }
+            });
+        }
+
+       /* banner.setPages(data, new MZHolderCreator() {
+            @Override
+            public MZViewHolder createViewHolder() {
+                return new BannerViewHolder();
+            }
+        });*/
+
     }
 
 
@@ -159,6 +241,7 @@ public class StockNewsFragment extends BaseFragment implements RadioGroup.OnChec
     @Override
     protected void initData() {
         getBanner();
+        getBanner2();
 
     }
 
@@ -255,8 +338,8 @@ public class StockNewsFragment extends BaseFragment implements RadioGroup.OnChec
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                initData(REFRESHTYPE, "5");
-                type = "5";
+                initData(REFRESHTYPE, "4");
+                type = "4";
 
                 break;
 
@@ -278,8 +361,8 @@ public class StockNewsFragment extends BaseFragment implements RadioGroup.OnChec
                 break;
             case R.id.radio_4:
 
-                initData(REFRESHTYPE, "4");
-                type = "4";
+                initData(REFRESHTYPE, "5");
+                type = "5";
                 break;
 
             case R.id.radio_5:

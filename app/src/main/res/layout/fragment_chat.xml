@@ -101,7 +101,7 @@
                 android:drawableTop="@mipmap/unlogin_bg"
                 android:gravity="center"
                 android:text="登录后查看讨论"
-                android:textColor="@color/maincolor"
+                android:textColor="@color/text_c1c1"
                 android:visibility="visible" />
 
             <android.support.v4.widget.SwipeRefreshLayout
