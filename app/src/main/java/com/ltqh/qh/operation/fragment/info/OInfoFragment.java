@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.MyPagerAdapter;
+import com.ltqh.qh.fragment.news.StockNewsFragment;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.view.InfoEnhanceTabLayout;
 
@@ -102,7 +103,7 @@ public class OInfoFragment extends OBaseFragment implements View.OnClickListener
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
         myPagerAdapter.addFragment(new OLiveFragment());
         myPagerAdapter.addFragment(new OHotFragment());
-        myPagerAdapter.addFragment(new OFinancialCalendarFragment());
+        myPagerAdapter.addFragment(new StockNewsFragment());
         myPagerAdapter.addFragment(new OReportFragment());
 
         viewPager.setAdapter(myPagerAdapter);

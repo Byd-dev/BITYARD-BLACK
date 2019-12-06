@@ -146,7 +146,7 @@
                         android:checked="true"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="@string/text_select"
+                        android:text="@string/text_coin"
                         android:textColor="@color/text_maincolor"
                         android:textSize="17sp"
 
@@ -168,7 +168,7 @@
                         android:checked="false"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="@string/text_coin"
+                        android:text="@string/text_select"
                         android:textColor="@color/text_maincolor"
                         android:textSize="15sp"
 
@@ -191,7 +191,7 @@
                     android:drawableLeft="@mipmap/edit"
                     android:textColor="@color/text_maincolor"
                     android:textSize="15sp"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/img_search"
@@ -204,7 +204,7 @@
                     android:paddingRight="@dimen/margin_15"
                     android:paddingLeft="@dimen/margin_15"
                     android:src="@mipmap/home_search"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </RelativeLayout>
 

@@ -70,9 +70,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
     RelativeLayout layout_logout;*/
 
 
-    @BindView(R.id.recyclerview)
-    RecyclerView recyclerView;
-
     @BindView(R.id.img_head)
     CircleImageView img_head;
 
@@ -80,13 +77,12 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
     TextView text_sign;
 
 
-    private MyAdapter myAdapter;
     private List<MyMenuEntity> data;
     private String language;
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.fragment_my_bg;
+        return R.layout.fragment_my;
     }
 
     @Override
@@ -125,6 +121,8 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 */
                 }
             }
+
+
 
 
         } else {
@@ -188,17 +186,16 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         layout_delete.setOnClickListener(this);
 
         view.findViewById(R.id.layout_service).setOnClickListener(this);
-        view.findViewById(R.id.layout_about).setOnClickListener(this);
         view.findViewById(R.id.layout_mymessage).setOnClickListener(this);
         view.findViewById(R.id.layout_change).setOnClickListener(this);
         view.findViewById(R.id.layout_person).setOnClickListener(this);
-        view.findViewById(R.id.img_signature).setOnClickListener(this);
 
         view.findViewById(R.id.img_service).setOnClickListener(this);
         view.findViewById(R.id.img_message).setOnClickListener(this);
+        view.findViewById(R.id.layout_service).setOnClickListener(this);
+        view.findViewById(R.id.img_setting).setOnClickListener(this);
 
-        view.findViewById(R.id.layout_language).setOnClickListener(this);
-        view.findViewById(R.id.layout_language2).setOnClickListener(this);
+
         view.findViewById(R.id.text_edit).setOnClickListener(this);
 
         //layout_logout.setOnClickListener(this);
@@ -207,90 +204,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         /*text_title.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
         text_title.getPaint().setAntiAlias(true);//抗锯齿
         text_title.getPaint().setColor(getResources().getColor(R.color.second_color));*/
-
-
-        myAdapter = new MyAdapter(getActivity());
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        recyclerView.setAdapter(myAdapter);
-
-        data = new ArrayList<>();
-        data.add(new MyMenuEntity("我的消息", R.mipmap.my_icon1));
-        data.add(new MyMenuEntity("联系客服", R.mipmap.my_icon2));
-        data.add(new MyMenuEntity("修改密码", R.mipmap.my_icon3));
-        data.add(new MyMenuEntity("清除缓存" + "(" + AppUtil.getAppClearSize(getActivity()) + ")", R.mipmap.my_icon4));
-        data.add(new MyMenuEntity("个人资料", R.mipmap.my_icon5));
-        data.add(new MyMenuEntity("关于我们", R.mipmap.my_icon6));
-
-
-        myAdapter.setDatas(data);
-
-        myAdapter.setOnItemClick(new MyAdapter.OnItemClick() {
-            @Override
-            public void onSuccessListener(MyMenuEntity content) {
-                switch (content.getName()) {
-                    case "我的消息":
-                        if (isLogin()) {
-                            UserActivity.enter(getActivity(), Constant.USER_MYMEAAAGE);
-                        } else {
-                            UserActivity.enter(getActivity(), Constant.LOGIN);
-                        }
-                        break;
-                    case "联系客服":
-                        if (isLogin()) {
-                            WebActivity.openZhiChiService(getActivity());
-                        } else {
-                            UserActivity.enter(getActivity(), Constant.LOGIN);
-                        }
-                        break;
-                    case "修改密码":
-                        if (isLogin()) {
-                            UserActivity.enter(getActivity(), Constant.RESET);
-
-                        } else {
-                            UserActivity.enter(getActivity(), Constant.LOGIN);
-                        }
-                        break;
-                 /*   case "清除缓存":
-                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-                            if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                                    || ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                                //进入到这里代表没有权限.请求权限
-                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2000);
-                            } else {
-                                clearCache();
-                            }
-                        } else {
-                            clearCache();
-                        }
-                        break;*/
-                    case "个人资料":
-                        if (isLogin()) {
-                            PersonActivity.enter(getActivity());
-                        } else {
-                            UserActivity.enter(getActivity(), Constant.LOGIN);
-                        }
-                        break;
-                    case "关于我们":
-                        WebActivity.openAboutUs(getActivity());
-
-                        break;
-                }
-
-                if (content.getName().contains("清除缓存")) {
-                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-                        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                                || ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                            //进入到这里代表没有权限.请求权限
-                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2000);
-                        } else {
-                            clearCache();
-                        }
-                    } else {
-                        clearCache();
-                    }
-                }
-            }
-        });
 
 
     }
@@ -326,12 +239,16 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
                 }
                 break;
             case R.id.layout_service:
-                IntentActivity.enter(getActivity(), Constant.FEEDBACK);
-
+                if (isLogin()) {
+                    WebActivity.openZhiChiService(getActivity());
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
                 break;
 
-            case R.id.layout_about:
-                WebActivity.openAboutUs(getActivity());
+            case R.id.layout_feedback:
+                IntentActivity.enter(getActivity(), Constant.FEEDBACK);
+
 
                 break;
 
@@ -369,6 +286,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 break;
             case R.id.layout_person:
+            case R.id.img_setting:
                 if (isLogin()) {
                     PersonActivity.enter(getActivity());
                 } else {
@@ -377,7 +295,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                 break;
 
-            case R.id.img_signature:
+            case R.id.text_sign:
                 if (isLogin()) {
                     UserActivity.enter(getActivity(), Constant.SIGNATURE);
                 } else {
@@ -396,18 +314,6 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
             case R.id.img_message:
                 OUserActivity.enter(getActivity(), OConstant.O_MESSAGE);
-
-                break;
-
-            case R.id.layout_language:
-                language = LanguageType.ENGLISH.getLanguage();
-                changeLanguage(language);
-
-
-                break;
-            case R.id.layout_language2:
-                language = LanguageType.CHINESE.getLanguage();
-                changeLanguage(language);
 
                 break;
 
@@ -475,9 +381,9 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
 
                                 String signature = userInfoEntity.getData().getSignature();
                                 if (signature.equals("")) {
-                                    //text_sign.setText("开开心心每一天~");
+                                    text_sign.setText("开开心心每一天~");
                                 } else {
-                                    //text_sign.setText(signature);
+                                    text_sign.setText(signature);
                                 }
 
                                 SPUtils.putData(UserConfig.USER, userInfoEntity);

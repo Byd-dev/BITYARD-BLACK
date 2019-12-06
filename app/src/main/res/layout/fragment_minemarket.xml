@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/o_bar_white"
+    android:background="@color/o_market_bg"
     android:orientation="vertical">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginTop="@dimen/margin_15"
+            android:visibility="gone"
             >
 
             <TextView
@@ -22,7 +22,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/margin_15"
-
                 android:text="@string/o_text_shangpin"
                 android:textColor="@color/text_c1c1"
                 android:textSize="13sp"
@@ -117,10 +116,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/o_add"
-                        android:drawablePadding="@dimen/margin"
+                        android:drawableLeft="@mipmap/jia_icon"
+                        android:drawablePadding="@dimen/margin_5"
                         android:text="@string/text_add_mine"
-                        android:textColor="@color/o_text_8289"
+                        android:textColor="@color/maincolor"
                         android:textSize="15sp" />
 
 
@@ -145,12 +144,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/o_zanwuguanzhu_tu"
+            android:drawableTop="@mipmap/icon_nothing"
             android:drawablePadding="@dimen/margin_15"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:text="暂无关注"
+            android:text="@string/text_no_add"
             android:textSize="13sp"
-            android:textColor="@color/o_text_2d2ef"
+            android:textColor="@color/text_c1c1"
             />
 
 

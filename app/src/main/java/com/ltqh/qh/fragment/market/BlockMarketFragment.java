@@ -5,6 +5,9 @@ import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,16 +15,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
+import com.ltqh.qh.adapter.HomeBtcAdapter;
+import com.ltqh.qh.adapter.HomeTopAdapter;
 import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.operation.activity.OIntentActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
+import com.ltqh.qh.operation.entity.OApiEntity;
 import com.ltqh.qh.operation.entity.OEventData;
 import com.ltqh.qh.operation.entity.OReportEntity;
 import com.ltqh.qh.operation.fragment.market.OAllMarketFragment;
@@ -30,6 +39,7 @@ import com.ltqh.qh.operation.fragment.market.ODomesMarketFragment;
 import com.ltqh.qh.operation.fragment.market.OForeignMarketFragment;
 import com.ltqh.qh.operation.fragment.market.OMineMarketFragment;
 import com.ltqh.qh.operation.fragment.market.OStockMarketFragment;
+import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.ViewUtils;
@@ -51,6 +61,9 @@ import java.util.List;
 import butterknife.BindView;
 import skin.support.SkinCompatManager;
 
+import static com.ltqh.qh.Api.NetManger.BUSY;
+import static com.ltqh.qh.Api.NetManger.FAILURE;
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 import static com.ltqh.qh.operation.base.OConstant.PERIOD;
 
 public class BlockMarketFragment extends OBaseFragment implements View.OnClickListener {
@@ -78,6 +91,13 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
     @BindView(R.id.bar)
     LinearLayout layout_bar;
 
+
+    @BindView(R.id.recyclerview_top)
+    RecyclerView recyclerView_top;
+    private HomeTopAdapter homeTopAdapter;
+    private String isupdown = "up";
+
+
     private List<OReportEntity.NoticesBean> newSdata;
     private int mNewsIndex;
     private int flag = 0;
@@ -101,9 +121,9 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
 
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-        myPagerAdapter.addFragment(new MineMarketFragment());
+       // myPagerAdapter.addFragment(new MineMarketFragment());
         myPagerAdapter.addFragment(new DigitalMarketFragment());
-        myPagerAdapter.addFragment(new OAllMarketFragment());
+        myPagerAdapter.addFragment(new MarketFragment());
 /*        myPagerAdapter.addFragment(new StockMarketFragment());
         myPagerAdapter.addFragment(new DomesMarketFragment());*/
         viewPager.setAdapter(myPagerAdapter);
@@ -114,11 +134,11 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
 
         String language = SPUtils.getString(Constant.LANGUAGE);
         if (language.equals("en_US")) {
-            titleList.add("Mine");
+           // titleList.add("Mine");
             titleList.add("Main");
             titleList.add("All");
         } else {
-            titleList.add("自选");
+          //  titleList.add("自选");
             titleList.add("主区");
             titleList.add("全部");
         }
@@ -128,10 +148,10 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
-                    text_edit.setVisibility(View.VISIBLE);
+                 //   text_edit.setVisibility(View.VISIBLE);
 
                 } else {
-                    text_edit.setVisibility(View.GONE);
+                   // text_edit.setVisibility(View.GONE);
 
                 }
             }
@@ -157,7 +177,6 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
         text_edit.setOnClickListener(this);
         initViewPager(viewPager);
 
-        dismissProgressDialog();
 
     }
 
@@ -180,8 +199,10 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
+            //暂时屏蔽消息
+            //updateNews();
 
-            updateNews();
+            getQuote();
 
 
         }
@@ -229,6 +250,12 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
         startScheduleJob(mHandler, PERIOD, PERIOD);
 
 
+        //btc
+        homeTopAdapter = new HomeTopAdapter(getActivity());
+        recyclerView_top.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        recyclerView_top.setAdapter(homeTopAdapter);
+
+
         mTextSwitcherNews.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
@@ -256,9 +283,56 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
 
     }
 
+
+    private void getQuote() {
+
+        List<String> dataList = QuoteProxy.getInstance().getDigitalDataList();
+
+        Log.d("print", "getQuote:283:  " + dataList);
+        OApiEntity oApiEntity = QuoteProxy.getInstance().getoApiEntity();
+        if (dataList != null) {
+
+
+            homeTopAdapter.setIsUpDown(isupdown);
+            homeTopAdapter.setDatas(OUserConfig.P_DIGITAL, dataList.subList(6, 9));
+            homeTopAdapter.setDigitalDatas(OUserConfig.P_DIGITAL, oApiEntity.getDigitalCommds());
+
+
+            Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    homeTopAdapter.notifyItem(dataList);
+
+                }
+            }, PERIOD);
+            cancelTimer();
+            dismissProgressDialog();
+
+
+        } else {
+            NetManger.getInstance().api(new OnNetResult() {
+                @Override
+                public void onNetResult(String state, Object response) {
+                    if (state.equals(SUCCESS)) {
+                      //  dismissProgressDialog();
+                        NetManger.getInstance().postQuote();
+                    }else if (state.equals(BUSY)){
+                       // showProgressDialog();
+                    }else if (state.equals(FAILURE)){
+                       // dismissProgressDialog();
+                        Toast.makeText(getActivity(),getResources().getString(R.string.o_text_err),Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
     @Override
     protected void initData() {
-
+        getQuote();
     }
 
 

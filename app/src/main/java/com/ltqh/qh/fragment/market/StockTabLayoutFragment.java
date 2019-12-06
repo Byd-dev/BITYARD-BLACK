@@ -309,9 +309,9 @@ public class StockTabLayoutFragment extends OBaseFragment implements View.OnClic
 
                 SORT = Constant.STAY_CHANGEPERCENT;
                 radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg));
-                radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
-                radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
-                radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
+                radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg));
+                radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg));
+                radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton0.setTextColor(getResources().getColor(R.color.white));
                 radioButton1.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radioButton2.setTextColor(getResources().getColor(R.color.text_maincolor));
@@ -321,10 +321,10 @@ public class StockTabLayoutFragment extends OBaseFragment implements View.OnClic
             case R.id.radio_1:
                 getStockData(REFRESHTYPE, page, Constant.STAY_PRICECHANGE);
                 SORT = Constant.STAY_PRICECHANGE;
-                radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
+                radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg));
-                radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
-                radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
+                radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg));
+                radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton0.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radioButton1.setTextColor(getResources().getColor(R.color.white));
                 radioButton2.setTextColor(getResources().getColor(R.color.text_maincolor));
@@ -334,10 +334,10 @@ public class StockTabLayoutFragment extends OBaseFragment implements View.OnClic
             case R.id.radio_2:
                 getStockData(REFRESHTYPE, page, Constant.STAY_VOLUME);
                 SORT = Constant.STAY_VOLUME;
-                radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
-                radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
+                radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg));
+                radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg));
-                radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
+                radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton0.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radioButton1.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radioButton2.setTextColor(getResources().getColor(R.color.white));
@@ -347,9 +347,9 @@ public class StockTabLayoutFragment extends OBaseFragment implements View.OnClic
             case R.id.radio_3:
                 getStockData(REFRESHTYPE, page, Constant.STAY_AMOUNT);
                 SORT = Constant.STAY_AMOUNT;
-                radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
-                radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
-                radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg_normal));
+                radioButton0.setBackground(getResources().getDrawable(R.mipmap.market_bg));
+                radioButton1.setBackground(getResources().getDrawable(R.mipmap.market_bg));
+                radioButton2.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton3.setBackground(getResources().getDrawable(R.mipmap.market_bg));
                 radioButton0.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radioButton1.setTextColor(getResources().getColor(R.color.text_maincolor));

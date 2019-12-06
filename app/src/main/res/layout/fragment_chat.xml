@@ -6,11 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@color/maincolor"
-        android:visibility="gone"></RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -108,16 +104,49 @@
                 android:id="@+id/swipeRefreshLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/margin_5"
-                android:layout_marginRight="@dimen/margin_5"
+
 
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layout_send"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="发布币圈动态"
+                            android:textColor="@color/text_maincolor"
+                            android:layout_centerVertical="true"
+                            android:textSize="15sp"
+                            android:drawableLeft="@mipmap/circle_carema"
+                            android:gravity="center"
+                            android:drawablePadding="@dimen/margin_15"
+                            android:layout_marginLeft="@dimen/margin_15"
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/arrow"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/margin_15"
+                            />
+
+
+
+
+
+                    </RelativeLayout>
 
 
                     <android.support.v7.widget.RecyclerView

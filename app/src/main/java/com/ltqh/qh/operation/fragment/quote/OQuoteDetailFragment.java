@@ -5314,11 +5314,12 @@ public class OQuoteDetailFragment extends OBaseFragment implements View.OnClickL
 
 
         TextView text_unit = view.findViewById(R.id.text_coin_unit);
-
-        if (currency.equals("USD")) {
-            text_unit.setText("货币单位: 美元");
-        } else if (currency.equals("CNY")) {
-            text_unit.setText("货币单位: 人民币");
+        if (currency!=null){
+            if (currency.equals("USD")) {
+                text_unit.setText("货币单位: 美元");
+            } else if (currency.equals("CNY")) {
+                text_unit.setText("货币单位: 人民币");
+            }
         }
 
         TextView text_trade_unit = view.findViewById(R.id.text_trade_unit);

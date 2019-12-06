@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_15"
-        android:background="@mipmap/huati_bg"
+        android:background="@mipmap/banner_one"
 
         >
 

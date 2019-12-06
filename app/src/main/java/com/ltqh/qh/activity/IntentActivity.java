@@ -164,7 +164,7 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
             text_title.setText(getResources().getString(R.string.text_gain_losses));
         } else if (type == Constant.LEARNCLASS) {
             addLearnClassFragment();
-            text_title.setText(getResources().getString(R.string.text_class));
+            text_title.setText(R.string.text_touzi);
 
         } else if (type == Constant.SKILLALL) {
             addSkillAllFragment();

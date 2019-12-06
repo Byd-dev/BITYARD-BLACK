@@ -209,7 +209,7 @@
                             <com.ltqh.qh.view.XCRoundRectImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="100dp"
-                                android:src="@mipmap/banner_two"
+                                android:src="@mipmap/banner_one"
                                 android:scaleType="centerCrop"
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:layout_marginRight="@dimen/margin_15"

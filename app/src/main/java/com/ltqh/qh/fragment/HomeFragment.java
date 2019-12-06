@@ -253,7 +253,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         recyclerView_banner.setAdapter(homeBannerAdapter);
 
         banners.add(R.mipmap.banner_one);
-        banners.add(R.mipmap.banner_two);
+        banners.add(R.mipmap.banner_one);
 
 
         homeBannerAdapter.setDatas(banners);
@@ -302,9 +302,9 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         recyclerView_menu.setAdapter(homeMenuAdapter);
         homeMenuAdapter.setDatas(menus);
 
-        alertsAdapter = new AlertsAdapter(getActivity());
 
         homeCalendarAdapter = new HomeCalendarAdapter(getActivity());
+        alertsAdapter = new AlertsAdapter(getActivity());
         recyclerview_attention.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerview_attention.setAdapter(alertsAdapter);
 
@@ -561,7 +561,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
             });
         }
 
-       /* banner.setPages(data, new MZHolderCreator() {
+       /* banner_one.setPages(data, new MZHolderCreator() {
             @Override
             public MZViewHolder createViewHolder() {
                 return new BannerViewHolder();
@@ -831,7 +831,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 break;
 
             case R.id.layout_xinwen:
-                IntentActivity.enter(getActivity(), Constant.INFO);
+               // IntentActivity.enter(getActivity(), Constant.INFO);
                 break;
 
             case R.id.layout_ketang:

@@ -120,19 +120,19 @@ public class StockForeignTabAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             if (v > v1) {
                 ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.zhang_quxian);
+                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.zhang);
              //   ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_red);
                 ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.redcolor));
             } else if (v == v1) {
                 ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die_quxian);
+                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
               //  ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_green);
                 ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.text_secondcolor));
 
 
             } else if (v < v1) {
                 ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die_quxian);
+                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
                // ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_green);
                 ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.greencolor));
 

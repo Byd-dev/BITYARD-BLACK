@@ -11,7 +11,7 @@ import android.view.View;
 import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.base.BaseFragment;
-import com.ltqh.qh.fragment.forum.ForumGadioFragment;
+import com.ltqh.qh.fragment.forum.ForumRadioFragment;
 import com.ltqh.qh.fragment.news.AlertsFragment;
 import com.ltqh.qh.fragment.news.FinancialCalendarFragment;
 import com.ltqh.qh.fragment.news.LiveFragment;
@@ -93,7 +93,7 @@ public class FindTabFragment extends BaseFragment implements View.OnClickListene
         myPagerAdapter.addFragment(new LiveFragment());
         myPagerAdapter.addFragment(new FinancialCalendarFragment());
         myPagerAdapter.addFragment(new AlertsFragment());
-        myPagerAdapter.addFragment(new ForumGadioFragment());
+        myPagerAdapter.addFragment(new ForumRadioFragment());
 
         viewPager.setAdapter(myPagerAdapter);
     }

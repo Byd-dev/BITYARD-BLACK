@@ -13,20 +13,19 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
-import com.ltqh.qh.fragment.HomeBannerFragment;
+import com.ltqh.qh.fragment.BlockHomeFragment;
 import com.ltqh.qh.fragment.MyFragment;
-import com.ltqh.qh.fragment.forum.ForumTab2Fragment;
-import com.ltqh.qh.fragment.market.BlockMarket2Fragment;
+import com.ltqh.qh.fragment.forum.ForumRadioFragment;
+import com.ltqh.qh.fragment.market.BlockMarketFragment;
 import com.ltqh.qh.fragment.news.Info2Fragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
+import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -108,15 +107,19 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
     @Override
     protected void initData() {
-        NetManger.getInstance().api(new OnNetResult() {
-            @Override
-            public void onNetResult(String state, Object response) {
-                if (state.equals(SUCCESS)) {
-                    List<String> getAllList = (List<String>) response;
-                    NetManger.getInstance().postQuote();
+        String string = SPUtils.getString(OUserConfig.ALLDEX);
+        if (string==null){
+            NetManger.getInstance().api(new OnNetResult() {
+                @Override
+                public void onNetResult(String state, Object response) {
+                    if (state.equals(SUCCESS)) {
+                        NetManger.getInstance().postQuote();
+                    }
                 }
-            }
-        });
+            });
+        }
+
+
     }
 
     @Override
@@ -147,7 +150,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new HomeBannerFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new BlockHomeFragment(), null, null);
 
                 break;
             case R.id.radio_1:
@@ -159,13 +162,13 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
             case R.id.radio_2:
 
-                showFragment(R.id.layout_fragment_containter, new BlockMarket2Fragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new BlockMarketFragment(), null, null);
 
 
                 break;
 
             case R.id.radio_3:
-                showFragment(R.id.layout_fragment_containter, new ForumTab2Fragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new ForumRadioFragment(), null, null);
 
 
                 break;

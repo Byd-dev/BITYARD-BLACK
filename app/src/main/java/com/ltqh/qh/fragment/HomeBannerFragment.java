@@ -257,7 +257,7 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
         recyclerView_banner.setAdapter(homeBannerAdapter);
 
         banners.add(R.mipmap.banner_one);
-        banners.add(R.mipmap.banner_two);
+        banners.add(R.mipmap.banner_one);
 
 
         homeBannerAdapter.setDatas(banners);
@@ -613,7 +613,7 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
             });
         }
 
-       /* banner.setPages(data, new MZHolderCreator() {
+       /* banner_one.setPages(data, new MZHolderCreator() {
             @Override
             public MZViewHolder createViewHolder() {
                 return new BannerViewHolder();

@@ -17,11 +17,21 @@
         android:background="@color/white"
         android:layout_height="48dp">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/circle_title"
+            android:layout_marginLeft="@dimen/margin_15"
+
+            android:visibility="visible" />
+
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -67,13 +77,13 @@
 
         <ImageView
             android:id="@+id/img_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="10dp"
-            android:src="@mipmap/jia_icon"
-            android:layout_centerVertical="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/margin_15"
+            android:src="@mipmap/icon_add"
             android:visibility="visible" />
 
         <LinearLayout
@@ -114,7 +124,7 @@
         android:background="@color/white"
         app:tabIndicatorColor="@color/maincolor"
         app:tabIndicatorHeight="3dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:tabIndicatorWidth="25dp"
         app:tabSelectTextColor="@color/maincolor"
         app:tabTextColor="@color/text_secondcolor"
@@ -130,13 +140,14 @@
         android:id="@+id/layout_fragment_containter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:orientation="vertical" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

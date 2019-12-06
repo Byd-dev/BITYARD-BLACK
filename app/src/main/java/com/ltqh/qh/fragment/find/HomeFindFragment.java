@@ -219,7 +219,7 @@ public class HomeFindFragment extends OBaseFragment implements View.OnClickListe
     }
 
     private String Titles[] = new String[]{"直播", "策略"};
-    private int[] banners = new int[]{R.mipmap.home_banner2, R.mipmap.home_banner1, R.mipmap.home_banner3};
+    private int[] banners = new int[]{R.mipmap.home_banner2, R.mipmap.banner_one, R.mipmap.home_banner3};
 
     @Override
     protected void onLazyLoad() {
@@ -243,7 +243,7 @@ public class HomeFindFragment extends OBaseFragment implements View.OnClickListe
             bannerList.add(banners[i]);
         }
 
-        banner.setPages(bannerList, new MZHolderCreator() {
+        banner_one.setPages(bannerList, new MZHolderCreator() {
             @Override
             public MZViewHolder createViewHolder() {
                 return new BannerStayViewHolder();

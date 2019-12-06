@@ -72,6 +72,7 @@ public class Info2Fragment extends OBaseFragment implements View.OnClickListener
     }
 
     @Override
+
     public void onResume() {
         super.onResume();
 
@@ -257,14 +258,14 @@ public class Info2Fragment extends OBaseFragment implements View.OnClickListener
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new StockNewsFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new LiveNewFragment(), null, null);
                 //layout_send.setVisibility(View.VISIBLE);
-                radio_0.setTextSize(17);
+               /* radio_0.setTextSize(17);
                 radio_1.setTextSize(15);
                 radio_2.setTextSize(15);
                 radio_0.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radio_1.setTextColor(getResources().getColor(R.color.text_9999));
-                radio_2.setTextColor(getResources().getColor(R.color.text_9999));
+                radio_2.setTextColor(getResources().getColor(R.color.text_9999));*/
 
 
                 break;
@@ -272,13 +273,13 @@ public class Info2Fragment extends OBaseFragment implements View.OnClickListener
             case R.id.radio_1:
                 showFragment(R.id.layout_fragment_containter, new OHotFragment(), null, null);
                 // layout_send.setVisibility(View.GONE);
-                radio_0.setTextSize(15);
+               /* radio_0.setTextSize(15);
                 radio_1.setTextSize(17);
                 radio_2.setTextSize(15);
 
                 radio_0.setTextColor(getResources().getColor(R.color.text_9999));
                 radio_1.setTextColor(getResources().getColor(R.color.text_maincolor));
-                radio_2.setTextColor(getResources().getColor(R.color.text_9999));
+                radio_2.setTextColor(getResources().getColor(R.color.text_9999));*/
 
                 break;
             case R.id.radio_2:

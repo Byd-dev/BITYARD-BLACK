@@ -108,16 +108,16 @@ public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             if (v > v1) {
                 ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.zhang_quxian);
+                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
              //   ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_red);
             } else if (v == v1) {
                 ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die_quxian);
+                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
               //  ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_green);
 
             } else if (v < v1) {
                 ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die_quxian);
+                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
                // ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_green);
 
             }

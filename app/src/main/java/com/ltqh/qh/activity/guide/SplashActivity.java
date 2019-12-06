@@ -20,6 +20,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.BuildConfig;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.MainActivity;
@@ -27,6 +29,10 @@ import com.pro.switchlibrary.DoGet;
 import com.pro.switchlibrary.JumpPermissionManagement;
 import com.pro.switchlibrary.OnResultBack;
 import com.pro.switchlibrary.SwitchMainEnter;
+
+import java.util.List;
+
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 
 public class SplashActivity extends Activity implements OnResultBack {
 
@@ -80,6 +86,18 @@ public class SplashActivity extends Activity implements OnResultBack {
         SplashActivity splashActivity = new SplashActivity(new DoGet(), SplashActivity.this);
 
         splashActivity.getSwitch(BuildConfig.CHECKVERSION_URL_LIST, BuildConfig.BLOG_URL_LIST, BuildConfig.QUDAO);
+
+
+        //提前加载数据
+        NetManger.getInstance().api(new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(SUCCESS)) {
+                    NetManger.getInstance().postQuote();
+                }
+            }
+        });
+
 
     }
 

@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.adapter.MyPagerAdapter;
@@ -51,6 +53,7 @@ import java.util.List;
 import butterknife.BindView;
 import skin.support.SkinCompatManager;
 
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 import static com.ltqh.qh.operation.base.OConstant.PERIOD;
 
 public class BlockMarket2Fragment extends OBaseFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
@@ -149,13 +152,13 @@ public class BlockMarket2Fragment extends OBaseFragment implements View.OnClickL
         home_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
+               /* if (tab.getPosition() == 0) {
                     text_edit.setVisibility(View.VISIBLE);
 
                 } else {
                     text_edit.setVisibility(View.GONE);
 
-                }
+                }*/
             }
 
             @Override
@@ -251,7 +254,7 @@ public class BlockMarket2Fragment extends OBaseFragment implements View.OnClickL
         ViewUtils.setLayoutParams(getContext(), layout_bar);
 
         showProgressDialog();
-        startScheduleJob(mHandler, PERIOD, PERIOD);
+       // startScheduleJob(mHandler, PERIOD, PERIOD);
 
 
         mTextSwitcherNews.setFactory(new ViewSwitcher.ViewFactory() {
@@ -344,6 +347,8 @@ public class BlockMarket2Fragment extends OBaseFragment implements View.OnClickL
         switch (v.getId()) {
             case R.id.text_edit:
                 OIntentActivity.enter(getActivity(), OConstant.OEDITMARKET);
+
+
                 break;
 
             case R.id.img_night:
@@ -388,6 +393,8 @@ public class BlockMarket2Fragment extends OBaseFragment implements View.OnClickL
             case R.id.img_search:
                 IntentActivity.enter(getActivity(), Constant.SEARCH);
 
+
+
                 break;
         }
     }
@@ -402,28 +409,30 @@ public class BlockMarket2Fragment extends OBaseFragment implements View.OnClickL
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new MineMarketFragment(), null, null);
-                //layout_send.setVisibility(View.VISIBLE);
+                showFragment(R.id.layout_fragment_containter, new DigitalMarket2Fragment(), null, null);
+                // layout_send.setVisibility(View.GONE);
                 radio_0.setTextSize(17);
                 radio_1.setTextSize(15);
-                radio_0.setTextColor(getResources().getColor(R.color.text_maincolor));
                 radio_1.setTextColor(getResources().getColor(R.color.text_9999));
+                radio_0.setTextColor(getResources().getColor(R.color.text_maincolor));
 
-                text_edit.setVisibility(View.VISIBLE);
-                img_search.setVisibility(View.GONE);
+                text_edit.setVisibility(View.GONE);
+                img_search.setVisibility(View.VISIBLE);
 
                 break;
 
             case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new DigitalMarket2Fragment(), null, null);
-                // layout_send.setVisibility(View.GONE);
+
+
+                showFragment(R.id.layout_fragment_containter, new MineMarketFragment(), null, null);
+                //layout_send.setVisibility(View.VISIBLE);
                 radio_0.setTextSize(15);
                 radio_1.setTextSize(17);
-                radio_0.setTextColor(getResources().getColor(R.color.text_9999));
                 radio_1.setTextColor(getResources().getColor(R.color.text_maincolor));
+                radio_0.setTextColor(getResources().getColor(R.color.text_9999));
 
-                text_edit.setVisibility(View.GONE);
-                img_search.setVisibility(View.VISIBLE);
+                text_edit.setVisibility(View.VISIBLE);
+                img_search.setVisibility(View.GONE);
                 break;
 
         }

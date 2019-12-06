@@ -12,18 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="@mipmap/home_banner"
-            />
+
 
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:src="@mipmap/super_back" />
+            android:src="@mipmap/super_back_black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +30,7 @@
             android:drawableTop="@mipmap/user_icon"
             android:layout_centerInParent="true"
             android:drawablePadding="@dimen/margin_15"
-            android:textColor="@color/white"
+            android:textColor="@color/text_maincolor"
             android:textSize="26sp" />
     </RelativeLayout>
 
@@ -56,7 +52,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bg_shape_login_btn"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp">
 
@@ -90,7 +85,7 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="bottom"
                 android:background="@color/home_line"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </FrameLayout>
 
@@ -100,7 +95,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="@dimen/margin"
-            android:background="@drawable/bg_shape_login_btn"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp">
 
@@ -149,7 +143,7 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="bottom"
                 android:background="@color/home_line"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </FrameLayout>
 

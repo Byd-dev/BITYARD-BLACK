@@ -416,7 +416,7 @@ public class HomeInfoSelectFragment extends BaseFragment implements View.OnClick
 
 
       /*  myPagerAdapter.addFragment(new RecommendFragment());
-        myPagerAdapter.addFragment(new LiveFragment());
+        myPagerAdapter.addFragment(new LiveNewFragment());
         myPagerAdapter.addFragment(new AlertsFragment());
         myPagerAdapter.addFragment(new FinancialCalendarFragment());
         myPagerAdapter.addFragment(new DubiFragment("0"));*/

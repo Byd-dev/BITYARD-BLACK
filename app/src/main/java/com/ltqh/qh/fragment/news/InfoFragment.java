@@ -167,6 +167,7 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
         view.findViewById(R.id.text_video).setOnClickListener(this);
         view.findViewById(R.id.text_school).setOnClickListener(this);
         view.findViewById(R.id.img_service).setOnClickListener(this);
+        view.findViewById(R.id.img_back).setOnClickListener(this);
 
 
     }
@@ -222,6 +223,10 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
                 } else {
                     UserActivity.enter(getActivity(), Constant.LOGIN);
                 }
+                break;
+
+            case R.id.img_back:
+                getActivity().finish();
                 break;
 
 

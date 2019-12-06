@@ -168,7 +168,7 @@ public class StockNewsFragment extends OBaseFragment implements RadioGroup.OnChe
             });
         }
 
-       /* banner.setPages(data, new MZHolderCreator() {
+       /* banner_one.setPages(data, new MZHolderCreator() {
             @Override
             public MZViewHolder createViewHolder() {
                 return new BannerViewHolder();

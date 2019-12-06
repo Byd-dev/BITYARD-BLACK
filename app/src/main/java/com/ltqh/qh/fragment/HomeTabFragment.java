@@ -250,7 +250,7 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
 
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-        // myPagerAdapter.addFragment(new ForumGadioFragment());
+        // myPagerAdapter.addFragment(new ForumRadioFragment());
         myPagerAdapter.addFragment(new LiveFragment(), "快讯");
         myPagerAdapter.addFragment(new DubiFragment(), "热点");
         myPagerAdapter.addFragment(new AlertsFragment(), "要闻");

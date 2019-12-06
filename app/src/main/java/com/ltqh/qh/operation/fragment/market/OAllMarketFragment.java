@@ -74,7 +74,7 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
 
     private String SORT = Constant.STAY_CHANGEPERCENT;
 
-    private MarketAdapter oMarketAdapter;
+    private OMarketAdapter oMarketAdapter;
 
     private OMarketPointAdapter oMarketPointAdapter;
 
@@ -85,7 +85,7 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
 
     @Override
     protected void onLazyLoad() {
-        oMarketAdapter = new MarketAdapter(getActivity());
+        oMarketAdapter = new OMarketAdapter(getActivity());
         linearLayoutManager = new LinearLayoutManager(getActivity());
 
 
@@ -94,11 +94,11 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
 
 
 
-        oMarketAdapter.setOnItemClick(new MarketAdapter.OnItemClick() {
+        oMarketAdapter.setOnItemClick(new OMarketAdapter.OnItemClick() {
             @Override
             public void onSuccessListener(String code) {
 
-                //OMarketActivity.enter(getActivity(), OConstant.OQUETO, "1", code);
+                OMarketActivity.enter(getActivity(), OConstant.OQUETO, "1", code);
 
 
             }
@@ -203,7 +203,7 @@ public class OAllMarketFragment extends OBaseFragment implements View.OnClickLis
     @Override
     protected void initData() {
 
-        //getQuote();
+     //   getQuote();
 
 
 

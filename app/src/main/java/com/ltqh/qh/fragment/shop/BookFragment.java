@@ -17,10 +17,6 @@ import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.entity.BooktypeEntity;
-import com.ltqh.qh.fragment.forum.ForumGadioFragment;
-import com.ltqh.qh.fragment.news.AlertsFragment;
-import com.ltqh.qh.fragment.news.FinancialCalendarFragment;
-import com.ltqh.qh.fragment.news.LiveFragment;
 import com.ltqh.qh.view.EnhanceTabLayout;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -96,10 +92,10 @@ public class BookFragment extends BaseFragment implements View.OnClickListener{
     }
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-     /*   myPagerAdapter.addFragment(new LiveFragment());
+     /*   myPagerAdapter.addFragment(new LiveNewFragment());
         myPagerAdapter.addFragment(new FinancialCalendarFragment());
         myPagerAdapter.addFragment(new AlertsFragment());
-        myPagerAdapter.addFragment(new ForumGadioFragment());*/
+        myPagerAdapter.addFragment(new ForumRadioFragment());*/
         for (int i = 0; i <booktypeEntity.getResult().size() ; i++) {
             myPagerAdapter.addFragment(new BookItemFragment(booktypeEntity.getResult().get(i)));
         }

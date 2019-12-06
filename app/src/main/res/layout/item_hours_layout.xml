@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/o_bar_white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="17dp"
+                android:background="@color/o_line"
+                android:visibility="visible" />
+
+
+            <View
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/point_info_timestamp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="14:14"
+                android:textColor="@color/maincolor"
+                android:textSize="12sp" />
+
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/o_line"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="16dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/maincolor"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp">
+
+
+
+                <TextView
+                    android:id="@+id/text_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:text="title"
+                    android:textColor="@color/o_text_2d2ef"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_stay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin_5">
+
+                    <TextView
+                        android:id="@+id/text_qianzhi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="前值: 0.8"
+                        android:textColor="@color/o_text_maincolor"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/text_yuqi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="预期: 0.8"
+                        android:textColor="@color/o_text_maincolor"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/text_shiji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="实际: 0.8"
+                        android:textColor="@color/o_text_maincolor"
+
+                        />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/layout_stay2"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/o_yikexing_xing"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/text_yingxiang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/o_bg_kuang_red"
+                        android:paddingLeft="@dimen/margin_5"
+                        android:paddingTop="3dp"
+                        android:paddingRight="@dimen/margin_5"
+                        android:paddingBottom="3dp"
+                        android:text="无影响"
+                        android:textColor="@color/redcolor" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--</android.support.v7.widget.CardView>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="@dimen/margin_15"
+        android:background="@color/o_line"
+        android:visibility="visible" />
+</LinearLayout>

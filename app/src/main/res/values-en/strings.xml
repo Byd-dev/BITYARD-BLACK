@@ -241,8 +241,8 @@
     <string name="o_lottery_two">话费充值卡,请联系在线客服,提供所需要充值的电话号码</string>
     <string name="o_lottery_three">获得的抽奖机会若不使用,活动结束视为放弃抽奖资格</string>
     <string name="o_lottery_four">本活动最终解释权归平台所有,活动期间,一旦发现客户有不正当套利行为,平台有权取消活动资格</string>
-    <string name="tab_one">Home</string>
-    <string name="tab_two">Market</string>
+    <string name="tab_one">Market</string>
+    <string name="tab_two">Circle</string>
     <string name="tab_three">Discover</string>
     <string name="tab_four">Information</string>
     <string name="tab_five">Me</string>
@@ -406,5 +406,8 @@ Quote change</string>
 Featured currency</string>
     <string name="text_add_mine">
 Add optional</string>
+    <string name="text_no_add">暂无添加自选</string>
+    <string name="text_touzi">投资学院</string>
+    <string name="text_about">关于我们</string>
 
 </resources>

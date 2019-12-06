@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -395,7 +396,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             }
 
-            ((MyViewHolder) holder).text_name.setText(marketName);
+            ((MyViewHolder) holder).text_name.setText(marketName+"/");
 
             ((MyViewHolder) holder).text_time.setText(marketCode);
 
@@ -415,18 +416,20 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     sub_str="+"+sub;
 
                     percent = "+" + numberFormat2 + "%";
-                    ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
+                 //   ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
 
-                    ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.redcolor));
-                    ((MyViewHolder) holder).layout_bg.setBackground(context.getResources().getDrawable(R.mipmap.market_bg_down));
+                   // ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.redcolor));
+
+                    ((MyViewHolder) holder).img_up_down.setBackgroundResource(R.mipmap.img_up);
                 } else if (flag == -1) {
                     sub_str=sub+"";
 
                     percent = numberFormat2 + "%";
-                    ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
+                 //   ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
 
-                    ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.greencolor));
-                    ((MyViewHolder) holder).layout_bg.setBackground(context.getResources().getDrawable(R.mipmap.market_bg_up));
+                  //  ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.greencolor));
+                    ((MyViewHolder) holder).img_up_down.setBackgroundResource(R.mipmap.img_down);
+
 
                 } else if (flag == 0) {
                     sub_str=sub+"";
@@ -435,6 +438,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
 
                     ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.o_text_b2b6c1));
+
 
                 }
                 if (isUpDown.equals("up")){
@@ -580,6 +584,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text_name, text_last, text_time, text_high;
         RelativeLayout  layout_bar,layout_bg;
+        ImageView img_up_down;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -589,6 +594,7 @@ public class HomeBtcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             layout_bar = itemView.findViewById(R.id.layout_bar);
             text_time = itemView.findViewById(R.id.text_time);
             layout_bg=itemView.findViewById(R.id.layout_bg);
+            img_up_down=itemView.findViewById(R.id.img_up_down);
 
         }
 

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <com.ltqh.qh.view.XCRoundRectImageView
         android:id="@+id/img_banner"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="@dimen/margin_15"
-        android:layout_marginLeft="@dimen/margin_15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_15"
         android:scaleType="centerCrop" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="140dp"
         android:layout_marginTop="@dimen/margin_15"
 
         android:layout_marginLeft="@dimen/margin_15"
@@ -26,9 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:layout_margin="@dimen/margin_15"
             android:maxLines="2"
+            android:layout_alignParentBottom="true"
             android:text="十大规则，美国期货界公认圣经！"
-            android:textColor="@color/text_maincolor"
+            android:textColor="@color/white"
             android:textSize="15sp"
             android:visibility="visible" />
 
@@ -36,11 +37,12 @@
             android:id="@+id/text_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_secondcolor"
+            android:textColor="@color/white"
             android:textSize="13sp"
             android:maxLines="3"
+            android:visibility="gone"
             android:ellipsize="end"
             />
 
-    </LinearLayout>
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -93,6 +93,8 @@ public class ChatFragment extends OBaseFragment implements View.OnClickListener 
     private GuLiaolistAdapter guLiaolistAdapter;
     private StaggeredGridLayoutManager staggeredGridLayoutManager;
 
+
+
     private int page = 1;
     private String REFRESHTYPE = "refresh";
     private String LOADTYPE = "load";
@@ -124,6 +126,7 @@ public class ChatFragment extends OBaseFragment implements View.OnClickListener 
         recyclerView.setAdapter(guLiaolistAdapter);
 
         img_bg.setOnClickListener(this);
+        view.findViewById(R.id.layout_send).setOnClickListener(this);
 
         swipeRefreshLayout.setColorSchemeResources(R.color.maincolor);
 
@@ -561,6 +564,16 @@ public class ChatFragment extends OBaseFragment implements View.OnClickListener 
 
             case R.id.img_add:
                 showPopWindow(v);
+                break;
+
+            case R.id.layout_send:
+                if (isLogin()) {
+                    PublishActivity.enter(getActivity());
+
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
+
                 break;
         }
     }
