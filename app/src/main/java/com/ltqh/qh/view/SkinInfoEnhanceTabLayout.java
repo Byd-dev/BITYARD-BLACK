@@ -79,7 +79,7 @@ public class SkinInfoEnhanceTabLayout extends FrameLayout implements SkinCompatS
         mIndicatorWidth = typedArray.getDimensionPixelSize(R.styleable.EnhanceTabLayout_tabIndicatorWidth, 0);
         mBackgroundColorResId=typedArray.getResourceId(R.styleable.EnhanceTabLayout_tabBackgroundColor,INVALID_ID);
       //  mTabTextSize = typedArray.getDimensionPixelSize(R.styleable.EnhanceTabLayout_tabTextSize, 13);
-        mTabTextSize = 15;
+        mTabTextSize = 17;
         mTabMode = typedArray.getInt(R.styleable.EnhanceTabLayout_tab_Mode, 2);
 
         typedArray.recycle();

@@ -100,7 +100,7 @@ public class Info2Fragment extends OBaseFragment implements View.OnClickListener
             titleList.add("Hot");
            // titleList.add("Calendar");
             titleList.add("Board");
-        } else if (language.equals("zh_CN")) {
+        } else  {
             titleList.add("7×24");
             titleList.add("每日热点");
            // titleList.add("日历");

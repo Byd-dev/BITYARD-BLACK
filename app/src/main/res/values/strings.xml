@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UltraEx</string>
+    <string name="app_name">Cryptopportunity</string>
     <string name="text_btc_content"> 比特币（BitCoin）的概念最初由中本聪在2009年提出，根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的数字货币。点对点的传输意味着一个去中心化的支付系统。又称“比特金”，是一种网络虚拟货币，网民可以使用比特币购买一些虚拟物品，比如网络游戏当中的衣服、帽子、装备等，网民之间也有用来购买现实物品的情况。 </string>
     <string name="text_block">区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。 区块链（Blockchain），是比特币的一个重要概念，它本质上是一个去中心化的数据库，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</string>
     <string name="text_video">金融投资亦称“证券投资”。经济主体为获取预期收益或股权，用资金购买股票、债券等金融资产的投资活动。金融投资既是一个领域又是一种方式，是发达的市场经济与信用的产物。最早的证券投资可追溯至15世纪的欧洲。20世纪80年代以来，证券投资已成为西方发达市场经济国家最基本的投资方式。当一经济主体通过发行股票、债券等证券筹资方式用以投入实质资产的维持与扩大时，购买证券者成为金融投资者。金融资产是其持有者对其出售者的股权和债权的凭证。</string>
@@ -383,7 +383,7 @@
     <string name="text_info_wh">#外汇#</string>
     <string name="text_disscuss">讨论</string>
     <string name="text_circle">币圈</string>
-    <string name="text_price_current">当前价(CNY)</string>
+    <string name="text_price_current">当前价</string>
     <string name="text_quote_change">涨跌幅</string>
     <string name="text_quote_point">涨跌点</string>
     <string name="text_currency">精选币种</string>
@@ -391,5 +391,9 @@
     <string name="text_no_add">暂无添加自选</string>
     <string name="text_touzi">投资学院</string>
     <string name="text_about">关于我们</string>
+    <string name="text_kanduo">已选择看多</string>
+    <string name="text_kankong">已选择看空</string>
+    <string name="text_rank">排行榜</string>
+    <string name="text_name">Cryptopportunity</string>
 
 </resources>

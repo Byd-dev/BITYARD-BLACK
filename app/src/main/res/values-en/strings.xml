@@ -409,5 +409,9 @@ Add optional</string>
     <string name="text_no_add">暂无添加自选</string>
     <string name="text_touzi">投资学院</string>
     <string name="text_about">关于我们</string>
+    <string name="text_kanduo">已选择看多</string>
+    <string name="text_kankong">已选择看空</string>
+    <string name="text_rank">排行榜</string>
+    <string name="text_name">Cryptopportunity</string>
 
 </resources>

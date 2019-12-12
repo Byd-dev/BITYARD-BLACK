@@ -1,5 +1,7 @@
 package com.ltqh.qh.operation.entity;
 
+import com.stx.xhb.xbanner.entity.SimpleBannerInfo;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -49,7 +51,7 @@ public class OHotEntity implements Serializable {
         this.newsList = newsList;
     }
 
-    public static class NewsListBean implements Serializable {
+    public static class NewsListBean extends SimpleBannerInfo implements Serializable {
         /**
          * date : 2018-10-11 12:05:04
          * id : 19531
@@ -102,6 +104,12 @@ public class OHotEntity implements Serializable {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        @Override
+        public Object getXBannerUrl() {
+            return thumb;
+
         }
     }
 }

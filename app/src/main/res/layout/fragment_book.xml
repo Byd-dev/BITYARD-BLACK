@@ -47,7 +47,7 @@
                 android:scaleType="centerCrop"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
 
-                android:src="@mipmap/banner_one" />
+              />
 
 
             <com.ltqh.qh.view.EnhanceTabLayout

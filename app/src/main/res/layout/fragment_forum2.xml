@@ -2,78 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_maincolor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <LinearLayout
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="vertical"
         />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:layout_height="48dp">
 
         <ImageView
+            android:id="@+id/img_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/circle_title"
+            android:src="@mipmap/home_lingdang"
             android:layout_marginLeft="@dimen/margin_15"
-
             android:visibility="visible" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
+        <com.ltqh.qh.view.SkinInfoEnhanceTabLayout
+            android:id="@+id/home_tab"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:visibility="gone"
             android:layout_centerInParent="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radio_0"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:checked="true"
-                android:gravity="center"
-                android:maxLines="1"
-                android:text="@string/text_disscuss"
-                android:textColor="@color/text_maincolor"
-                android:textSize="17sp"
-
-                />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="10dp"
-                android:layout_gravity="center"
-                android:background="@color/home_line"
-                android:visibility="gone" />
-
-            <RadioButton
-                android:id="@+id/radio_1"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:checked="false"
-                android:gravity="center"
-                android:maxLines="1"
-                android:text="@string/text_circle"
-                android:textColor="@color/text_maincolor"
-                android:textSize="15sp"
-
-                />
-
-
-        </RadioGroup>
+            app:tabIndicatorColor="@color/maincolor"
+            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorWidth="25dp"
+            app:tabSelectTextColor="@color/maincolor"
+            app:tabTextColor="@color/o_text_5c5e76"
+            app:tab_Mode="mode_scrollable" />
 
         <ImageView
             android:id="@+id/img_add"
@@ -117,18 +77,7 @@
 
     </RelativeLayout>
 
-    <com.ltqh.qh.view.EnhanceTabLayout
-        android:id="@+id/home_tab"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tab_height"
-        android:background="@color/white"
-        app:tabIndicatorColor="@color/maincolor"
-        app:tabIndicatorHeight="3dp"
-        android:visibility="visible"
-        app:tabIndicatorWidth="25dp"
-        app:tabSelectTextColor="@color/maincolor"
-        app:tabTextColor="@color/text_secondcolor"
-        app:tab_Mode="mode_fixed" />
+
 
     <View
         android:layout_width="match_parent"

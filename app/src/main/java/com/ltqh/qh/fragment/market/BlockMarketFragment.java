@@ -22,6 +22,8 @@ import com.google.gson.Gson;
 import com.ltqh.qh.Api.NetManger;
 import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
+import com.ltqh.qh.activity.UserActivity;
+import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.HomeBtcAdapter;
 import com.ltqh.qh.adapter.HomeTopAdapter;
 import com.ltqh.qh.adapter.MyPagerAdapter;
@@ -82,8 +84,7 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
     @BindView(R.id.img_delete)
     ImageView img_delete;
 
-    @BindView(R.id.img_night)
-    ImageView img_night;
+
 
     @BindView(R.id.ts_news)
     TextSwitcher mTextSwitcherNews;
@@ -121,9 +122,9 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
 
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-       // myPagerAdapter.addFragment(new MineMarketFragment());
-        myPagerAdapter.addFragment(new DigitalMarketFragment());
-        myPagerAdapter.addFragment(new MarketFragment());
+        myPagerAdapter.addFragment(new DigitalMarket3Fragment());
+        //myPagerAdapter.addFragment(new MarketFragment());
+        myPagerAdapter.addFragment(new MineMarketFragment());
 /*        myPagerAdapter.addFragment(new StockMarketFragment());
         myPagerAdapter.addFragment(new DomesMarketFragment());*/
         viewPager.setAdapter(myPagerAdapter);
@@ -132,15 +133,18 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
     private void initTabView() {
         //  Log.d("print", "onStart:40:    "+"initTabView");
 
+
+
+
         String language = SPUtils.getString(Constant.LANGUAGE);
         if (language.equals("en_US")) {
            // titleList.add("Mine");
             titleList.add("Main");
-            titleList.add("All");
+            titleList.add("Optional");
         } else {
           //  titleList.add("自选");
             titleList.add("主区");
-            titleList.add("全部");
+            titleList.add("自选");
         }
 
 
@@ -148,10 +152,10 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
-                 //   text_edit.setVisibility(View.VISIBLE);
+                    text_edit.setVisibility(View.GONE);
 
                 } else {
-                   // text_edit.setVisibility(View.GONE);
+                    text_edit.setVisibility(View.VISIBLE);
 
                 }
             }
@@ -174,7 +178,6 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(home_tab.getTabLayout()));
         home_tab.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(4);
-        text_edit.setOnClickListener(this);
         initViewPager(viewPager);
 
 
@@ -227,6 +230,21 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
         // initTabView();
         // Log.d("print", "onStart:92:    "+"onLazyLoad");
 
+
+
+        mTextSwitcherNews.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                textView = new TextView(getContext());
+                textView.setMaxLines(1);
+                textView.setEllipsize(TextUtils.TruncateAt.END);
+                textView.setLineSpacing(1.1f, 1.1f);
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.o_text_5c5e76));
+                textView.setTextSize(15);
+                //   textView.setSingleLine();
+                return textView;
+            }
+        });
         getReport();
 
         img_delete.setOnClickListener(new View.OnClickListener() {
@@ -247,28 +265,13 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
         ViewUtils.setLayoutParams(getContext(), layout_bar);
 
         showProgressDialog();
-        startScheduleJob(mHandler, PERIOD, PERIOD);
-
-
+       // startScheduleJob(mHandler, PERIOD, PERIOD);
         //btc
         homeTopAdapter = new HomeTopAdapter(getActivity());
         recyclerView_top.setLayoutManager(new GridLayoutManager(getActivity(),3));
         recyclerView_top.setAdapter(homeTopAdapter);
 
 
-        mTextSwitcherNews.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                textView = new TextView(getContext());
-                textView.setMaxLines(1);
-                textView.setEllipsize(TextUtils.TruncateAt.END);
-                textView.setLineSpacing(1.1f, 1.1f);
-                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.o_text_5c5e76));
-                textView.setTextSize(15);
-                //   textView.setSingleLine();
-                return textView;
-            }
-        });
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -278,8 +281,11 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
             }
         }, 100);
 
-        img_night.setOnClickListener(this);
-
+        text_edit.setOnClickListener(this);
+        view.findViewById(R.id.layout_combination).setOnClickListener(this);
+        view.findViewById(R.id.layout_focus).setOnClickListener(this);
+        view.findViewById(R.id.img_message).setOnClickListener(this);
+        view.findViewById(R.id.img_service).setOnClickListener(this);
 
     }
 
@@ -431,6 +437,26 @@ public class BlockMarketFragment extends OBaseFragment implements View.OnClickLi
                     EventBus.getDefault().post(new OEventData(OUserConfig.P_NIGHT, "day"));
 
 
+                }
+                break;
+
+            case R.id.layout_combination:
+            case R.id.layout_focus:
+                Toast.makeText(getActivity(),R.string.text_coming,Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.img_message:
+                if (isLogin()) {
+                    UserActivity.enter(getActivity(), Constant.USER_MYMEAAAGE);
+
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
+                break;
+            case R.id.img_service:
+                if (isLogin()) {
+                    WebActivity.openZhiChiService(getActivity());
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
                 }
                 break;
         }

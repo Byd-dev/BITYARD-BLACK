@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/o_bar_white"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
@@ -19,58 +18,45 @@
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="vertical" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/white"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/text_edit"
+        <ImageView
+            android:id="@+id/img_message"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin"
-            android:padding="@dimen/margin_5"
-            android:text="@string/text_edit"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:visibility="gone" />
+            android:paddingLeft="@dimen/margin_15"
+            android:paddingRight="@dimen/margin_20"
+            android:src="@mipmap/home_search" />
+
+
+        <com.ltqh.qh.view.SkinInfoEnhanceTabLayout
+            android:id="@+id/home_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            app:tabIndicatorColor="@color/maincolor"
+            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorWidth="25dp"
+            app:tabSelectTextColor="@color/maincolor"
+            app:tabTextColor="@color/maincolor"
+            app:tab_Mode="mode_scrollable" />
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:src="@mipmap/market_title"
-            android:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/img_night"
+            android:id="@+id/img_service"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/margin_20"
-            android:paddingRight="@dimen/margin_20"
-            android:src="@mipmap/o_night_icon"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/img_search"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin"
-            android:gravity="center"
-            android:paddingLeft="@dimen/margin_15"
             android:paddingRight="@dimen/margin_15"
-            android:src="@mipmap/home_search"
+            android:src="@mipmap/img_kefu"
             android:visibility="visible" />
 
 
@@ -87,135 +73,266 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-
-        >
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_top"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:visibility="visible"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-
-        />
-
-    </android.support.design.widget.AppBarLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/layout_report"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginBottom="@dimen/margin"
-            android:background="@color/o_bar_white"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/margin_15"
-                android:src="@mipmap/o_laba_icon" />
-
-            <TextSwitcher
-                android:id="@+id/ts_news"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:inAnimation="@anim/slide_in_from_bottom"
-                android:outAnimation="@anim/slide_out_to_top" />
-
-
-            <ImageView
-                android:id="@+id/img_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="@dimen/margin"
-                android:padding="@dimen/margin"
-                android:src="@mipmap/o_delete_market" />
-
-
-        </LinearLayout>
-        <!--title-->
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:layout_margin="@dimen/margin_15"
-            android:orientation="horizontal"
+            android:background="@color/transparent"
+
             >
-            <ImageView
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/home_shu"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/margin_15"
-                android:src="@mipmap/market_title_two"/>
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                android:visibility="gone"
+                >
 
 
+                <RelativeLayout
+                    android:id="@+id/layout_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_shape_home_search">
 
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:text="搜索内容"
+                        android:textColor="@color/text_a8a8" />
+
+
+                </RelativeLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin"
+                    android:visibility="gone"
+
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/layout_combination"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:background="@drawable/bg_shape_home_search"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/market_icon1"
+
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_5"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="组合选币"
+                                android:textColor="@color/text_maincolor"
+                                android:textSize="15sp"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="为您筛选最好币种"
+                                android:textColor="@color/text_secondcolor"
+                                android:textSize="12sp"
+
+                                />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/layout_focus"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:layout_marginRight="@dimen/margin_15"
+                        android:background="@drawable/bg_shape_home_search"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/market_icon2"
+
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_5"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="智能盯盘"
+                                android:textColor="@color/text_maincolor"
+                                android:textSize="15sp"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="币种异动实时监控"
+                                android:textColor="@color/text_secondcolor"
+                                android:textSize="12sp"
+
+                                />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_white"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
 
-            >
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <com.ltqh.qh.view.SkinInfoEnhanceTabLayout
-                android:id="@+id/home_tab"
+            <LinearLayout
+                android:id="@+id/layout_report"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:background="@color/o_bar_white"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:src="@mipmap/o_laba_icon" />
+
+                <TextSwitcher
+                    android:id="@+id/ts_news"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:inAnimation="@anim/slide_in_from_bottom"
+                    android:outAnimation="@anim/slide_out_to_top" />
+
+
+                <ImageView
+                    android:id="@+id/img_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/margin"
+                    android:padding="@dimen/margin"
+                    android:src="@mipmap/o_delete_market" />
+
+
+            </LinearLayout>
+            <!--title-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_marginRight="@dimen/margin_15"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/home_shu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:text="热门行情"
+                    android:textColor="@color/text_maincolor"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/text_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/margin"
+                    android:padding="@dimen/margin_5"
+                    android:text="@string/text_edit"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/o_line"
+                android:visibility="gone" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                app:tabIndicatorColor="@color/maincolor"
-                app:tabIndicatorHeight="3dp"
-                app:tabIndicatorWidth="25dp"
-                app:tabSelectTextColor="@color/maincolor"
-                app:tabTextColor="@color/o_text_5c5e76"
-                app:tab_Mode="mode_fixed" />
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
         </LinearLayout>
-
-
-
-
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:visibility="visible"
-            android:background="@color/o_line" />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
-    </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>
 

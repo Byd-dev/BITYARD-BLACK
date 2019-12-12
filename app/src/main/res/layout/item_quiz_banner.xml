@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <com.ltqh.qh.view.XCRoundRectImageView
+        android:id="@+id/img_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_15"
+        android:scaleType="centerCrop" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15"
+
+            >
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/home_time"
+                android:drawablePadding="@dimen/margin"
+                android:gravity="center"
+                android:text="今天7月5日 10:23:45 周五"
+                android:textColor="@color/color_ff95"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/img_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/home_share" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="十大规则，美国期货界公认圣经！"
+            android:textColor="@color/text_maincolor"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/text_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15"
+            android:ellipsize="end"
+            android:maxLines="9"
+            android:text="据BeInCrypto 7月4日消息，澳大利亚诉讼融资公司JPB Liberty针对Facebook、谷歌和Twitter的加密货币广告禁令，在全球发起了5000亿美元的集体诉讼。任何受2018年加密寒冬影响的人都可以作为集体诉讼的成员被注册。据悉，迄今为止，这一数字是1998年针对美国烟草业规模最大的集体诉讼和解金额的两倍多，当时的和解金额为2060亿美元。作为原告代表，JPB已经向Facebook、谷歌和…"
+            android:textColor="@color/text_maincolor"
+            android:textSize="13sp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/o_market_bg"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -72,6 +71,18 @@
 
 
             >-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_top"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:visibility="visible"
+        android:background="@drawable/o_bg_white"
+        android:layout_margin="@dimen/margin_15"
+
+        />
+
+
 
 
     <android.support.v7.widget.RecyclerView

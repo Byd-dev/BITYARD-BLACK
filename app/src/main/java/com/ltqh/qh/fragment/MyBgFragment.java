@@ -35,6 +35,7 @@ import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.language.LanguageType;
 import com.ltqh.qh.language.LanguageUtil;
+import com.ltqh.qh.operation.activity.OIntentActivity;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
@@ -204,6 +205,8 @@ public class MyBgFragment extends OBaseFragment implements View.OnClickListener 
         //layout_logout.setOnClickListener(this);
         view.findViewById(R.id.tv_nickname).setOnClickListener(this);
 
+
+
         /*text_title.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
         text_title.getPaint().setAntiAlias(true);//抗锯齿
         text_title.getPaint().setColor(getResources().getColor(R.color.second_color));*/
@@ -331,7 +334,7 @@ public class MyBgFragment extends OBaseFragment implements View.OnClickListener 
                 break;
 
             case R.id.layout_about:
-                WebActivity.openAboutUs(getActivity());
+                OIntentActivity.enter(getActivity(), OConstant.O_ABOUT);
 
                 break;
 

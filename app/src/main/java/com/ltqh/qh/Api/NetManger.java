@@ -64,6 +64,73 @@ public class NetManger {
         return instance;
     }
 
+    public void btcNews(OnNetResult onNetResult){
+        OkGo.<String>get(BASE_URL+"/new_api/Newsletter/currencyNewsLetter")
+                .tag(this)
+                .params("is_cache","0")
+                .params(Constant.PARAM_PAGESIZE,10)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())){
+                            onNetResult.onNetResult(SUCCESS,response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+
+
+                    }
+                });
+
+
+    }
+
+    public void btcQuote(OnNetResult onNetResult){
+        OkGo.<String>get(BASE_URL+"/new_api/Quotes/btcmoneyQuoteChangeList")
+                .tag(this)
+                .params("is_cache","0")
+                .params(Constant.PARAM_PAGESIZE,10)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())){
+                            onNetResult.onNetResult(SUCCESS,response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+
+
+                    }
+                });
+
+
+    }
+
+
     /*登录*/
     public void login(final String username, final String password, OnNetResult onNetResult) {
 
@@ -622,5 +689,8 @@ public class NetManger {
                 });
 
     }
+
+
+
 
 }

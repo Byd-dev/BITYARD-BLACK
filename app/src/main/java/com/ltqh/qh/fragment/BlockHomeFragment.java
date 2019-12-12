@@ -249,7 +249,6 @@ public class BlockHomeFragment extends OBaseFragment implements View.OnClickList
                 @Override
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
                     XCRoundRectImageView imageView = view.findViewById(R.id.img_banner);
-                    Log.d("print", "loadBanner: 643:  " + data.get(position).getXBannerUrl());
                     Glide.with(getActivity()).load(data.get(position).getXBannerUrl()).asBitmap().into(imageView);
                     TextView textView = view.findViewById(R.id.text_title);
                     textView.setText(data.get(position).getTitle());

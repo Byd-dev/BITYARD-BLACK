@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +76,10 @@ import com.ltqh.qh.operation.entity.OHoursEntity;
 import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
+import com.ltqh.qh.utils.ViewUtils;
+import com.ltqh.qh.view.AlphaChangeListener;
 import com.ltqh.qh.view.CircleImageView;
+import com.ltqh.qh.view.MyScrollView;
 import com.ltqh.qh.view.XCRoundRectImageView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
@@ -114,7 +118,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     private int id;
 
     @BindView(R.id.layout_view)
-    LinearLayout layout_view;
+    RelativeLayout layout_view;
 
     @BindView(R.id.recyclerview_stock)
     RecyclerView recyclerView_stock;
@@ -132,11 +136,19 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     TextView text_time;
 
 
-    @BindView(R.id.recyclerview_banner)
-    RecyclerView recyclerView_banner;
+
     private HomeBannerAdapter homeBannerAdapter;
 
 
+
+    @BindView(R.id.scrollView)
+    MyScrollView myScrollView;
+
+    @BindView(R.id.layout_bar)
+    RelativeLayout layout_bar;
+
+    @BindView(R.id.layout_bar2)
+    RelativeLayout layout_bar2;
     @BindView(R.id.banner_article)
     XBanner banner_article;
 
@@ -170,6 +182,10 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     private List<String> menus = new ArrayList<>();
 
 
+    @Override
+    protected int setLayoutResourceID() {
+        return R.layout.fragment_home;
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -237,10 +253,6 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         }
     }
 
-    @Override
-    protected int setLayoutResourceID() {
-        return R.layout.fragment_home;
-    }
 
     private String Titles[] = new String[]{"直播", "策略"};
     private List<Integer> banners = new ArrayList<>();
@@ -248,22 +260,25 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     @Override
     protected void onLazyLoad() {
 
-        homeBannerAdapter = new HomeBannerAdapter(getActivity());
-        recyclerView_banner.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_banner.setAdapter(homeBannerAdapter);
 
-        banners.add(R.mipmap.banner_one);
-        banners.add(R.mipmap.banner_one);
-
-
-        homeBannerAdapter.setDatas(banners);
 
     }
 
     @Override
     protected void initView(View view) {
+        ViewUtils.setRelativeLayoutParams(getContext(), layout_bar,48);
+        ViewUtils.setRelativeLayoutParams(getContext(), layout_bar2,48);
+
+        myScrollView.setAlphaChangeListener(new AlphaChangeListener() {
+            @Override
+            public void alphaChanging(float alpha) {
+                layout_bar.setVisibility(View.VISIBLE);
+                layout_bar.setAlpha(alpha);
+                layout_bar2.setAlpha(1 - alpha);
 
 
+            }
+        });
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -335,39 +350,20 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
         startScheduleJob(mHandler, PERIOD, PERIOD);
 
-        view.findViewById(R.id.text_more).setOnClickListener(this);
-        view.findViewById(R.id.text_more2).setOnClickListener(this);
-        view.findViewById(R.id.text_more3).setOnClickListener(this);
         view.findViewById(R.id.img_kefu).setOnClickListener(this);
         view.findViewById(R.id.text_message).setOnClickListener(this);
-        view.findViewById(R.id.layout_xinwen).setOnClickListener(this);
-        view.findViewById(R.id.layout_ketang).setOnClickListener(this);
-        view.findViewById(R.id.layout_gongju).setOnClickListener(this);
-        view.findViewById(R.id.layout_video).setOnClickListener(this);
-        view.findViewById(R.id.layout_jingxuan).setOnClickListener(this);
-        view.findViewById(R.id.layout_btc).setOnClickListener(this);
-        view.findViewById(R.id.layout_qukuailian).setOnClickListener(this);
-        view.findViewById(R.id.text_change).setOnClickListener(this);
         view.findViewById(R.id.text_ketang).setOnClickListener(this);
-        view.findViewById(R.id.text_quanzi).setOnClickListener(this);
         view.findViewById(R.id.text_gongju).setOnClickListener(this);
         view.findViewById(R.id.text_shipin).setOnClickListener(this);
-        view.findViewById(R.id.text_kefu).setOnClickListener(this);
-        view.findViewById(R.id.text_fankui).setOnClickListener(this);
         view.findViewById(R.id.text_chat).setOnClickListener(this);
         view.findViewById(R.id.img_head).setOnClickListener(this);
 
         view.findViewById(R.id.layout_search).setOnClickListener(this);
         text_time.setText(dateToStamp().substring(0, 10));
 
-        view.findViewById(R.id.home_img1).setOnClickListener(this);
-        view.findViewById(R.id.home_img2).setOnClickListener(this);
-        view.findViewById(R.id.home_img3).setOnClickListener(this);
-        view.findViewById(R.id.home_img4).setOnClickListener(this);
 
         view.findViewById(R.id.img_message).setOnClickListener(this);
 
-        view.findViewById(R.id.layout_question).setOnClickListener(this);
 
 
       /*  homeChatAdapter.setOnItemClick(new HomeChatAdapter.OnItemClick() {
@@ -779,34 +775,9 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 break;
 
 
-            case R.id.text_more:
-
-                IntentActivity.enter(getActivity(), Constant.INFO);
 
 
-                break;
 
-            case R.id.text_more3:
-                IntentActivity.enter(getActivity(), Constant.FORUM);
-                break;
-
-
-           /* case R.id.layout_xinshou:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
-
-                break;
-
-            case R.id.layout_gongjuhuansuan:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
-
-                break;
-
-
-            case R.id.layout_kuaixun:
-                EventBus.getDefault().post(MainActivity.TAB_TYPE.TAB_POSITION);
-
-
-                break;*/
             case R.id.text_chat:
                 IntentActivity.enter(getActivity(), Constant.FORUM);
 
@@ -830,41 +801,17 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 }
                 break;
 
-            case R.id.layout_xinwen:
-               // IntentActivity.enter(getActivity(), Constant.INFO);
-                break;
 
-            case R.id.layout_ketang:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
 
-                break;
 
-            case R.id.layout_gongju:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
 
-                break;
 
-            case R.id.layout_video:
-                IntentActivity.enter(getActivity(), Constant.VIDEO);
-                break;
 
-            case R.id.layout_btc:
-                IntentActivity.enter(getActivity(), Constant.BTC);
 
-                break;
-            case R.id.layout_qukuailian:
-                IntentActivity.enter(getActivity(), Constant.BLOCK);
 
-                break;
-            case R.id.text_change:
-              /*  String random = "";
-                String[] doc = {Constant.STAY_PRICECHANGE, Constant.STAY_CHANGEPERCENT,Constant.STAY_VOLUME,Constant.STAY_AMOUNT,Constant.STAY_TURNOVERRATIO };
-                int index = (int) (Math.random() * doc.length);
-                random = doc[index];
-                getHomeStock(0,random);*/
-                getHomeStock(0, getSort());
 
-                break;
+
+
 
             case R.id.text_ketang:
 
@@ -872,10 +819,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                 break;
 
-            case R.id.text_quanzi:
-                IntentActivity.enter(getActivity(), Constant.FEEDBACK);
 
-                break;
             case R.id.text_gongju:
                 IntentActivity.enter(getActivity(), Constant.SKILLALL);
 
@@ -891,7 +835,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
                 break;
 
-            case R.id.text_kefu:
+            case R.id.layout_service:
                 if (isLogin()) {
                     WebActivity.openZhiChiService(getActivity());
                 } else {
@@ -899,19 +843,9 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 }
                 break;
 
-            case R.id.layout_question:
-                Toast.makeText(getContext(), getResources().getString(R.string.text_coming), Toast.LENGTH_SHORT).show();
 
-                break;
 
-            case R.id.home_img1:
-            case R.id.home_img2:
-            case R.id.home_img3:
-            case R.id.home_img4:
 
-                IntentActivity.enter(getActivity(), Constant.INFO);
-
-                break;
 
             case R.id.img_message:
                 OUserActivity.enter(getActivity(), OConstant.O_MESSAGE);

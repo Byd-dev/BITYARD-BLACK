@@ -1,6 +1,7 @@
 package com.ltqh.qh.operation.fragment.quote;
 
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.graphics.Paint;
 import android.net.http.SslError;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +75,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.pro.switchlibrary.OWebActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -1934,7 +1938,48 @@ public class OQuoteDetailFragment extends OBaseFragment implements View.OnClickL
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.proceed();// 接受所有网站的证书
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                String message = "SSL Certificate error.";
+                switch (error.getPrimaryError()) {
+                    case SslError.SSL_UNTRUSTED:
+                        message = "The certificate authority is not trusted.";
+                        break;
+                    case SslError.SSL_EXPIRED:
+                        message = "The certificate has expired.";
+                        break;
+                    case SslError.SSL_IDMISMATCH:
+                        message = "The certificate Hostname mismatch.";
+                        break;
+                    case SslError.SSL_NOTYETVALID:
+                        message = "The certificate is not yet valid.";
+                        break;
+                    case SslError.SSL_DATE_INVALID:
+                        message = "The date of the certificate is invalid";
+                        break;
+                    case SslError.SSL_INVALID:
+                    default:
+                        message = "A generic error occurred";
+                        break;
+                }
+                message += " Do you want to continue anyway?";
+
+                builder.setTitle("SSL Certificate Error");
+                builder.setMessage(message);
+
+                builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        handler.proceed();
+                    }
+                });
+                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        handler.cancel();
+                    }
+                });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
             }
 
         });

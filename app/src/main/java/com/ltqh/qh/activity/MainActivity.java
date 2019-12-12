@@ -14,10 +14,13 @@ import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.fragment.BlockHomeFragment;
+import com.ltqh.qh.fragment.HomeFragment;
+import com.ltqh.qh.fragment.MyBgFragment;
 import com.ltqh.qh.fragment.MyFragment;
-import com.ltqh.qh.fragment.forum.ForumRadioFragment;
+import com.ltqh.qh.fragment.forum.ForumTabFragment;
 import com.ltqh.qh.fragment.market.BlockMarketFragment;
 import com.ltqh.qh.fragment.news.Info2Fragment;
+import com.ltqh.qh.fragment.news.NewsHomeFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.utils.SPUtils;
@@ -108,7 +111,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
     @Override
     protected void initData() {
         String string = SPUtils.getString(OUserConfig.ALLDEX);
-        if (string==null){
+        if (string == null) {
             NetManger.getInstance().api(new OnNetResult() {
                 @Override
                 public void onNetResult(String state, Object response) {
@@ -150,7 +153,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new BlockHomeFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new HomeFragment(), null, null);
 
                 break;
             case R.id.radio_1:
@@ -168,7 +171,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
                 break;
 
             case R.id.radio_3:
-                showFragment(R.id.layout_fragment_containter, new ForumRadioFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new ForumTabFragment(), null, null);
 
 
                 break;

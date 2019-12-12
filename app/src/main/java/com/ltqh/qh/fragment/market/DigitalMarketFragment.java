@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ltqh.qh.R;
+import com.ltqh.qh.adapter.HomeTopAdapter;
 import com.ltqh.qh.adapter.MarketAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.operation.activity.OMarketActivity;
@@ -44,6 +46,12 @@ public class DigitalMarketFragment extends OBaseFragment implements View.OnClick
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
+
+
+    @BindView(R.id.recyclerview_top)
+    RecyclerView recyclerView_top;
+    private HomeTopAdapter homeTopAdapter;
+
    /* @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
 */
@@ -79,6 +87,11 @@ public class DigitalMarketFragment extends OBaseFragment implements View.OnClick
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(oMarketAdapter);
+
+        //btc
+        homeTopAdapter = new HomeTopAdapter(getActivity());
+        recyclerView_top.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        recyclerView_top.setAdapter(homeTopAdapter);
 
       /*  swipeRefreshLayout.setColorSchemeResources(R.color.maincolor);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -124,8 +137,11 @@ public class DigitalMarketFragment extends OBaseFragment implements View.OnClick
             oMarketAdapter.setDatas(OUserConfig.P_DIGITAL, dataList);
             oMarketAdapter.setDigitalDatas(OUserConfig.P_DIGITAL, oApiEntity.getDigitalCommds());
 
+            homeTopAdapter.setIsUpDown(isupdown);
+            homeTopAdapter.setDatas(OUserConfig.P_DIGITAL, dataList.subList(6, 9));
+            homeTopAdapter.setDigitalDatas(OUserConfig.P_DIGITAL, oApiEntity.getDigitalCommds());
 
-            Handler handler = new Handler();
+           /* Handler handler = new Handler();
 
             handler.postDelayed(new Runnable() {
                 @Override
@@ -134,7 +150,7 @@ public class DigitalMarketFragment extends OBaseFragment implements View.OnClick
                     oMarketAdapter.notifyItem(dataList);
 
                 }
-            }, PERIOD);
+            }, PERIOD);*/
 
         } else {
 

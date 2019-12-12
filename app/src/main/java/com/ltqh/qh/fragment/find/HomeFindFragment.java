@@ -48,10 +48,8 @@ import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.adapter.StockHomeAdapter;
 import com.ltqh.qh.adapter.StockTabAdapter;
 import com.ltqh.qh.adapter.VideoFindAdapter;
-import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
-import com.ltqh.qh.entity.AlertsEntity;
 import com.ltqh.qh.entity.AudioVideoEntity;
 import com.ltqh.qh.entity.BannerEntity;
 import com.ltqh.qh.entity.CodeMsgEntity;
@@ -219,7 +217,7 @@ public class HomeFindFragment extends OBaseFragment implements View.OnClickListe
     }
 
     private String Titles[] = new String[]{"直播", "策略"};
-    private int[] banners = new int[]{R.mipmap.home_banner2, R.mipmap.banner_one, R.mipmap.home_banner3};
+    private int[] banners = new int[]{R.mipmap.banner_one, R.mipmap.banner_one, R.mipmap.home_three};
 
     @Override
     protected void onLazyLoad() {

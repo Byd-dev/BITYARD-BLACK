@@ -23,6 +23,7 @@ import com.ltqh.qh.operation.fragment.info.OLiveFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.ViewUtils;
 import com.ltqh.qh.view.EnhanceTabLayout;
+import com.ltqh.qh.view.SkinInfoEnhanceTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import butterknife.BindView;
 public class ForumTabFragment extends OBaseFragment implements View.OnClickListener {
 
     @BindView(R.id.home_tab)
-    EnhanceTabLayout home_tab;
+    SkinInfoEnhanceTabLayout home_tab;
 
     @BindView(R.id.viewpager)
     ViewPager viewPager;
@@ -57,7 +58,6 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
     @Override
     protected void initView(View view) {
         String language = SPUtils.getString(Constant.LANGUAGE);
-        Log.d("print", "initTabView:72:  " + language);
         if (language.equals("en_US")) {
             titleList.add("Discuss");
             titleList.add("Circle");
@@ -72,6 +72,9 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
 
 
         layout_send.setOnClickListener(this);
+
+        view.findViewById(R.id.img_add).setOnClickListener(this);
+        view.findViewById(R.id.img_message).setOnClickListener(this);
 
         home_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -103,7 +106,7 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
         myPagerAdapter.addFragment(new ChatFragment());
-        myPagerAdapter.addFragment(new OLiveFragment());
+        myPagerAdapter.addFragment(new LiveFragment());
 
         viewPager.setAdapter(myPagerAdapter);
     }
@@ -130,14 +133,20 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.layout_send:
+            case R.id.img_add:
                 if (isLogin()) {
                   PublishActivity.enter(getActivity());
+                } else {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+                }
+                break;
+            case R.id.img_message:
+                if (isLogin()) {
+                    UserActivity.enter(getActivity(), Constant.USER_MYMEAAAGE);
 
                 } else {
                     UserActivity.enter(getActivity(), Constant.LOGIN);
                 }
-
                 break;
         }
     }

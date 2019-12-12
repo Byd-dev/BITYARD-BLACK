@@ -80,7 +80,7 @@ public class UserActivity extends OBaseActivity implements View.OnClickListener 
         //浅色标题
        // StatusBarUtil.setStatusBarDarkTheme(UserActivity.this, false);
 
-        setStatusBar(getResources().getColor(R.color.maincolor));
+        setStatusBar(getResources().getColor(R.color.white));
 
 
 

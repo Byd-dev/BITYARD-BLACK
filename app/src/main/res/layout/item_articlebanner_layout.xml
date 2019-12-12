@@ -29,7 +29,7 @@
             android:maxLines="2"
             android:layout_alignParentBottom="true"
             android:text="十大规则，美国期货界公认圣经！"
-            android:textColor="@color/white"
+            android:textColor="@color/text_maincolor"
             android:textSize="15sp"
             android:visibility="visible" />
 
@@ -37,10 +37,10 @@
             android:id="@+id/text_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/text_secondcolor"
             android:textSize="13sp"
             android:maxLines="3"
-            android:visibility="gone"
+            android:visibility="visible"
             android:ellipsize="end"
             />
 

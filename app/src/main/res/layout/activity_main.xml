@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/o_bg_white"
     tools:context=".activity.MainActivity">
 
 
@@ -24,8 +25,8 @@
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bar_height"
-        android:background="@color/white"
         android:layout_gravity="center"
+        android:background="@color/text_62_white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -94,7 +95,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:checked="false"
-            android:drawableTop="@drawable/tab_four"
+            android:drawableTop="@drawable/tab_three"
             android:gravity="center"
             android:maxLines="1"
             android:textColor="@color/sel_switcher_txt"

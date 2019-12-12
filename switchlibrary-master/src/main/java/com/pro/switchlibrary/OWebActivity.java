@@ -552,36 +552,47 @@ public class OWebActivity extends BaseActivity {
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                final SslErrorHandler mHandler ;
-                mHandler= handler;
-                AlertDialog.Builder builder = new AlertDialog.Builder(OWebActivity.this);
-                builder.setMessage("ssl证书验证失败");
-                builder.setPositiveButton("继续", new DialogInterface.OnClickListener() {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(OWebActivity.this);
+                String message = "SSL Certificate error.";
+                switch (error.getPrimaryError()) {
+                    case SslError.SSL_UNTRUSTED:
+                        message = "The certificate authority is not trusted.";
+                        break;
+                    case SslError.SSL_EXPIRED:
+                        message = "The certificate has expired.";
+                        break;
+                    case SslError.SSL_IDMISMATCH:
+                        message = "The certificate Hostname mismatch.";
+                        break;
+                    case SslError.SSL_NOTYETVALID:
+                        message = "The certificate is not yet valid.";
+                        break;
+                    case SslError.SSL_DATE_INVALID:
+                        message = "The date of the certificate is invalid";
+                        break;
+                    case SslError.SSL_INVALID:
+                    default:
+                        message = "A generic error occurred";
+                        break;
+                }
+                message += " Do you want to continue anyway?";
+
+                builder.setTitle("SSL Certificate Error");
+                builder.setMessage(message);
+
+                builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mHandler.proceed();
+                        handler.proceed();
                     }
                 });
-                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mHandler.cancel();
+                        handler.cancel();
                     }
                 });
-                builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
-                    @Override
-                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                        if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                            mHandler.cancel();
-                            dialog.dismiss();
-                            return true;
-                        }
-                        return false;
-                    }
-
-
-                });
-                AlertDialog dialog = builder.create();
+                final AlertDialog dialog = builder.create();
                 dialog.show();
             }
 
