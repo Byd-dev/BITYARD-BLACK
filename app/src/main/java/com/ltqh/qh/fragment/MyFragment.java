@@ -194,6 +194,7 @@ public class MyFragment extends OBaseFragment implements View.OnClickListener {
         view.findViewById(R.id.img_message).setOnClickListener(this);
         view.findViewById(R.id.layout_service).setOnClickListener(this);
         view.findViewById(R.id.img_setting).setOnClickListener(this);
+        view.findViewById(R.id.layout_feedback).setOnClickListener(this);
 
 
         view.findViewById(R.id.text_edit).setOnClickListener(this);

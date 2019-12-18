@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cryptopportunity</string>
+    <string name="app_name">FinBIT</string>
     <string name="text_btc_content"> 比特币（BitCoin）的概念最初由中本聪在2009年提出，根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的数字货币。点对点的传输意味着一个去中心化的支付系统。又称“比特金”，是一种网络虚拟货币，网民可以使用比特币购买一些虚拟物品，比如网络游戏当中的衣服、帽子、装备等，网民之间也有用来购买现实物品的情况。 </string>
     <string name="text_block">区块链是分布式数据存储、点对点传输、共识机制、加密算法等计算机技术的新型应用模式。 区块链（Blockchain），是比特币的一个重要概念，它本质上是一个去中心化的数据库，同时作为比特币的底层技术，是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了一批次比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</string>
     <string name="text_video">金融投资亦称“证券投资”。经济主体为获取预期收益或股权，用资金购买股票、债券等金融资产的投资活动。金融投资既是一个领域又是一种方式，是发达的市场经济与信用的产物。最早的证券投资可追溯至15世纪的欧洲。20世纪80年代以来，证券投资已成为西方发达市场经济国家最基本的投资方式。当一经济主体通过发行股票、债券等证券筹资方式用以投入实质资产的维持与扩大时，购买证券者成为金融投资者。金融资产是其持有者对其出售者的股权和债权的凭证。</string>
@@ -236,7 +236,7 @@
     </string>
     <string name="o_step_check">快速签到领红包\n扣抵实盘手续费</string>
     <string name="o_text_hongbao">当前已打开红包抵扣</string>
-    <string name="o_text_shangpin">商品名称</string>
+    <string name="o_text_shangpin">货币名称</string>
     <string name="o_lottery_one">抽奖获得的现金会自动派发到账号上,只需实盘交易10手标准模式即可提款,获得的积分可用于抽奖跟抵扣实盘交易手续费</string>
     <string name="o_lottery_two">话费充值卡,请联系在线客服,提供所需要充值的电话号码</string>
     <string name="o_lottery_three">获得的抽奖机会若不使用,活动结束视为放弃抽奖资格</string>
@@ -253,7 +253,7 @@
     <string name="text_log_in">登录/注册</string>
     <string name="text_user">用户</string>
     <string name="text_title_one">学习文章</string>
-    <string name="text_title_two">其他文章推荐</string>
+    <string name="text_title_two">推荐资讯</string>
     <string name="text_short">7×24</string>
     <string name="text_hot">每日热点</string>
     <string name="text_calendar">日历</string>

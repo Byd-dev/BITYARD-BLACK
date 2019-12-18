@@ -22,7 +22,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
@@ -42,20 +41,20 @@ import com.ltqh.qh.activity.PersonActivity;
 import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.AlertsAdapter;
+import com.ltqh.qh.adapter.BtcPriceAdapter;
 import com.ltqh.qh.adapter.GoldlistAdapter;
 import com.ltqh.qh.adapter.HomeBannerAdapter;
-import com.ltqh.qh.adapter.HomeBtcAdapter;
 import com.ltqh.qh.adapter.HomeCalendarAdapter;
 import com.ltqh.qh.adapter.HomeChatAdapter;
 import com.ltqh.qh.adapter.HomeMenuAdapter;
-import com.ltqh.qh.adapter.MarketAdapter;
 import com.ltqh.qh.adapter.MyPagerAdapter;
 import com.ltqh.qh.adapter.StockHomeAdapter;
 import com.ltqh.qh.adapter.StockTabAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.BannerEntity;
-import com.ltqh.qh.entity.BtcMarketEntity;
+import com.ltqh.qh.entity.BtcNewsEntity;
+import com.ltqh.qh.entity.BtcPriceEntity;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.GoldlistEntity;
 import com.ltqh.qh.entity.GuliaoEntity;
@@ -64,16 +63,11 @@ import com.ltqh.qh.entity.StockEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
-import com.ltqh.qh.operation.activity.OIntentActivity;
 import com.ltqh.qh.operation.activity.ONewsDetailActivity;
 import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
-import com.ltqh.qh.operation.config.OUserConfig;
-import com.ltqh.qh.operation.entity.OApiEntity;
 import com.ltqh.qh.operation.entity.OHotEntity;
-import com.ltqh.qh.operation.entity.OHoursEntity;
-import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.utils.ListUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.ViewUtils;
@@ -103,7 +97,6 @@ import butterknife.BindView;
 import static com.ltqh.qh.Api.NetManger.BUSY;
 import static com.ltqh.qh.Api.NetManger.FAILURE;
 import static com.ltqh.qh.Api.NetManger.SUCCESS;
-import static com.ltqh.qh.operation.base.OConstant.PERIOD;
 
 public class HomeFragment extends OBaseFragment implements View.OnClickListener {
 
@@ -167,8 +160,9 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     private HomeMenuAdapter homeMenuAdapter;
     private AlertsAdapter alertsAdapter;
 
+    private BtcPriceAdapter btcPriceAdapter;
+
     private String isupdown = "up";
-    private HomeBtcAdapter oMarketAdapter;
 
 
     private int mNewsIndex;
@@ -177,7 +171,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     TextSwitcher mTextSwitcherNews;
 
 
-    private List<String> newSdata;
+    private List<BtcNewsEntity.DataBean> newSdata;
 
     private List<String> menus = new ArrayList<>();
 
@@ -301,9 +295,9 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         recyclerView_stock.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView_stock.setAdapter(stockAdapter);
         //btc
-        oMarketAdapter = new HomeBtcAdapter(getActivity());
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        recyclerView.setAdapter(oMarketAdapter);
+        btcPriceAdapter = new BtcPriceAdapter(getActivity());
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setAdapter(btcPriceAdapter);
 
 
         homeChatAdapter = new HomeChatAdapter(getActivity());
@@ -340,7 +334,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 textView.setMaxLines(1);
                 textView.setEllipsize(TextUtils.TruncateAt.END);
                 textView.setLineSpacing(1.1f, 1.1f);
-                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_secondcolor));
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_maincolor));
                 textView.setTextSize(15);
                 //   textView.setSingleLine();
                 return textView;
@@ -352,17 +346,20 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
         view.findViewById(R.id.img_kefu).setOnClickListener(this);
         view.findViewById(R.id.text_message).setOnClickListener(this);
-        view.findViewById(R.id.text_ketang).setOnClickListener(this);
-        view.findViewById(R.id.text_gongju).setOnClickListener(this);
+        view.findViewById(R.id.layout_market).setOnClickListener(this);
+        view.findViewById(R.id.layout_info).setOnClickListener(this);
         view.findViewById(R.id.text_shipin).setOnClickListener(this);
         view.findViewById(R.id.text_chat).setOnClickListener(this);
         view.findViewById(R.id.img_head).setOnClickListener(this);
+
+        view.findViewById(R.id.layout_service).setOnClickListener(this);
 
         view.findViewById(R.id.layout_search).setOnClickListener(this);
         text_time.setText(dateToStamp().substring(0, 10));
 
 
         view.findViewById(R.id.img_message).setOnClickListener(this);
+        view.findViewById(R.id.text_bird).setOnClickListener(this);
 
 
 
@@ -431,7 +428,6 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
             //getHomeStock(0, getSort());
             updateNews();
-            getQuote();
 
 
         }
@@ -454,10 +450,10 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
     protected void initData() {
         // getHomeStock(0, Constant.STAY_PRICECHANGE);
         //getHomeGold();
-        getQuote();
+        //getQuote();
 
 
-        getBanner();
+       // getBanner();
 
         //getGold();
         getNews();
@@ -469,40 +465,27 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
             getGuliao(loginEntity.getData().getToken(), 0);
         }
 
+        NetManger.getInstance().btcPrice(1,"", new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                        if (state.equals(BUSY)){
+                            showProgressDialog();
+                        }else if (state.equals(SUCCESS)){
+                            dismissProgressDialog();
+                            BtcPriceEntity btcPriceEntity = new Gson().fromJson(response.toString(), BtcPriceEntity.class);
+                            btcPriceAdapter.setDatas(btcPriceEntity.getData().subList(0,6));
+
+                        }else if (state.equals(FAILURE)){
+                            dismissProgressDialog();
+                        }
+            }
+        });
+
         //getCalendar(dateToStamp().toString(), 3);
     }
 
 
-    private void getQuote() {
 
-        List<String> dataList = QuoteProxy.getInstance().getDigitalDataList();
-
-        Log.d("print", "getQuote:483:  " + dataList);
-
-
-        OApiEntity oApiEntity = QuoteProxy.getInstance().getoApiEntity();
-        if (dataList != null) {
-
-            oMarketAdapter.setIsUpDown(isupdown);
-            oMarketAdapter.setDatas(OUserConfig.P_DIGITAL, dataList.subList(6, 9));
-            oMarketAdapter.setDigitalDatas(OUserConfig.P_DIGITAL, oApiEntity.getDigitalCommds());
-
-
-            Handler handler = new Handler();
-
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    oMarketAdapter.notifyItem(dataList);
-
-                }
-            }, PERIOD);
-
-        } else {
-
-        }
-    }
 
 
     private void getBanner() {
@@ -557,54 +540,11 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
             });
         }
 
-       /* banner_one.setPages(data, new MZHolderCreator() {
-            @Override
-            public MZViewHolder createViewHolder() {
-                return new BannerViewHolder();
-            }
-        });*/
+
 
     }
 
-    /*private void getGold() {
-        OkGo.<String>get(Constant.URL_HOME_GOLD_URL)
-                .tag(this)
-                .params(Constant.PARAM_TYPE, 2)
-                .params(Constant.PARAM_PAGE, 1)
-                .params(Constant.PARAM_NUMBER, 10)
-                .params(Constant.PARAM_ASC, 0)
-                .params(Constant.PARAM_SORT, Constant.STAY_SORT)
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())) {
-                            GoldShowEntity goldShowEntity = new Gson().fromJson(response.body(), GoldShowEntity.class);
-                            newSdata = goldShowEntity.getData();
-                            if (newSdata != null) {
-                                mTextSwitcherNews.setText(newSdata.get(0).getName() + "  当前价格:" + newSdata.get(0).getTrade() + "  最高价格:" + newSdata.get(0).getHigh());
-                            }
 
-
-                        }
-                    }
-                });
-    }*/
-
-    /*private void updateNews() {
-        if (newSdata != null) {
-            mNewsIndex++;
-            if (newSdata.size() > 0) {
-                if (mNewsIndex >= newSdata.size()) mNewsIndex = 0;
-                //   Log.d("print", "updateNews:241 " + newSdata);
-                if (ListUtil.isNotEmpty(newSdata)) {
-                    if (mTextSwitcherNews != null) {
-
-                        mTextSwitcherNews.setText(newSdata.get(mNewsIndex).getName() + "  当前价格:" + newSdata.get(mNewsIndex).getTrade() + "  最高价格:" + newSdata.get(mNewsIndex).getHigh());
-                    }
-                }
-            }
-        }
-    }*/
 
     private void getHomeGold() {
         OkGo.<String>get(Constant.URL_HOME_GOLD_URL)
@@ -777,7 +717,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
 
 
-
+            case R.id.text_bird:
             case R.id.text_chat:
                 IntentActivity.enter(getActivity(), Constant.FORUM);
 
@@ -803,27 +743,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
 
 
+            case R.id.layout_market:
 
-
-
-
-
-
-
-
-
-
-            case R.id.text_ketang:
-
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
+                IntentActivity.enter(getActivity(), Constant.BTC_MARKET);
 
                 break;
 
 
-            case R.id.text_gongju:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
 
-                break;
 
             case R.id.text_more2:
                 IntentActivity.enter(getActivity(), Constant.STOCKSLIDE, Constant.STAY_CHANGEPERCENT, "涨跌幅");
@@ -851,6 +778,10 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 OUserActivity.enter(getActivity(), OConstant.O_MESSAGE);
 
 
+                break;
+
+            case R.id.layout_info:
+                IntentActivity.enter(getActivity(),Constant.INFO);
                 break;
 
 
@@ -964,7 +895,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
             if (newSdata.size() > 0) {
                 if (mNewsIndex >= newSdata.size()) mNewsIndex = 0;
                 if (ListUtil.isNotEmpty(newSdata)) {
-                    mTextSwitcherNews.setText(newSdata.get(mNewsIndex).substring(23, newSdata.get(mNewsIndex).length() - 29));
+                    mTextSwitcherNews.setText(newSdata.get(mNewsIndex).getTitle());
                 }
             }
         }
@@ -972,35 +903,26 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
 
     private void getNews() {
 
-        OkGo.<String>get(Constant.URL_NEWS_HOURS)
-                .tag(this)
-                .params(Constant.PARAM_MAXID, 0)
-                .cacheMode(CacheMode.DEFAULT)
-                .execute(new StringCallback() {
-                    @Override
-                    public void onStart(Request<String, ? extends Request> request) {
-                        super.onStart(request);
 
-                    }
+        NetManger.getInstance().btcNews(new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(BUSY)){
+                    showProgressDialog();
+                }else if (state.equals(SUCCESS)){
+                    dismissProgressDialog();
+                    BtcNewsEntity btcNewsEntity = new Gson().fromJson(response.toString(), BtcNewsEntity.class);
+                    List<BtcNewsEntity.DataBean> data = btcNewsEntity.getData();
+                    newSdata= data;
+                    mTextSwitcherNews.setText(newSdata.get(0).getTitle());
 
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())) {
-                            // Log.d("print", "onSuccess:971:    " + response.body());
-                            OHoursEntity oHoursEntity = new Gson().fromJson(response.body(), OHoursEntity.class);
-                            newSdata = oHoursEntity.getNewsList();
+                }else if (state.equals(FAILURE)){
+                    dismissProgressDialog();
+                }
+            }
+        });
 
-                            mTextSwitcherNews.setText(newSdata.get(0).substring(23, newSdata.get(0).length() - 29));
 
-                        }
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                        // showToast("获取失败,请检查网络");
-                    }
-                });
 
 
     }

@@ -41,7 +41,6 @@
         android:layout_below="@+id/layout_bar"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/new_order_bg_white"
         android:orientation="vertical"
         android:paddingTop="30dp"
         android:paddingBottom="30dp">
@@ -52,9 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bg_shape_home_search"
+            android:background="@mipmap/home_toutiao_bg"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp">
+
+            >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:padding="15dp"
                 android:src="@mipmap/user_nickname"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edit_number"
@@ -95,8 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="@dimen/margin"
-            android:background="@drawable/bg_shape_home_search"
+            android:background="@mipmap/home_toutiao_bg"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp">
 
@@ -106,7 +105,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:padding="15dp"
                 android:src="@mipmap/user_pass"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edit_password"
@@ -114,6 +113,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
                 android:background="@null"
+                android:layout_gravity="center_vertical|right"
                 android:drawablePadding="10dp"
                 android:hint="@string/text_password_input"
                 android:inputType="textPassword"
@@ -129,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:padding="15dp"
+                android:layout_marginRight="@dimen/margin_15"
                 android:text="@string/text_show"
                 android:textColor="@color/maincolor"
                 android:textSize="13sp"

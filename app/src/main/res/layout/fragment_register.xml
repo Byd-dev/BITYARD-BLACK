@@ -39,7 +39,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_bar"
-        android:background="@drawable/new_order_bg_white"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:paddingTop="30dp"
@@ -49,9 +48,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
-            android:background="@drawable/bg_shape_home_search"
+            android:background="@mipmap/home_toutiao_bg"
 
             android:layout_marginRight="15dp"
             android:layout_marginTop="30dp">
@@ -61,7 +59,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:padding="15dp"
                 android:src="@mipmap/user_nickname"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edit_number"
@@ -147,8 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="@dimen/margin"
-            android:background="@drawable/bg_shape_home_search"
+            android:background="@mipmap/home_toutiao_bg"
 
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
@@ -158,7 +155,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:padding="15dp"
                 android:src="@mipmap/user_pass"
-                android:visibility="visible" />
+                android:visibility="gone" />
             <EditText
                 android:id="@+id/edit_password"
                 android:layout_width="match_parent"
@@ -167,6 +164,8 @@
                 android:layout_marginLeft="30dp"
                 android:textColorHint="@color/tranmaincolor"
                 android:drawablePadding="10dp"
+                android:layout_gravity="center_vertical|right"
+
                 android:hint="@string/text_password_input"
                 android:inputType="textPassword"
                 android:padding="8dp"
@@ -180,6 +179,7 @@
                 android:layout_gravity="center_vertical|right"
                 android:padding="15dp"
                 android:text="@string/text_show"
+                android:layout_marginRight="@dimen/margin_15"
                 android:textColor="@color/maincolor"
                 android:textSize="13sp"
                 android:visibility="visible" />

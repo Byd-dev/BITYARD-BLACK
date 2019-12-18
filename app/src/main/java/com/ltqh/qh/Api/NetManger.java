@@ -96,7 +96,7 @@ public class NetManger {
 
 
     }
-
+    /*ranke*/
     public void btcQuote(OnNetResult onNetResult){
         OkGo.<String>get(BASE_URL+"/new_api/Quotes/btcmoneyQuoteChangeList")
                 .tag(this)
@@ -130,6 +130,41 @@ public class NetManger {
 
     }
 
+
+    /*比特币价格排行*/
+    public void btcPrice(int page,String sortby,OnNetResult onNetResult){
+        OkGo.<String>get(BASE_URL+"/new_api/currency/HqzCurrencyList")
+                .tag(this)
+                .params(Constant.PARAM_PAGE,page)
+                .params("sortBy",sortby)
+                .params(Constant.PARAM_SORT,"desc")
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())){
+                            onNetResult.onNetResult(SUCCESS,response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+
+
+                    }
+                });
+
+
+    }
 
     /*登录*/
     public void login(final String username, final String password, OnNetResult onNetResult) {
@@ -289,7 +324,38 @@ public class NetManger {
 
     }
 
+    /*focus*/
+    public void focus(String token,OnNetResult onNetResult){
+        Log.d("print", "focus: "+token);
 
+        OkGo.<String>get(BASE_URL+"/yapi/user/userFollowList")
+                .headers(Constant.PARAM_XX_TOKEN,token)
+                .headers(Constant.PARAM_XX_DEVICE_TYPE,Constant.PARAM_DEVICE_NAME)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY,null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())){
+                            onNetResult.onNetResult(SUCCESS,response.body());
+                        }else {
+                            onNetResult.onNetResult(FAILURE,response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE,response.body());
+                    }
+                });
+
+    }
     /*API*/
     public void api(OnNetResult onNetResult) {
         OkGo.<String>get(OConstant.URL_API)
@@ -689,6 +755,8 @@ public class NetManger {
                 });
 
     }
+
+
 
 
 

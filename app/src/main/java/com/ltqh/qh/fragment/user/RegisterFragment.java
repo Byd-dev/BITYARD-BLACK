@@ -26,6 +26,7 @@ import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.TipEntity;
 import com.ltqh.qh.entity.UserTipEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.SmsTimeUtils;
 import com.lzy.okgo.OkGo;
@@ -44,7 +45,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 
-public class RegisterFragment extends BaseFragment implements View.OnClickListener {
+public class RegisterFragment extends OBaseFragment implements View.OnClickListener {
 
     @BindView(R.id.edit_number)
     EditText edit_number;
@@ -66,6 +67,11 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
     private int isHide = 0;
 
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {

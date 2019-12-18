@@ -291,6 +291,8 @@ public interface Constant {
     public static int ETH_NEWS = 50;
     public static int EOS_NEWS = 51;
     public static int LTC_NEWS = 52;
+    public static int BTC_MARKET= 53;
+
 
     public static String LANGUAGE = "language";
 

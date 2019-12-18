@@ -13,14 +13,11 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
-import com.ltqh.qh.fragment.BlockHomeFragment;
 import com.ltqh.qh.fragment.HomeFragment;
-import com.ltqh.qh.fragment.MyBgFragment;
 import com.ltqh.qh.fragment.MyFragment;
 import com.ltqh.qh.fragment.forum.ForumTabFragment;
-import com.ltqh.qh.fragment.market.BlockMarketFragment;
+import com.ltqh.qh.fragment.market.BtcMarketFragment;
 import com.ltqh.qh.fragment.news.Info2Fragment;
-import com.ltqh.qh.fragment.news.NewsHomeFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.utils.SPUtils;
@@ -165,7 +162,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
             case R.id.radio_2:
 
-                showFragment(R.id.layout_fragment_containter, new BlockMarketFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new BtcMarketFragment(), null, null);
 
 
                 break;

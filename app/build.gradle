@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.btc.eight"
+        applicationId "com.fincoin.cyptonline"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -22,7 +22,7 @@ android {
 
         buildConfigField "String", "AK", '"AtGlf0AeZaZGVWH9iwFKboyp"'//百度AI AK
         buildConfigField "String", "SK", '"Fiq4CgzCxeKzal8VKAxj7DgbzAXoKVkH"'//百度AI SK
-        buildConfigField "String", "WEB_URL", '"https://global.24mex.com/?p=Android&app=Global&source=Gb3App&ver=2.5&noscale=true"'//马甲包地址
+        buildConfigField "String", "WEB_URL", '"https://global.24mex.com/?p=Android&app=Global&source=Gb10App&ver=2.5&noscale=true"'//马甲包地址
         buildConfigField "String[]", "CHECKVERSION_URL_LIST", 'new String[]{"https://api.wzwqh.com", "https://api.zjschjy.com"}'
 //开关地址
         buildConfigField "String[]", "BLOG_URL_LIST", 'new String[]{"http://blog.sina.com.cn/s/blog_166dde1070102y0m5.html", "https://blog.csdn.net/nikiazhang/article/details/82828263"}'
@@ -53,7 +53,7 @@ android {
                 buildConfigField "String", "QUDAO", '"qh"'
             }
             google {
-                buildConfigField "String", "QUDAO", '"COINTBGP"'
+                buildConfigField "String", "QUDAO", '"FINBITGP"'
             }
         }
 

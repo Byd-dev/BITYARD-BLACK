@@ -5,7 +5,7 @@
     <color name="colorAccent">#5576F7</color>
     <color name="bar_color">#8A5DED</color>
 
-    <color name="maincolor">#FFC170</color>
+    <color name="maincolor">#FF3D3D</color>
     <color name="tranmaincolor">#A8A8A8</color>
 
 
@@ -24,8 +24,8 @@
     <color name="second_color">#FF333333</color>
 
     <color name="home_line">#E0E0E0</color>
-    <color name="text_maincolor">#333333</color>
-    <color name="text_secondcolor">#999999</color>
+    <color name="text_maincolor">#222222</color>
+    <color name="text_secondcolor">#888888</color>
 
     <color name="text_notice">#243C54</color>
 
@@ -61,7 +61,7 @@
     <color name="o_text_b2b6c1">#B2B6C1</color>
     <color name="o_text_hint_color">#677085</color>
     <color name="o_text_5c5e76">#5C5E76</color>
-    <color name="o_text_3433">#343348</color>
+    <color name="o_text_3433">#A8A8A8</color>
     <color name="o_market_gray">#B2B6C1</color>
     <color name="o_text_8289">#82899C</color>
     <color name="o_text_chichang">#B4B7BF</color>
@@ -100,7 +100,7 @@
     <color name="o_text_ff6c">#ff6c00</color>
     <color name="color_4060">#334060FE</color>
     <color name="text_3a3a">#3A3A3A</color>
-    <color name="text_a8a8">#A8A8A8</color>
+    <color name="text_a8a8">#E8E8E8</color>
     <color name="text_9999">#999999</color>
     <color name="text_c1c1">#888888</color>
     <color name="color_ff95">#FF9954</color>

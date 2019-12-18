@@ -23,8 +23,9 @@
             android:layout_marginLeft="15dp"
             android:text="书城"
             android:textColor="@color/text_maincolor"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="17sp"
+
+            />
 
 
     </RelativeLayout>
@@ -46,7 +47,6 @@
                 android:layout_marginRight="@dimen/margin_15"
                 android:scaleType="centerCrop"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-
               />
 
 

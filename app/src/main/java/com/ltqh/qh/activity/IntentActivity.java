@@ -17,6 +17,7 @@ import com.ltqh.qh.fragment.SearchFragment;
 import com.ltqh.qh.fragment.find.QuestionFragment;
 import com.ltqh.qh.fragment.forum.ForumFragment;
 import com.ltqh.qh.fragment.forum.GuliaoDetailFragment;
+import com.ltqh.qh.fragment.market.BtcMarketF2ragment;
 import com.ltqh.qh.fragment.market.IntroduceFragment;
 import com.ltqh.qh.fragment.market.LearnFragment;
 import com.ltqh.qh.fragment.market.SkillAllFragment;
@@ -102,7 +103,7 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
     private SearchFragment searchFragment;
     private FinancialCalendarFragment financialCalendarFragment;
     private BtcNewsFragment btcNewsFragment;//BTC介绍
-
+    private BtcMarketF2ragment btcMarketF2ragment;
     public static void enter(Context context, int type) {
         Intent intent = new Intent(context, IntentActivity.class);
         intent.putExtra(TYPE, type);
@@ -224,9 +225,22 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
             addSearchFragment();
         }else if (type==Constant.CALENDER){
             addCalenderFragment();
+        }else if (type==Constant.BTC_MARKET){
+            text_title.setText(getResources().getString(R.string.str_market));
+            addBtcMarketFragment();
         }
 
     }
+
+    private void addBtcMarketFragment() {
+        String name = BtcMarketF2ragment.class.getSimpleName();
+        btcMarketF2ragment = new BtcMarketF2ragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, btcMarketF2ragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+    }
+
 
     private void addBtcNewsFragment() {
         String name = BtcNewsFragment.class.getSimpleName();

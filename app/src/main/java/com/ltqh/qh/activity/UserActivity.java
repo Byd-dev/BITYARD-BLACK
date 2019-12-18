@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +27,7 @@ import com.ltqh.qh.fragment.user.ResetPassFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
 import com.ltqh.qh.operation.activity.SecondActivity;
 import com.ltqh.qh.operation.base.OBaseActivity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.view.StatusBarUtil;
 
 import butterknife.BindView;
@@ -58,6 +61,8 @@ public class UserActivity extends OBaseActivity implements View.OnClickListener 
     private GuliaoDetailFragment guliaoDetailFragment;
     private MyMeaasgeFragment myMeaasgeFragment;
     private FragmentTransaction ft;
+    private FragmentManager fragmentManager;
+    private OBaseFragment showFragment;
 
     public static void enter(Context context, int type) {
         Intent intent = new Intent(context, UserActivity.class);
@@ -78,14 +83,16 @@ public class UserActivity extends OBaseActivity implements View.OnClickListener 
         //沉浸式
        // StatusBarUtil.setRootViewFitsSystemWindows(this, false);
         //浅色标题
-       // StatusBarUtil.setStatusBarDarkTheme(UserActivity.this, false);
+        StatusBarUtil.setStatusBarDarkTheme(UserActivity.this, true);
 
-        setStatusBar(getResources().getColor(R.color.white));
+        setStatusBar(getResources().getColor(R.color.maincolor));
 
 
+        fragmentManager = getSupportFragmentManager();
 
         type = getIntent().getIntExtra(TYPE, 0);
         int id = getIntent().getIntExtra(Constant.PARAM_ID,0);
+
 
 
         if (type == Constant.REGISTER) {
@@ -131,18 +138,41 @@ public class UserActivity extends OBaseActivity implements View.OnClickListener 
         return R.layout.activity_login;
     }
 
+    private void setShowFragment(int resid, OBaseFragment fragment){
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //隐藏正在暂时的Fragment
+        if (showFragment != null) {
+            fragmentTransaction.hide(showFragment);
+        }
+
+        //展示需要显示的Fragment对象
+        Fragment mFragment = fragmentManager.findFragmentByTag(fragment.getClass().getName());
+        if (mFragment != null) {
+            fragmentTransaction.show(mFragment);
+            showFragment = (OBaseFragment) mFragment;
+        } else {
+
+            fragmentTransaction.add(resid, fragment, fragment.getClass().getName());
+            showFragment = fragment;
+        }
+    }
+
+
     private void addLoginFragment() {
+
         String name = LoginFragment.class.getSimpleName();
         loginFragment = new LoginFragment();
         ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.layout_fragment_containter, loginFragment, name);
         ft.addToBackStack(name);
         ft.commitAllowingStateLoss();
+
     }
 
     private void addRegisterFragment() {
-        String name = RegisterFragment.class.getSimpleName();
         registerFragment = new RegisterFragment();
+        String name = RegisterFragment.class.getSimpleName();
         ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.layout_fragment_containter, registerFragment, name);
         ft.addToBackStack(name);

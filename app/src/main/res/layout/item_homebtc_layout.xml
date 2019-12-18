@@ -7,10 +7,10 @@
     <RelativeLayout
         android:id="@+id/layout_bg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="188dp"
         android:layout_margin="@dimen/margin_15"
+        android:background="@drawable/bg_shape_home_search"
         android:layout_gravity="center"
-        android:background="@mipmap/market_bg"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="黄金"
-                android:textColor="@color/white"
+                android:textColor="@color/text_maincolor"
                 android:textSize="16sp"
 
                 />
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="~~"
-                android:textColor="@color/white"
+                android:textColor="@color/text_maincolor"
                 android:textSize="12sp"
 
                 />
@@ -63,7 +63,7 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:text="--"
-                android:textColor="@color/white"
+                android:textColor="@color/text_maincolor"
                 android:textSize="28sp"
 
                 />
@@ -77,7 +77,7 @@
                 android:layout_centerInParent="true"
                 android:text="--"
                 android:layout_marginLeft="@dimen/margin_15"
-                android:textColor="@color/white"
+                android:textColor="@color/text_maincolor"
                 android:textSize="28sp"
 
                 />

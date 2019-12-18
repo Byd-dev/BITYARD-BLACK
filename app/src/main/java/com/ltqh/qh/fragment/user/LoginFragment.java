@@ -22,6 +22,7 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.LoginEntity;
+import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.utils.SPUtils;
 import com.lzy.okgo.OkGo;
@@ -35,7 +36,7 @@ import java.lang.reflect.Type;
 
 import butterknife.BindView;
 
-public class LoginFragment extends BaseFragment implements View.OnClickListener {
+public class LoginFragment extends OBaseFragment implements View.OnClickListener {
 
     @BindView(R.id.edit_number)
     EditText edit_number;
@@ -52,6 +53,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     TextView text_forget;
 
     private int isHide = 0;
+
+    @Override
+    protected void onLazyLoad() {
+
+    }
 
     @Override
     protected void initView(View view) {

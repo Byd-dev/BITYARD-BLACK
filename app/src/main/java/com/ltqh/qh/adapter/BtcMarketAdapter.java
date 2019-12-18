@@ -10,46 +10,36 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ltqh.qh.R;
-import com.ltqh.qh.entity.BtcMarketEntity;
-import com.ltqh.qh.entity.GoldlistEntity;
-import com.ltqh.qh.entity.StockForeignEntity;
+import com.ltqh.qh.entity.BtcPriceEntity;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private Context context;
+    private List<BtcPriceEntity.DataBean> datas;
+    private int type=0;
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
 
     public boolean isLoadMore = false;
-
-
-    private List<BtcMarketEntity.DataBean> datas;
-
-
-    private Context context;
-
     public BtcMarketAdapter(Context context) {
         this.context = context;
         datas = new ArrayList<>();
     }
-
-    public void setDatas(List<BtcMarketEntity.DataBean> datas) {
-        this.datas = datas;
+    public void setDatas(List<BtcPriceEntity.DataBean> datas){
+        this.datas=datas;
         this.notifyDataSetChanged();
     }
 
-    public void addDatas(List<BtcMarketEntity.DataBean> datas) {
+    public void addDatas(List<BtcPriceEntity.DataBean> datas) {
         this.datas.addAll(datas);
         isLoadMore = false;
         this.notifyDataSetChanged();
     }
-
     public void startLoad() {
         isLoadMore = true;
         this.notifyDataSetChanged();
@@ -64,23 +54,59 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder holder;
+
+
         if (viewType == TYPE_ITEM) {
 
-            View view = LayoutInflater.from(context).inflate(R.layout.item_btcmarket_layout, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.item_btc_market_layout, parent, false);
             holder = new MyViewHolder(view);
             return holder;
         }
 
 
         View view = LayoutInflater.from(context).inflate(R.layout.item_foot_layout, parent, false);
-        holder = new ProgressViewHoler(view);
-
-
+        holder = new HoursAdapter.ProgressViewHoler(view);
         return holder;
 
 
     }
 
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof MyViewHolder) {
+            ((MyViewHolder) holder).text_symbol.setText(datas.get(position).getSymbol());
+            ((MyViewHolder) holder).text_name.setText(datas.get(position).getCn_name());
+            ((MyViewHolder) holder).text_price.setText(datas.get(position).getCny_price());
+            String change = datas.get(position).get_$24_change();
+            ((MyViewHolder) holder).text_change.setText(change);
+            ((MyViewHolder) holder).text_market_price.setText(datas.get(position).getMarket_price());
+
+            Glide.with(context.getApplicationContext())
+                    .load(datas.get(position).getImg())
+                    .asBitmap()
+                    .centerCrop()
+                    .into(((MyViewHolder) holder).img_bg);
+
+
+            if (change.contains("-")){
+                ((MyViewHolder) holder).img_zhangdie.setImageResource(R.mipmap.die);
+                ((MyViewHolder) holder).text_price.setTextColor(context.getResources().getColor(R.color.greencolor));
+                ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.o_market_green);
+
+
+            }else {
+                ((MyViewHolder) holder).img_zhangdie.setImageResource(R.mipmap.zhang);
+                ((MyViewHolder) holder).text_price.setTextColor(context.getResources().getColor(R.color.redcolor));
+                ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.o_market_red);
+
+            }
+
+
+
+
+
+        }
+    }
     @Override
     public int getItemViewType(int position) {
         if (position + 1 == getItemCount() && isLoadMore) {
@@ -89,65 +115,6 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return TYPE_ITEM;
 
     }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof MyViewHolder) {
-            ((MyViewHolder) holder).text_name.setText(datas.get(position).getBaseSymbol());
-
-            String last = datas.get(position).getPriceUsd();
-            double v = Double.parseDouble(last);
-            String numberFormat21 = getNumberFormat2(last);
-            ((MyViewHolder) holder).text_last.setText(numberFormat21);
-            /*((MyViewHolder) holder).text_low.setText(getNumberFormat2(datas.get(position).getLow()));
-            ((MyViewHolder) holder).text_high.setText(datas.get(position).getAmplitude());*/
-
-
-
-           /* String bid = datas.get(position).getOpen();
-            double v1 = Double.parseDouble(bid);
-
-            if (v > v1) {
-                ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.redcolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.zhang);
-               // ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_red);
-                ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.redcolor));
-
-            } else if (v == v1) {
-                ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
-              //  ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_green);
-                ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.text_secondcolor));
-
-            } else if (v < v1) {
-                ((MyViewHolder) holder).text_last.setTextColor(context.getResources().getColor(R.color.greencolor));
-                ((MyViewHolder) holder).img_zhangdie.setBackgroundResource(R.mipmap.die);
-               // ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.gradient_green);
-                ((MyViewHolder) holder).text_high.setTextColor(context.getResources().getColor(R.color.greencolor));
-
-            }*/
-
-
-        }
-    }
-
-    public static String getNumberFormat2(String value) {
-        double v = Double.parseDouble(value);
-        DecimalFormat mFormat = new DecimalFormat("#0.00");
-        return mFormat.format(v);
-    }
-
-    public String timesOne(String time) {
-        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        @SuppressWarnings("unused")
-        long lcc = Long.valueOf(time);
-        int i = Integer.parseInt(time);
-        String times = sdr.format(new Date(i * 1000L));
-        return times;
-
-    }
-
-
     @Override
     public int getItemCount() {
         if (isLoadMore) {
@@ -155,24 +122,6 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
         return datas.size();
     }
-
-    class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView text_name, text_last, text_low, text_high;
-        ImageView img_zhangdie;
-        LinearLayout layout_bg;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            text_name = (TextView) itemView.findViewById(R.id.text_name);
-            text_last = (TextView) itemView.findViewById(R.id.text_last);
-            text_low = itemView.findViewById(R.id.text_low);
-            text_high = itemView.findViewById(R.id.text_high);
-            img_zhangdie = itemView.findViewById(R.id.img_zhangdie);
-            layout_bg = itemView.findViewById(R.id.layout_bg);
-
-        }
-    }
-
     public static class ProgressViewHoler extends RecyclerView.ViewHolder {
         public ProgressBar bar;
 
@@ -181,16 +130,42 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             bar = (ProgressBar) itemView.findViewById(R.id.progress);
         }
     }
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView text_name,text_symbol, text_change,text_price,text_market_price;
+        ImageView img_bg,img_zhangdie;
+        LinearLayout layout_bg;
 
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            text_name =  itemView.findViewById(R.id.text_name);
+            text_symbol=itemView.findViewById(R.id.text_symbol);
+            text_change =  itemView.findViewById(R.id.text_change);
+            text_price = itemView.findViewById(R.id.text_price);
+            text_market_price=itemView.findViewById(R.id.text_market_price);
 
-    public interface OnItemClick {
-        void onSuccessListener(GoldlistEntity.DataBean content);
+            img_zhangdie=itemView.findViewById(R.id.img_zhangdie);
+            layout_bg=itemView.findViewById(R.id.layout_bg);
+            img_bg = itemView.findViewById(R.id.img_icon);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (onItemClick!=null){
+                        onItemClick.onSuccessListener(datas.get(getPosition()));
+                    }
+                }
+            });
+        }
     }
 
     private OnItemClick onItemClick;
 
     public void setOnItemClick(OnItemClick onItemClick) {
         this.onItemClick = onItemClick;
+    }
+
+    public  interface OnItemClick{
+        void onSuccessListener(BtcPriceEntity.DataBean newsListBean);
+
     }
 }

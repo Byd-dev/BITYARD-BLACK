@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:scaleType="centerCrop" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BTC"
+                    android:textColor="@color/text_maincolor"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="比特币(BTC)"
+                    android:textColor="@color/o_text_3433"
+                    android:textSize="10sp"
+
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/text_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="$7284"
+                android:textColor="@color/text_maincolor"
+                android:textSize="15sp"
+
+                />
+            <TextView
+                android:id="@+id/text_market_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="¥9,818,128.59万"
+                android:textColor="@color/o_text_3433"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_bg"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:background="@color/o_market_gray"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/text_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="1.09%"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+
+                />
+
+            <ImageView
+                android:id="@+id/img_zhangdie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:src="@mipmap/zhang" />
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:visibility="visible"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:layout_marginRight="@dimen/margin_15"
+        android:background="@color/home_line" />
+
+
+</LinearLayout>

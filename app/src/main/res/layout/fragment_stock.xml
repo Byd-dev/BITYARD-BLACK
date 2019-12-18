@@ -7,7 +7,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/bar_height"
-        android:background="@mipmap/bar_bg">
+
+        >
 
         <ImageView
             android:id="@+id/img_back"
@@ -15,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="15dp"
-            android:src="@mipmap/super_back" />
+            android:src="@mipmap/super_back_black" />
 
         <TextView
             android:id="@+id/text_title"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="行情"
-            android:textColor="@color/white"
+            android:textColor="@color/text_maincolor"
             android:textSize="@dimen/title_size"
             android:textStyle="bold" />
 

@@ -16,7 +16,10 @@ import com.ltqh.qh.fragment.news.BtcNewsFragment;
 import com.ltqh.qh.fragment.news.EosNewsFragment;
 import com.ltqh.qh.fragment.news.EthNesFragment;
 import com.ltqh.qh.fragment.news.LtcNewsFragment;
+import com.ltqh.qh.fragment.user.LoginFragment;
+import com.ltqh.qh.fragment.user.RegisterFragment;
 import com.ltqh.qh.operation.activity.SecondActivity;
+import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.fragment.info.OActivityFragment;
 import com.ltqh.qh.operation.fragment.user.OLotteryFragment;
@@ -26,7 +29,7 @@ import com.ltqh.qh.view.StatusBarUtil;
 
 import butterknife.BindView;
 
-public class ImmersiveActivity extends BaseActivity implements View.OnClickListener {
+public class ImmersiveActivity extends OBaseActivity implements View.OnClickListener {
     private static final String TYPE = "USER_TYPE";
     private int type;
     @BindView(R.id.layout_bar)
@@ -43,8 +46,8 @@ public class ImmersiveActivity extends BaseActivity implements View.OnClickListe
     private EosNewsFragment eosNewsFragment;
     private LtcNewsFragment ltcNewsFragment;
 
-
-
+    private RegisterFragment registerFragment;
+    private LoginFragment loginFragment;
 
 
     @Override
@@ -76,14 +79,42 @@ public class ImmersiveActivity extends BaseActivity implements View.OnClickListe
         } else if (type == Constant.ETH_NEWS) {
             layout_bar.setVisibility(View.GONE);
             addEthNewsFragment();
-        }else if (type == Constant.EOS_NEWS) {
+        } else if (type == Constant.EOS_NEWS) {
             layout_bar.setVisibility(View.GONE);
             addEosNewsFragment();
-        }else if (type == Constant.LTC_NEWS) {
+        } else if (type == Constant.LTC_NEWS) {
             layout_bar.setVisibility(View.GONE);
             addLtcNewsFragment();
+        } else if (type == Constant.REGISTER) {
+            addRegisterFragment();
+            layout_bar.setVisibility(View.GONE);
+
+        } else if (type == Constant.LOGIN) {
+            addLoginFragment();
+            layout_bar.setVisibility(View.GONE);
+
         }
 
+    }
+
+    private void addLoginFragment() {
+
+        String name = LoginFragment.class.getSimpleName();
+        loginFragment = new LoginFragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, loginFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+
+    }
+
+    private void addRegisterFragment() {
+        registerFragment = new RegisterFragment();
+        String name = RegisterFragment.class.getSimpleName();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, registerFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
     }
 
     private void addLtcNewsFragment() {
