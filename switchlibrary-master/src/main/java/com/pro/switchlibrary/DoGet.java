@@ -19,9 +19,12 @@ import com.lzy.okgo.request.base.Request;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,7 +55,8 @@ public class DoGet {
 
         String onIdsAvalid = SPUtils.getString(AppConfig.ONIDSAVALID);
         location = SPUtils.getString(AppConfig.LOCATION);
-        String deviceUUID = DeviceUtil.getDeviceUniqueID(context);
+        //  String deviceUUID = DeviceUtil.getDeviceUniqueID(context);
+        String deviceUUID = UUID.randomUUID().toString();
 
         if (onIdsAvalid.equals("")) {
             uuid = deviceUUID;
@@ -64,7 +68,7 @@ public class DoGet {
                 + "位置:" + SPUtils.getString(AppConfig.LOCATION)
                 + "MAC:" + DeviceUtil.getMACAddress(), Toast.LENGTH_SHORT).show();*/
 
-      //  Log.d("print", "startRun:40:  " + uuid + "位置" + location + "MAC:" + macAddress);
+        //  Log.d("print", "startRun:40:  " + uuid + "位置" + location + "MAC:" + macAddress);
 
 
         if (CHECKVERSION_URL_LIST.length > 0) {
@@ -151,24 +155,31 @@ public class DoGet {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-
                         if (!TextUtils.isEmpty(response.body())) {
 
                             Document document = Jsoup.parse(response.body());
                             String subUtilSimple = getSubUtilSimple(document.toString(), RGEX);
+                            Log.d("print", "onSuccess:164:  "+subUtilSimple);
+                            if (subUtilSimple.equals("")){
+                                onResultBack.onResult(false,null);
 
-                            String s1;
-                            try {
-                                s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
-                                List<String> urlList = getUrlList(s1);
+                            }else {
+                                String s1;
+                                try {
+                                    s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
+                                    List<String> urlList = getUrlList(s1);
+                                    Log.d("print", "onSuccess:博客地址: "+urlList);
 
-                                if (urlList.size() > 0) {
-                                    getBlogCheckVersion(onResultBack, urlList, GET_BLOG_INDEX, channel);
+                                    if (urlList.size() > 0) {
+                                        getBlogCheckVersion(onResultBack, urlList, GET_BLOG_INDEX, channel);
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
+
+
 
                         }
 
@@ -239,6 +250,7 @@ public class DoGet {
                             SPUtils.remove(AppConfig.CHECKVERSION);
                            /* Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
                             SplashActivity.this.finish();*/
+
                         }
 
 
@@ -316,19 +328,26 @@ public class DoGet {
 
                             Document document = Jsoup.parse(response.body());
                             String subUtilSimple = getSubUtilSimple(document.toString(), RGEX);
+                            if (subUtilSimple.equals("")){
+                                SPUtils.remove(AppConfig.CHECKVERSION);
+                                onResultBack.onResult(false,null);
 
-                            String s1;
-                            try {
-                                s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
-                                List<String> urlList = getUrlList(s1);
 
-                                if (urlList.size() > 0) {
-                                    getBlogCheckVersion(onResultBack, urlList, GET_BLOG_INDEX, channel);
+                            }else {
+                                String s1;
+                                try {
+                                    s1 = AES.HexDecrypt(subUtilSimple.getBytes(), HEX_KEY);
+                                    List<String> urlList = getUrlList(s1);
+
+                                    if (urlList.size() > 0) {
+                                        getBlogCheckVersion(onResultBack, urlList, GET_BLOG_INDEX, channel);
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
+
 
 
                         }
@@ -346,8 +365,8 @@ public class DoGet {
                         } else {
                             Log.d("print", "onError: 387:" + BLOG_INDEX);
                             SPUtils.remove(AppConfig.CHECKVERSION);
-                            /*Toast.makeText(SplashActivity.this, "当前网络不好,已退出", Toast.LENGTH_SHORT).show();
-                            SplashActivity.this.finish();*/
+                            onResultBack.onResult(false,null);
+
                         }
 
                     }
@@ -356,8 +375,12 @@ public class DoGet {
 
 
     public static String getSubUtilSimple(String soap, String rgex) {
+        String strSoap = soap.replaceAll("<wbr>", "")
+                .replace("<br>", "")
+                .replaceAll(" ", "")
+                .replaceAll("\\r|\\n", "");
         Pattern pattern = Pattern.compile(rgex);// 匹配的模式
-        Matcher m = pattern.matcher(soap);
+        Matcher m = pattern.matcher(strSoap);
         while (m.find()) {
             return m.group(1);
         }

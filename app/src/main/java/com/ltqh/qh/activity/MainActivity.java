@@ -14,6 +14,7 @@ import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.fragment.HomeFragment;
+import com.ltqh.qh.fragment.MyBgFragment;
 import com.ltqh.qh.fragment.MyFragment;
 import com.ltqh.qh.fragment.forum.ForumTabFragment;
 import com.ltqh.qh.fragment.market.BtcMarketFragment;
@@ -82,6 +83,18 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
     @Override
     protected void initView(View view) {
+
+
+        //提前加载数据
+        NetManger.getInstance().api(new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(SUCCESS)) {
+                    NetManger.getInstance().postQuote();
+                }
+            }
+        });
+
         StatusBarUtil.setRootViewFitsSystemWindows(this, false);
 
 
@@ -173,7 +186,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
                 break;
             case R.id.radio_4:
-                showFragment(R.id.layout_fragment_containter, new MyFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new MyBgFragment(), null, null);
 
                 break;
         }

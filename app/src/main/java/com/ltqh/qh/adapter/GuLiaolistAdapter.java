@@ -151,7 +151,7 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
 
             ((MyViewHolder) holder).text_dianzan.setText("赞");
-            int report_count = datas.get(position).getReport_count();
+            int report_count = datas.get(position).getReport_status();
 
             if (report_count>0){
                 ((MyViewHolder) holder).img_cai.setImageResource(R.mipmap.chat_cai);
@@ -164,6 +164,14 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             ((MyViewHolder) holder).text_readcount.setText(report_count +"");
 
             ((MyViewHolder) holder).text_publish_time.setText(datas.get(position).getPublished_time());
+
+            int is_follow = datas.get(position).getIs_follow();
+            if (is_follow==1){
+                ((MyViewHolder) holder).text_focus.setText("已关注");
+            }else if (is_follow==0){
+                ((MyViewHolder) holder).text_focus.setText("关注");
+
+            }
 
 
         }
@@ -178,7 +186,7 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView text_title, text_content, text_username, text_comment, text_dianzan, text_readcount, text_publish_time,img_jubao;
+        public TextView text_title, text_content, text_username, text_comment, text_dianzan, text_readcount, text_publish_time,text_focus;
         public CircleImageView img_head;
         private ImageView img_zan,img_cai;
 
@@ -193,7 +201,7 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             text_dianzan = itemView.findViewById(R.id.text_favorite);
             text_readcount = itemView.findViewById(R.id.text_readcount);
             text_publish_time = itemView.findViewById(R.id.text_publish_time);
-            img_jubao=itemView.findViewById(R.id.img_jubao);
+            text_focus=itemView.findViewById(R.id.text_focus);
             img_zan=itemView.findViewById(R.id.img_zan);
             img_cai=itemView.findViewById(R.id.img_cai);
 
@@ -226,22 +234,12 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 }
             });
 
-            img_jubao.setOnClickListener(new View.OnClickListener() {
+
+            text_focus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("print", "onClick:是否关注:  "+datas.get(getPosition()).isFocus());
-                  /*  if (datas.get(getPosition()).isFocus()==false){
-
-                        img_jubao.setText(context.getResources().getString(R.string.text_attention));
-                        datas.get(getPosition()).setFocus(true);
-                    }else if (datas.get(getPosition()).isFocus()==true){
-                        img_jubao.setText(context.getResources().getString(R.string.text_focus));
-                        datas.get(getPosition()).setFocus(false);
-                    }*/
-
-                    //这是举报
-                    if (onJuBaoItemClick!=null){
-                        onJuBaoItemClick.onSuccessListener(datas.get(getPosition()),getAdapterPosition());
+                    if (onFocusItemClick!=null){
+                        onFocusItemClick.onSuccessListener(datas.get(getPosition()),getAdapterPosition());
                     }
                 }
 
@@ -281,10 +279,17 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         void onSuccessListener(GuliaoEntity.DataBeanX.DataBean content, int position);
 
     }
+    public interface OnFocusItemClick{
+        void onSuccessListener(GuliaoEntity.DataBeanX.DataBean content, int position);
+
+    }
+
     private OnItemClick onItemClick;
     private OnDianZanItemClick onDianZanItemClick;
     private OnItemDetailClick onItemDetailClick;
     private OnJuBaoItemClick onJuBaoItemClick;
+    private OnFocusItemClick onFocusItemClick;
+
 
     public void setOnJuBaoItemClick(OnJuBaoItemClick onJuBaoItemClick) {
         this.onJuBaoItemClick = onJuBaoItemClick;
@@ -296,6 +301,10 @@ public class GuLiaolistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public void setOnDianZanItemClick(OnDianZanItemClick onDianZanItemClick) {
         this.onDianZanItemClick = onDianZanItemClick;
+    }
+
+    public void setOnFocusItemClick(OnFocusItemClick onFocusItemClick){
+        this.onFocusItemClick=onFocusItemClick;
     }
 
     public void setOnItemClick(OnItemClick onItemClick) {

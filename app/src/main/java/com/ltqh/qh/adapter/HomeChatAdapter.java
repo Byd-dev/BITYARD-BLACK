@@ -129,7 +129,7 @@ public class HomeChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             }
 
             ((MyViewHolder) holder).text_dianzan.setText("赞");
-            ((MyViewHolder) holder).text_readcount.setText(datas.get(position).getReport_count()+"");
+            ((MyViewHolder) holder).text_readcount.setText(datas.get(position).getReport_status()+"");
             ((MyViewHolder) holder).text_publish_time.setText(datas.get(position).getPublished_time());
 
 

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.Editable;
@@ -38,6 +39,7 @@ import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.activity.PublishActivity;
 import com.ltqh.qh.activity.UserActivity;
+import com.ltqh.qh.adapter.CircleAdapter;
 import com.ltqh.qh.adapter.GuLiaolistAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
@@ -80,8 +82,6 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
     RecyclerView recyclerView_follow;
 
 
-
-
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     private int lastVisibleItem;
@@ -98,6 +98,7 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
 
+    private CircleAdapter circleAdapter;
 
 
     private int page = 1;
@@ -125,6 +126,36 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
             EventBus.getDefault().register(this);
         }
 
+        circleAdapter = new CircleAdapter(getContext());
+        recyclerView_follow.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_follow.setAdapter(circleAdapter);
+
+        circleAdapter.setOnItemClick(new CircleAdapter.OnItemClick() {
+            @Override
+            public void onSuccessListener(FocusEntity.DataBean content) {
+                LoginEntity loginEntity = SPUtils.getData(UserConfig.LOGIN_USER, LoginEntity.class);
+                if (loginEntity == null) {
+                    UserActivity.enter(getActivity(), Constant.LOGIN);
+
+                } else {
+
+                    NetManger.getInstance().focus(loginEntity.getData().getToken(), content.getId(), new OnNetResult() {
+                        @Override
+                        public void onNetResult(String state, Object response) {
+                            if (state.equals(BUSY)){
+                                showProgressDialog();
+                            }else if (state.equals(SUCCESS)){
+                                dismissProgressDialog();
+                                initData();
+                            }else if (state.equals(FAILURE)){
+                                dismissProgressDialog();
+                                Toast.makeText(getActivity(),getResources().getString(R.string.text_err),Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
 
         img_bg.setOnClickListener(this);
@@ -146,10 +177,6 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
         });
 
         startScheduleJob(mHandler, PERIOD, PERIOD);
-
-
-
-
 
 
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -176,17 +203,10 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
         });
 
 
-
-
-
         view.findViewById(R.id.img_add).setOnClickListener(this);
 
 
     }
-
-
-
-
 
 
     public String dateToStamp() {
@@ -218,8 +238,6 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
         PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY", 0f);
         ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY, pvhZ).setDuration(400).start();
     }
-
-
 
 
     @Override
@@ -274,23 +292,27 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
         } else {
             page = 1;
 
-            NetManger.getInstance().focus(loginEntity.getData().getToken(), new OnNetResult() {
+            NetManger.getInstance().focusList(loginEntity.getData().getToken(), new OnNetResult() {
                 @Override
                 public void onNetResult(String state, Object response) {
-                    if (state.equals(BUSY)){
+                    if (state.equals(BUSY)) {
                         swipeRefreshLayout.setRefreshing(true);
-                    }else if (state.equals(SUCCESS)){
+                    } else if (state.equals(SUCCESS)) {
                         swipeRefreshLayout.setRefreshing(false);
 
-                        Log.d("print", "onNetResult: 376: "+response.toString());
                         FocusEntity focusEntity = new Gson().fromJson(response.toString(), FocusEntity.class);
-                        if (focusEntity.getData().size()==0){
+                        if (focusEntity.getData().size() == 0) {
                             circle_bg.setVisibility(View.VISIBLE);
-                        }else {
+                            recyclerView_follow.setVisibility(View.GONE);
+                        } else {
                             circle_bg.setVisibility(View.GONE);
+                            recyclerView_follow.setVisibility(View.VISIBLE);
+
                         }
 
-                    }else if (state.equals(FAILURE)){
+                        circleAdapter.setDatas(focusEntity.getData());
+
+                    } else if (state.equals(FAILURE)) {
                         swipeRefreshLayout.setRefreshing(false);
 
                     }
@@ -305,13 +327,7 @@ public class FocusChatFragment extends OBaseFragment implements View.OnClickList
     }
 
 
-    private HashMap<Integer,Boolean> map=new HashMap<>();
-
-
-
-
-
-
+    private HashMap<Integer, Boolean> map = new HashMap<>();
 
 
     @Override

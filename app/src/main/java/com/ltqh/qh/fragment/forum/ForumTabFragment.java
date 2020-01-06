@@ -59,12 +59,12 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
     protected void initView(View view) {
         String language = SPUtils.getString(Constant.LANGUAGE);
         if (language.equals("en_US")) {
-            titleList.add("Focus");
             titleList.add("Discuss");
+            titleList.add("Focus");
             titleList.add("Circle");
         } else if (language.equals("zh_CN")) {
-            titleList.add("关注");
             titleList.add("讨论");
+            titleList.add("关注");
             titleList.add("币圈");
 
         }
@@ -107,8 +107,8 @@ public class ForumTabFragment extends OBaseFragment implements View.OnClickListe
 
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-        myPagerAdapter.addFragment(new FocusChatFragment());
         myPagerAdapter.addFragment(new ChatFragment());
+        myPagerAdapter.addFragment(new FocusChatFragment());
         myPagerAdapter.addFragment(new LiveFragment());
 
         viewPager.setAdapter(myPagerAdapter);

@@ -139,7 +139,10 @@ public class ForgetFragment extends BaseFragment implements View.OnClickListener
                 .params(Constant.PARAM_USERNAME, num)
                 .params(Constant.PARAM_PASSWORD, pass)
                 .params(Constant.PARAM_VERIFICATION_CODE, code)
+                .params("app","")
                 .params(Constant.PARAM_APP, "")
+                .params("is_validate","2")
+                .params("compatible",2)
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override

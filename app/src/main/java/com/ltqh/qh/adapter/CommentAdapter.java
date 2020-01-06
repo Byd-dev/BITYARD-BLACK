@@ -30,7 +30,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public boolean isLoadMore = false;
 
 
-    private List<CommentDetailEntity.DataBean> datas;
+    private List<CommentDetailEntity.DataBeanX.DataBean> datas;
 
 
     private Context context;
@@ -40,12 +40,12 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         datas = new ArrayList<>();
     }
 
-    public void setDatas(List<CommentDetailEntity.DataBean> datas) {
+    public void setDatas(List<CommentDetailEntity.DataBeanX.DataBean> datas) {
         this.datas = datas;
         this.notifyDataSetChanged();
     }
 
-    public void addDatas(List<CommentDetailEntity.DataBean> datas) {
+    public void addDatas(List<CommentDetailEntity.DataBeanX.DataBean> datas) {
         this.datas.addAll(datas);
         isLoadMore = false;
         this.notifyDataSetChanged();
@@ -98,9 +98,8 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
             ((MyViewHolder) holder).text_comment.setText(datas.get(position).getContent());
-            int create_time = datas.get(position).getCreate_time();
 
-            ((MyViewHolder) holder).text_publish_time.setText(timesOne(String.valueOf(create_time)) + "");
+            ((MyViewHolder) holder).text_publish_time.setText(datas.get(position).getCreate_time() + "");
 
             Glide.with(context)
                     .load(datas.get(position).getUser().getAvatar())
@@ -160,7 +159,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     public interface OnItemClick {
-        void onSuccessListener(CommentDetailEntity.DataBean content);
+        void onSuccessListener(CommentDetailEntity.DataBeanX.DataBean content);
 
     }
 

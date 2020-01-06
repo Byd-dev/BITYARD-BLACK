@@ -34,6 +34,8 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.activity.PublishActivity;
@@ -66,6 +68,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
+
+import static com.ltqh.qh.Api.NetManger.BUSY;
+import static com.ltqh.qh.Api.NetManger.FAILURE;
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 
 public class ChatFragment extends OBaseFragment implements View.OnClickListener {
     private final static int PERIOD = 5 * 1000; // 5s
@@ -261,14 +267,32 @@ public class ChatFragment extends OBaseFragment implements View.OnClickListener 
             }
         });
 
-        guLiaolistAdapter.setOnJuBaoItemClick(new GuLiaolistAdapter.OnJuBaoItemClick() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onSuccessListener(GuliaoEntity.DataBeanX.DataBean content, int position) {
-                id = content.getId();
-                showItemPopWindow();
-            }
-        });
+      guLiaolistAdapter.setOnFocusItemClick(new GuLiaolistAdapter.OnFocusItemClick() {
+          @Override
+          public void onSuccessListener(GuliaoEntity.DataBeanX.DataBean content, int position) {
+              LoginEntity loginEntity = SPUtils.getData(UserConfig.LOGIN_USER, LoginEntity.class);
+              if (loginEntity == null) {
+                  UserActivity.enter(getActivity(), Constant.LOGIN);
+
+              } else {
+
+                  NetManger.getInstance().focus(loginEntity.getData().getToken(), content.getId(), new OnNetResult() {
+                      @Override
+                      public void onNetResult(String state, Object response) {
+                          if (state.equals(BUSY)){
+                              showProgressDialog();
+                          }else if (state.equals(SUCCESS)){
+                              dismissProgressDialog();
+                            //  initData();
+                          }else if (state.equals(FAILURE)){
+                              dismissProgressDialog();
+                              Toast.makeText(getActivity(),getResources().getString(R.string.text_err),Toast.LENGTH_SHORT).show();
+                          }
+                      }
+                  });
+              }
+          }
+      });
 
 
         view.findViewById(R.id.img_add).setOnClickListener(this);
@@ -429,8 +453,36 @@ public class ChatFragment extends OBaseFragment implements View.OnClickListener 
 
     private void getGuliao(final String type, String token, int page, final int position) {
 
+        NetManger.getInstance().articleList(token, page, "", 0, new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(BUSY)){
+                    swipeRefreshLayout.setRefreshing(true);
+                }else if (state.equals(SUCCESS)){
+                    swipeRefreshLayout.setRefreshing(false);
 
-        OkGo.<String>get(Constant.URL_GULIAOLIST_URL)
+
+                    guliaoEntity = new Gson().fromJson(response.toString(), GuliaoEntity.class);
+                    List<GuliaoEntity.DataBeanX.DataBean> data = guliaoEntity.getData().getData();
+                    if (type.equals(REFRESHTYPE)) {
+                        guLiaolistAdapter.setDatas(data);
+                    } else if (type.equals(LOADTYPE)) {
+                        guLiaolistAdapter.addDatas(guliaoEntity.getData().getData());
+                    } else if (type.equals(ITEMREFRESHTYPE)) {
+                        guLiaolistAdapter.setItemDatas(guliaoEntity.getData().getData(), position);
+                    }
+
+                }else if (state.equals(FAILURE)){
+                    swipeRefreshLayout.setRefreshing(false);
+
+                }
+            }
+        });
+
+
+
+
+      /*  OkGo.<String>get(Constant.URL_GULIAOLIST_URL)
                 .tag(this)
                 .headers(Constant.PARAM_XX_TOKEN, token)
                 .headers(Constant.PARAM_XX_DEVICE_TYPE, Constant.PARAM_DEVICE_NAME)
@@ -477,7 +529,7 @@ public class ChatFragment extends OBaseFragment implements View.OnClickListener 
                         guLiaolistAdapter.stopLoad();
                         showToast("获取失败,请检查网络");
                     }
-                });
+                });*/
     }
 
 

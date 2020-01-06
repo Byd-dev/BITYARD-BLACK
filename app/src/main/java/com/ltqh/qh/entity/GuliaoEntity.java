@@ -6,9 +6,9 @@ public class GuliaoEntity {
 
 
     /**
-     * code : 0
-     * msg : 获取数据成功
-     * data : {"total":18,"per_page":10,"current_page":1,"last_page":2,"data":[{"id":50,"user_id":18,"post_status":1,"comment_status":1,"post_hits":19,"post_like":1,"comment_count":3,"create_time":1543457096,"update_time":0,"published_time":"11-29 10:04","delete_time":0,"post_title":"广电网络早市，很不错的样子呢！","post_excerpt":"","post_content":"广电网络早市，很不错的样子呢！","post_content_filtered":null,"more":"https://data.yingju8.com/upload/20181129/b101c1edfb05168fc468e8471bf06ced.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":49,"user_id":18,"post_status":1,"comment_status":1,"post_hits":161,"post_like":1,"comment_count":6,"create_time":1543285674,"update_time":0,"published_time":"11-27 10:27","delete_time":0,"post_title":"上证指数","post_excerpt":"","post_content":"上证指数","post_content_filtered":null,"more":"https://data.yingju8.com/upload/20181127/7ed5c5ef2466d129b8547a0ceb7f0c90.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":48,"user_id":18,"post_status":1,"comment_status":1,"post_hits":5,"post_like":0,"comment_count":0,"create_time":1543283926,"update_time":0,"published_time":"11-27 09:58","delete_time":0,"post_title":"早市您 好啊","post_excerpt":"","post_content":"早市您 好啊","post_content_filtered":null,"more":"https://data.yingju8.com/upload/20181126/c5a761ce11bc747661c63e5971b2fcfe.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":47,"user_id":18,"post_status":1,"comment_status":1,"post_hits":2,"post_like":0,"comment_count":0,"create_time":1543283895,"update_time":0,"published_time":"11-27 09:58","delete_time":0,"post_title":"早市您 好啊","post_excerpt":"","post_content":"早市您 好啊","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":46,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543234874,"update_time":0,"published_time":"11-26 20:21","delete_time":0,"post_title":"股票大牛来点资料","post_excerpt":"","post_content":"股票大牛来点资料","post_content_filtered":null,"more":"http://img0.imgtn.bdimg.com/it/u=2181161660,2650271690&amp;fm=26&amp;gp=0.jpg","share_id":1,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":45,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543201179,"update_time":0,"published_time":"11-26 10:59","delete_time":0,"post_title":"股票大牛来点资料","post_excerpt":"","post_content":"股票大牛来点资料","post_content_filtered":null,"more":"http://img0.imgtn.bdimg.com/it/u=2181161660,2650271690&amp;fm=26&amp;gp=0.jpg","share_id":1,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":44,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543201103,"update_time":0,"published_time":"11-26 10:58","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":1,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":43,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543200732,"update_time":0,"published_time":"11-26 10:52","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":42,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1542968634,"update_time":0,"published_time":"11-23 18:23","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":41,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1542880168,"update_time":0,"published_time":"11-22 17:49","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null}]}
+     * code : 1
+     * msg : 请求成功
+     * data : {"total":5,"per_page":"10","current_page":1,"last_page":1,"data":[{"id":3715,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-20 13:42:00","update_time":"2019-12-20 13:42:00","published_time":"2019-12-20 13:42:00","delete_time":0,"post_title":"哈哈哈哈哈","post_keywords":"哈哈哈哈","post_excerpt":"哈哈哈","post_source":"小仙女","post_content":"工信部部长苗圩：中国将全面放开一般制造业","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3714,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-20 13:41:55","update_time":"2019-12-20 13:41:55","published_time":"2019-12-20 13:41:55","delete_time":0,"post_title":"哈哈哈哈哈","post_keywords":"哈哈哈哈","post_excerpt":"哈哈哈","post_source":"小仙女","post_content":"工信部部长苗圩：中国将全面放开一般制造业","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3712,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-19 19:16:57","update_time":"2019-12-19 19:16:57","published_time":"2019-12-19 19:16:57","delete_time":0,"post_title":"哈哈哈哈哈","post_keywords":"哈哈哈哈","post_excerpt":"哈哈哈","post_source":"小仙女","post_content":"工信部部长苗圩：中国将全面放开一般制造业","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3711,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-19 19:05:14","update_time":"2019-12-19 19:05:14","published_time":"2019-12-19 19:05:14","delete_time":0,"post_title":"古古怪怪","post_keywords":"古古怪怪","post_excerpt":"古古怪怪","post_source":"用户851419","post_content":"哈哈哈哈嗝姑姑姑父","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3710,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-19 18:42:04","update_time":"2019-12-19 18:42:04","published_time":"2019-12-19 18:42:04","delete_time":0,"post_title":"usdt","post_keywords":"usdt","post_excerpt":"usdt","post_source":"用户851419","post_content":"买点哈哈哈哈\n","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0}]}
      */
 
     private int code;
@@ -49,30 +49,32 @@ public class GuliaoEntity {
     }
 
     public static class DataBeanX {
-        /**
-         * total : 18
-         * per_page : 10
-         * current_page : 1
-         * last_page : 2
-         * data : [{"id":50,"user_id":18,"post_status":1,"comment_status":1,"post_hits":19,"post_like":1,"comment_count":3,"create_time":1543457096,"update_time":0,"published_time":"11-29 10:04","delete_time":0,"post_title":"广电网络早市，很不错的样子呢！","post_excerpt":"","post_content":"广电网络早市，很不错的样子呢！","post_content_filtered":null,"more":"https://data.yingju8.com/upload/20181129/b101c1edfb05168fc468e8471bf06ced.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":49,"user_id":18,"post_status":1,"comment_status":1,"post_hits":161,"post_like":1,"comment_count":6,"create_time":1543285674,"update_time":0,"published_time":"11-27 10:27","delete_time":0,"post_title":"上证指数","post_excerpt":"","post_content":"上证指数","post_content_filtered":null,"more":"https://data.yingju8.com/upload/20181127/7ed5c5ef2466d129b8547a0ceb7f0c90.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":48,"user_id":18,"post_status":1,"comment_status":1,"post_hits":5,"post_like":0,"comment_count":0,"create_time":1543283926,"update_time":0,"published_time":"11-27 09:58","delete_time":0,"post_title":"早市您 好啊","post_excerpt":"","post_content":"早市您 好啊","post_content_filtered":null,"more":"https://data.yingju8.com/upload/20181126/c5a761ce11bc747661c63e5971b2fcfe.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":47,"user_id":18,"post_status":1,"comment_status":1,"post_hits":2,"post_like":0,"comment_count":0,"create_time":1543283895,"update_time":0,"published_time":"11-27 09:58","delete_time":0,"post_title":"早市您 好啊","post_excerpt":"","post_content":"早市您 好啊","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":{"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}},{"id":46,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543234874,"update_time":0,"published_time":"11-26 20:21","delete_time":0,"post_title":"股票大牛来点资料","post_excerpt":"","post_content":"股票大牛来点资料","post_content_filtered":null,"more":"http://img0.imgtn.bdimg.com/it/u=2181161660,2650271690&amp;fm=26&amp;gp=0.jpg","share_id":1,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":45,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543201179,"update_time":0,"published_time":"11-26 10:59","delete_time":0,"post_title":"股票大牛来点资料","post_excerpt":"","post_content":"股票大牛来点资料","post_content_filtered":null,"more":"http://img0.imgtn.bdimg.com/it/u=2181161660,2650271690&amp;fm=26&amp;gp=0.jpg","share_id":1,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":44,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543201103,"update_time":0,"published_time":"11-26 10:58","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":1,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":43,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1543200732,"update_time":0,"published_time":"11-26 10:52","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":42,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1542968634,"update_time":0,"published_time":"11-23 18:23","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null},{"id":41,"user_id":15,"post_status":1,"comment_status":1,"post_hits":0,"post_like":0,"comment_count":0,"create_time":1542880168,"update_time":0,"published_time":"11-22 17:49","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"abcd","post_content_filtered":null,"more":null,"share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"user":null}]
-         */
-
-        private int total;
-        private int per_page;
-        private int current_page;
-        private int last_page;
-        private List<DataBean> data;
-
         @Override
         public String toString() {
             return "DataBeanX{" +
                     "total=" + total +
-                    ", per_page=" + per_page +
+                    ", per_page='" + per_page + '\'' +
                     ", current_page=" + current_page +
                     ", last_page=" + last_page +
                     ", data=" + data +
                     '}';
         }
+
+        /**
+         * total : 5
+         * per_page : 10
+         * current_page : 1
+         * last_page : 1
+         * data : [{"id":3715,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-20 13:42:00","update_time":"2019-12-20 13:42:00","published_time":"2019-12-20 13:42:00","delete_time":0,"post_title":"哈哈哈哈哈","post_keywords":"哈哈哈哈","post_excerpt":"哈哈哈","post_source":"小仙女","post_content":"工信部部长苗圩：中国将全面放开一般制造业","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3714,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-20 13:41:55","update_time":"2019-12-20 13:41:55","published_time":"2019-12-20 13:41:55","delete_time":0,"post_title":"哈哈哈哈哈","post_keywords":"哈哈哈哈","post_excerpt":"哈哈哈","post_source":"小仙女","post_content":"工信部部长苗圩：中国将全面放开一般制造业","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3712,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-19 19:16:57","update_time":"2019-12-19 19:16:57","published_time":"2019-12-19 19:16:57","delete_time":0,"post_title":"哈哈哈哈哈","post_keywords":"哈哈哈哈","post_excerpt":"哈哈哈","post_source":"小仙女","post_content":"工信部部长苗圩：中国将全面放开一般制造业","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3711,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-19 19:05:14","update_time":"2019-12-19 19:05:14","published_time":"2019-12-19 19:05:14","delete_time":0,"post_title":"古古怪怪","post_keywords":"古古怪怪","post_excerpt":"古古怪怪","post_source":"用户851419","post_content":"哈哈哈哈嗝姑姑姑父","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0},{"id":3710,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":0,"post_like":0,"comment_count":0,"create_time":"2019-12-19 18:42:04","update_time":"2019-12-19 18:42:04","published_time":"2019-12-19 18:42:04","delete_time":0,"post_title":"usdt","post_keywords":"usdt","post_excerpt":"usdt","post_source":"用户851419","post_content":"买点哈哈哈哈\n","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[],"is_follow":0}]
+         */
+
+
+
+        private int total;
+        private String per_page;
+        private int current_page;
+        private int last_page;
+        private List<DataBean> data;
 
         public int getTotal() {
             return total;
@@ -82,11 +84,11 @@ public class GuliaoEntity {
             this.total = total;
         }
 
-        public int getPer_page() {
+        public String getPer_page() {
             return per_page;
         }
 
-        public void setPer_page(int per_page) {
+        public void setPer_page(String per_page) {
             this.per_page = per_page;
         }
 
@@ -115,93 +117,75 @@ public class GuliaoEntity {
         }
 
         public static class DataBean {
-            @Override
-            public String toString() {
-                return "DataBean{" +
-                        "id=" + id +
-                        ", user_id=" + user_id +
-                        ", post_status=" + post_status +
-                        ", comment_status=" + comment_status +
-                        ", post_hits=" + post_hits +
-                        ", post_like=" + post_like +
-                        ", comment_count=" + comment_count +
-                        ", create_time=" + create_time +
-                        ", update_time=" + update_time +
-                        ", published_time='" + published_time + '\'' +
-                        ", delete_time=" + delete_time +
-                        ", post_title='" + post_title + '\'' +
-                        ", post_excerpt='" + post_excerpt + '\'' +
-                        ", post_content='" + post_content + '\'' +
-                        ", post_content_filtered=" + post_content_filtered +
-                        ", more='" + more + '\'' +
-                        ", share_id=" + share_id +
-                        ", last_time=" + last_time +
-                        ", favorite_count=" + favorite_count +
-                        ", report_count=" + report_count +
-                        ", report_status=" + report_status +
-                        ", user=" + user +
-                        '}';
-            }
-
             /**
-             * id : 50
-             * user_id : 18
+             * id : 3715
+             * parent_id : 0
+             * post_type : 1
+             * post_format : 1
+             * user_id : 4621
              * post_status : 1
              * comment_status : 1
-             * post_hits : 19
-             * post_like : 1
-             * comment_count : 3
-             * create_time : 1543457096
-             * update_time : 0
-             * published_time : 11-29 10:04
+             * is_top : 0
+             * recommended : 0
+             * post_hits : 0
+             * post_like : 0
+             * comment_count : 0
+             * create_time : 2019-12-20 13:42:00
+             * update_time : 2019-12-20 13:42:00
+             * published_time : 2019-12-20 13:42:00
              * delete_time : 0
-             * post_title : 广电网络早市，很不错的样子呢！
-             * post_excerpt :
-             * post_content : 广电网络早市，很不错的样子呢！
+             * post_title : 哈哈哈哈哈
+             * post_keywords : 哈哈哈哈
+             * post_excerpt : 哈哈哈
+             * post_source : 小仙女
+             * post_content : 工信部部长苗圩：中国将全面放开一般制造业
              * post_content_filtered : null
-             * more : https://data.yingju8.com/upload/20181129/b101c1edfb05168fc468e8471bf06ced.jpg
-             * share_id : 22
-             * last_time : null
-             * favorite_count : 0
-             * report_count : 0
+             * more : []
+             * article_flag :
+             * aid : 0
              * report_status : 0
-             * user : {"id":18,"user_nickname":"小小S","avatar":"http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg"}
+             * is_topic : 0
+             * apply_name : com.fincoin.cyptonline
+             * expand : []
+             * video_url : []
+             * user : {"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"}
+             * comment : []
+             * is_follow : 0
              */
 
-
             private int id;
+            private int parent_id;
+            private int post_type;
+            private int post_format;
             private int user_id;
             private int post_status;
             private int comment_status;
+            private int is_top;
+            private int recommended;
             private int post_hits;
             private int post_like;
             private int comment_count;
-            private int create_time;
-            private int update_time;
+            private String create_time;
+            private String update_time;
             private String published_time;
             private int delete_time;
             private String post_title;
+            private String post_keywords;
             private String post_excerpt;
+            private String post_source;
             private String post_content;
             private Object post_content_filtered;
-            private String more;
-            private int share_id;
-            private Object last_time;
-            private int favorite_count;
-            private int report_count;
+            private String article_flag;
+            private String aid;
             private int report_status;
+            private int is_topic;
+            private String apply_name;
             private UserBean user;
-
-            private boolean focus;
-
-
-            public boolean isFocus() {
-                return false;
-            }
-
-            public void setFocus(boolean focus) {
-                this.focus = focus;
-            }
+            private int is_follow;
+            private List<?> more;
+            private List<?> expand;
+            private List<?> video_url;
+            private List<?> comment;
 
             public int getId() {
                 return id;
@@ -209,6 +193,30 @@ public class GuliaoEntity {
 
             public void setId(int id) {
                 this.id = id;
+            }
+
+            public int getParent_id() {
+                return parent_id;
+            }
+
+            public void setParent_id(int parent_id) {
+                this.parent_id = parent_id;
+            }
+
+            public int getPost_type() {
+                return post_type;
+            }
+
+            public void setPost_type(int post_type) {
+                this.post_type = post_type;
+            }
+
+            public int getPost_format() {
+                return post_format;
+            }
+
+            public void setPost_format(int post_format) {
+                this.post_format = post_format;
             }
 
             public int getUser_id() {
@@ -235,6 +243,22 @@ public class GuliaoEntity {
                 this.comment_status = comment_status;
             }
 
+            public int getIs_top() {
+                return is_top;
+            }
+
+            public void setIs_top(int is_top) {
+                this.is_top = is_top;
+            }
+
+            public int getRecommended() {
+                return recommended;
+            }
+
+            public void setRecommended(int recommended) {
+                this.recommended = recommended;
+            }
+
             public int getPost_hits() {
                 return post_hits;
             }
@@ -259,19 +283,19 @@ public class GuliaoEntity {
                 this.comment_count = comment_count;
             }
 
-            public int getCreate_time() {
+            public String getCreate_time() {
                 return create_time;
             }
 
-            public void setCreate_time(int create_time) {
+            public void setCreate_time(String create_time) {
                 this.create_time = create_time;
             }
 
-            public int getUpdate_time() {
+            public String getUpdate_time() {
                 return update_time;
             }
 
-            public void setUpdate_time(int update_time) {
+            public void setUpdate_time(String update_time) {
                 this.update_time = update_time;
             }
 
@@ -299,12 +323,28 @@ public class GuliaoEntity {
                 this.post_title = post_title;
             }
 
+            public String getPost_keywords() {
+                return post_keywords;
+            }
+
+            public void setPost_keywords(String post_keywords) {
+                this.post_keywords = post_keywords;
+            }
+
             public String getPost_excerpt() {
                 return post_excerpt;
             }
 
             public void setPost_excerpt(String post_excerpt) {
                 this.post_excerpt = post_excerpt;
+            }
+
+            public String getPost_source() {
+                return post_source;
+            }
+
+            public void setPost_source(String post_source) {
+                this.post_source = post_source;
             }
 
             public String getPost_content() {
@@ -323,44 +363,20 @@ public class GuliaoEntity {
                 this.post_content_filtered = post_content_filtered;
             }
 
-            public String getMore() {
-                return more;
+            public String getArticle_flag() {
+                return article_flag;
             }
 
-            public void setMore(String more) {
-                this.more = more;
+            public void setArticle_flag(String article_flag) {
+                this.article_flag = article_flag;
             }
 
-            public int getShare_id() {
-                return share_id;
+            public String getAid() {
+                return aid;
             }
 
-            public void setShare_id(int share_id) {
-                this.share_id = share_id;
-            }
-
-            public Object getLast_time() {
-                return last_time;
-            }
-
-            public void setLast_time(Object last_time) {
-                this.last_time = last_time;
-            }
-
-            public int getFavorite_count() {
-                return favorite_count;
-            }
-
-            public void setFavorite_count(int favorite_count) {
-                this.favorite_count = favorite_count;
-            }
-
-            public int getReport_count() {
-                return report_count;
-            }
-
-            public void setReport_count(int report_count) {
-                this.report_count = report_count;
+            public void setAid(String aid) {
+                this.aid = aid;
             }
 
             public int getReport_status() {
@@ -371,6 +387,22 @@ public class GuliaoEntity {
                 this.report_status = report_status;
             }
 
+            public int getIs_topic() {
+                return is_topic;
+            }
+
+            public void setIs_topic(int is_topic) {
+                this.is_topic = is_topic;
+            }
+
+            public String getApply_name() {
+                return apply_name;
+            }
+
+            public void setApply_name(String apply_name) {
+                this.apply_name = apply_name;
+            }
+
             public UserBean getUser() {
                 return user;
             }
@@ -379,25 +411,58 @@ public class GuliaoEntity {
                 this.user = user;
             }
 
+            public int getIs_follow() {
+                return is_follow;
+            }
+
+            public void setIs_follow(int is_follow) {
+                this.is_follow = is_follow;
+            }
+
+            public List<?> getMore() {
+                return more;
+            }
+
+            public void setMore(List<?> more) {
+                this.more = more;
+            }
+
+            public List<?> getExpand() {
+                return expand;
+            }
+
+            public void setExpand(List<?> expand) {
+                this.expand = expand;
+            }
+
+            public List<?> getVideo_url() {
+                return video_url;
+            }
+
+            public void setVideo_url(List<?> video_url) {
+                this.video_url = video_url;
+            }
+
+            public List<?> getComment() {
+                return comment;
+            }
+
+            public void setComment(List<?> comment) {
+                this.comment = comment;
+            }
+
             public static class UserBean {
                 /**
-                 * id : 18
-                 * user_nickname : 小小S
-                 * avatar : http://data.yingju8.com/upload/20181204/b7538e54e3033f5c8f47aee2f318b31f.jpg
+                 * id : 4621
+                 * user_nickname : 小仙女
+                 * avatar : https://d.wanjinig.cn/upload/avatar/logo.png
+                 * mobile : 13555555555
                  */
 
                 private int id;
                 private String user_nickname;
                 private String avatar;
-
-                @Override
-                public String toString() {
-                    return "UserBean{" +
-                            "id=" + id +
-                            ", user_nickname='" + user_nickname + '\'' +
-                            ", avatar='" + avatar + '\'' +
-                            '}';
-                }
+                private String mobile;
 
                 public int getId() {
                     return id;
@@ -421,6 +486,14 @@ public class GuliaoEntity {
 
                 public void setAvatar(String avatar) {
                     this.avatar = avatar;
+                }
+
+                public String getMobile() {
+                    return mobile;
+                }
+
+                public void setMobile(String mobile) {
+                    this.mobile = mobile;
                 }
             }
         }

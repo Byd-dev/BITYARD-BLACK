@@ -112,9 +112,9 @@ public class OReportEntity implements Serializable {
 
         private String brand;
         private String content;
-        private ExpireBean expire;
-        private int id;
-        private TimeBean time;
+        private String expire;
+        private String id;
+        private long time;
         private String title;
         private boolean top;
         private String url;
@@ -135,27 +135,27 @@ public class OReportEntity implements Serializable {
             this.content = content;
         }
 
-        public ExpireBean getExpire() {
+        public String getExpire() {
             return expire;
         }
 
-        public void setExpire(ExpireBean expire) {
+        public void setExpire(String expire) {
             this.expire = expire;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
-        public TimeBean getTime() {
+        public long getTime() {
             return time;
         }
 
-        public void setTime(TimeBean time) {
+        public void setTime(long time) {
             this.time = time;
         }
 

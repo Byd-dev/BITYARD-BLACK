@@ -814,13 +814,13 @@ public class OApiEntity implements Serializable {
         private String code;
         private String commodityId;
         private String contractCode;
-        private CreateTimeBean createTime;
+        private String createTime;
         private String currency;
         private String exchange;
         private boolean favor;
         private boolean foreign;
         private String holiday;
-        private int id;
+        private String id;
         private int moneyType;
         private String name;
         private String niteClearingTime;
@@ -923,11 +923,11 @@ public class OApiEntity implements Serializable {
             this.contractCode = contractCode;
         }
 
-        public CreateTimeBean getCreateTime() {
+        public String getCreateTime() {
             return createTime;
         }
 
-        public void setCreateTime(CreateTimeBean createTime) {
+        public void setCreateTime(String createTime) {
             this.createTime = createTime;
         }
 
@@ -971,11 +971,11 @@ public class OApiEntity implements Serializable {
             this.holiday = holiday;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -1340,13 +1340,13 @@ public class OApiEntity implements Serializable {
         private String code;
         private String commodityId;
         private String contractCode;
-        private CreateTimeBeanX createTime;
+        private String createTime;
         private String currency;
         private String exchange;
         private boolean favor;
         private boolean foreign;
         private String holiday;
-        private int id;
+        private String id;
         private int moneyType;
         private String name;
         private String niteClearingTime;
@@ -1449,11 +1449,11 @@ public class OApiEntity implements Serializable {
             this.contractCode = contractCode;
         }
 
-        public CreateTimeBeanX getCreateTime() {
+        public String getCreateTime() {
             return createTime;
         }
 
-        public void setCreateTime(CreateTimeBeanX createTime) {
+        public void setCreateTime(String createTime) {
             this.createTime = createTime;
         }
 
@@ -1497,11 +1497,11 @@ public class OApiEntity implements Serializable {
             this.holiday = holiday;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -1881,13 +1881,13 @@ public class OApiEntity implements Serializable {
         private String code;
         private String commodityId;
         private String contractCode;
-        private CreateTimeBeanXX createTime;
+        private String createTime;
         private String currency;
         private String exchange;
         private boolean favor;
         private boolean foreign;
         private String holiday;
-        private int id;
+        private String id;
         private int moneyType;
         private String name;
         private String niteClearingTime;
@@ -1990,11 +1990,11 @@ public class OApiEntity implements Serializable {
             this.contractCode = contractCode;
         }
 
-        public CreateTimeBeanXX getCreateTime() {
+        public String getCreateTime() {
             return createTime;
         }
 
-        public void setCreateTime(CreateTimeBeanXX createTime) {
+        public void setCreateTime(String createTime) {
             this.createTime = createTime;
         }
 
@@ -2038,11 +2038,11 @@ public class OApiEntity implements Serializable {
             this.holiday = holiday;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -2424,13 +2424,13 @@ public class OApiEntity implements Serializable {
         private String code;
         private String commodityId;
         private String contractCode;
-        private CreateTimeBeanXX createTime;
+        private String createTime;
         private String currency;
         private String exchange;
         private boolean favor;
         private boolean foreign;
         private String holiday;
-        private int id;
+        private String id;
         private int moneyType;
         private String name;
         private String niteClearingTime;
@@ -2533,11 +2533,11 @@ public class OApiEntity implements Serializable {
             this.contractCode = contractCode;
         }
 
-        public CreateTimeBeanXX getCreateTime() {
+        public String getCreateTime() {
             return createTime;
         }
 
-        public void setCreateTime(CreateTimeBeanXX createTime) {
+        public void setCreateTime(String createTime) {
             this.createTime = createTime;
         }
 
@@ -2581,11 +2581,11 @@ public class OApiEntity implements Serializable {
             this.holiday = holiday;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 

@@ -10,7 +10,7 @@ public interface Constant {
     public static String JUHE_HOST = "http://apis.juhe.cn/goodbook";
 
     // String BASE_URL = "https://data.fk7h.com";
-    String BASE_URL = "https://d.wanjinig.cn";
+    String BASE_URL = "https://data.fk7h.com";
 
     //金投网的资讯列表
     public static String URL_JINTOUWANG = NEWS_HOIST + "/getJinTouEvents";

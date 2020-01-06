@@ -67,13 +67,7 @@ public class SplashActivity extends Activity implements OnResultBack {
 
         initPermission();
 
-        /*SwitchMainEnter.getInstance().initOCR(this, BuildConfig.AK, BuildConfig.SK);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-
-        SplashActivity splashActivity = new SplashActivity(new DoGet(), SplashActivity.this);
-
-        splashActivity.getSwitch(BuildConfig.CHECKVERSION_URL_LIST, BuildConfig.BLOG_URL_LIST, BuildConfig.QUDAO);*/
 
 
     }
@@ -88,15 +82,7 @@ public class SplashActivity extends Activity implements OnResultBack {
         splashActivity.getSwitch(BuildConfig.CHECKVERSION_URL_LIST, BuildConfig.BLOG_URL_LIST, BuildConfig.QUDAO);
 
 
-        //提前加载数据
-        NetManger.getInstance().api(new OnNetResult() {
-            @Override
-            public void onNetResult(String state, Object response) {
-                if (state.equals(SUCCESS)) {
-                    NetManger.getInstance().postQuote();
-                }
-            }
-        });
+
 
 
     }

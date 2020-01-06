@@ -38,14 +38,14 @@ public class NetManger {
     public static String SUCCESS = "success";
     public static String FAILURE = "failure";
 
-    private String BASE_URL = "https://d.wanjinig.cn";
+    private String BASE_URL = "https://data.fk7h.com";
 
 
     private List<String> contractsList, getalllist;
     private List<String> foreignList, getForeignList;
     private List<String> stockindexList, getStockindexList;
     private List<String> domesList, getDomesList;
-    private List<String> digitaList,getDigitaList;
+    private List<String> digitaList, getDigitaList;
 
 
     private List<String> dataList;
@@ -53,7 +53,6 @@ public class NetManger {
     private List<String> stockindexdataList;
     private List<String> domesdataList;
     private List<String> digitalDataList;
-
 
 
     public static NetManger getInstance() {
@@ -64,11 +63,11 @@ public class NetManger {
         return instance;
     }
 
-    public void btcNews(OnNetResult onNetResult){
-        OkGo.<String>get(BASE_URL+"/new_api/Newsletter/currencyNewsLetter")
+    public void btcNews(OnNetResult onNetResult) {
+        OkGo.<String>get(BASE_URL + "/new_api/Newsletter/currencyNewsLetter")
                 .tag(this)
-                .params("is_cache","0")
-                .params(Constant.PARAM_PAGESIZE,10)
+                .params("is_cache", "0")
+                .params(Constant.PARAM_PAGESIZE, 10)
                 .execute(new StringCallback() {
 
                     @Override
@@ -80,8 +79,8 @@ public class NetManger {
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())){
-                            onNetResult.onNetResult(SUCCESS,response.body());
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
                         }
                     }
 
@@ -96,12 +95,13 @@ public class NetManger {
 
 
     }
+
     /*ranke*/
-    public void btcQuote(OnNetResult onNetResult){
-        OkGo.<String>get(BASE_URL+"/new_api/Quotes/btcmoneyQuoteChangeList")
+    public void btcQuote(OnNetResult onNetResult) {
+        OkGo.<String>get(BASE_URL + "/new_api/Quotes/btcmoneyQuoteChangeList")
                 .tag(this)
-                .params("is_cache","0")
-                .params(Constant.PARAM_PAGESIZE,10)
+                .params("is_cache", "0")
+                .params(Constant.PARAM_PAGESIZE, 10)
                 .execute(new StringCallback() {
 
                     @Override
@@ -113,8 +113,8 @@ public class NetManger {
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())){
-                            onNetResult.onNetResult(SUCCESS,response.body());
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
                         }
                     }
 
@@ -132,12 +132,12 @@ public class NetManger {
 
 
     /*比特币价格排行*/
-    public void btcPrice(int page,String sortby,OnNetResult onNetResult){
-        OkGo.<String>get(BASE_URL+"/new_api/currency/HqzCurrencyList")
+    public void btcPrice(int page, String sortby, OnNetResult onNetResult) {
+        OkGo.<String>get(BASE_URL + "/new_api/currency/HqzCurrencyList")
                 .tag(this)
-                .params(Constant.PARAM_PAGE,page)
-                .params("sortBy",sortby)
-                .params(Constant.PARAM_SORT,"desc")
+                .params(Constant.PARAM_PAGE, page)
+                .params("sortBy", sortby)
+                .params(Constant.PARAM_SORT, "desc")
                 .execute(new StringCallback() {
 
                     @Override
@@ -149,8 +149,8 @@ public class NetManger {
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())){
-                            onNetResult.onNetResult(SUCCESS,response.body());
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
                         }
                     }
 
@@ -259,8 +259,8 @@ public class NetManger {
     }
 
     /*忘记密码找回密码*/
-    public void reset(final String num, final String pass, String code,OnNetResult onNetResult) {
-        OkGo.<String>post(BASE_URL+"/user/communal/passwordReset")
+    public void reset(final String num, final String pass, String code, OnNetResult onNetResult) {
+        OkGo.<String>post(BASE_URL + "/user/communal/passwordReset")
                 .params(Constant.PARAM_USERNAME, num)
                 .params(Constant.PARAM_PASSWORD, pass)
                 .params(Constant.PARAM_VERIFICATION_CODE, code)
@@ -270,7 +270,7 @@ public class NetManger {
                     @Override
                     public void onStart(Request<String, ? extends Request> request) {
                         super.onStart(request);
-                        onNetResult.onNetResult(BUSY,null);
+                        onNetResult.onNetResult(BUSY, null);
                     }
 
                     @Override
@@ -278,7 +278,7 @@ public class NetManger {
                         if (!TextUtils.isEmpty(response.body())) {
                             TipEntity tipEntity = new Gson().fromJson(response.body(), TipEntity.class);
                             if (tipEntity.getCode() == 1) {
-                                onNetResult.onNetResult(SUCCESS,response.body());
+                                onNetResult.onNetResult(SUCCESS, response.body());
 
                             }
 
@@ -288,14 +288,14 @@ public class NetManger {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        onNetResult.onNetResult(FAILURE,response.body());
+                        onNetResult.onNetResult(FAILURE, response.body());
 
                     }
                 });
     }
 
     /*btc market*/
-    public void market(OnNetResult onNetResult){
+    public void market(OnNetResult onNetResult) {
 
         OkGo.<String>get("https://api.coincap.io/v2/markets")
                 .execute(new StringCallback() {
@@ -303,55 +303,275 @@ public class NetManger {
                     @Override
                     public void onStart(Request<String, ? extends Request> request) {
                         super.onStart(request);
-                        onNetResult.onNetResult(BUSY,null);
+                        onNetResult.onNetResult(BUSY, null);
                     }
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())){
-                            onNetResult.onNetResult(SUCCESS,response.body());
-                        }else {
-                            onNetResult.onNetResult(FAILURE,response.body());
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        onNetResult.onNetResult(FAILURE,response.body());
+                        onNetResult.onNetResult(FAILURE, response.body());
                     }
                 });
 
     }
 
     /*focus*/
-    public void focus(String token,OnNetResult onNetResult){
-        Log.d("print", "focus: "+token);
+    public void focusList(String token, OnNetResult onNetResult) {
+        Log.d("print", "focus: " + token);
 
-        OkGo.<String>get(BASE_URL+"/yapi/user/userFollowList")
-                .headers(Constant.PARAM_XX_TOKEN,token)
-                .headers(Constant.PARAM_XX_DEVICE_TYPE,Constant.PARAM_DEVICE_NAME)
+        OkGo.<String>get(BASE_URL + "/yapi/user/userFollowList")
+                .headers(Constant.PARAM_XX_TOKEN, token)
+                .headers(Constant.PARAM_XX_DEVICE_TYPE, Constant.PARAM_DEVICE_NAME)
                 .execute(new StringCallback() {
 
                     @Override
                     public void onStart(Request<String, ? extends Request> request) {
                         super.onStart(request);
-                        onNetResult.onNetResult(BUSY,null);
+                        onNetResult.onNetResult(BUSY, null);
                     }
 
                     @Override
                     public void onSuccess(Response<String> response) {
-                        if (!TextUtils.isEmpty(response.body())){
-                            onNetResult.onNetResult(SUCCESS,response.body());
-                        }else {
-                            onNetResult.onNetResult(FAILURE,response.body());
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        onNetResult.onNetResult(FAILURE,response.body());
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+
+    }
+
+    /*focus*/
+    public void focus(String token, int id, OnNetResult onNetResult) {
+
+        OkGo.<String>get(BASE_URL + "/yapi/circle/follow")
+                .headers(Constant.PARAM_XX_TOKEN, token)
+                .headers(Constant.PARAM_XX_DEVICE_TYPE, Constant.PARAM_DEVICE_NAME)
+                .params("followUserId", id)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+
+    }
+
+    /*send*/
+    public void addArticle(String token, int id, String title, String source, String content, String more, int isTopic, String url, OnNetResult onNetResult) {
+
+        OkGo.<String>post(BASE_URL + "/api/user/Circle/add_circle")
+                .headers(Constant.PARAM_XX_TOKEN, token)
+                .headers(Constant.PARAM_XX_DEVICE_TYPE, Constant.PARAM_DEVICE_NAME)
+                .params(Constant.PARAM_POST_TITLE, title)
+                .params("post_keywords", title)
+                .params("post_excerpt", title)
+                .params("post_source", source)
+                .params("post_content", content)
+                .params(Constant.PARAM_MORE, "")
+                .params("category", "8007")
+                .params(Constant.PARAM_ID, id)
+                .params("is_topic", isTopic)
+                .params(Constant.PARAM_APPLY_NAME, BuildConfig.APPLICATION_ID)
+                .params("video_url", url)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+
+    }
+
+    /*articleList*/
+    public void articleList(String token, int page, String userId,int isTopic,OnNetResult onNetResult) {
+
+        OkGo.<String>get(BASE_URL + "/yapi/Circle/index")
+                .headers(Constant.PARAM_XX_TOKEN, token)
+                .headers(Constant.PARAM_XX_DEVICE_TYPE, Constant.PARAM_DEVICE_NAME)
+                .params("page", page)
+                .params("num", 10)
+                .params("order", "published_time")
+                .params("category", "8007")
+                .params("user_id", userId)
+                .params("is_topic", isTopic)
+                .params("title","")
+                .params(Constant.PARAM_APPLY_NAME, BuildConfig.APPLICATION_ID)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+
+    }
+    /*articleDetail*/
+    public void articleDetail(String id,OnNetResult onNetResult) {
+
+        OkGo.<String>get(BASE_URL + "/yapi/Circle/view")
+                .params("id", id)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+
+    }
+
+    /*articleDetail*/
+    public void addComment(String token,String object_id,String content,String id,OnNetResult onNetResult) {
+
+        OkGo.<String>post(BASE_URL + "/api/user/Circle/add_comment")
+                .headers(Constant.PARAM_XX_TOKEN, token)
+                .headers(Constant.PARAM_XX_DEVICE_TYPE, Constant.PARAM_DEVICE_NAME)
+                .params(Constant.PARAM_OBJECT_ID, object_id)
+                .params(Constant.PARAM_CONTENT, content)
+                .params("id",id)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+
+    }
+    /*commentList*/
+    public void commentList(String object_id,String user_id,int page,OnNetResult onNetResult) {
+
+        OkGo.<String>get(BASE_URL + "/yapi/Circle/comment_list")
+                .params("page",page)
+                .params("num",10)
+                .params("order","create_time")
+                .params("object_id",object_id)
+                .params("user_id",user_id)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
                     }
                 });
 
@@ -453,7 +673,7 @@ public class NetManger {
                                 }
                             }
 
-                            getDigitaList=new ArrayList<>();
+                            getDigitaList = new ArrayList<>();
                             for (int i = 0; i < contractsList.size(); i++) {
                                 for (int j = 0; j < digitaList.size(); j++) {
                                     if (contractsList.get(i).startsWith(digitaList.get(j))) {
@@ -473,7 +693,7 @@ public class NetManger {
                             getalllist.addAll(getStockindexList);
                             getalllist.addAll(getDomesList);
                             getalllist.addAll(getDigitaList);
-                            onNetResult.onNetResult(SUCCESS,getalllist);
+                            onNetResult.onNetResult(SUCCESS, getalllist);
 
                             SPUtils.putString(OUserConfig.ALLDEX, getalllist.toString());
                          /*   SPUtils.putString(OUserConfig.FOREIGN, getForeignList.toString());
@@ -494,6 +714,7 @@ public class NetManger {
                 });
 
     }
+
     int count = 0;
 
     //行情的请求
@@ -609,7 +830,7 @@ public class NetManger {
                                 digitalDataList = new ArrayList<>();
                                 List<String> digitalList = QuoteProxy.getInstance().getDigitalList();
                                 if (digitalList != null) {
-                                    for (String digital:digitalList) {
+                                    for (String digital : digitalList) {
                                         for (String quote : dataList) {
                                             String[] split = quote.split(",");
                                             if (digital.equals(split[0].replaceAll("[^a-z^A-Z]", ""))) {
@@ -755,10 +976,6 @@ public class NetManger {
                 });
 
     }
-
-
-
-
 
 
 }

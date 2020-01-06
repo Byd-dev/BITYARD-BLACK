@@ -6,9 +6,9 @@ public class GuliaoDetailEntity {
 
 
     /**
-     * code : 0
-     * msg : 获取数据成功
-     * data : {"id":69,"user_id":57,"post_status":1,"comment_status":1,"post_hits":1,"post_like":0,"comment_count":0,"create_time":1545205574,"update_time":0,"published_time":"12-19 15:46","delete_time":0,"post_title":"test","post_excerpt":"","post_content":"helloworld","post_content_filtered":null,"more":"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1545215476663&amp;di=7147217b231e78026305a64d647a5525&amp;imgtype=0&amp;src=http%3A%2F%2Fapp.yzinter.com%2Fd%2Ffile%2Fnews%2Ffashion%2F2018-11-10%2F177d344d615b6893643b18469a231824.jpg","share_id":22,"last_time":null,"favorite_count":0,"report_count":0,"report_status":0,"zan":[],"user":{"id":57,"user_nickname":"helloworld","avatar":"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1545200165282&amp;di=8883459e3c99cbb5745b26e75682b91b&amp;imgtype=0&amp;src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fa1ae409cfab3db09293e42a1436bd2375d2f7aba9528a-ITiCgS_fw658\n\n"}}
+     * code : 1
+     * msg : 请求成功
+     * data : {"id":3716,"parent_id":0,"post_type":1,"post_format":1,"user_id":4621,"post_status":1,"comment_status":1,"is_top":0,"recommended":0,"post_hits":4,"post_like":0,"comment_count":0,"create_time":"2019-12-20 14:18:06","update_time":"2019-12-20 14:18:06","published_time":"2019-12-20 14:18:06","delete_time":0,"post_title":"BTC回暖","post_keywords":"BTC回暖","post_excerpt":"BTC回暖","post_source":"用户851419","post_content":"这一波你们怎么看 ","post_content_filtered":null,"more":[],"article_flag":"","aid":"0","report_status":0,"is_topic":0,"apply_name":"com.fincoin.cyptonline","expand":[],"video_url":[],"user":{"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"},"comment":[]}
      */
 
     private int code;
@@ -53,82 +53,109 @@ public class GuliaoDetailEntity {
         public String toString() {
             return "DataBean{" +
                     "id=" + id +
+                    ", parent_id=" + parent_id +
+                    ", post_type=" + post_type +
+                    ", post_format=" + post_format +
                     ", user_id=" + user_id +
                     ", post_status=" + post_status +
                     ", comment_status=" + comment_status +
+                    ", is_top=" + is_top +
+                    ", recommended=" + recommended +
                     ", post_hits=" + post_hits +
                     ", post_like=" + post_like +
                     ", comment_count=" + comment_count +
-                    ", create_time=" + create_time +
-                    ", update_time=" + update_time +
+                    ", create_time='" + create_time + '\'' +
+                    ", update_time='" + update_time + '\'' +
                     ", published_time='" + published_time + '\'' +
                     ", delete_time=" + delete_time +
                     ", post_title='" + post_title + '\'' +
+                    ", post_keywords='" + post_keywords + '\'' +
                     ", post_excerpt='" + post_excerpt + '\'' +
+                    ", post_source='" + post_source + '\'' +
                     ", post_content='" + post_content + '\'' +
                     ", post_content_filtered=" + post_content_filtered +
-                    ", more='" + more + '\'' +
-                    ", share_id=" + share_id +
-                    ", last_time=" + last_time +
-                    ", favorite_count=" + favorite_count +
-                    ", report_count=" + report_count +
+                    ", article_flag='" + article_flag + '\'' +
+                    ", aid='" + aid + '\'' +
                     ", report_status=" + report_status +
+                    ", is_topic=" + is_topic +
+                    ", apply_name='" + apply_name + '\'' +
                     ", user=" + user +
-                    ", zan=" + zan +
+                    ", more=" + more +
+                    ", expand=" + expand +
+                    ", video_url=" + video_url +
+                    ", comment=" + comment +
                     '}';
         }
 
         /**
-         * id : 69
-         * user_id : 57
+         * id : 3716
+         * parent_id : 0
+         * post_type : 1
+         * post_format : 1
+         * user_id : 4621
          * post_status : 1
          * comment_status : 1
-         * post_hits : 1
+         * is_top : 0
+         * recommended : 0
+         * post_hits : 4
          * post_like : 0
          * comment_count : 0
-         * create_time : 1545205574
-         * update_time : 0
-         * published_time : 12-19 15:46
+         * create_time : 2019-12-20 14:18:06
+         * update_time : 2019-12-20 14:18:06
+         * published_time : 2019-12-20 14:18:06
          * delete_time : 0
-         * post_title : test
-         * post_excerpt :
-         * post_content : helloworld
+         * post_title : BTC回暖
+         * post_keywords : BTC回暖
+         * post_excerpt : BTC回暖
+         * post_source : 用户851419
+         * post_content : 这一波你们怎么看
          * post_content_filtered : null
-         * more : https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1545215476663&amp;di=7147217b231e78026305a64d647a5525&amp;imgtype=0&amp;src=http%3A%2F%2Fapp.yzinter.com%2Fd%2Ffile%2Fnews%2Ffashion%2F2018-11-10%2F177d344d615b6893643b18469a231824.jpg
-         * share_id : 22
-         * last_time : null
-         * favorite_count : 0
-         * report_count : 0
+         * more : []
+         * article_flag :
+         * aid : 0
          * report_status : 0
-         * zan : []
-         * user : {"id":57,"user_nickname":"helloworld","avatar":"https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1545200165282&amp;di=8883459e3c99cbb5745b26e75682b91b&amp;imgtype=0&amp;src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fa1ae409cfab3db09293e42a1436bd2375d2f7aba9528a-ITiCgS_fw658\n\n"}
+         * is_topic : 0
+         * apply_name : com.fincoin.cyptonline
+         * expand : []
+         * video_url : []
+         * user : {"id":4621,"user_nickname":"小仙女","avatar":"https://d.wanjinig.cn/upload/avatar/logo.png","mobile":"13555555555"}
+         * comment : []
          */
 
 
 
         private int id;
+        private int parent_id;
+        private int post_type;
+        private int post_format;
         private int user_id;
         private int post_status;
         private int comment_status;
+        private int is_top;
+        private int recommended;
         private int post_hits;
         private int post_like;
         private int comment_count;
-        private int create_time;
-        private int update_time;
+        private String create_time;
+        private String update_time;
         private String published_time;
         private int delete_time;
         private String post_title;
+        private String post_keywords;
         private String post_excerpt;
+        private String post_source;
         private String post_content;
         private Object post_content_filtered;
-        private String more;
-        private int share_id;
-        private Object last_time;
-        private int favorite_count;
-        private int report_count;
+        private String article_flag;
+        private String aid;
         private int report_status;
+        private int is_topic;
+        private String apply_name;
         private UserBean user;
-        private List<?> zan;
+        private List<?> more;
+        private List<?> expand;
+        private List<?> video_url;
+        private List<?> comment;
 
         public int getId() {
             return id;
@@ -136,6 +163,30 @@ public class GuliaoDetailEntity {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public int getParent_id() {
+            return parent_id;
+        }
+
+        public void setParent_id(int parent_id) {
+            this.parent_id = parent_id;
+        }
+
+        public int getPost_type() {
+            return post_type;
+        }
+
+        public void setPost_type(int post_type) {
+            this.post_type = post_type;
+        }
+
+        public int getPost_format() {
+            return post_format;
+        }
+
+        public void setPost_format(int post_format) {
+            this.post_format = post_format;
         }
 
         public int getUser_id() {
@@ -162,6 +213,22 @@ public class GuliaoDetailEntity {
             this.comment_status = comment_status;
         }
 
+        public int getIs_top() {
+            return is_top;
+        }
+
+        public void setIs_top(int is_top) {
+            this.is_top = is_top;
+        }
+
+        public int getRecommended() {
+            return recommended;
+        }
+
+        public void setRecommended(int recommended) {
+            this.recommended = recommended;
+        }
+
         public int getPost_hits() {
             return post_hits;
         }
@@ -186,19 +253,19 @@ public class GuliaoDetailEntity {
             this.comment_count = comment_count;
         }
 
-        public int getCreate_time() {
+        public String getCreate_time() {
             return create_time;
         }
 
-        public void setCreate_time(int create_time) {
+        public void setCreate_time(String create_time) {
             this.create_time = create_time;
         }
 
-        public int getUpdate_time() {
+        public String getUpdate_time() {
             return update_time;
         }
 
-        public void setUpdate_time(int update_time) {
+        public void setUpdate_time(String update_time) {
             this.update_time = update_time;
         }
 
@@ -226,12 +293,28 @@ public class GuliaoDetailEntity {
             this.post_title = post_title;
         }
 
+        public String getPost_keywords() {
+            return post_keywords;
+        }
+
+        public void setPost_keywords(String post_keywords) {
+            this.post_keywords = post_keywords;
+        }
+
         public String getPost_excerpt() {
             return post_excerpt;
         }
 
         public void setPost_excerpt(String post_excerpt) {
             this.post_excerpt = post_excerpt;
+        }
+
+        public String getPost_source() {
+            return post_source;
+        }
+
+        public void setPost_source(String post_source) {
+            this.post_source = post_source;
         }
 
         public String getPost_content() {
@@ -250,44 +333,20 @@ public class GuliaoDetailEntity {
             this.post_content_filtered = post_content_filtered;
         }
 
-        public String getMore() {
-            return more;
+        public String getArticle_flag() {
+            return article_flag;
         }
 
-        public void setMore(String more) {
-            this.more = more;
+        public void setArticle_flag(String article_flag) {
+            this.article_flag = article_flag;
         }
 
-        public int getShare_id() {
-            return share_id;
+        public String getAid() {
+            return aid;
         }
 
-        public void setShare_id(int share_id) {
-            this.share_id = share_id;
-        }
-
-        public Object getLast_time() {
-            return last_time;
-        }
-
-        public void setLast_time(Object last_time) {
-            this.last_time = last_time;
-        }
-
-        public int getFavorite_count() {
-            return favorite_count;
-        }
-
-        public void setFavorite_count(int favorite_count) {
-            this.favorite_count = favorite_count;
-        }
-
-        public int getReport_count() {
-            return report_count;
-        }
-
-        public void setReport_count(int report_count) {
-            this.report_count = report_count;
+        public void setAid(String aid) {
+            this.aid = aid;
         }
 
         public int getReport_status() {
@@ -298,6 +357,22 @@ public class GuliaoDetailEntity {
             this.report_status = report_status;
         }
 
+        public int getIs_topic() {
+            return is_topic;
+        }
+
+        public void setIs_topic(int is_topic) {
+            this.is_topic = is_topic;
+        }
+
+        public String getApply_name() {
+            return apply_name;
+        }
+
+        public void setApply_name(String apply_name) {
+            this.apply_name = apply_name;
+        }
+
         public UserBean getUser() {
             return user;
         }
@@ -306,35 +381,50 @@ public class GuliaoDetailEntity {
             this.user = user;
         }
 
-        public List<?> getZan() {
-            return zan;
+        public List<?> getMore() {
+            return more;
         }
 
-        public void setZan(List<?> zan) {
-            this.zan = zan;
+        public void setMore(List<?> more) {
+            this.more = more;
+        }
+
+        public List<?> getExpand() {
+            return expand;
+        }
+
+        public void setExpand(List<?> expand) {
+            this.expand = expand;
+        }
+
+        public List<?> getVideo_url() {
+            return video_url;
+        }
+
+        public void setVideo_url(List<?> video_url) {
+            this.video_url = video_url;
+        }
+
+        public List<?> getComment() {
+            return comment;
+        }
+
+        public void setComment(List<?> comment) {
+            this.comment = comment;
         }
 
         public static class UserBean {
             /**
-             * id : 57
-             * user_nickname : helloworld
-             * avatar : https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1545200165282&amp;di=8883459e3c99cbb5745b26e75682b91b&amp;imgtype=0&amp;src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fa1ae409cfab3db09293e42a1436bd2375d2f7aba9528a-ITiCgS_fw658
-
-
+             * id : 4621
+             * user_nickname : 小仙女
+             * avatar : https://d.wanjinig.cn/upload/avatar/logo.png
+             * mobile : 13555555555
              */
 
             private int id;
             private String user_nickname;
             private String avatar;
-
-            @Override
-            public String toString() {
-                return "UserBean{" +
-                        "id=" + id +
-                        ", user_nickname='" + user_nickname + '\'' +
-                        ", avatar='" + avatar + '\'' +
-                        '}';
-            }
+            private String mobile;
 
             public int getId() {
                 return id;
@@ -358,6 +448,14 @@ public class GuliaoDetailEntity {
 
             public void setAvatar(String avatar) {
                 this.avatar = avatar;
+            }
+
+            public String getMobile() {
+                return mobile;
+            }
+
+            public void setMobile(String mobile) {
+                this.mobile = mobile;
             }
         }
     }

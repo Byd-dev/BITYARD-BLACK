@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.utils.AppUtil;
 import com.ltqh.qh.utils.SPUtils;
+import com.ltqh.qh.utils.ViewUtils;
 import com.ltqh.qh.view.CircleImageView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -66,7 +68,8 @@ public class MyBgFragment extends OBaseFragment implements View.OnClickListener 
 
     @BindView(R.id.text_hc)
     TextView text_hc;
-
+    @BindView(R.id.bar)
+    LinearLayout layout_bar;
    /* @BindView(R.id.layout_logout)
     RelativeLayout layout_logout;*/
 
@@ -183,6 +186,7 @@ public class MyBgFragment extends OBaseFragment implements View.OnClickListener 
 
     @Override
     protected void initView(View view) {
+        ViewUtils.setLayoutParams(getContext(),layout_bar);
 
         EventBus.getDefault().register(this);
         text_hc.setText(getResources().getText(R.string.text_cache) + "(" + AppUtil.getAppClearSize(getContext()) + ")");

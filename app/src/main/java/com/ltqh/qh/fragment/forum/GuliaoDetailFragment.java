@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.CommentAdapter;
 import com.ltqh.qh.base.BaseFragment;
@@ -52,6 +54,10 @@ import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+
+import static com.ltqh.qh.Api.NetManger.BUSY;
+import static com.ltqh.qh.Api.NetManger.FAILURE;
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 
 @SuppressLint("ValidFragment")
 public class GuliaoDetailFragment extends BaseFragment implements View.OnClickListener {
@@ -172,7 +178,52 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
             showToast("请登录");
         } else {
 
-            OkGo.<String>get(Constant.URL_DETAIL_URL)
+            NetManger.getInstance().articleDetail(String.valueOf(id), new OnNetResult() {
+                @Override
+                public void onNetResult(String state, Object response) {
+                    if (state.equals(BUSY)){
+                        showProgressDialog();
+                    }else if (state.equals(SUCCESS)){
+                        String s = response.toString().replaceAll(" ", "");
+                        CodeMsgEntity codeMsgEntity = new Gson().fromJson(s, CodeMsgEntity.class);
+
+                        if (codeMsgEntity.getCode() == 1) {
+                            GuliaoDetailEntity guliaoDetailEntity = new Gson().fromJson(s, GuliaoDetailEntity.class);
+                            data = guliaoDetailEntity.getData();
+                            GuliaoDetailEntity.DataBean.UserBean user = data.getUser();
+                            //   Log.d("print", "onSuccess:77 " + guliaoDetailEntity);
+                            if (user != null) {
+                                text_username.setText(user.getUser_nickname());
+                                Glide.with(getActivity().getApplicationContext()).load(user.getAvatar())
+                                        .asBitmap()
+                                        .error(R.mipmap.user_icon)
+                                        .centerCrop().into(img_head);
+                            }
+                            text_title.setText(data.getPost_title());
+                            text_publishtime.setText(data.getPublished_time());
+                            text_content.setText(data.getPost_content());
+                            text_content.setLineSpacing(0, 1.4f);
+                            text_comment.setText(getResources().getString(R.string.text_comment) + "(" + data.getComment_count() + ")");
+                            int post_like = data.getPost_like();
+                            if (post_like == 1) {
+                                text_favotite.setTextColor(getResources().getColor(R.color.maincolor));
+                            } else {
+                                text_favotite.setTextColor(getResources().getColor(R.color.text_secondcolor));
+                            }
+
+                            text_favotite.setText(getResources().getString(R.string.text_favorite));
+                            text_comment_count.setText(data.getComment_count() + getResources().getString(R.string.text_comment));
+
+
+                        }
+                        dismissProgressDialog();
+                    }else if (state.equals(FAILURE)){
+                        dismissProgressDialog();
+                    }
+                }
+            });
+
+          /*  OkGo.<String>get(Constant.URL_DETAIL_URL)
                     .tag(this)
                     .headers(Constant.PARAM_CONTENT_TYPE, Constant.PARAM_APPLICATION)
                     .headers(Constant.PARAM_XX_TOKEN, loginEntity.getData().getToken())
@@ -230,7 +281,7 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
                             super.onError(response);
                             dismissProgressDialog();
                         }
-                    });
+                    });*/
         }
 
     }
@@ -241,7 +292,28 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
         if (loginEntity == null) {
             showToast("请登录");
         } else {
-            OkGo.<String>get(Constant.URL_COMMENT_LIST_URL)
+
+            NetManger.getInstance().commentList(String.valueOf(id), "", 1, new OnNetResult() {
+                @Override
+                public void onNetResult(String state, Object response) {
+                         if (state.equals(BUSY)){
+
+                         } else if (state.equals(SUCCESS)){
+                             Log.d("print", "onNetResult:302:  "+response.toString());
+                             CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                             if (codeMsgEntity.getCode() == 1) {
+                                 CommentDetailEntity commentDetailEntity = new Gson().fromJson(response.toString(), CommentDetailEntity.class);
+                                 List<CommentDetailEntity.DataBeanX.DataBean> data = commentDetailEntity.getData().getData();
+                                 commentAdapter.setDatas(data);
+
+                             }
+                         }else if (state.equals(FAILURE)){
+
+                         }
+                }
+            });
+
+          /*  OkGo.<String>get(Constant.URL_COMMENT_LIST_URL)
                     .tag(this)
                     .headers(Constant.PARAM_CONTENT_TYPE, Constant.PARAM_APPLICATION)
                     .headers(Constant.PARAM_XX_TOKEN, loginEntity.getData().getToken())
@@ -276,7 +348,7 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
 
                         }
                     });
-
+*/
 
         }
     }
@@ -286,7 +358,27 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
         if (loginEntity == null) {
             showToast("请登录");
         } else {
-            OkGo.<String>post(Constant.URL_COMMENT_POST_URL)
+            NetManger.getInstance().addComment(loginEntity.getData().getToken(), String.valueOf(id), content, "", new OnNetResult() {
+                @Override
+                public void onNetResult(String state, Object response) {
+                    if (state.equals(BUSY)){
+
+                    }else if (state.equals(SUCCESS)){
+                        CodeMsgEntity codeMsgEntity = new Gson().fromJson(response.toString(), CodeMsgEntity.class);
+                        showToast(codeMsgEntity.getMsg());
+                        if (codeMsgEntity.getCode() == 1) {
+                            getCommentList(id);
+                            getDetail(id);
+                            edit_comment.setText("");
+
+                        }
+                    }else if (state.equals(FAILURE)){
+
+                    }
+                }
+            });
+
+      /*      OkGo.<String>post(Constant.URL_COMMENT_POST_URL)
                     .tag(this)
                     .headers(Constant.PARAM_CONTENT_TYPE, Constant.PARAM_APPLICATION)
                     .headers(Constant.PARAM_XX_TOKEN, loginEntity.getData().getToken())
@@ -322,7 +414,7 @@ public class GuliaoDetailFragment extends BaseFragment implements View.OnClickLi
                             dismissProgressDialog();
                         }
                     });
-
+*/
         }
     }
 

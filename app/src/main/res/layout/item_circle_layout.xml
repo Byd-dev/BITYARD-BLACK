@@ -2,17 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:gravity="center"
-    >
+    android:gravity="center">
 
-    <TextView
-        android:id="@+id/text_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/bg1"
-        android:text="圈子论坛"
+    <LinearLayout
+        android:layout_width="108dp"
+        android:layout_height="120dp"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:orientation="vertical">
+
+        <com.ltqh.qh.view.CircleImageView
+            android:id="@+id/img_head"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/user_icon" />
+
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:text="昵称"
+            android:maxLength="3"
+            android:ellipsize="end"
+            android:textColor="@color/text_secondcolor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/text_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="已关注"
+            android:paddingLeft="@dimen/margin_5"
+            android:paddingRight="@dimen/margin_5"
+            android:background="@drawable/bg_shape_login_btn"
+            android:visibility="visible"
+            android:layout_marginTop="@dimen/margin_5"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

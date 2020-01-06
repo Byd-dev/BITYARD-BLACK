@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.BaseActivity;
 import com.ltqh.qh.base.Constant;
@@ -27,6 +29,10 @@ import com.lzy.okgo.request.base.Request;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
+
+import static com.ltqh.qh.Api.NetManger.BUSY;
+import static com.ltqh.qh.Api.NetManger.FAILURE;
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
 
 public class PublishActivity extends OBaseActivity implements View.OnClickListener {
 
@@ -67,7 +73,7 @@ public class PublishActivity extends OBaseActivity implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(R.anim.bottom_silent,R.anim.bottom_out);
+                overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
             }
         });
         text_fabu.setEnabled(false);
@@ -136,7 +142,7 @@ public class PublishActivity extends OBaseActivity implements View.OnClickListen
                     showToast("请登录");
                 } else {
                     String token = loginEntity.getData().getToken();
-                    postPublish(token, edit_title.getText().toString(), edit_content.getText().toString());
+                    postPublish(token, edit_title.getText().toString(), loginEntity.getData().getUser().getUser_nickname(), edit_content.getText().toString());
                 }
 
 
@@ -145,9 +151,26 @@ public class PublishActivity extends OBaseActivity implements View.OnClickListen
     }
 
 
-    private void postPublish(String token, String title, String content) {
+    private void postPublish(String token, String title, String user, String content) {
 
-        OkGo.<String>post(Constant.URL_PUBLISH_URL)
+
+        NetManger.getInstance().addArticle(token, 0, title, user, content, "", 0, "", new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(BUSY)) {
+                    showProgressDialog();
+                } else if (state.equals(SUCCESS)) {
+                    dismissProgressDialog();
+
+                } else if (state.equals(FAILURE)) {
+                    dismissProgressDialog();
+                }
+            }
+        });
+
+
+
+      /*  OkGo.<String>post(Constant.URL_PUBLISH_URL)
                 .tag(this)
                 .headers(Constant.PARAM_CONTENT_TYPE, Constant.PARAM_APPLICATION)
                 .headers(Constant.PARAM_XX_TOKEN, token)
@@ -190,6 +213,6 @@ public class PublishActivity extends OBaseActivity implements View.OnClickListen
                         dismissProgressDialog();
                         showToast("当前网络有问题");
                     }
-                });
+                });*/
     }
 }

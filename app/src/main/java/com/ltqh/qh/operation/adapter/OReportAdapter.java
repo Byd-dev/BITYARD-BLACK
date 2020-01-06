@@ -105,7 +105,7 @@ public class OReportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ((MyViewHolder) holder).text_title.setText(datas.get(position).getTitle());
             ((MyViewHolder) holder).text_content.setText(datas.get(position).getContent());
             ((MyViewHolder) holder).text_title.setLineSpacing(0, 1.4f);
-            String date = new SimpleDateFormat("MM-dd").format(datas.get(position).getTime().getTime());
+            String date = new SimpleDateFormat("MM-dd").format(datas.get(position).getTime());
             ((MyViewHolder) holder).text_publictime.setText(date);
 
 

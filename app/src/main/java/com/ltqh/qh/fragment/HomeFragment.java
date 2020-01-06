@@ -225,7 +225,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                         .centerCrop()
                         .into(img_head);
                 //  getUserInfo();
-                getGuliao(loginEntity.getData().getToken(), 0);
+              //  getGuliao(loginEntity.getData().getToken(), 0);
 
                 String user_nickname = loginEntity.getData().getUser().getUser_nickname();
                 if (user_nickname.equals("")) {
@@ -462,7 +462,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
         if (loginEntity == null) {
             //  showToast("请登录");
         } else {
-            getGuliao(loginEntity.getData().getToken(), 0);
+            //getGuliao(loginEntity.getData().getToken(), 0);
         }
 
         NetManger.getInstance().btcPrice(1,"", new OnNetResult() {
@@ -471,9 +471,16 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                         if (state.equals(BUSY)){
                             showProgressDialog();
                         }else if (state.equals(SUCCESS)){
+
                             dismissProgressDialog();
                             BtcPriceEntity btcPriceEntity = new Gson().fromJson(response.toString(), BtcPriceEntity.class);
-                            btcPriceAdapter.setDatas(btcPriceEntity.getData().subList(0,6));
+                            if (btcPriceEntity.getCode()==0){
+
+                            }else {
+
+                                btcPriceAdapter.setDatas(btcPriceEntity.getData().subList(0,6));
+                            }
+
 
                         }else if (state.equals(FAILURE)){
                             dismissProgressDialog();
@@ -912,9 +919,14 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 }else if (state.equals(SUCCESS)){
                     dismissProgressDialog();
                     BtcNewsEntity btcNewsEntity = new Gson().fromJson(response.toString(), BtcNewsEntity.class);
-                    List<BtcNewsEntity.DataBean> data = btcNewsEntity.getData();
-                    newSdata= data;
-                    mTextSwitcherNews.setText(newSdata.get(0).getTitle());
+                    if (btcNewsEntity.getCode()==0){
+
+                    }else {
+                        List<BtcNewsEntity.DataBean> data = btcNewsEntity.getData();
+                        newSdata= data;
+                        mTextSwitcherNews.setText(newSdata.get(0).getTitle());
+                    }
+
 
                 }else if (state.equals(FAILURE)){
                     dismissProgressDialog();
