@@ -141,6 +141,7 @@ public class SwitchMainEnter implements DeviceUtil.AppIdsUpdater {
                 !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             return;
         }
+
         //设置位置查询条件，通过criteria返回符合条件的provider,有可能是wifi provider,也有可能是gps provider
         Criteria criteria = new Criteria(); //创建一个Criteria对象
         criteria.setAccuracy(Criteria.ACCURACY_COARSE); //设置精度,模糊模式,对于DTV地区定位足够了；ACCURACY_FINE,精确模式
@@ -161,56 +162,65 @@ public class SwitchMainEnter implements DeviceUtil.AppIdsUpdater {
         //如果位置信息为null，则请求更新位置信息
         if (currentLocation == null) {
             locationManager.requestLocationUpdates(provider, 0, 0, locationListener);
+        }else {
+            while (true) {
+                currentLocation = locationManager.getLastKnownLocation(provider);
+                if (currentLocation != null) {
+                    Log.d("Location", "Latitude: " + currentLocation.getLatitude());
+                    Log.d("Location", "location: " + currentLocation.getLongitude());
+                    //长时间的监听位置更新可能导致耗电量急剧上升,一旦获取到位置后，就停止监听
+                    locationManager.removeUpdates(locationListener);
+                    break;
+                } else {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append("null").append(",").append("null");
+                    String s = stringBuilder.toString();
+                    SPUtils.putString(AppConfig.LOCATION, s);
+                    Log.d("print", "location: " + s);
+                    break;
+
+                }
+           /* try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                Log.d("print", "getLocation:185:  "+e.getMessage());
+
+            }*/
+            }
+
+            //解析地址并显示
+            Geocoder geoCoder = new Geocoder(context);
+            try {
+                double latitude = currentLocation.getLatitude();
+                double longitude = currentLocation.getLongitude();
+
+                List<Address> list = geoCoder.getFromLocation(latitude, longitude, 2);
+                if (list != null && !list.isEmpty()) {
+                    //取第一个地址就可以
+                    Address address = list.get(0);
+                    //getCountryName 国家
+                    //getAdminArea 省份
+                    //getLocality 城市
+                    //getSubLocality 区
+                    //getFeatureName 街道
+
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append(latitude).append(",").append(longitude);
+                    String s = stringBuilder.toString();
+                    SPUtils.putString(AppConfig.LOCATION, s);
+                    Log.d("print", "onCreate:117:   " + latitude + "   " + longitude);
+                    //Toast.makeText(context, address.getCountryName() + address.getAdminArea() + address.getLocality()  + address.getSubLocality() + address.getFeatureName(), Toast.LENGTH_LONG).show();
+                    System.out.println(address.getAddressLine(0) + " " + address.getAddressLine(1) + " " + address.getAddressLine(2) + " " + address.getFeatureName());
+
+                }
+            } catch (IOException e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
         }
         //直到获得最后一次位置信息为止，如果未获得最后一次位置信息，则显示默认经纬度
         //每隔10秒获取一次位置信息
-        while (true) {
-            currentLocation = locationManager.getLastKnownLocation(provider);
-            if (currentLocation != null) {
-                Log.d("Location", "Latitude: " + currentLocation.getLatitude());
-                Log.d("Location", "location: " + currentLocation.getLongitude());
-                //长时间的监听位置更新可能导致耗电量急剧上升,一旦获取到位置后，就停止监听
-                locationManager.removeUpdates(locationListener);
-                break;
-            } else {
-                Log.d("Location", "Latitude: " + 0);
-                Log.d("Location", "location: " + 0);
-            }
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                Log.e("Location", e.getMessage());
-            }
-        }
 
-        //解析地址并显示
-        Geocoder geoCoder = new Geocoder(context);
-        try {
-            double latitude = currentLocation.getLatitude();
-            double longitude = currentLocation.getLongitude();
 
-            List<Address> list = geoCoder.getFromLocation(latitude, longitude, 2);
-            if (list != null && !list.isEmpty()) {
-                //取第一个地址就可以
-                Address address = list.get(0);
-                //getCountryName 国家
-                //getAdminArea 省份
-                //getLocality 城市
-                //getSubLocality 区
-                //getFeatureName 街道
-
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(latitude).append(",").append(longitude);
-                String s = stringBuilder.toString();
-                SPUtils.putString(AppConfig.LOCATION, s);
-                Log.d("print", "onCreate:117:   " + latitude + "   " + longitude);
-                //Toast.makeText(context, address.getCountryName() + address.getAdminArea() + address.getLocality()  + address.getSubLocality() + address.getFeatureName(), Toast.LENGTH_LONG).show();
-                System.out.println(address.getAddressLine(0) + " " + address.getAddressLine(1) + " " + address.getAddressLine(2) + " " + address.getFeatureName());
-
-            }
-        } catch (IOException e) {
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
 
 
     }

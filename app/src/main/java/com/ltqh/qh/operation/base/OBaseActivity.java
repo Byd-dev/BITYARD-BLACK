@@ -38,11 +38,6 @@ import java.util.TimerTask;
 
 import butterknife.ButterKnife;
 
-/**
- * 作者：JianF on 2017/5/19.
- */
-
-
 public abstract class OBaseActivity extends AppCompatActivity {
 
     public View mView;
