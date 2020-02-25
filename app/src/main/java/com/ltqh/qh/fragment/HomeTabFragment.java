@@ -92,7 +92,7 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
 
     @BindView(R.id.ts_notice)
     TextSwitcher mTextSwitcherNews;
-   // private List<GoldShowEntity.DataBean> newSdata;
+    // private List<GoldShowEntity.DataBean> newSdata;
     private List<String> newSdata;
 
     @BindView(R.id.img_head)
@@ -242,7 +242,7 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-          //  updateNews();
+            //  updateNews();
 
 
         }
@@ -270,7 +270,7 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
         getHomeGold();
 
         getNews();
-       // getGold();
+        // getGold();
     }
 
     /*private void getGold() {
@@ -295,21 +295,21 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
                 });
     }*/
 
-   /* private void updateNews() {
-        if (newSdata != null) {
-            mNewsIndex++;
-            if (newSdata.size() > 0) {
-                if (mNewsIndex >= newSdata.size()) mNewsIndex = 0;
-                Log.d("print", "updateNews:241 " + newSdata);
-                if (ListUtil.isNotEmpty(newSdata)) {
-                    if (mTextSwitcherNews != null) {
+    /* private void updateNews() {
+         if (newSdata != null) {
+             mNewsIndex++;
+             if (newSdata.size() > 0) {
+                 if (mNewsIndex >= newSdata.size()) mNewsIndex = 0;
+                 Log.d("print", "updateNews:241 " + newSdata);
+                 if (ListUtil.isNotEmpty(newSdata)) {
+                     if (mTextSwitcherNews != null) {
 
-                        mTextSwitcherNews.setText(newSdata.get(mNewsIndex).getName() + "当前价格:" + newSdata.get(mNewsIndex).getTrade() + "最高价格:" + newSdata.get(mNewsIndex).getHigh());
-                    }
-                }
-            }
-        }
-    }*/
+                         mTextSwitcherNews.setText(newSdata.get(mNewsIndex).getName() + "当前价格:" + newSdata.get(mNewsIndex).getTrade() + "最高价格:" + newSdata.get(mNewsIndex).getHigh());
+                     }
+                 }
+             }
+         }
+     }*/
     private void updateNews() {
         if (newSdata != null) {
             mNewsIndex++;
@@ -489,10 +489,11 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
     public void getEventData(Integer integer) {
         if (integer == Constant.ONRESUME_LOGIN) {
             onResume();
-        }else if (integer==Constant.ONRESUME_PERSON){
+        } else if (integer == Constant.ONRESUME_PERSON) {
             getUserInfo();
         }
     }
+
     private void getUserInfo() {
         LoginEntity loginEntity = SPUtils.getData(UserConfig.LOGIN_USER, LoginEntity.class);
 
@@ -550,6 +551,7 @@ public class HomeTabFragment extends BaseFragment implements View.OnClickListene
                     }
                 });
     }
+
     @Override
     public void onPause() {
         super.onPause();

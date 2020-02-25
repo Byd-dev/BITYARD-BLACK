@@ -21,19 +21,165 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="235dp">
+                android:layout_height="200dp">
                 <!--背景-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
+                    android:layout_height="wrap_content"
                     android:background="@mipmap/banner_one" />
 
-                <ImageView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:src="@mipmap/home_banner" />
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal">
 
+                    <LinearLayout
+                        android:id="@+id/layout_info"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_icon1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:text="@string/text_class"
+                            android:textColor="@color/color_dbbf"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="行业课堂学习"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_market"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/margin"
+                        android:layout_marginRight="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_icon2"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:text="@string/text_conversion"
+
+                            android:textColor="@color/color_dbbf"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="行业工具换算"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/text_shipin"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_icon3"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:text="@string/text_back"
+
+                            android:textColor="@color/color_dbbf"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="解答用户困惑"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_service"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_icon4"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:text="@string/text_report"
+                            android:textColor="@color/color_dbbf"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="解答用户困惑"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone"
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -42,8 +188,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@mipmap/home_toutiao_bg"
                 android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginBottom="@dimen/margin_15"
                 android:visibility="visible">
 
                 <ImageView
@@ -108,156 +255,7 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_15"
-                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/layout_info"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/home_icon1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:text="@string/text_class"
-                        android:textColor="@color/text_secondcolor"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="行业课堂学习"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:visibility="gone" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_market"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/margin"
-                    android:layout_marginRight="@dimen/margin"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/home_icon2"
-
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:text="@string/text_conversion"
-
-                        android:textColor="@color/text_secondcolor"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="行业工具换算"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:visibility="gone" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/text_shipin"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="@dimen/margin"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/home_icon3"
-
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:text="@string/text_back"
-
-                        android:textColor="@color/text_secondcolor"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="解答用户困惑"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:visibility="gone"
-
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_service"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/home_icon4"
-
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:text="@string/text_report"
-                        android:textColor="@color/text_secondcolor"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="解答用户困惑"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:visibility="gone"
-
-                        />
-                </LinearLayout>
-            </LinearLayout>
 
 
 
@@ -266,7 +264,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="174dp"
                 android:gravity="center"
-                android:layout_marginTop="@dimen/margin_15"
                 android:layout_marginBottom="@dimen/margin_15"
                 android:orientation="horizontal">
 

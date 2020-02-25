@@ -338,7 +338,8 @@ public class MyBgFragment extends OBaseFragment implements View.OnClickListener 
                 break;
 
             case R.id.layout_about:
-                OIntentActivity.enter(getActivity(), OConstant.O_ABOUT);
+               // OIntentActivity.enter(getActivity(), OConstant.O_ABOUT);
+                IntentActivity.enter(getActivity(), Constant.PROTOCOL);
 
                 break;
 

@@ -150,25 +150,29 @@ public class OMessageFragment extends BaseFragment {
                         if (!TextUtils.isEmpty(response.body())) {
 
                             OMessageEntity oMessageEntity = new Gson().fromJson(response.body(), OMessageEntity.class);
+                            Log.d("print", "onSuccess:153:  "+oMessageEntity);
 
-                            String resultMsg = oMessageEntity.getResultMsg();
+                            if (oMessageEntity!=null){
+                                String resultMsg = oMessageEntity.getResultMsg();
 
-                            if (resultMsg.equals("")){
-                                return;
+                                //保存上一次的
+                                // SPUtils.putData(OUserConfig.CACHE_LIVE, oHoursEntity);
+                                List<OMessageEntity.DataBean> data = oMessageEntity.getData();
+
+
+
+                                if (data!=null) {
+                                    swipeRefreshLayout.setVisibility(View.VISIBLE);
+                                    layout_add.setVisibility(View.GONE);
+                                    oMessageAdapter.setDatas(data);
+
+                                } else {
+                                    swipeRefreshLayout.setVisibility(View.GONE);
+                                    layout_add.setVisibility(View.VISIBLE);
+                                }
                             }
-                            //保存上一次的
-                           // SPUtils.putData(OUserConfig.CACHE_LIVE, oHoursEntity);
-                            List<OMessageEntity.DataBean> data = oMessageEntity.getData();
 
-                            if (data.size()!= 0) {
-                                swipeRefreshLayout.setVisibility(View.VISIBLE);
-                                layout_add.setVisibility(View.GONE);
-                                oMessageAdapter.setDatas(data);
 
-                            } else {
-                                swipeRefreshLayout.setVisibility(View.GONE);
-                                layout_add.setVisibility(View.VISIBLE);
-                            }
                         }
                     }
 

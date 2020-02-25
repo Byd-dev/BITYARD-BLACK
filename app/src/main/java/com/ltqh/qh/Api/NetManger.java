@@ -216,6 +216,7 @@ public class NetManger {
     }
 
 
+
     /*注册*/
     public void register(final String num, final String pass, String code, OnNetResult onNetResult) {
         OkGo.<String>post(BASE_URL + "/user/communal/register")
@@ -225,7 +226,7 @@ public class NetManger {
                 .params(Constant.PARAM_VERIFICATION_CODE, code)
                 .params(Constant.PARAM_APP, "1")
                 .params(Constant.PARAM_APPLY_NAME, BuildConfig.APPLICATION_ID)
-                .params(Constant.PARAM_IS_VALIDATE, "1")
+                .params(Constant.PARAM_IS_VALIDATE, "2")
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override
@@ -575,6 +576,64 @@ public class NetManger {
                     }
                 });
 
+    }
+
+    /*名人库*/
+    public void celebrityList(OnNetResult onNetResult){
+        OkGo.<String>get(BASE_URL + "/yapi/people/lists")
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
+    }
+    /*名人详情*/
+    public void celebrityDetail(String content,OnNetResult onNetResult){
+        OkGo.<String>get(BASE_URL + "/yapi/people/introduce")
+                .params("url",content)
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                        super.onStart(request);
+                        onNetResult.onNetResult(BUSY, null);
+                    }
+
+                    @Override
+                    public void onSuccess(Response<String> response) {
+
+                        if (!TextUtils.isEmpty(response.body())) {
+                            onNetResult.onNetResult(SUCCESS, response.body());
+                        } else {
+                            onNetResult.onNetResult(FAILURE, response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        onNetResult.onNetResult(FAILURE, response.body());
+                    }
+                });
     }
     /*API*/
     public void api(OnNetResult onNetResult) {

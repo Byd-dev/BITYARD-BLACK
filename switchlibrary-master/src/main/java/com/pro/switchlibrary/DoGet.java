@@ -107,6 +107,7 @@ public class DoGet {
 
                         if (!TextUtils.isEmpty(response.body())) {
                             try {
+                                Log.d("print", "解密前的数据:onSuccess: "+response.body());
                                 String decrypt = AES.Decrypt(response.body().getBytes(), KEY);
                                 Log.d("print", "onSuccess:解密后数据1: " + decrypt);
                                 JsonEntity jsonEntity = new Gson().fromJson(decrypt, JsonEntity.class);

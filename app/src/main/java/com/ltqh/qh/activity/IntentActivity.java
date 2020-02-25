@@ -31,6 +31,8 @@ import com.ltqh.qh.fragment.news.AudioVideoFragment;
 import com.ltqh.qh.fragment.news.BlockFragment;
 import com.ltqh.qh.fragment.news.BtcFragment;
 import com.ltqh.qh.fragment.news.BtcNewsFragment;
+import com.ltqh.qh.fragment.news.CelebrityDetailFragment;
+import com.ltqh.qh.fragment.news.CelebrityFragment;
 import com.ltqh.qh.fragment.news.FinancialCalendarFragment;
 import com.ltqh.qh.fragment.news.InfoFragment;
 import com.ltqh.qh.fragment.news.LearnClassFragment;
@@ -38,6 +40,7 @@ import com.ltqh.qh.fragment.news.LiveFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
 import com.ltqh.qh.fragment.news.TypeFragment;
 import com.ltqh.qh.fragment.news.VideoFragment;
+import com.ltqh.qh.fragment.user.AboutFragment;
 import com.ltqh.qh.fragment.user.FeedbackFragment;
 import com.ltqh.qh.fragment.user.ForgetFragment;
 import com.ltqh.qh.fragment.user.LoginFragment;
@@ -46,6 +49,7 @@ import com.ltqh.qh.fragment.user.NicknameFragment;
 import com.ltqh.qh.fragment.user.PersonalCenterFragment;
 import com.ltqh.qh.fragment.user.RegisterFragment;
 import com.ltqh.qh.fragment.user.ResetPassFragment;
+import com.ltqh.qh.fragment.user.RuleWebFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.fragment.home.OSearchFragment;
@@ -104,6 +108,10 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
     private FinancialCalendarFragment financialCalendarFragment;
     private BtcNewsFragment btcNewsFragment;//BTC介绍
     private BtcMarketF2ragment btcMarketF2ragment;
+    private CelebrityFragment celebrityFragment;//名人库
+    private  CelebrityDetailFragment celebrityDetailFragment;//名人详情
+    private  AboutFragment aboutFragment;//关于我们
+    private RuleWebFragment ruleWebFragment;
     public static void enter(Context context, int type) {
         Intent intent = new Intent(context, IntentActivity.class);
         intent.putExtra(TYPE, type);
@@ -114,6 +122,13 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
         Intent intent = new Intent(context, IntentActivity.class);
         intent.putExtra(TYPE, type);
         intent.putExtra(Constant.PARAM_ID, id);
+        context.startActivity(intent);
+    }
+
+    public static void enter(Context context, int type, String content) {
+        Intent intent = new Intent(context, IntentActivity.class);
+        intent.putExtra(TYPE, type);
+        intent.putExtra(TITLE, content);
         context.startActivity(intent);
     }
 
@@ -228,8 +243,61 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
         }else if (type==Constant.BTC_MARKET){
             text_title.setText(getResources().getString(R.string.str_market));
             addBtcMarketFragment();
+        }else if (type==Constant.CELEBRITY){
+            text_title.setText("名人库");
+            addCelebrityFragment();
+        }else if (type==Constant.CELEBRITY_DETAIL){
+            text_title.setText("名人简介");
+            addCelebrityDetaiLFragment(title);
+        }else if (type==Constant.PROTOCOL){
+            text_title.setText("关于我们");
+            addAboutFragment();
+
+        }else if (type == Constant.RULE) {
+            if (id == 1) {
+                text_title.setText("服务协议");
+            } else {
+                text_title.setText("隐私政策");
+            }
+            addServiceFragment(id);
         }
 
+    }
+
+    private void addServiceFragment(int id) {
+        String name = RuleWebFragment.class.getSimpleName();
+        ruleWebFragment = new RuleWebFragment().newInstance(id);
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, ruleWebFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+    }
+
+
+    private void addAboutFragment() {
+        String name = AboutFragment.class.getSimpleName();
+        aboutFragment = new AboutFragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, aboutFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+    }
+    private void addCelebrityDetaiLFragment(String content) {
+        String name = CelebrityDetailFragment.class.getSimpleName();
+        celebrityDetailFragment = new CelebrityDetailFragment().newInstance(content);
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, celebrityDetailFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
+    }
+
+    private void addCelebrityFragment() {
+        String name = CelebrityFragment.class.getSimpleName();
+        celebrityFragment = new CelebrityFragment();
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.layout_fragment_containter, celebrityFragment, name);
+        ft.addToBackStack(name);
+        ft.commitAllowingStateLoss();
     }
 
     private void addBtcMarketFragment() {

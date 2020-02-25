@@ -5,7 +5,7 @@
     <color name="colorAccent">#5576F7</color>
     <color name="bar_color">#8A5DED</color>
 
-    <color name="maincolor">#FF3D3D</color>
+    <color name="maincolor">#D8C489</color>
     <color name="tranmaincolor">#A8A8A8</color>
 
 
@@ -17,15 +17,15 @@
 
 
     <color name="tab_color">#242424</color>
-    <color name="tab_color_normal">#707070</color>
+    <color name="tab_color_normal">#666666</color>
 
     <color name="redcolor">#D41E23</color>
     <color name="greencolor">#0DB57F</color>
     <color name="second_color">#FF333333</color>
 
-    <color name="home_line">#E0E0E0</color>
+    <color name="home_line">#242222</color>
     <color name="text_maincolor">#222222</color>
-    <color name="text_secondcolor">#888888</color>
+    <color name="text_secondcolor">#717FA1</color>
 
     <color name="text_notice">#243C54</color>
 
@@ -37,7 +37,7 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="background_maincolor">#F8F8F8</color>
+    <color name="background_maincolor">#181616</color>
     <color name="text_1A">#1A1A1A</color>
     <color name="text_4D">#4D4D4D</color>
 
@@ -106,5 +106,6 @@
     <color name="color_ff95">#FF9954</color>
     <color name="text_20_33">#33333333</color>
     <color name="text_62_white">#9EFFFFFF</color>
+    <color name="color_dbbf">#DBBF88</color>
 
 </resources>

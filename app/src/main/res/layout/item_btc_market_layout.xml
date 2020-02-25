@@ -24,6 +24,7 @@
                 android:id="@+id/img_icon"
                 android:layout_width="29dp"
                 android:layout_height="29dp"
+                android:visibility="gone"
                 android:layout_marginLeft="@dimen/margin_15"
                 android:scaleType="centerCrop" />
 
@@ -31,7 +32,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_5"
+                android:layout_marginLeft="@dimen/margin_15"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -39,8 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BTC"
-                    android:textColor="@color/text_maincolor"
-                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
                     android:textStyle="bold"
 
                     />
@@ -74,8 +76,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="$7284"
-                android:textColor="@color/text_maincolor"
-                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textSize="13sp"
 
                 />
             <TextView
@@ -87,7 +89,7 @@
                 android:gravity="center"
                 android:text="¥9,818,128.59万"
                 android:textColor="@color/o_text_3433"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

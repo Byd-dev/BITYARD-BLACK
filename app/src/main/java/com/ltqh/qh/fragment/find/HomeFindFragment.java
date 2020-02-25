@@ -217,7 +217,7 @@ public class HomeFindFragment extends OBaseFragment implements View.OnClickListe
     }
 
     private String Titles[] = new String[]{"直播", "策略"};
-    private int[] banners = new int[]{R.mipmap.banner_one, R.mipmap.banner_one, R.mipmap.home_three};
+    private int[] banners = new int[]{R.mipmap.home_banner, R.mipmap.home_banner, R.mipmap.home_three};
 
     @Override
     protected void onLazyLoad() {

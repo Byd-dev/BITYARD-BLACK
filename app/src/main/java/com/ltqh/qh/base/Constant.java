@@ -293,6 +293,13 @@ public interface Constant {
     public static int LTC_NEWS = 52;
     public static int BTC_MARKET= 53;
 
+    public static  int  CELEBRITY=54;
+
+    public static  int  CELEBRITY_DETAIL=55;
+
+    public static  int  PROTOCOL=56;
+    public static  int RULE=57;
+
 
     public static String LANGUAGE = "language";
 

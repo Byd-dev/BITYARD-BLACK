@@ -78,11 +78,11 @@ public class OHotDetailFragment extends BaseFragment {
 
                                 text_title.setText(news.getTitle());
                                 text_time.setText(news.getDate());
-                                if (news.getTitleBg().equals("")) {
+                               /* if (news.getTitleBg().equals("")) {
                                     img_banner.setVisibility(View.GONE);
                                 } else {
                                     Glide.with(getActivity()).load(news.getTitleBg()).centerCrop().into(img_banner);
-                                }
+                                }*/
                                 if (isAdded()) {
                                     String string = SPUtils.getString(OUserConfig.P_NIGHT);
                                     if (string.equals("")) {

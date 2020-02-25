@@ -86,6 +86,7 @@
 
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/text_low"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="当日涨跌幅"

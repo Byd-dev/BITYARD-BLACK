@@ -13,9 +13,8 @@ import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
-import com.ltqh.qh.fragment.HomeFragment;
+import com.ltqh.qh.fragment.HomeBannerFragment;
 import com.ltqh.qh.fragment.MyBgFragment;
-import com.ltqh.qh.fragment.MyFragment;
 import com.ltqh.qh.fragment.forum.ForumTabFragment;
 import com.ltqh.qh.fragment.market.BtcMarketFragment;
 import com.ltqh.qh.fragment.news.Info2Fragment;
@@ -98,7 +97,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
         StatusBarUtil.setRootViewFitsSystemWindows(this, false);
 
 
-        StatusBarUtil.setStatusBarDarkTheme(MainActivity.this, true);
+        StatusBarUtil.setStatusBarDarkTheme(MainActivity.this, false);
 
 
         EventBus.getDefault().register(this);
@@ -163,7 +162,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.radio_0:
-                showFragment(R.id.layout_fragment_containter, new HomeFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new HomeBannerFragment(), null, null);
 
                 break;
             case R.id.radio_1:

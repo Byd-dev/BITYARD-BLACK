@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@mipmap/home_banner"
+            android:src="@mipmap/banner_one"
             android:visibility="gone" />
 
     </RelativeLayout>
@@ -227,7 +227,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="centerCrop"
-                            android:src="@mipmap/home_banner"
+                            android:src="@mipmap/banner_one"
                             android:visibility="gone" />
 
                     </RelativeLayout>
@@ -785,7 +785,7 @@
                                 android:layout_marginLeft="@dimen/margin_15"
                                 android:layout_marginRight="@dimen/margin_15"
                                 android:scaleType="centerCrop"
-                                android:src="@mipmap/home_banner" />
+                                android:src="@mipmap/banner_one" />
                         </RelativeLayout>
 
 

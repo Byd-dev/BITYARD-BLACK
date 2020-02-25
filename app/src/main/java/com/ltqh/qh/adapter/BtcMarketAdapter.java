@@ -74,7 +74,7 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
-            ((MyViewHolder) holder).text_symbol.setText(datas.get(position).getSymbol());
+            ((MyViewHolder) holder).text_symbol.setText(datas.get(position).getSymbol()+"/USDT");
             ((MyViewHolder) holder).text_name.setText(datas.get(position).getCn_name());
             ((MyViewHolder) holder).text_price.setText(datas.get(position).getCny_price());
             String change = datas.get(position).get_$24_change();

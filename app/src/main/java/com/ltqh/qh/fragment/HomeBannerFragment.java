@@ -7,8 +7,6 @@ import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -23,8 +21,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -34,14 +33,16 @@ import android.widget.ViewSwitcher;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
+import com.ltqh.qh.Api.NetManger;
+import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.ImmersiveActivity;
 import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.activity.NewsDetailActivity;
 import com.ltqh.qh.activity.PersonActivity;
 import com.ltqh.qh.activity.UserActivity;
-import com.ltqh.qh.activity.WebActivity;
 import com.ltqh.qh.adapter.AlertsAdapter;
+import com.ltqh.qh.adapter.BtcMarketAdapter;
 import com.ltqh.qh.adapter.GoldlistAdapter;
 import com.ltqh.qh.adapter.HomeBannerAdapter;
 import com.ltqh.qh.adapter.HomeBtcAdapter;
@@ -54,18 +55,19 @@ import com.ltqh.qh.adapter.StockTabAdapter;
 import com.ltqh.qh.base.Constant;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.BannerEntity;
+import com.ltqh.qh.entity.BtcPriceEntity;
 import com.ltqh.qh.entity.CodeMsgEntity;
 import com.ltqh.qh.entity.GoldlistEntity;
 import com.ltqh.qh.entity.GuliaoEntity;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.entity.StockEntity;
 import com.ltqh.qh.entity.UserInfoEntity;
+import com.ltqh.qh.fragment.market.DigitalMarket2Fragment;
+import com.ltqh.qh.fragment.market.MineMarketFragment;
 import com.ltqh.qh.fragment.news.LiandeFragment;
 import com.ltqh.qh.fragment.news.StrategyFragment;
 import com.ltqh.qh.operation.activity.ONewsDetailActivity;
-import com.ltqh.qh.operation.activity.OUserActivity;
 import com.ltqh.qh.operation.base.OBaseFragment;
-import com.ltqh.qh.operation.base.OConstant;
 import com.ltqh.qh.operation.config.OUserConfig;
 import com.ltqh.qh.operation.entity.OApiEntity;
 import com.ltqh.qh.operation.entity.OHotEntity;
@@ -97,26 +99,23 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeBannerFragment extends OBaseFragment implements View.OnClickListener {
+import static com.ltqh.qh.Api.NetManger.BUSY;
+import static com.ltqh.qh.Api.NetManger.FAILURE;
+import static com.ltqh.qh.Api.NetManger.SUCCESS;
+
+public class HomeBannerFragment extends OBaseFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     private final static int PERIOD = 5 * 1000; // 5s
 
     @BindView(R.id.text_login)
     TextView text_login;
 
-    @BindView(R.id.img_bg)
-    ImageView img_bg;
 
     private int id;
 
     @BindView(R.id.layout_view)
     RelativeLayout layout_view;
 
-    @BindView(R.id.recyclerview_stock)
-    RecyclerView recyclerView_stock;
-
-    @BindView(R.id.recyclerview_chat)
-    RecyclerView recyclerView_chat;
 
     @BindView(R.id.recyclerview_attention)
     RecyclerView recyclerview_attention;
@@ -131,11 +130,23 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
     MyScrollView myScrollView;
 
 
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerView;
 
+    @BindView(R.id.radioGroup)
+    RadioGroup radioGroup;
 
-    @BindView(R.id.recyclerview_banner)
-    RecyclerView recyclerView_banner;
+    @BindView(R.id.radio_0)
+    RadioButton radio_0;
+
+    @BindView(R.id.radio_1)
+    RadioButton radio_1;
+    @BindView(R.id.radio_2)
+    RadioButton radio_2;
     private HomeBannerAdapter homeBannerAdapter;
+
+    private String REFRESHTYPE = "refresh";
+    private String LOADTYPE = "load";
 
 
     @BindView(R.id.banner_article)
@@ -144,9 +155,6 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
     @BindView(R.id.img_head)
     CircleImageView img_head;
 
-
-    @BindView(R.id.recyclerview)
-    RecyclerView recyclerView;
 
     @BindView(R.id.bar)
     RelativeLayout layout_bar;
@@ -158,9 +166,13 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
     private HomeCalendarAdapter homeCalendarAdapter;
     private HomeMenuAdapter homeMenuAdapter;
     private AlertsAdapter alertsAdapter;
+    private String sort = "";
 
     private String isupdown = "up";
     private HomeBtcAdapter oMarketAdapter;
+
+    private LinearLayoutManager linearLayoutManager;
+    private BtcMarketAdapter btcMarketAdapter;
 
 
     private int mNewsIndex;
@@ -231,14 +243,6 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
             }
         }
 
-        if (isLogin()) {
-
-            recyclerView_chat.setVisibility(View.VISIBLE);
-            img_bg.setVisibility(View.GONE);
-        } else {
-            recyclerView_chat.setVisibility(View.GONE);
-            img_bg.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
@@ -252,15 +256,10 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
     @Override
     protected void onLazyLoad() {
 
-        homeBannerAdapter = new HomeBannerAdapter(getActivity());
-        recyclerView_banner.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_banner.setAdapter(homeBannerAdapter);
 
         banners.add(R.mipmap.banner_one);
         banners.add(R.mipmap.banner_one);
 
-
-        homeBannerAdapter.setDatas(banners);
 
     }
 
@@ -272,35 +271,15 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
         view.setFocusableInTouchMode(true);
         view.requestFocus();
 
-        ViewUtils.setRelativeLayoutParams(getActivity(),layout_bar,48);
+        ViewUtils.setRelativeLayoutParams(getActivity(), layout_bar, 48);
 
         myScrollView.setAlphaChangeListener(new AlphaChangeListener() {
             @Override
             public void alphaChanging(float alpha) {
-                layout_bar.setAlpha(1-alpha);
+                layout_bar.setAlpha(1 - alpha);
 
             }
         });
-
-
-        //解决数据加载不完的问题
-        recyclerView.setNestedScrollingEnabled(false);
-        //当知道Adapter内Item的改变不会影响RecyclerView宽高的时候，可以设置为true让RecyclerView避免重新计算大小
-        recyclerView.setHasFixedSize(true);
-        //解决数据加载完成后, 没有停留在顶部的问题
-        recyclerView.setFocusable(false);
-
-        //防止嵌套出现轻微卡顿的问题
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-
-            }
-        });
-
-
-
 
 
         EventBus.getDefault().register(this);
@@ -314,24 +293,10 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
 
 
         text_login.setOnClickListener(this);
-       /* goldlistAdapter = new GoldlistAdapter(getActivity());
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        recyclerView.setAdapter(goldlistAdapter);*/
-
-        stockAdapter = new StockHomeAdapter(getActivity());
-        recyclerView_stock.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        recyclerView_stock.setAdapter(stockAdapter);
-        //btc
-        oMarketAdapter = new HomeBtcAdapter(getActivity());
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        recyclerView.setAdapter(oMarketAdapter);
 
 
         homeChatAdapter = new HomeChatAdapter(getActivity());
 
-
-        recyclerView_chat.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView_chat.setAdapter(homeChatAdapter);
 
         homeMenuAdapter = new HomeMenuAdapter(getActivity());
         recyclerView_project.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -343,7 +308,6 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
         homeCalendarAdapter = new HomeCalendarAdapter(getActivity());
         recyclerview_attention.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerview_attention.setAdapter(alertsAdapter);
-
 
 
         //解决数据加载不完的问题
@@ -377,8 +341,8 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
                 textView.setMaxLines(1);
                 textView.setEllipsize(TextUtils.TruncateAt.END);
                 textView.setLineSpacing(1.1f, 1.1f);
-                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_secondcolor));
-                textView.setTextSize(15);
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+                textView.setTextSize(12);
                 //   textView.setSingleLine();
                 return textView;
             }
@@ -387,37 +351,19 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
 
         startScheduleJob(mHandler, PERIOD, PERIOD);
 
-        view.findViewById(R.id.text_more2).setOnClickListener(this);
-        view.findViewById(R.id.text_more3).setOnClickListener(this);
-        view.findViewById(R.id.img_kefu).setOnClickListener(this);
-        view.findViewById(R.id.text_message).setOnClickListener(this);
-        view.findViewById(R.id.layout_xinwen).setOnClickListener(this);
-        view.findViewById(R.id.layout_ketang).setOnClickListener(this);
-        view.findViewById(R.id.layout_gongju).setOnClickListener(this);
+        view.findViewById(R.id.img_search).setOnClickListener(this);
         view.findViewById(R.id.layout_video).setOnClickListener(this);
-        view.findViewById(R.id.layout_jingxuan).setOnClickListener(this);
-        view.findViewById(R.id.layout_btc).setOnClickListener(this);
-        view.findViewById(R.id.layout_qukuailian).setOnClickListener(this);
-        view.findViewById(R.id.text_change).setOnClickListener(this);
-        view.findViewById(R.id.text_ketang).setOnClickListener(this);
-        view.findViewById(R.id.text_quanzi).setOnClickListener(this);
-        view.findViewById(R.id.text_gongju).setOnClickListener(this);
-        view.findViewById(R.id.text_shipin).setOnClickListener(this);
-        view.findViewById(R.id.text_kefu).setOnClickListener(this);
-        view.findViewById(R.id.text_fankui).setOnClickListener(this);
-        view.findViewById(R.id.text_chat).setOnClickListener(this);
+        view.findViewById(R.id.layout_celebrity).setOnClickListener(this);
+        view.findViewById(R.id.layout_info).setOnClickListener(this);
         view.findViewById(R.id.img_head).setOnClickListener(this);
 
         view.findViewById(R.id.layout_search).setOnClickListener(this);
 
-        view.findViewById(R.id.home_img1).setOnClickListener(this);
-        view.findViewById(R.id.home_img2).setOnClickListener(this);
-        view.findViewById(R.id.home_img3).setOnClickListener(this);
-        view.findViewById(R.id.home_img4).setOnClickListener(this);
 
-        view.findViewById(R.id.img_message).setOnClickListener(this);
-
-        view.findViewById(R.id.layout_question).setOnClickListener(this);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        btcMarketAdapter = new BtcMarketAdapter(getActivity());
+        recyclerView.setAdapter(btcMarketAdapter);
 
 
 
@@ -466,6 +412,12 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
             }
         });
 
+        radioGroup.setOnCheckedChangeListener(this);
+        radioGroup.check(0);
+        radio_0.setChecked(true);
+        radio_1.setChecked(false);
+        radio_2.setChecked(false);
+
     }
 
     String sorts[] = new String[]{Constant.STAY_PRICECHANGE, Constant.STAY_CHANGEPERCENT, Constant.STAY_VOLUME, Constant.STAY_AMOUNT, Constant.STAY_TURNOVERRATIO};
@@ -506,11 +458,38 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
 
     }
 
+    private void getBtcMarket(String type, String sort, int page) {
+        NetManger.getInstance().btcPrice(page, sort, new OnNetResult() {
+            @Override
+            public void onNetResult(String state, Object response) {
+                if (state.equals(BUSY)) {
+                    showProgressDialog();
+                } else if (state.equals(SUCCESS)) {
+                    dismissProgressDialog();
+                    BtcPriceEntity btcPriceEntity = new Gson().fromJson(response.toString(), BtcPriceEntity.class);
+                    if (type.equals(LOADTYPE)) {
+                        btcMarketAdapter.addDatas(btcPriceEntity.getData());
+
+                    } else if (type.equals(REFRESHTYPE)) {
+
+                        btcMarketAdapter.setDatas(btcPriceEntity.getData());
+                    }
+
+                } else if (state.equals(FAILURE)) {
+                    dismissProgressDialog();
+                }
+
+
+            }
+        });
+    }
+
     @Override
     protected void initData() {
         // getHomeStock(0, Constant.STAY_PRICECHANGE);
         //getHomeGold();
-        getQuote();
+        // getQuote();
+        getBtcMarket(REFRESHTYPE, null, 1);
 
 
         getBanner();
@@ -831,100 +810,37 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
                 break;
 
 
-
-
             case R.id.text_more3:
                 IntentActivity.enter(getActivity(), Constant.FORUM);
                 break;
 
 
-           /* case R.id.layout_xinshou:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
-
-                break;
-
-            case R.id.layout_gongjuhuansuan:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
-
-                break;
-
-
-            case R.id.layout_kuaixun:
-                EventBus.getDefault().post(MainActivity.TAB_TYPE.TAB_POSITION);
-
-
-                break;*/
-            case R.id.text_chat:
-                IntentActivity.enter(getActivity(), Constant.FORUM);
-
-                break;
             case R.id.layout_search:
-            case R.id.img_kefu:
                 IntentActivity.enter(getActivity(), Constant.SEARCH);
 
-               /* if (isLogin()) {
-                    WebActivity.openZhiChiService(getActivity());
-                } else {
-                    UserActivity.enter(getActivity(), Constant.LOGIN);
-                }*/
-                break;
-            case R.id.text_message:
-                if (isLogin()) {
-                    UserActivity.enter(getActivity(), Constant.USER_MYMEAAAGE);
-
-                } else {
-                    UserActivity.enter(getActivity(), Constant.LOGIN);
-                }
-                break;
-
-            case R.id.layout_xinwen:
-                IntentActivity.enter(getActivity(), Constant.INFO);
-                break;
-
-            case R.id.layout_ketang:
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
 
                 break;
 
-            case R.id.layout_gongju:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
+
+            case R.id.layout_celebrity:
+                IntentActivity.enter(getActivity(), Constant.CELEBRITY);
 
                 break;
+
 
             case R.id.layout_video:
                 IntentActivity.enter(getActivity(), Constant.VIDEO);
                 break;
 
-            case R.id.layout_btc:
-                IntentActivity.enter(getActivity(), Constant.BTC);
 
-                break;
             case R.id.layout_qukuailian:
                 IntentActivity.enter(getActivity(), Constant.BLOCK);
 
                 break;
-            case R.id.text_change:
-              /*  String random = "";
-                String[] doc = {Constant.STAY_PRICECHANGE, Constant.STAY_CHANGEPERCENT,Constant.STAY_VOLUME,Constant.STAY_AMOUNT,Constant.STAY_TURNOVERRATIO };
-                int index = (int) (Math.random() * doc.length);
-                random = doc[index];
-                getHomeStock(0,random);*/
-                getHomeStock(0, getSort());
 
-                break;
 
-            case R.id.text_ketang:
-
-                IntentActivity.enter(getActivity(), Constant.LEARNCLASS);
-
-                break;
-
-            case R.id.text_quanzi:
-                IntentActivity.enter(getActivity(), Constant.FEEDBACK);
-
-                break;
-            case R.id.text_gongju:
-                IntentActivity.enter(getActivity(), Constant.SKILLALL);
+            case R.id.layout_info:
+                IntentActivity.enter(getActivity(), Constant.INFO);
 
                 break;
 
@@ -933,43 +849,34 @@ public class HomeBannerFragment extends OBaseFragment implements View.OnClickLis
 
                 break;
 
-            case R.id.text_shipin:
-                IntentActivity.enter(getActivity(), Constant.QUESTION);
-
-                break;
-
-            case R.id.text_kefu:
-                if (isLogin()) {
-                    WebActivity.openZhiChiService(getActivity());
-                } else {
-                    UserActivity.enter(getActivity(), Constant.LOGIN);
-                }
-                break;
-
-            case R.id.layout_question:
-                Toast.makeText(getContext(), getResources().getString(R.string.text_coming), Toast.LENGTH_SHORT).show();
-
-                break;
-
-            case R.id.home_img1:
-            case R.id.home_img2:
-            case R.id.home_img3:
-            case R.id.home_img4:
-
-                IntentActivity.enter(getActivity(), Constant.INFO);
-
-                break;
-
-            case R.id.img_message:
-                OUserActivity.enter(getActivity(), OConstant.O_MESSAGE);
-
-
-                break;
-
-
-
 
         }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.radio_0:
+
+                sort = "circulation_usd";
+
+                break;
+
+            case R.id.radio_1:
+
+                sort = "trademoney24h_usd";
+
+
+                break;
+            case R.id.radio_2:
+                sort = "percent_24h";
+
+
+                break;
+
+        }
+        getBtcMarket(REFRESHTYPE, sort, 1);
+
     }
 
 

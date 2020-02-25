@@ -139,7 +139,7 @@ public class RegisterFragment extends OBaseFragment implements View.OnClickListe
                 String code = edit_code.getText().toString();
                 //postRegister(number, password, code);
 
-                new NetManger().register(number, password, "888888", new OnNetResult() {
+                new NetManger().register(number, password, code, new OnNetResult() {
                     @Override
                     public void onNetResult(String state, Object response) {
                         if (state.equals(NetManger.BUSY)) {

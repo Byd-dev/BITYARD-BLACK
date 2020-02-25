@@ -334,7 +334,7 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
                 textView.setMaxLines(1);
                 textView.setEllipsize(TextUtils.TruncateAt.END);
                 textView.setLineSpacing(1.1f, 1.1f);
-                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_maincolor));
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.text_secondcolor));
                 textView.setTextSize(15);
                 //   textView.setSingleLine();
                 return textView;

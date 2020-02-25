@@ -9,7 +9,7 @@
                 />
 
 
-            <solid android:color="@color/maincolor" />
+            <solid android:color="@color/home_line" />
         </shape>
     </item>
 
@@ -18,7 +18,7 @@
             <corners android:bottomLeftRadius="@dimen/switch_20" android:topLeftRadius="@dimen/switch_20"
 
                 />
-            <stroke android:width="1dp" android:color="@color/maincolor" />
+            <stroke android:width="1dp" android:color="@color/home_line" />
         </shape>
     </item>
 

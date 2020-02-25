@@ -8,37 +8,28 @@ public class OBannerEntity  {
 
 
     /**
-     * carousels : [{"brand":"LT","expire":{"date":1,"day":6,"hours":0,"minutes":0,"month":5,"seconds":0,"time":1559318400000,"timezoneOffset":-480,"year":119},"key":"/trade&CL1907","mcname":"XM恭喜","time":{"date":27,"day":1,"hours":9,"minutes":0,"month":4,"seconds":0,"time":1558918800000,"timezoneOffset":-480,"year":119},"url":"https://julian.oss-cn-beijing.aliyuncs.com/panda/XM恭喜6.png"},{"brand":"LT","expire":{"date":1,"day":0,"hours":0,"minutes":0,"month":2,"seconds":0,"time":1582992000000,"timezoneOffset":-480,"year":120},"key":"#/activity/freeGift","mcname":"XMAPP下载","time":{"date":12,"day":2,"hours":13,"minutes":30,"month":2,"seconds":27,"time":1552368627000,"timezoneOffset":-480,"year":119},"url":"https://julian.oss-cn-beijing.aliyuncs.com/panda/XMAPP下载.png"},{"brand":"LT","expire":{"date":1,"day":0,"hours":0,"minutes":0,"month":2,"seconds":0,"time":1582992000000,"timezoneOffset":-480,"year":120},"key":"/activity/freeGift","mcname":"XM双重送","time":{"date":12,"day":2,"hours":13,"minutes":30,"month":2,"seconds":27,"time":1552368627000,"timezoneOffset":-480,"year":119},"url":"https://julian.oss-cn-beijing.aliyuncs.com/panda/XM%E5%8F%8C%E9%87%8D%E9%80%81.png"}]
-     * notices : [{"brand":"","content":"<p>尊敬的用户：<\/p>\r\n\r\n<p>因5月27日为美国阵亡将士纪念日，<b><font  color=\"CORAL\">EIA原油库存数据<\/font><\/b>将推迟至<b><font  color=\"MAGENTA\">2019年05月30日23:00分<\/font><\/b>公布，请广大用户知悉。<\/p>\r\n<p><font  color=\"DODGERBLUE\">为降低剧烈行情造成的风险，请用户合理选择保证金档位，祝您操盘顺利！<\/font><\/p>","expire":{"date":5,"day":3,"hours":0,"minutes":0,"month":5,"seconds":0,"time":1559664000000,"timezoneOffset":-480,"year":119},"id":11917,"time":{"date":29,"day":3,"hours":15,"minutes":10,"month":4,"seconds":37,"time":1559113837000,"timezoneOffset":-480,"year":119},"title":"EIA数据延迟公布通知","top":false,"url":""},{"brand":"","content":"<p>尊敬的用户：<\/p>\r\n<p>根据纽约交易所、香港交易所、新加坡交易所合约交易规则，<font  color=\"CORAL\">美黄金（GC1906）、恒指（HSI1905）、小恒指（MHI1905）、富时A50（CN1905）<\/font>合约到期<font  color=\"CORAL\">不再交易<\/font>，交易合约更换为<b><font  color=\"MAGENTA\">GC1908、HSI1906、MHI1906、CN1906。<\/font><\/b>。<\/p>\r\n<p><font  color=\"DODGERBLUE\">请用户留意新旧合约价格差异，以最新合约成交价为准。<\/font><\/p>","expire":{"date":5,"day":3,"hours":0,"minutes":0,"month":5,"seconds":0,"time":1559664000000,"timezoneOffset":-480,"year":119},"id":11910,"time":{"date":29,"day":3,"hours":9,"minutes":25,"month":4,"seconds":43,"time":1559093143000,"timezoneOffset":-480,"year":119},"title":"美黄金，恒指，小恒指，富时A50合约更换提醒","top":false,"url":""},{"brand":"","content":"<p>尊敬的用户：<\/p>\r\n<p>　　根据上海国际能源交易中心合约交易规则，<font  color=\"CORAL\">原油期货（SC1906）<\/font>合约到期<font  color=\"CORAL\">不再交易<\/font>，交易合约更换为<b><font  color=\"MAGENTA\">SC1907<\/font><\/b>。<\/p>\r\n<p><font  color=\"DODGERBLUE\">请用户留意新旧合约价格差异，以最新合约成交价为准。<\/font><\/p>","expire":{"date":30,"day":4,"hours":0,"minutes":0,"month":4,"seconds":0,"time":1559145600000,"timezoneOffset":-480,"year":119},"id":11831,"time":{"date":22,"day":3,"hours":5,"minutes":13,"month":4,"seconds":38,"time":1558473218000,"timezoneOffset":-480,"year":119},"title":"原油期货合约更换通知","top":false,"url":""}]
-     * alertFlag : wed
+     * notices : [{"brand":"ZY","content":"<p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">尊敬的投资者：<\/p><p style=\"\"><font color=\"#000000\" face=\"Times New Roman\" size=\"3\">根据中国金融期货交易所合约交易规则<\/font><font color=\"#000000\" style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\">，沪深300、中证500<\/font><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">、<\/span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">上证50<\/span><font color=\"#000000\" style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\">合约<\/font><font style=\"font-family: &quot;Times New Roman&quot;; font-size: medium; color: rgb(0, 0, 0);\">&nbsp;<\/font><font color=\"#f83a22\" style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\">IF2002、IC2002<\/font><span style=\"color: rgb(248, 58, 34); font-family: &quot;Times New Roman&quot;; font-size: medium;\">、IH2002<\/span><font color=\"#000000\" style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\">已经到期，现已更换为<\/font><b style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"#f83a22\">IF2003、IC2003<\/font><\/b><b style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"#f83a22\">、IH2003<\/font><\/b><span style=\"font-family: &quot;Times New Roman&quot;; font-size: medium; color: rgb(0, 0, 0);\">。<\/span><\/p><p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"ROYALBLUE\">请投资者以最新合约成交价为准。<\/font><\/p>","expire":1584633600000,"id":"437143003761475584","time":1582152613000,"title":"沪深、中证、上证合约更换须知","top":true,"url":""},{"brand":"ZY","content":"<div><font size=\"3\" color=\"#444444\">尊敬的投资者：<\/font><\/div><div><font color=\"#444444\"><br><\/font><\/div><div><font size=\"3\"><font color=\"#444444\">美国能源信息署将于<\/font><font color=\"#f83a22\"><b>周四 02/20 23:30发布当周EIA天然气库存数据<\/b><\/font><font color=\"#444444\">以及<\/font><font color=\"#ff0000\"><b>周五 02/21&nbsp; 00:00发布原油库存数据<\/b><\/font><font color=\"#444444\">，届时行情波动剧烈，广大用户可根据综合行情准确掌握行情价格趋势性的变动，把握行情走势，顺势而为，从而大大提高交易的成功率。<\/font><\/font><\/div><div><font size=\"3\"><br><\/font><\/div><div><font size=\"3\"><br><\/font><\/div><div><font color=\"#4986e7\" size=\"3\">祝投资愉快。<\/font><\/div>","expire":1582646400000,"id":"436888978851889152","time":1582092049000,"title":"EIA数据发布须知","top":true,"url":""},{"brand":"ZY","content":"<p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">尊敬的投资者：<\/p><p style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"#000000\">根据纽约交易所的合约交易规则，美原油合约<\/font><font color=\"#f83a22\">CL2003<\/font><font color=\"#000000\">已经到期，现已更换为<\/font><b><font color=\"#f83a22\">CL2004<\/font><\/b><font color=\"#000000\">。<\/font><\/p><p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"ROYALBLUE\">请投资者以最新合约成交价为准。<\/font><\/p>","expire":1584460800000,"id":"436418352844374016","time":1581979843000,"title":"美原油合约更换须知","top":true,"url":""},{"brand":"ZY","content":"<p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">尊敬的投资者：<\/p><p style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"#000000\">根据上海期货交易所的合约交易规则，沪铜合约<\/font><font color=\"#f83a22\">CU2003<\/font><font color=\"#000000\">已经到期，现已更换为<\/font><b><font color=\"#f83a22\">CU2004<\/font><\/b><font color=\"#000000\">。<\/font><\/p><p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"ROYALBLUE\">请投资者以最新合约成交价为准。<\/font><\/p>","expire":1584028800000,"id":"436051430093094912","time":1581892362000,"title":"沪铜合约更换须知","top":true,"url":""},{"brand":"ZY","content":"<p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">尊敬的投资者：<\/p><p style=\"font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font style=\"\" color=\"#f83a22\">2020年2月17日<\/font><font color=\"#000000\">为<\/font><b><font color=\"#f83a22\">美国总统日假期<\/font><\/b><font color=\"#000000\">，纽约及芝加哥交易将商品时间调整如下：<\/font><\/p><p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"ROYALBLUE\">美原油、美黄金、美白银、美铜、天然气、小道指、小纳指<\/font>将在2月18日凌晨02:00提早休市，2月18日上午07:00正常开市。<\/p><p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\">除以上商品，其他商品均可正常交易，请您合理安排交易时间。<\/p><p style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><font color=\"ROYALBLUE\">祝投资愉快。<\/font><\/p>","expire":1582819200000,"id":"435076262382272512","time":1581659864000,"title":"美盘商品提前休市须知","top":true,"url":""}]
      * code : 200
-     * resultMsg :
+     * alertFlag : register
+     * carousels : [{"brand":"ZY","expire":1582905600000,"id":"416162788415635456","key":"#","mcname":"ZY新版 数字货币","time":1577150512000,"url":"https://julian.oss-cn-beijing.aliyuncs.com/zy/ZY新版 数字货币.jpg"},{"brand":"ZY","expire":1609344000000,"id":"416162650129432576","key":"/activity/freeGift","mcname":"ZY新版 128","time":1577150483000,"url":"https://julian.oss-cn-beijing.aliyuncs.com/zy/ZY新版 128.png"}]
+     * message :
      */
 
-    private String alertFlag;
     private int code;
-    private String resultMsg;
-    private List<CarouselsBean> carousels;
+    private String alertFlag;
+    private String message;
     private List<NoticesBean> notices;
-
+    private List<CarouselsBean> carousels;
 
     @Override
     public String toString() {
         return "OBannerEntity{" +
-                "alertFlag='" + alertFlag + '\'' +
-                ", code=" + code +
-                ", resultMsg='" + resultMsg + '\'' +
-                ", carousels=" + carousels +
+                "code=" + code +
+                ", alertFlag='" + alertFlag + '\'' +
+                ", message='" + message + '\'' +
                 ", notices=" + notices +
+                ", carousels=" + carousels +
                 '}';
-    }
-
-    public String getAlertFlag() {
-        return alertFlag;
-    }
-
-    public void setAlertFlag(String alertFlag) {
-        this.alertFlag = alertFlag;
     }
 
     public int getCode() {
@@ -49,20 +40,20 @@ public class OBannerEntity  {
         this.code = code;
     }
 
-    public String getResultMsg() {
-        return resultMsg;
+    public String getAlertFlag() {
+        return alertFlag;
     }
 
-    public void setResultMsg(String resultMsg) {
-        this.resultMsg = resultMsg;
+    public void setAlertFlag(String alertFlag) {
+        this.alertFlag = alertFlag;
     }
 
-    public List<CarouselsBean> getCarousels() {
-        return carousels;
+    public String getMessage() {
+        return message;
     }
 
-    public void setCarousels(List<CarouselsBean> carousels) {
-        this.carousels = carousels;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public List<NoticesBean> getNotices() {
@@ -73,312 +64,12 @@ public class OBannerEntity  {
         this.notices = notices;
     }
 
+    public List<CarouselsBean> getCarousels() {
+        return carousels;
+    }
 
-    public static class CarouselsBean extends SimpleBannerInfo {
-        @Override
-        public String toString() {
-            return "CarouselsBean{" +
-                    "brand='" + brand + '\'' +
-                    ", expire=" + expire +
-                    ", key='" + key + '\'' +
-                    ", mcname='" + mcname + '\'' +
-                    ", time=" + time +
-                    ", url='" + url + '\'' +
-                    '}';
-        }
-
-        /**
-         * brand : LT
-         * expire : {"date":1,"day":6,"hours":0,"minutes":0,"month":5,"seconds":0,"time":1559318400000,"timezoneOffset":-480,"year":119}
-         * key : /trade&CL1907
-         * mcname : XM恭喜
-         * time : {"date":27,"day":1,"hours":9,"minutes":0,"month":4,"seconds":0,"time":1558918800000,"timezoneOffset":-480,"year":119}
-         * url : https://julian.oss-cn-beijing.aliyuncs.com/panda/XM恭喜6.png
-         */
-
-        private String brand;
-        private ExpireBean expire;
-        private String key;
-        private String mcname;
-        private TimeBean time;
-        private String url;
-
-        public String getBrand() {
-            return brand;
-        }
-
-        public void setBrand(String brand) {
-            this.brand = brand;
-        }
-
-        public ExpireBean getExpire() {
-            return expire;
-        }
-
-        public void setExpire(ExpireBean expire) {
-            this.expire = expire;
-        }
-
-        public String getKey() {
-            return key;
-        }
-
-        public void setKey(String key) {
-            this.key = key;
-        }
-
-        public String getMcname() {
-            return mcname;
-        }
-
-        public void setMcname(String mcname) {
-            this.mcname = mcname;
-        }
-
-        public TimeBean getTime() {
-            return time;
-        }
-
-        public void setTime(TimeBean time) {
-            this.time = time;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        @Override
-        public Object getXBannerUrl() {
-            return url;
-        }
-
-        public static class ExpireBean {
-            @Override
-            public String toString() {
-                return "ExpireBean{" +
-                        "date=" + date +
-                        ", day=" + day +
-                        ", hours=" + hours +
-                        ", minutes=" + minutes +
-                        ", month=" + month +
-                        ", seconds=" + seconds +
-                        ", time=" + time +
-                        ", timezoneOffset=" + timezoneOffset +
-                        ", year=" + year +
-                        '}';
-            }
-
-            /**
-             * date : 1
-             * day : 6
-             * hours : 0
-             * minutes : 0
-             * month : 5
-             * seconds : 0
-             * time : 1559318400000
-             * timezoneOffset : -480
-             * year : 119
-             */
-
-
-
-            private int date;
-            private int day;
-            private int hours;
-            private int minutes;
-            private int month;
-            private int seconds;
-            private long time;
-            private int timezoneOffset;
-            private int year;
-
-            public int getDate() {
-                return date;
-            }
-
-            public void setDate(int date) {
-                this.date = date;
-            }
-
-            public int getDay() {
-                return day;
-            }
-
-            public void setDay(int day) {
-                this.day = day;
-            }
-
-            public int getHours() {
-                return hours;
-            }
-
-            public void setHours(int hours) {
-                this.hours = hours;
-            }
-
-            public int getMinutes() {
-                return minutes;
-            }
-
-            public void setMinutes(int minutes) {
-                this.minutes = minutes;
-            }
-
-            public int getMonth() {
-                return month;
-            }
-
-            public void setMonth(int month) {
-                this.month = month;
-            }
-
-            public int getSeconds() {
-                return seconds;
-            }
-
-            public void setSeconds(int seconds) {
-                this.seconds = seconds;
-            }
-
-            public long getTime() {
-                return time;
-            }
-
-            public void setTime(long time) {
-                this.time = time;
-            }
-
-            public int getTimezoneOffset() {
-                return timezoneOffset;
-            }
-
-            public void setTimezoneOffset(int timezoneOffset) {
-                this.timezoneOffset = timezoneOffset;
-            }
-
-            public int getYear() {
-                return year;
-            }
-
-            public void setYear(int year) {
-                this.year = year;
-            }
-        }
-
-        public static class TimeBean {
-            @Override
-            public String toString() {
-                return "TimeBean{" +
-                        "date=" + date +
-                        ", day=" + day +
-                        ", hours=" + hours +
-                        ", minutes=" + minutes +
-                        ", month=" + month +
-                        ", seconds=" + seconds +
-                        ", time=" + time +
-                        ", timezoneOffset=" + timezoneOffset +
-                        ", year=" + year +
-                        '}';
-            }
-
-            /**
-             * date : 27
-             * day : 1
-             * hours : 9
-             * minutes : 0
-             * month : 4
-             * seconds : 0
-             * time : 1558918800000
-             * timezoneOffset : -480
-             * year : 119
-             */
-
-            private int date;
-            private int day;
-            private int hours;
-            private int minutes;
-            private int month;
-            private int seconds;
-            private long time;
-            private int timezoneOffset;
-            private int year;
-
-            public int getDate() {
-                return date;
-            }
-
-            public void setDate(int date) {
-                this.date = date;
-            }
-
-            public int getDay() {
-                return day;
-            }
-
-            public void setDay(int day) {
-                this.day = day;
-            }
-
-            public int getHours() {
-                return hours;
-            }
-
-            public void setHours(int hours) {
-                this.hours = hours;
-            }
-
-            public int getMinutes() {
-                return minutes;
-            }
-
-            public void setMinutes(int minutes) {
-                this.minutes = minutes;
-            }
-
-            public int getMonth() {
-                return month;
-            }
-
-            public void setMonth(int month) {
-                this.month = month;
-            }
-
-            public int getSeconds() {
-                return seconds;
-            }
-
-            public void setSeconds(int seconds) {
-                this.seconds = seconds;
-            }
-
-            public long getTime() {
-                return time;
-            }
-
-            public void setTime(long time) {
-                this.time = time;
-            }
-
-            public int getTimezoneOffset() {
-                return timezoneOffset;
-            }
-
-            public void setTimezoneOffset(int timezoneOffset) {
-                this.timezoneOffset = timezoneOffset;
-            }
-
-            public int getYear() {
-                return year;
-            }
-
-            public void setYear(int year) {
-                this.year = year;
-            }
-        }
+    public void setCarousels(List<CarouselsBean> carousels) {
+        this.carousels = carousels;
     }
 
     public static class NoticesBean {
@@ -388,7 +79,7 @@ public class OBannerEntity  {
                     "brand='" + brand + '\'' +
                     ", content='" + content + '\'' +
                     ", expire=" + expire +
-                    ", id=" + id +
+                    ", id='" + id + '\'' +
                     ", time=" + time +
                     ", title='" + title + '\'' +
                     ", top=" + top +
@@ -397,24 +88,23 @@ public class OBannerEntity  {
         }
 
         /**
-         * brand :
-         * content : <p>尊敬的用户：</p>
-
-         <p>因5月27日为美国阵亡将士纪念日，<b><font  color="CORAL">EIA原油库存数据</font></b>将推迟至<b><font  color="MAGENTA">2019年05月30日23:00分</font></b>公布，请广大用户知悉。</p>
-         <p><font  color="DODGERBLUE">为降低剧烈行情造成的风险，请用户合理选择保证金档位，祝您操盘顺利！</font></p>
-         * expire : {"date":5,"day":3,"hours":0,"minutes":0,"month":5,"seconds":0,"time":1559664000000,"timezoneOffset":-480,"year":119}
-         * id : 11917
-         * time : {"date":29,"day":3,"hours":15,"minutes":10,"month":4,"seconds":37,"time":1559113837000,"timezoneOffset":-480,"year":119}
-         * title : EIA数据延迟公布通知
-         * top : false
+         * brand : ZY
+         * content : <p style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">尊敬的投资者：</p><p style=""><font color="#000000" face="Times New Roman" size="3">根据中国金融期货交易所合约交易规则</font><font color="#000000" style="font-family: &quot;Times New Roman&quot;; font-size: medium;">，沪深300、中证500</font><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">、</span><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">上证50</span><font color="#000000" style="font-family: &quot;Times New Roman&quot;; font-size: medium;">合约</font><font style="font-family: &quot;Times New Roman&quot;; font-size: medium; color: rgb(0, 0, 0);">&nbsp;</font><font color="#f83a22" style="font-family: &quot;Times New Roman&quot;; font-size: medium;">IF2002、IC2002</font><span style="color: rgb(248, 58, 34); font-family: &quot;Times New Roman&quot;; font-size: medium;">、IH2002</span><font color="#000000" style="font-family: &quot;Times New Roman&quot;; font-size: medium;">已经到期，现已更换为</font><b style="font-family: &quot;Times New Roman&quot;; font-size: medium;"><font color="#f83a22">IF2003、IC2003</font></b><b style="font-family: &quot;Times New Roman&quot;; font-size: medium;"><font color="#f83a22">、IH2003</font></b><span style="font-family: &quot;Times New Roman&quot;; font-size: medium; color: rgb(0, 0, 0);">。</span></p><p style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;"><font color="ROYALBLUE">请投资者以最新合约成交价为准。</font></p>
+         * expire : 1584633600000
+         * id : 437143003761475584
+         * time : 1582152613000
+         * title : 沪深、中证、上证合约更换须知
+         * top : true
          * url :
          */
 
+
+
         private String brand;
         private String content;
-        private ExpireBeanX expire;
-        private int id;
-        private TimeBeanX time;
+        private long expire;
+        private String id;
+        private long time;
         private String title;
         private boolean top;
         private String url;
@@ -435,27 +125,27 @@ public class OBannerEntity  {
             this.content = content;
         }
 
-        public ExpireBeanX getExpire() {
+        public long getExpire() {
             return expire;
         }
 
-        public void setExpire(ExpireBeanX expire) {
+        public void setExpire(long expire) {
             this.expire = expire;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
-        public TimeBeanX getTime() {
+        public long getTime() {
             return time;
         }
 
-        public void setTime(TimeBeanX time) {
+        public void setTime(long time) {
             this.time = time;
         }
 
@@ -482,227 +172,99 @@ public class OBannerEntity  {
         public void setUrl(String url) {
             this.url = url;
         }
+    }
 
-        public static class ExpireBeanX {
-            @Override
-            public String toString() {
-                return "ExpireBeanX{" +
-                        "date=" + date +
-                        ", day=" + day +
-                        ", hours=" + hours +
-                        ", minutes=" + minutes +
-                        ", month=" + month +
-                        ", seconds=" + seconds +
-                        ", time=" + time +
-                        ", timezoneOffset=" + timezoneOffset +
-                        ", year=" + year +
-                        '}';
-            }
+    public static class CarouselsBean extends SimpleBannerInfo {
+        /**
+         * brand : ZY
+         * expire : 1582905600000
+         * id : 416162788415635456
+         * key : #
+         * mcname : ZY新版 数字货币
+         * time : 1577150512000
+         * url : https://julian.oss-cn-beijing.aliyuncs.com/zy/ZY新版 数字货币.jpg
+         */
 
-            /**
-             * date : 5
-             * day : 3
-             * hours : 0
-             * minutes : 0
-             * month : 5
-             * seconds : 0
-             * time : 1559664000000
-             * timezoneOffset : -480
-             * year : 119
-             */
+        private String brand;
+        private long expire;
+        private String id;
+        private String key;
+        private String mcname;
+        private long time;
+        private String url;
 
-            private int date;
-            private int day;
-            private int hours;
-            private int minutes;
-            private int month;
-            private int seconds;
-            private long time;
-            private int timezoneOffset;
-            private int year;
-
-            public int getDate() {
-                return date;
-            }
-
-            public void setDate(int date) {
-                this.date = date;
-            }
-
-            public int getDay() {
-                return day;
-            }
-
-            public void setDay(int day) {
-                this.day = day;
-            }
-
-            public int getHours() {
-                return hours;
-            }
-
-            public void setHours(int hours) {
-                this.hours = hours;
-            }
-
-            public int getMinutes() {
-                return minutes;
-            }
-
-            public void setMinutes(int minutes) {
-                this.minutes = minutes;
-            }
-
-            public int getMonth() {
-                return month;
-            }
-
-            public void setMonth(int month) {
-                this.month = month;
-            }
-
-            public int getSeconds() {
-                return seconds;
-            }
-
-            public void setSeconds(int seconds) {
-                this.seconds = seconds;
-            }
-
-            public long getTime() {
-                return time;
-            }
-
-            public void setTime(long time) {
-                this.time = time;
-            }
-
-            public int getTimezoneOffset() {
-                return timezoneOffset;
-            }
-
-            public void setTimezoneOffset(int timezoneOffset) {
-                this.timezoneOffset = timezoneOffset;
-            }
-
-            public int getYear() {
-                return year;
-            }
-
-            public void setYear(int year) {
-                this.year = year;
-            }
+        @Override
+        public String toString() {
+            return "CarouselsBean{" +
+                    "brand='" + brand + '\'' +
+                    ", expire=" + expire +
+                    ", id='" + id + '\'' +
+                    ", key='" + key + '\'' +
+                    ", mcname='" + mcname + '\'' +
+                    ", time=" + time +
+                    ", url='" + url + '\'' +
+                    '}';
         }
 
-        public static class TimeBeanX {
-            @Override
-            public String toString() {
-                return "TimeBeanX{" +
-                        "date=" + date +
-                        ", day=" + day +
-                        ", hours=" + hours +
-                        ", minutes=" + minutes +
-                        ", month=" + month +
-                        ", seconds=" + seconds +
-                        ", time=" + time +
-                        ", timezoneOffset=" + timezoneOffset +
-                        ", year=" + year +
-                        '}';
-            }
+        public String getBrand() {
+            return brand;
+        }
 
-            /**
-             * date : 29
-             * day : 3
-             * hours : 15
-             * minutes : 10
-             * month : 4
-             * seconds : 37
-             * time : 1559113837000
-             * timezoneOffset : -480
-             * year : 119
-             */
+        public void setBrand(String brand) {
+            this.brand = brand;
+        }
 
-            private int date;
-            private int day;
-            private int hours;
-            private int minutes;
-            private int month;
-            private int seconds;
-            private long time;
-            private int timezoneOffset;
-            private int year;
+        public long getExpire() {
+            return expire;
+        }
 
-            public int getDate() {
-                return date;
-            }
+        public void setExpire(long expire) {
+            this.expire = expire;
+        }
 
-            public void setDate(int date) {
-                this.date = date;
-            }
+        public String getId() {
+            return id;
+        }
 
-            public int getDay() {
-                return day;
-            }
+        public void setId(String id) {
+            this.id = id;
+        }
 
-            public void setDay(int day) {
-                this.day = day;
-            }
+        public String getKey() {
+            return key;
+        }
 
-            public int getHours() {
-                return hours;
-            }
+        public void setKey(String key) {
+            this.key = key;
+        }
 
-            public void setHours(int hours) {
-                this.hours = hours;
-            }
+        public String getMcname() {
+            return mcname;
+        }
 
-            public int getMinutes() {
-                return minutes;
-            }
+        public void setMcname(String mcname) {
+            this.mcname = mcname;
+        }
 
-            public void setMinutes(int minutes) {
-                this.minutes = minutes;
-            }
+        public long getTime() {
+            return time;
+        }
 
-            public int getMonth() {
-                return month;
-            }
+        public void setTime(long time) {
+            this.time = time;
+        }
 
-            public void setMonth(int month) {
-                this.month = month;
-            }
+        public String getUrl() {
+            return url;
+        }
 
-            public int getSeconds() {
-                return seconds;
-            }
+        public void setUrl(String url) {
+            this.url = url;
+        }
 
-            public void setSeconds(int seconds) {
-                this.seconds = seconds;
-            }
-
-            public long getTime() {
-                return time;
-            }
-
-            public void setTime(long time) {
-                this.time = time;
-            }
-
-            public int getTimezoneOffset() {
-                return timezoneOffset;
-            }
-
-            public void setTimezoneOffset(int timezoneOffset) {
-                this.timezoneOffset = timezoneOffset;
-            }
-
-            public int getYear() {
-                return year;
-            }
-
-            public void setYear(int year) {
-                this.year = year;
-            }
+        @Override
+        public Object getXBannerUrl() {
+            return url;
         }
     }
 }

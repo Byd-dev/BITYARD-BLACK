@@ -16,7 +16,7 @@
         android:layout_marginLeft="@dimen/margin_15"
         android:layout_marginTop="@dimen/margin_15"
         android:layout_marginRight="@dimen/margin_15"
-        android:background="@mipmap/top"
+        android:background="@drawable/gradient_gray"
         android:orientation="vertical">
 
         <TextView

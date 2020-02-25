@@ -95,7 +95,6 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
         linearLayoutManager = new LinearLayoutManager(getActivity());
 
         recyclerView.setLayoutManager(linearLayoutManager);
-
         btcMarketAdapter = new BtcMarketAdapter(getActivity());
         recyclerView.setAdapter(btcMarketAdapter);
 
@@ -161,6 +160,7 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
         for (int i = 0; i < titleList.size(); i++) {
             home_tab.addTab(titleList.get(i));
         }
+
 
         home_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

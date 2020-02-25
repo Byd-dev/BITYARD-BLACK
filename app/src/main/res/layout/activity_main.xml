@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/o_bg_white"
+    android:background="@color/background_maincolor"
     tools:context=".activity.MainActivity">
 
 
@@ -19,14 +19,13 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:visibility="visible"
-        android:background="@color/background_maincolor" />
+        android:background="@color/home_line" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bar_height"
         android:layout_gravity="center"
-        android:background="@color/text_62_white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
