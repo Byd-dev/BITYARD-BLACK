@@ -9,7 +9,6 @@
     <RelativeLayout
         android:id="@+id/layout_bar"
         android:layout_width="match_parent"
-        android:background="@color/maincolor"
         android:layout_height="@dimen/bar_height">
         <ImageView
             android:id="@+id/img_back"
@@ -42,7 +41,7 @@
         android:id="@+id/stay_line"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@color/home_line"/>
 
     <android.support.v4.widget.NestedScrollView
@@ -58,7 +57,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_shape_background"
+                android:background="@color/home_line"
                 android:layout_margin="@dimen/margin_15"
                 android:orientation="vertical">
 
@@ -88,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="--"
-                            android:textColor="@color/maincolor"
+                            android:textColor="@color/white"
                             android:textSize="16sp"
 
                             />
@@ -98,7 +97,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textColor="@color/text_secondcolor"
+                            android:textColor="@color/text_7b7b"
                             android:textSize="12sp" />
 
 
@@ -117,7 +116,7 @@
                     android:singleLine="true"
                     android:textStyle="bold"
                     android:text="--"
-                    android:textColor="@color/text_maincolor"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
 
@@ -131,7 +130,7 @@
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
                     android:text="--"
-                    android:textColor="@color/text_maincolor"
+                    android:textColor="@color/text_7b7b"
                     android:textSize="14sp" />
 
                 <View
@@ -262,9 +261,9 @@
             android:layout_weight="1"
             android:background="@drawable/shape_bg_edit"
             android:hint="@string/text_comment_input"
-            android:textColorHint="@color/text_secondcolor"
+            android:textColorHint="@color/text_7b7b"
             android:paddingLeft="5dp"
-            android:textColor="@color/text_maincolor"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView

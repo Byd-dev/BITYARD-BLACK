@@ -74,12 +74,12 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
             titleList.add("7×24");
             titleList.add("Hot");
            // titleList.add("Calendar");
-            titleList.add("Board");
+           // titleList.add("Board");
         } else if (language.equals("zh_CN")) {
             titleList.add("7×24");
             titleList.add("每日热点");
            // titleList.add("日历");
-            titleList.add("公告");
+            //titleList.add("公告");
         }
 
 
@@ -175,10 +175,10 @@ public class InfoFragment extends OBaseFragment implements View.OnClickListener 
 
     private void initViewPager(ViewPager viewPager) {
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
-        myPagerAdapter.addFragment(new OLiveFragment(), AppContext.getInstance().getResources().getString(R.string.text_short));
-        myPagerAdapter.addFragment(new OHotFragment(), AppContext.getInstance().getResources().getString(R.string.text_hot));
+        myPagerAdapter.addFragment(new LiveFragment(), AppContext.getInstance().getResources().getString(R.string.text_short));
+        myPagerAdapter.addFragment(new HotFragment(), AppContext.getInstance().getResources().getString(R.string.text_hot));
        // myPagerAdapter.addFragment(new OFinancialCalendarFragment(), AppContext.getInstance().getResources().getString(R.string.text_calendar));
-        myPagerAdapter.addFragment(new OReportFragment(), AppContext.getInstance().getResources().getString(R.string.text_board));
+        //myPagerAdapter.addFragment(new OReportFragment(), AppContext.getInstance().getResources().getString(R.string.text_board));
 
         viewPager.setAdapter(myPagerAdapter);
     }

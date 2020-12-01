@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -30,12 +29,23 @@
                 android:id="@+id/img_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/margin_15"
                 android:src="@mipmap/home_lingdang"
 
                 android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
+
 
 
             <ImageView
@@ -57,8 +67,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:orientation="horizontal">
 
 
             <LinearLayout
@@ -69,8 +80,8 @@
 
                 <com.ltqh.qh.view.CircleImageView
                     android:id="@+id/img_head"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/user_icon"
                     android:visibility="visible" />
@@ -95,7 +106,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:gravity="left"
                 android:orientation="vertical">
 
 
@@ -103,10 +114,9 @@
                     android:id="@+id/tv_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:text="@string/text_log_in"
-                    android:textColor="@color/maincolor"
-                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
                     android:visibility="visible" />
 
                 <TextView
@@ -114,10 +124,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin"
-                    android:layout_gravity="center_horizontal"
                     android:maxLength="13"
                     android:text="@string/text_sign_more"
-                    android:textColor="@color/maincolor"
+                    android:textColor="@color/text_7b7b"
                     android:textSize="14sp" />
 
 
@@ -394,7 +403,6 @@
                         android:layout_height="@dimen/my_menu_height"
                         android:layout_weight="1"
 
-                        android:background="@drawable/bg_shape_home_search"
                         android:visibility="visible">
 
                         <TextView
@@ -406,7 +414,7 @@
                             android:drawablePadding="10dp"
                             android:gravity="center"
                             android:text="@string/text_message"
-                            android:textColor="@color/text_maincolor"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
 
                         <ImageView
@@ -427,16 +435,14 @@
                         android:layout_marginLeft="@dimen/margin_15"
                         android:layout_marginRight="@dimen/margin_15"
                         android:background="@color/home_line"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <RelativeLayout
                         android:id="@+id/layout_service"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/my_menu_height"
                         android:layout_marginTop="@dimen/margin_15"
-                        android:layout_marginBottom="@dimen/margin_15"
                         android:layout_weight="1"
-                        android:background="@drawable/bg_shape_home_search"
                         android:visibility="visible">
 
                         <TextView
@@ -448,7 +454,7 @@
                             android:drawablePadding="10dp"
                             android:gravity="center"
                             android:text="@string/text_back"
-                            android:textColor="@color/text_maincolor"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
 
                         <ImageView
@@ -466,7 +472,7 @@
                         android:layout_marginLeft="@dimen/margin_15"
                         android:layout_marginRight="@dimen/margin_15"
                         android:background="@color/home_line"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
 
                     <RelativeLayout
@@ -514,9 +520,8 @@
                         android:id="@+id/layout_delete"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/my_menu_height"
-                        android:layout_marginBottom="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
                         android:layout_weight="1"
-                        android:background="@drawable/bg_shape_home_search"
                         android:visibility="visible">
 
                         <TextView
@@ -529,7 +534,7 @@
                             android:drawablePadding="10dp"
                             android:gravity="center"
                             android:text="@string/text_cache"
-                            android:textColor="@color/text_maincolor"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
 
                         <TextView
@@ -559,15 +564,14 @@
                         android:layout_marginLeft="@dimen/margin_15"
                         android:layout_marginRight="@dimen/margin_15"
                         android:background="@color/home_line"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <RelativeLayout
                         android:id="@+id/layout_about"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/my_menu_height"
+                        android:layout_marginTop="@dimen/margin_15"
                         android:layout_weight="1"
-                        android:background="@drawable/bg_shape_home_search"
-
                         android:visibility="visible">
 
                         <TextView
@@ -580,7 +584,7 @@
                             android:gravity="center"
 
                             android:text="关于我们"
-                            android:textColor="@color/text_maincolor"
+                            android:textColor="@color/white"
                             android:textSize="15sp"
                             android:visibility="visible" />
 
@@ -599,7 +603,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:background="@color/home_line"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <RelativeLayout
                         android:id="@+id/layout_person"
@@ -607,7 +611,6 @@
                         android:layout_height="@dimen/my_menu_height"
                         android:layout_marginTop="@dimen/margin_15"
                         android:layout_weight="1"
-                        android:background="@drawable/bg_shape_home_search"
                         android:visibility="visible">
 
                         <TextView
@@ -619,7 +622,7 @@
                             android:drawablePadding="10dp"
                             android:gravity="center"
                             android:text="@string/text_setting"
-                            android:textColor="@color/text_maincolor"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
 
                         <ImageView
@@ -637,7 +640,7 @@
                         android:layout_marginLeft="@dimen/margin_15"
                         android:layout_marginRight="@dimen/margin_15"
                         android:background="@color/home_line"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <RelativeLayout
 

@@ -75,6 +75,9 @@ public class SplashActivity extends Activity implements OnResultBack {
 
     private void init() {
 
+
+
+
         SwitchMainEnter.getInstance().initOCR(this, BuildConfig.AK, BuildConfig.SK);
 
         SplashActivity splashActivity = new SplashActivity(new DoGet(), SplashActivity.this);
@@ -98,8 +101,8 @@ public class SplashActivity extends Activity implements OnResultBack {
             SwitchMainEnter.getInstance().goToWeb(activity, jsonEntity.getUrl(), null);
             activity.finish();
         } else if (result == false) {
-            //GuideActivity.enter(activity);
-            MainActivity.enter(activity, MainActivity.TAB_TYPE.TAB_HOME);
+
+            GuideVestActivity.enter(activity);
 
             activity.finish();
         }

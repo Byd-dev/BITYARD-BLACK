@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_maincolor"
+
     android:orientation="vertical">
 
 
@@ -11,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/background_maincolor"
             />
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,8 +25,9 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="15dp"
                 android:text="@string/tab_two"
-                android:textColor="@color/maincolor"
-                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold"
 
                 />
 
@@ -36,6 +38,7 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:paddingRight="@dimen/margin_15"
+                android:visibility="gone"
                 android:paddingLeft="@dimen/margin_15"
                 android:src="@mipmap/search_icon"/>
 

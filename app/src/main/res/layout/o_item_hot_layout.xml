@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@color/o_bar_white"
+    android:background="@color/background_maincolor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -30,7 +30,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="标题"
-                android:textColor="@color/o_text_3433"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
 
@@ -43,7 +43,7 @@
                 android:maxLines="3"
                 android:enabled="true"
                 android:text="内容"
-                android:textColor="@color/text_secondcolor"
+                android:textColor="@color/text_7b7b"
                 android:textSize="13sp"
 
                 />
@@ -69,7 +69,7 @@
         android:visibility="visible"
         android:layout_marginLeft="@dimen/margin_15"
         android:layout_marginRight="@dimen/margin_15"
-        android:background="@color/o_line" />
+        android:background="@color/home_line" />
 
 
 </LinearLayout>

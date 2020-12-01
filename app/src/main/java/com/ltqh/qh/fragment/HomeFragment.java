@@ -465,28 +465,6 @@ public class HomeFragment extends OBaseFragment implements View.OnClickListener 
             //getGuliao(loginEntity.getData().getToken(), 0);
         }
 
-        NetManger.getInstance().btcPrice(1,"", new OnNetResult() {
-            @Override
-            public void onNetResult(String state, Object response) {
-                        if (state.equals(BUSY)){
-                            showProgressDialog();
-                        }else if (state.equals(SUCCESS)){
-
-                            dismissProgressDialog();
-                            BtcPriceEntity btcPriceEntity = new Gson().fromJson(response.toString(), BtcPriceEntity.class);
-                            if (btcPriceEntity.getCode()==0){
-
-                            }else {
-
-                                btcPriceAdapter.setDatas(btcPriceEntity.getData().subList(0,6));
-                            }
-
-
-                        }else if (state.equals(FAILURE)){
-                            dismissProgressDialog();
-                        }
-            }
-        });
 
         //getCalendar(dateToStamp().toString(), 3);
     }

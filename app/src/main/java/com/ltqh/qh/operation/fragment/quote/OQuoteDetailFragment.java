@@ -567,7 +567,7 @@ public class OQuoteDetailFragment extends OBaseFragment implements View.OnClickL
                                 containter.removeAllViews();
                                 containter.addView(klineView);
                                 type_minute = "3";
-                                // getLineData(type_minute);
+                                 getLineData(type_minute);
 
                                 //getLineHistoryData(type_minute, Integer.valueOf(type_minute) * 60);
 

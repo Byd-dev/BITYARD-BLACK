@@ -8,14 +8,16 @@ import android.widget.RadioGroup;
 
 import com.ltqh.qh.Api.NetManger;
 import com.ltqh.qh.Api.OnNetResult;
+import com.ltqh.qh.Api.QuoteListManger;
 import com.ltqh.qh.R;
 import com.ltqh.qh.base.Constant;
+import com.ltqh.qh.config.AppConfig;
 import com.ltqh.qh.config.IntentConfig;
 import com.ltqh.qh.config.UserConfig;
 import com.ltqh.qh.entity.LoginEntity;
 import com.ltqh.qh.fragment.HomeBannerFragment;
 import com.ltqh.qh.fragment.MyBgFragment;
-import com.ltqh.qh.fragment.forum.ForumTabFragment;
+import com.ltqh.qh.fragment.forum.ForumFragment;
 import com.ltqh.qh.fragment.market.BtcMarketFragment;
 import com.ltqh.qh.fragment.news.Info2Fragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
@@ -32,6 +34,7 @@ import butterknife.BindView;
 import static com.ltqh.qh.Api.NetManger.SUCCESS;
 import static com.ltqh.qh.activity.MainActivity.TAB_TYPE.TAB_HALL;
 import static com.ltqh.qh.activity.MainActivity.TAB_TYPE.TAB_INFORMATION;
+import static com.ltqh.qh.config.AppConfig.QUOTE_SECOND;
 
 public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -85,14 +88,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
 
         //提前加载数据
-        NetManger.getInstance().api(new OnNetResult() {
-            @Override
-            public void onNetResult(String state, Object response) {
-                if (state.equals(SUCCESS)) {
-                    NetManger.getInstance().postQuote();
-                }
-            }
-        });
+
 
         StatusBarUtil.setRootViewFitsSystemWindows(this, false);
 
@@ -119,16 +115,11 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
 
     @Override
     protected void initData() {
-        String string = SPUtils.getString(OUserConfig.ALLDEX);
-        if (string == null) {
-            NetManger.getInstance().api(new OnNetResult() {
-                @Override
-                public void onNetResult(String state, Object response) {
-                    if (state.equals(SUCCESS)) {
-                        NetManger.getInstance().postQuote();
-                    }
-                }
-            });
+
+        NetManger.getInstance().initQuote();
+        String code = SPUtils.getString(AppConfig.QUOTE_CODE);
+        if (code != null) {
+            QuoteListManger.getInstance().startScheduleJob(QUOTE_SECOND, QUOTE_SECOND);
         }
 
 
@@ -180,7 +171,7 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
                 break;
 
             case R.id.radio_3:
-                showFragment(R.id.layout_fragment_containter, new ForumTabFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new ForumFragment(), null, null);
 
 
                 break;
@@ -205,6 +196,8 @@ public class MainActivity extends OBaseActivity implements RadioGroup.OnCheckedC
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        QuoteListManger.getInstance().cancelTimer();
+        QuoteListManger.getInstance().clear();
     }
 
     public static void reStart(Context context) {

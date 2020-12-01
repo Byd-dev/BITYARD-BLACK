@@ -56,7 +56,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_home"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -82,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/home_line"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -96,7 +95,7 @@
                 android:drawableTop="@mipmap/unlogin_bg"
                 android:gravity="center"
                 android:text="登录后查看讨论"
-                android:textColor="@color/text_c1c1"
+                android:textColor="@color/text_7b7b"
                 android:visibility="visible" />
 
             <android.support.v4.widget.SwipeRefreshLayout
@@ -124,7 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="发布币圈动态"
-                            android:textColor="@color/text_maincolor"
+                            android:textColor="@color/white"
                             android:layout_centerVertical="true"
                             android:textSize="15sp"
                             android:drawableLeft="@mipmap/circle_carema"

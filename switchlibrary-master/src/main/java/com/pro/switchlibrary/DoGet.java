@@ -64,15 +64,9 @@ public class DoGet {
             uuid = onIdsAvalid;
         }
 
-       /* Toast.makeText(context, "UUID:" + uuid
-                + "位置:" + SPUtils.getString(AppConfig.LOCATION)
-                + "MAC:" + DeviceUtil.getMACAddress(), Toast.LENGTH_SHORT).show();*/
-
-        //  Log.d("print", "startRun:40:  " + uuid + "位置" + location + "MAC:" + macAddress);
-
 
         if (CHECKVERSION_URL_LIST.length > 0) {
-            if (data != null) {
+            if (data!=null) {
                 List<String> dPool = data.getDPool();
                 if (dPool.size() != 0) {
                     getCacheCheckVersion(onResultBack, data, CACHE_CHECKVERSION_INDEX, channel);

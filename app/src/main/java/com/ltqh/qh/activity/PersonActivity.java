@@ -54,6 +54,7 @@ import com.ltqh.qh.utils.AppUtil;
 import com.ltqh.qh.utils.FileUtil;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.CircleImageView;
+import com.ltqh.qh.view.StatusBarUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -146,7 +147,10 @@ public class PersonActivity extends OBaseActivity implements View.OnClickListene
     protected void initView(View view) {
         EventBus.getDefault().register(this);
 
-        setStatusBar(getResources().getColor(R.color.maincolor));
+       // setStatusBar(getResources().getColor(R.color.maincolor));
+
+        StatusBarUtil.setStatusBarDarkTheme(PersonActivity.this, false);
+
 
 
         mExtStorDir = Environment.getExternalStorageDirectory().toString();

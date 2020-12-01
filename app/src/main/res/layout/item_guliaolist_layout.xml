@@ -43,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="小鲜肉"
-                        android:textColor="@color/text_maincolor"
+                        android:textColor="@color/white"
                         android:textSize="16sp"
 
                         />
@@ -53,7 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:textColor="@color/text_maincolor"
+                        android:textColor="@color/text_7b7b"
                         android:textSize="12sp" />
 
 
@@ -86,7 +86,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="格力电器（000651）期待你的大阳线出现！！"
-                android:textColor="@color/text_maincolor"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                 android:layout_marginBottom="10dp"
                 android:ellipsize="end"
                 android:text="整周期结束后，各周期又达到了上涨阶段，这里希望大阳线出现，带动股指站上2700点。"
-                android:textColor="@color/text_maincolor"
+                android:textColor="@color/text_7b7b"
                 android:textSize="14sp" />
 
             <View

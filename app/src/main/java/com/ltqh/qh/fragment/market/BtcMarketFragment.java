@@ -8,45 +8,32 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.ltqh.qh.Api.NetManger;
-import com.ltqh.qh.Api.OnNetResult;
+import com.ltqh.qh.Api.QuoteListManger;
 import com.ltqh.qh.R;
 import com.ltqh.qh.activity.IntentActivity;
 import com.ltqh.qh.adapter.BtcMarketAdapter;
-import com.ltqh.qh.adapter.StockforeignslideAdapter;
+import com.ltqh.qh.adapter.QuoteAdapter;
 import com.ltqh.qh.base.Constant;
-import com.ltqh.qh.entity.BtcMarketEntity;
-import com.ltqh.qh.entity.BtcPriceEntity;
-import com.ltqh.qh.entity.CodeMsgEntity;
-import com.ltqh.qh.entity.StockForeignEntity;
 import com.ltqh.qh.operation.base.OBaseFragment;
-import com.ltqh.qh.operation.quotebase.QuoteProxy;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.utils.ViewUtils;
 import com.ltqh.qh.view.EnhanceTabLayout;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import butterknife.BindView;
 
-import static com.ltqh.qh.Api.NetManger.BUSY;
-import static com.ltqh.qh.Api.NetManger.FAILURE;
-import static com.ltqh.qh.Api.NetManger.SUCCESS;
+import static com.lzy.okgo.utils.HttpUtils.runOnUiThread;
 
-public class BtcMarketFragment extends OBaseFragment implements View.OnClickListener {
+public class BtcMarketFragment extends OBaseFragment implements View.OnClickListener, Observer {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefreshLayout)
@@ -58,8 +45,8 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
     @BindView(R.id.home_tab)
     EnhanceTabLayout home_tab;
 
-    private String sort = "";
-
+    private String sort = "0";
+    private QuoteAdapter quoteAdapter_market;
 
     private int lastVisibleItem;
     private String REFRESHTYPE = "refresh";
@@ -79,7 +66,8 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
 
     @Override
     protected void initView(View view) {
-        ViewUtils.setLayoutParams(getContext(),layout_bar);
+        ViewUtils.setLayoutParams(getContext(), layout_bar);
+        QuoteListManger.getInstance().addObserver(this);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -94,40 +82,25 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
         gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         linearLayoutManager = new LinearLayoutManager(getActivity());
 
-        recyclerView.setLayoutManager(linearLayoutManager);
-        btcMarketAdapter = new BtcMarketAdapter(getActivity());
-        recyclerView.setAdapter(btcMarketAdapter);
 
+
+
+        /*行情 分割线-----------------------------------------------------------------------------*/
+        quoteAdapter_market = new QuoteAdapter(getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(quoteAdapter_market);
 
         swipeRefreshLayout.setColorSchemeResources(R.color.maincolor);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 count = 1;
-                getBtcMarket(REFRESHTYPE, sort, count);
+                // getBtcMarket(REFRESHTYPE, sort, count);
 
             }
         });
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (swipeRefreshLayout.isRefreshing()) return;
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem == btcMarketAdapter.getItemCount() - 1) {
-                    btcMarketAdapter.startLoad();
-                    count = count + 1;
-                    getBtcMarket(LOADTYPE, sort, count);
-                }
 
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
-            }
-        });
 
 
         view.findViewById(R.id.img_search).setOnClickListener(this);
@@ -167,31 +140,33 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case 0:
-                        sort = "circulation_usd";
+                        sort = "0";
 
 
                         break;
                     case 1:
-                        sort = "price_usd";
+                        sort = "1";
 
 
                         break;
                     case 2:
-                        sort = "available_supply";
+                        sort = "2";
 
                         break;
                     case 3:
-                        sort = "trademoney24h_usd";
+                        sort = "3";
 
 
                         break;
                     case 4:
-                        sort = "percent_24h";
+                        sort = "4";
+
 
                         break;
                 }
-                getBtcMarket(REFRESHTYPE, sort, 1);
-
+                //getBtcMarket(REFRESHTYPE, sort, 1);
+                List<String> quoteList = arrayMap.get(sort);
+                quoteAdapter_market.setDatas(quoteList);
             }
 
             @Override
@@ -216,7 +191,7 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
 
     }
 
-    private void getBtcMarket(String type, String sort, int page) {
+    /*private void getBtcMarket(String type, String sort, int page) {
         NetManger.getInstance().btcPrice(page, sort, new OnNetResult() {
             @Override
             public void onNetResult(String state, Object response) {
@@ -241,11 +216,11 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
 
             }
         });
-    }
+    }*/
 
     @Override
     protected void initData() {
-        getBtcMarket(REFRESHTYPE, null, 1);
+        //getBtcMarket(REFRESHTYPE, null, 1);
     }
 
 
@@ -263,5 +238,21 @@ public class BtcMarketFragment extends OBaseFragment implements View.OnClickList
         }
     }
 
+    private ArrayMap<String, List<String>> arrayMap;
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o == QuoteListManger.getInstance()) {
+            arrayMap = (ArrayMap<String, List<String>>) arg;
+            List<String> quoteList = arrayMap.get(sort);
+            runOnUiThread(() -> {
+                if (quoteList.size() >= 3) {
+                    quoteAdapter_market.setDatas(quoteList);
+
+                }
+            });
+
+        }
+    }
 
 }

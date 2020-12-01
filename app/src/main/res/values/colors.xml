@@ -19,8 +19,8 @@
     <color name="tab_color">#242424</color>
     <color name="tab_color_normal">#666666</color>
 
-    <color name="redcolor">#D41E23</color>
-    <color name="greencolor">#0DB57F</color>
+    <color name="redcolor">#EC4E4F</color>
+    <color name="greencolor">#37B3A5</color>
     <color name="second_color">#FF333333</color>
 
     <color name="home_line">#242222</color>
@@ -107,5 +107,6 @@
     <color name="text_20_33">#33333333</color>
     <color name="text_62_white">#9EFFFFFF</color>
     <color name="color_dbbf">#DBBF88</color>
+    <color name="text_7b7b">#7B7B7B</color>
 
 </resources>

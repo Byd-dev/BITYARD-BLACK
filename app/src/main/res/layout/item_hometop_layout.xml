@@ -9,9 +9,8 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_shape_home_search"
+        android:background="@mipmap/bg_my_item"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_5"
         android:gravity="center"
         android:orientation="vertical">
         <TextView
@@ -44,7 +43,7 @@
             android:layout_gravity="center"
             android:text="--"
             android:textColor="@color/text_maincolor"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             />
 

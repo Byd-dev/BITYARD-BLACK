@@ -11,13 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.google.gson.Gson;
-import com.ltqh.qh.Api.NetManger;
-import com.ltqh.qh.Api.OnNetResult;
 import com.ltqh.qh.R;
 import com.ltqh.qh.adapter.BtcMarketAdapter;
 import com.ltqh.qh.base.Constant;
-import com.ltqh.qh.entity.BtcPriceEntity;
 import com.ltqh.qh.operation.base.OBaseFragment;
 import com.ltqh.qh.utils.SPUtils;
 import com.ltqh.qh.view.EnhanceTabLayout;
@@ -26,10 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-
-import static com.ltqh.qh.Api.NetManger.BUSY;
-import static com.ltqh.qh.Api.NetManger.FAILURE;
-import static com.ltqh.qh.Api.NetManger.SUCCESS;
 
 public class BtcMarketF2ragment extends OBaseFragment implements View.OnClickListener {
     @BindView(R.id.recyclerview)
@@ -88,7 +80,6 @@ public class BtcMarketF2ragment extends OBaseFragment implements View.OnClickLis
             @Override
             public void onRefresh() {
                 count = 1;
-                getBtcMarket(REFRESHTYPE, sort, count);
 
             }
         });
@@ -101,7 +92,6 @@ public class BtcMarketF2ragment extends OBaseFragment implements View.OnClickLis
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem == btcMarketAdapter.getItemCount() - 1) {
                     btcMarketAdapter.startLoad();
                     count = count + 1;
-                    getBtcMarket(LOADTYPE, sort, count);
                 }
 
             }
@@ -170,7 +160,6 @@ public class BtcMarketF2ragment extends OBaseFragment implements View.OnClickLis
 
                         break;
                 }
-                getBtcMarket(REFRESHTYPE, sort, 1);
 
             }
 
@@ -196,36 +185,9 @@ public class BtcMarketF2ragment extends OBaseFragment implements View.OnClickLis
 
     }
 
-    private void getBtcMarket(String type, String sort, int page) {
-        NetManger.getInstance().btcPrice(page, sort, new OnNetResult() {
-            @Override
-            public void onNetResult(String state, Object response) {
-                if (state.equals(BUSY)) {
-                    showProgressDialog();
-                } else if (state.equals(SUCCESS)) {
-                    dismissProgressDialog();
-                    BtcPriceEntity btcPriceEntity = new Gson().fromJson(response.toString(), BtcPriceEntity.class);
-                    if (type.equals(LOADTYPE)) {
-                        btcMarketAdapter.addDatas(btcPriceEntity.getData());
-
-                    } else if (type.equals(REFRESHTYPE)) {
-
-                        btcMarketAdapter.setDatas(btcPriceEntity.getData());
-                    }
-                    swipeRefreshLayout.setRefreshing(false);
-
-                } else if (state.equals(FAILURE)) {
-                    dismissProgressDialog();
-                }
-
-
-            }
-        });
-    }
 
     @Override
     protected void initData() {
-        getBtcMarket(REFRESHTYPE, null, 1);
     }
 
 

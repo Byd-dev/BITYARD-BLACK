@@ -208,7 +208,6 @@ public class BlockHomeFragment extends OBaseFragment implements View.OnClickList
             //暂时屏蔽消息
             //updateNews();
 
-            getQuote();
 
 
         }
@@ -355,55 +354,10 @@ public class BlockHomeFragment extends OBaseFragment implements View.OnClickList
     }
 
 
-    private void getQuote() {
 
-        List<String> dataList = QuoteProxy.getInstance().getDigitalDataList();
-
-        Log.d("print", "getQuote:283:  " + dataList);
-        OApiEntity oApiEntity = QuoteProxy.getInstance().getoApiEntity();
-        if (dataList != null) {
-
-
-            homeTopAdapter.setIsUpDown(isupdown);
-            homeTopAdapter.setDatas(OUserConfig.P_DIGITAL, dataList.subList(6, 9));
-            homeTopAdapter.setDigitalDatas(OUserConfig.P_DIGITAL, oApiEntity.getDigitalCommds());
-
-
-           /* Handler handler = new Handler();
-
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    homeTopAdapter.notifyItem(dataList);
-
-                }
-            }, PERIOD);*/
-            cancelTimer();
-            dismissProgressDialog();
-
-
-        } else {
-            NetManger.getInstance().api(new OnNetResult() {
-                @Override
-                public void onNetResult(String state, Object response) {
-                    if (state.equals(SUCCESS)) {
-                        //  dismissProgressDialog();
-                        NetManger.getInstance().postQuote();
-                    } else if (state.equals(BUSY)) {
-                        // showProgressDialog();
-                    } else if (state.equals(FAILURE)) {
-                        // dismissProgressDialog();
-                        Toast.makeText(getActivity(), getResources().getString(R.string.o_text_err), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }
 
     @Override
     protected void initData() {
-        getQuote();
     }
 
 

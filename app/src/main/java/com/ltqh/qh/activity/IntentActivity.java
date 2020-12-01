@@ -53,6 +53,7 @@ import com.ltqh.qh.fragment.user.RuleWebFragment;
 import com.ltqh.qh.fragment.user.SignFragment;
 import com.ltqh.qh.operation.base.OBaseActivity;
 import com.ltqh.qh.operation.fragment.home.OSearchFragment;
+import com.ltqh.qh.view.StatusBarUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -144,7 +145,9 @@ public class IntentActivity extends OBaseActivity implements View.OnClickListene
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setStatusBar(getResources().getColor(R.color.maincolor));
+      //  setStatusBar(getResources().getColor(R.color.background_maincolor));
+        //浅色标题
+        StatusBarUtil.setStatusBarDarkTheme(IntentActivity.this, false);
 
         type = getIntent().getIntExtra(TYPE, 0);
         int id = getIntent().getIntExtra(Constant.PARAM_ID, 0);

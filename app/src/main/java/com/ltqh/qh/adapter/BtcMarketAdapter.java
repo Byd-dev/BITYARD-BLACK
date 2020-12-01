@@ -74,7 +74,7 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
-            ((MyViewHolder) holder).text_symbol.setText(datas.get(position).getSymbol()+"/USDT");
+            ((MyViewHolder) holder).text_symbol.setText(datas.get(position).getSymbol()+"/");
             ((MyViewHolder) holder).text_name.setText(datas.get(position).getCn_name());
             ((MyViewHolder) holder).text_price.setText(datas.get(position).getCny_price());
             String change = datas.get(position).get_$24_change();
@@ -93,11 +93,13 @@ public class BtcMarketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 ((MyViewHolder) holder).text_price.setTextColor(context.getResources().getColor(R.color.greencolor));
                 ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.o_market_green);
 
+                ((MyViewHolder) holder).text_change.setTextColor(context.getResources().getColor(R.color.greencolor));
 
             }else {
                 ((MyViewHolder) holder).img_zhangdie.setImageResource(R.mipmap.zhang);
                 ((MyViewHolder) holder).text_price.setTextColor(context.getResources().getColor(R.color.redcolor));
                 ((MyViewHolder) holder).layout_bg.setBackgroundResource(R.drawable.o_market_red);
+                ((MyViewHolder) holder).text_change.setTextColor(context.getResources().getColor(R.color.redcolor));
 
             }
 

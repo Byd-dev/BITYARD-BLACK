@@ -4,7 +4,7 @@
     android:id="@+id/layout_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/o_bar_white"
+    android:background="@color/background_maincolor"
     android:orientation="vertical">
 
    <!-- <com.ltqh.qh.view.StatusBarHeightView
@@ -17,7 +17,6 @@
 
             android:layout_width="match_parent"
             android:layout_height="@dimen/bar_height"
-            android:background="@color/maincolor"
             android:orientation="horizontal">
 
             <ImageView
@@ -100,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
 
@@ -163,7 +163,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:background="@color/o_bar_white">
+
+                    >
 
                     <com.ltqh.qh.view.InfoEnhanceTabLayout
                         android:id="@+id/home_tab"

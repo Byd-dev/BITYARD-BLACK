@@ -30,7 +30,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.DownloadListener;
@@ -119,7 +118,7 @@ public class OWebActivity extends BaseActivity {
                 builder.append(url);
             }
             if (params != null && !params.isEmpty()) {
-                if (url.contains("?")){
+                if (url.contains("?")) {
                     builder.append("&");
                     for (Map.Entry<String, Object> entry : params.entrySet()) {
                         if (entry.getValue() != null) {
@@ -132,7 +131,7 @@ public class OWebActivity extends BaseActivity {
                     if (builder.toString().endsWith("&")) {
                         builder.deleteCharAt(builder.length() - 1);
                     }
-                }else {
+                } else {
                     builder.append("?");
                     for (Map.Entry<String, Object> entry : params.entrySet()) {
                         if (entry.getValue() != null) {
@@ -480,7 +479,7 @@ public class OWebActivity extends BaseActivity {
             String title = intent.getStringExtra("title");
 
             if (title.equals("color")) {
-                setStatusBar(getResources().getColor(R.color.black));
+                setStatusBar(getResources().getColor(R.color.barColor));
 
             }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,20 +8,11 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@mipmap/banner_one"
-        android:visibility="visible">
-
-
-
-    </RelativeLayout>
-
-    <LinearLayout
+    <com.ltqh.qh.view.StatusBarHeightView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:use_type="use_padding_top">
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -62,7 +53,6 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/bar_height"
@@ -76,7 +66,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:padding="15dp"
-                        android:src="@mipmap/super_back" />
+                        android:src="@mipmap/super_back"
+                        android:visibility="gone" />
 
                     <RadioGroup
                         android:id="@+id/radioGroup"
@@ -118,7 +109,7 @@
                             android:checked="false"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="小组"
+                            android:text="币圈"
                             android:textColor="@color/white"
                             android:textSize="@dimen/radio_textsize"
                             android:textStyle="bold"
@@ -146,5 +137,5 @@
 
         </android.support.design.widget.CoordinatorLayout>
 
-    </LinearLayout>
-</RelativeLayout>
+    </com.ltqh.qh.view.StatusBarHeightView>
+</LinearLayout>

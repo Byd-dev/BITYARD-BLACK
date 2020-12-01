@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="65dp"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -33,26 +33,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_15"
-
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/text_symbol"
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BTC"
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/text_symbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BTC"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
 
-                    />
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="USDT"
+                        android:textColor="@color/text_7b7b"
+                        android:textSize="10sp"/>
+
+
+                </LinearLayout>
+
+
 
                 <TextView
                     android:id="@+id/text_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="比特币(BTC)"
-                    android:textColor="@color/o_text_3433"
+                    android:textColor="@color/text_7b7b"
                     android:textSize="10sp"
 
                     />
@@ -88,7 +104,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:text="¥9,818,128.59万"
-                android:textColor="@color/o_text_3433"
+                android:textColor="@color/text_7b7b"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -96,8 +112,8 @@
 
         <LinearLayout
             android:id="@+id/layout_bg"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_width="82dp"
+            android:layout_height="28dp"
             android:layout_weight="1"
             android:layout_marginRight="@dimen/margin_15"
             android:layout_alignParentRight="true"

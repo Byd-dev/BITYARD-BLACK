@@ -14,6 +14,7 @@ import com.ltqh.qh.activity.PublishActivity;
 import com.ltqh.qh.activity.UserActivity;
 import com.ltqh.qh.base.BaseFragment;
 import com.ltqh.qh.base.Constant;
+import com.ltqh.qh.fragment.news.LiveFragment;
 import com.ltqh.qh.operation.base.OBaseFragment;
 
 import butterknife.BindView;
@@ -84,7 +85,7 @@ public class ForumFragment extends OBaseFragment implements RadioGroup.OnChecked
                 break;
 
             case R.id.radio_1:
-                showFragment(R.id.layout_fragment_containter, new GubaListFragment(), null, null);
+                showFragment(R.id.layout_fragment_containter, new LiveFragment(), null, null);
                // layout_send.setVisibility(View.GONE);
                 radio_0.setTextSize(17);
                 radio_1.setTextSize(20);

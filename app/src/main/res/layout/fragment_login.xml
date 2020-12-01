@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background_maincolor"
     android:orientation="vertical">
 
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:src="@mipmap/super_back_black" />
+            android:src="@mipmap/super_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:drawableTop="@mipmap/user_icon"
             android:layout_centerInParent="true"
             android:drawablePadding="@dimen/margin_15"
-            android:textColor="@color/text_maincolor"
+            android:textColor="@color/white"
             android:textSize="26sp" />
     </RelativeLayout>
 
@@ -50,7 +50,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:background="@mipmap/home_toutiao_bg"
             android:layout_marginRight="15dp"
 
             >
@@ -61,7 +60,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:padding="15dp"
                 android:src="@mipmap/user_nickname"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <EditText
                 android:id="@+id/edit_number"
@@ -75,9 +74,9 @@
                 android:inputType="number"
                 android:maxLength="11"
                 android:padding="8dp"
-                android:textColor="@color/text_maincolor"
-                android:textColorHint="@color/tranmaincolor"
-                android:textSize="16sp" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_7b7b"
+                android:textSize="13sp" />
 
 
             <View
@@ -85,7 +84,7 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="bottom"
                 android:background="@color/home_line"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </FrameLayout>
 
@@ -94,7 +93,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:background="@mipmap/home_toutiao_bg"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp">
 
@@ -104,7 +102,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:padding="15dp"
                 android:src="@mipmap/user_pass"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <EditText
                 android:id="@+id/edit_password"
@@ -117,9 +115,9 @@
                 android:hint="@string/text_password_input"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/text_maincolor"
-                android:textColorHint="@color/tranmaincolor"
-                android:textSize="16sp" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_7b7b"
+                android:textSize="13sp" />
 
 
             <TextView
@@ -141,7 +139,7 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="bottom"
                 android:background="@color/home_line"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </FrameLayout>
 

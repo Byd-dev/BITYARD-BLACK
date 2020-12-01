@@ -62,7 +62,6 @@ public class OQuoteFragment extends OBaseFragment implements View.OnClickListene
     private String Titles[] = new String[]{"实盘交易", "实盘持仓"};
     private String code;
     private String istrade;
-    private OPositionFragment oPositionFragment;
 
 
     public static OQuoteFragment newInstance(String data, String istrade) {

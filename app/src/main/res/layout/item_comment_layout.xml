@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="小鲜肉"
-                    android:textColor="@color/text_maincolor"
+                    android:textColor="@color/white"
                     android:textSize="15sp"
 
                     />
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text_secondcolor"
+                    android:textColor="@color/text_7b7b"
                     android:textSize="12sp" />
 
 
@@ -64,7 +64,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="格力电器（000651）期待你的大阳线出现！！"
-            android:textColor="@color/text_maincolor"
+            android:textColor="@color/text_7b7b"
             android:textSize="13sp" />
 
 

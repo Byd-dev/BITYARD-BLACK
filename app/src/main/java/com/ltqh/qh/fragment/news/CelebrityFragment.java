@@ -80,7 +80,7 @@ public class CelebrityFragment extends OBaseFragment {
     @Override
     protected void initData() {
 
-        NetManger.getInstance().celebrityList(new OnNetResult() {
+        /*NetManger.getInstance().celebrityList(new OnNetResult() {
             @Override
             public void onNetResult(String state, Object response) {
                 if (state.equals(BUSY)) {
@@ -94,7 +94,7 @@ public class CelebrityFragment extends OBaseFragment {
 
                 }
             }
-        });
+        });*/
 
     }
 }

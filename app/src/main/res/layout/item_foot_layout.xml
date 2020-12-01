@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/o_bar_white"
+        android:background="@color/background_maincolor"
         android:layout_height="50dp">
 
 
